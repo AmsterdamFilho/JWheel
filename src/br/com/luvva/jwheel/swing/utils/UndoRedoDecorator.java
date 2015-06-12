@@ -12,10 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-/**
- * Creation date: 12/06/15
- * author Amsterdam Luís de Lima Filho <amsterdam@luvva.com.br>
- */
 public class UndoRedoDecorator
 {
     private UndoAction           undoAction  = new UndoAction ();
