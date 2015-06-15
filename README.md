@@ -6,4 +6,4 @@ Its main benefit is helping desktop applications developers to build their softw
 
 It will also have some general purpose Java utility classes, that can be used in any Java project.
 
-So, if you’re developing a desktop application and is not worried about a rich user interface, you can use this library, avoiding to spend time developing a CRUD template. After all, why would you reinvent JWheel?
+So, if you’re developing a desktop application and are not worried about a rich user interface, you can use this library, avoiding to spend time developing a CRUD template. After all, why would you reinvent JWheel?
