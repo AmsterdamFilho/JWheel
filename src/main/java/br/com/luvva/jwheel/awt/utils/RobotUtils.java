@@ -2,8 +2,14 @@ package br.com.luvva.jwheel.awt.utils;
 
 import java.awt.*;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public final class RobotUtils
 {
+
+    private RobotUtils ()
+    {
+
+    }
 
     public static void keyType (int keyCode) throws AWTException
     {
