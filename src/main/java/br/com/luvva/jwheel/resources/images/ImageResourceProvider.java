@@ -5,6 +5,6 @@ import javax.swing.*;
 public interface ImageResourceProvider
 {
 
-    public Icon getQuestionIcon ();
+    Icon getQuestionIcon ();
 
 }

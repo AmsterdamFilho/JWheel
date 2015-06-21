@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class JwDesktopPane extends JDesktopPane
 {
-    private MyDesktopManager manager       = new MyDesktopManager(this);
-    private Image            backImage     = null;
-    private int              imageStrategy = CENTRALIZE;
-    private Color            backColor     = this.getBackground();
+    private final MyDesktopManager manager       = new MyDesktopManager(this);
+    private       Image            backImage     = null;
+    private       int              imageStrategy = CENTRALIZE;
+    private       Color            backColor     = this.getBackground();
 
     public static final int CENTRALIZE = 0;
     public static final int FILL       = 1;
@@ -143,7 +143,7 @@ public class JwDesktopPane extends JDesktopPane
      */
     private class MyDesktopManager extends DefaultDesktopManager
     {
-        private JwDesktopPane desktop;
+        private final JwDesktopPane desktop;
 
         private MyDesktopManager (JwDesktopPane desktop)
         {

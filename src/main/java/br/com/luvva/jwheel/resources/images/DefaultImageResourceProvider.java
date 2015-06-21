@@ -10,9 +10,9 @@ public class DefaultImageResourceProvider implements ImageResourceProvider
 
     private static final String QUESTION_MARK = "question_mark.png";
 
-    private static String resourcesDirectory = "resources/default/";
+    private final String resourcesDirectory = "resources/default/";
 
-    private final Logger logger = LoggerFactory.getLogger("chapters.introduction.HelloWorld2");
+    private final static Logger logger = LoggerFactory.getLogger(DefaultImageResourceProvider.class);
 
     @Override
     public Icon getQuestionIcon ()
