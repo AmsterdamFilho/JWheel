@@ -2,7 +2,6 @@ package br.com.luvva.jwheel.awt.utils;
 
 import java.awt.*;
 
-@SuppressWarnings({"WeakerAccess", "unused"})
 public final class RobotUtils
 {
 

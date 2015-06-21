@@ -11,7 +11,6 @@ import javax.swing.undo.UndoManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-@SuppressWarnings({"WeakerAccess", "unused"})
 public class UndoRedoDecorator
 {
     private final UndoAction           undoAction  = new UndoAction();
@@ -61,7 +60,6 @@ public class UndoRedoDecorator
         inputMap.put(key, redoAction);
     }
 
-    @SuppressWarnings("unused")
     private class MyUndoableEditListener implements UndoableEditListener
     {
         @Override
