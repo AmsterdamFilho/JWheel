@@ -1,11 +1,13 @@
 package br.com.luvva.jwheel.swing.components;
 
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
+import java.beans.PropertyVetoException;
 
 import static br.com.luvva.jwheel.JWheelResourcesFactory.textProvider;
 
@@ -16,6 +18,7 @@ public abstract class JwFrame extends JFrame implements WindowListener
     private JPanel   pnlMdi   = new JPanel();
 
     public static final String CARD_MDI = "card_mdi";
+    private final static Logger logger = LoggerFactory.getLogger(JwFrame.class);
 
     public JwFrame (String title) throws HeadlessException
     {
@@ -28,6 +31,32 @@ public abstract class JwFrame extends JFrame implements WindowListener
     }
 
     public abstract boolean validateExit ();
+
+    public void selectInternalFrame (JInternalFrame internalFrame)
+    {
+        try
+        {
+            if (internalFrame.isIcon())
+            {
+                internalFrame.setIcon(false);
+            }
+            if (!internalFrame.isVisible())
+            {
+                internalFrame.setVisible(true);
+            }
+            internalFrame.setSelected(true);
+        }
+        catch (PropertyVetoException ex)
+        {
+            logger.debug("", ex);
+        }
+        internalFrame.moveToFront();
+        if (internalFrame instanceof JwInternalFrame)
+        {
+            ((JwInternalFrame) internalFrame).alignInDesktopPane();
+        }
+        jwDesktopPane.resizeDesktop();
+    }
 
     @Override
     public void windowOpened (WindowEvent e)
