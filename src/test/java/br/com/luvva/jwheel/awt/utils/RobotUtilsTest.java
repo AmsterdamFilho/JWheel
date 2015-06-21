@@ -16,8 +16,8 @@ import java.util.Arrays;
 public class RobotUtilsTest
 {
 
-    private Robot robot = RobotUtils.getRobot();
-    private String testString = "this is a test of the robot utils class";
+    private final Robot  robot      = RobotUtils.getRobot();
+    private final String testString = "this is a test of the robot utils class";
 
     @Test
     public void testKeyType () throws Exception
@@ -49,13 +49,7 @@ public class RobotUtilsTest
         Assert.assertEquals(testString, new String(Files.readAllBytes(testFile.toPath())));
     }
 
-    private void type (int i) throws AWTException
-    {
-        robot.delay(500);
-        RobotUtils.keyType(i);
-    }
-
-    private void type (String s) throws AWTException
+    private void type (String s)
     {
         byte[] bytes = s.getBytes();
         for (byte b : bytes)

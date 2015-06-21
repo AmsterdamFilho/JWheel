@@ -37,13 +37,13 @@ public final class RobotUtils
         return robot;
     }
 
-    public static void keyType (int keyCode) throws AWTException
+    public static void keyType (int keyCode)
     {
         robot.keyPress(keyCode);
         robot.keyRelease(keyCode);
     }
 
-    public static void keyType (int keyCode, int... modifiers) throws AWTException
+    public static void keyType (int keyCode, int... modifiers)
     {
         for (int modifier : modifiers)
         {
