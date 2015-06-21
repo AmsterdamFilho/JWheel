@@ -5,6 +5,9 @@ import java.awt.*;
 public final class RobotUtils
 {
 
+    public static int autoDelayMs = 40;
+    public static boolean autoWaitForIdle = true;
+
     private RobotUtils ()
     {
 
@@ -35,8 +38,8 @@ public final class RobotUtils
     private static Robot newRobot () throws AWTException
     {
         Robot r = new Robot();
-        r.setAutoDelay(40);
-        r.setAutoWaitForIdle(true);
+        r.setAutoDelay(autoDelayMs);
+        r.setAutoWaitForIdle(autoWaitForIdle);
         return r;
     }
 
