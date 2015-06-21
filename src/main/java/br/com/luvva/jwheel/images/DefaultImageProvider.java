@@ -1,18 +1,18 @@
-package br.com.luvva.jwheel.resources.images;
+package br.com.luvva.jwheel.images;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 
-public class DefaultImageResourceProvider implements ImageResourceProvider
+public class DefaultImageProvider implements ImageProvider
 {
 
     private static final String QUESTION_MARK = "question_mark.png";
 
-    private final String resourcesDirectory = "resources/default/";
+    private final String resourcesDirectory = "default/";
 
-    private final static Logger logger = LoggerFactory.getLogger(DefaultImageResourceProvider.class);
+    private final static Logger logger = LoggerFactory.getLogger(DefaultImageProvider.class);
 
     @Override
     public Icon getQuestionIcon ()

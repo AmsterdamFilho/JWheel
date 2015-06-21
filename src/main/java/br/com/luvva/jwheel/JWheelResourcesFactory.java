@@ -1,14 +1,14 @@
 package br.com.luvva.jwheel;
 
-import br.com.luvva.jwheel.resources.images.DefaultImageResourceProvider;
-import br.com.luvva.jwheel.resources.images.ImageResourceProvider;
-import br.com.luvva.jwheel.resources.text.TextProvider;
-import br.com.luvva.jwheel.resources.text.TextProviderPtBr;
+import br.com.luvva.jwheel.images.DefaultImageProvider;
+import br.com.luvva.jwheel.images.ImageProvider;
+import br.com.luvva.jwheel.text.TextProvider;
+import br.com.luvva.jwheel.text.TextProviderPtBr;
 
 public class JWheelResourcesFactory
 {
 
-    public static ImageResourceProvider imageResourceProvider = new DefaultImageResourceProvider();
+    public static ImageProvider imageProvider = new DefaultImageProvider();
 
     public static TextProvider textProvider = new TextProviderPtBr();
 

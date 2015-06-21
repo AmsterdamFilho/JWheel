@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import static br.com.luvva.jwheel.JWheelResourcesFactory.imageResourceProvider;
+import static br.com.luvva.jwheel.JWheelResourcesFactory.imageProvider;
 import static br.com.luvva.jwheel.JWheelResourcesFactory.textProvider;
 
 public final class SwingUtils
@@ -22,15 +22,14 @@ public final class SwingUtils
     public static boolean getUserConfirmation (String msg, Component parentComponent)
     {
         MyJOptionPane optionPane = new MyJOptionPane(msg);
-        optionPane.setIcon(imageResourceProvider.getQuestionIcon());
+        optionPane.setIcon(imageProvider.getQuestionIcon());
         optionPane.setOptions(new Object[]{
                 getBtn(optionPane, textProvider.JOptionPane_Yes_Option(), JOptionPane.YES_OPTION),
-                getBtn(optionPane, textProvider.JOptionPane_Yes_Option(), JOptionPane.NO_OPTION)});
+                getBtn(optionPane, textProvider.JOptionPane_No_Option(), JOptionPane.NO_OPTION)});
 
         JDialog dialog = optionPane.createDialog(parentComponent, "");
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         dialog.setVisible(true);
-        dialog.setUndecorated(true);
         dialog.dispose();
         return Integer.valueOf(JOptionPane.YES_OPTION).equals(optionPane.getValue());
     }

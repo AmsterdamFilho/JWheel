@@ -1,5 +1,6 @@
-package br.com.luvva.jwheel.swing.components;
+package br.com.luvva.jwheel.swing.template;
 
+import br.com.luvva.jwheel.swing.components.CardsPnl;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +18,8 @@ public abstract class JwFrame extends JFrame implements WindowListener
     private CardsPnl cardsPnl = new CardsPnl();
     private JPanel   pnlMdi   = new JPanel();
 
-    public static final String CARD_MDI = "card_mdi";
-    private final static Logger logger = LoggerFactory.getLogger(JwFrame.class);
+    public static final  String CARD_MDI = "card_mdi";
+    private final static Logger logger   = LoggerFactory.getLogger(JwFrame.class);
 
     public JwFrame (String title) throws HeadlessException
     {

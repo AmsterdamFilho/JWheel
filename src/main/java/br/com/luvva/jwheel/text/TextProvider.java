@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.resources.text;
+package br.com.luvva.jwheel.text;
 
 public interface TextProvider
 {
