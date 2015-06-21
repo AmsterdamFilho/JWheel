@@ -10,7 +10,8 @@ public class DefaultImageProvider implements ImageProvider
 
     private static final String QUESTION_MARK = "question_mark.png";
 
-    private final String resourcesDirectory = "default/";
+    private final String templateDirectory = "/template/";
+    private final String imagesDirectory   = templateDirectory + "images/";
 
     private final static Logger logger = LoggerFactory.getLogger(DefaultImageProvider.class);
 
@@ -24,7 +25,7 @@ public class DefaultImageProvider implements ImageProvider
     {
         try
         {
-            return new ImageIcon(getClass().getResource(resourcesDirectory + "images/" + fileName));
+            return new ImageIcon(getClass().getResource(imagesDirectory + fileName));
         }
         catch (Exception ex)
         {
