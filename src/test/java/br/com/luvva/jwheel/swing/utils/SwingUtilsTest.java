@@ -9,7 +9,7 @@ public class SwingUtilsTest
     @Test
     public void testGetUserConfirmation () throws Exception
     {
-        Assert.assertEquals(SwingUtils.getUserConfirmation("Do you wish the see the test result?"), true);
-        Assert.assertEquals(SwingUtils.getUserConfirmation("Do you wish the see the test fail?"), false);
+        Assert.assertEquals(SwingUtils.getInstance().getUserConfirmation("Do you wish the see the test result?"), true);
+        Assert.assertEquals(SwingUtils.getInstance().getUserConfirmation("Do you wish the see the test fail?"), false);
     }
 }
