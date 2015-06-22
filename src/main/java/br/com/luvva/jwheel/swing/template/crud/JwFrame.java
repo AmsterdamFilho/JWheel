@@ -1,6 +1,5 @@
 package br.com.luvva.jwheel.swing.template.crud;
 
-import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.swing.components.CardLayoutPanel;
 import br.com.luvva.jwheel.swing.template.laf.JwLookAndFeel;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
@@ -142,11 +141,6 @@ public class JwFrame extends JFrame
     protected boolean validateExit ()
     {
         return true;
-    }
-
-    public static void main (String[] args)
-    {
-        WeldContext.getInstance().getBean(JwFrame.class).setVisible(true);
     }
 
 }

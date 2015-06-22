@@ -82,11 +82,10 @@ public class CardLayoutPanel extends JPanel
         }
     }
 
-    public boolean setSelectedCard (String cardId)
+    public void setSelectedCard (String cardId)
     {
         if (Objects.equals(this.selectedCard, cardId))
         {
-            return false;
         }
         if (!cards.contains(cardId))
         {
@@ -99,7 +98,6 @@ public class CardLayoutPanel extends JPanel
             revalidate();
             repaint();
             notifyListeners(SELECTED, cardId);
-            return true;
         }
     }
 
