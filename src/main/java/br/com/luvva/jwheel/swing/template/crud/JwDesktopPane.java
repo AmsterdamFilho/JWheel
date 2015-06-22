@@ -1,128 +1,32 @@
-package br.com.luvva.jwheel.swing.template;
+package br.com.luvva.jwheel.swing.template.crud;
 
+import br.com.luvva.jwheel.images.ImageProvider;
+
+import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 
 public class JwDesktopPane extends JDesktopPane
 {
-    private final MyDesktopManager manager       = new MyDesktopManager(this);
-    private       Image            backImage     = null;
-    private       int              imageStrategy = CENTRALIZE;
-    private       Color            backColor     = this.getBackground();
+    private final MyDesktopManager manager = new MyDesktopManager(this);
 
-    public static final int CENTRALIZE = 0;
-    public static final int FILL       = 1;
-
-    public JwDesktopPane ()
-    {
-        this((Image) null);
-    }
-
-    public JwDesktopPane (Image backImage)
-    {
-        this(backImage, CENTRALIZE);
-    }
-
-    public JwDesktopPane (Image backImage, int imageStrategy)
-    {
-        setDesktopManager(manager);
-        this.backImage = backImage;
-        this.imageStrategy = imageStrategy;
-    }
-
-    public JwDesktopPane (Color backColor)
-    {
-        setDesktopManager(manager);
-        this.backColor = backColor;
-    }
+    @Inject
+    private ImageProvider imageProvider;
 
     @Override
     public void paintComponent (Graphics g)
     {
-        if (backImage == null)
-        {
-            paintWithBackColor(g);
-        }
-        else
-        {
-            switch (imageStrategy)
-            {
-                case CENTRALIZE:
-                    paintCentralizing(g);
-                    break;
-                case FILL:
-                    paintFilling(g);
-                    break;
-                default:
-            }
-        }
-
-    }
-
-    private void paintCentralizing (Graphics g)
-    {
-        Graphics2D g2d = (Graphics2D) g.create();
-
-        double imgWidth = backImage.getWidth(null);
-        double imgHeight = backImage.getHeight(null);
-        double width = getWidth();
-        double height = getHeight();
-        int x = (int) ((width - imgWidth) / 2);
-        int y = (int) ((height - imgHeight) / 2);
-        g2d.drawImage(backImage, x, y, this);
-        g2d.dispose();
-    }
-
-    private void paintFilling (Graphics g)
-    {
-        Graphics2D g2d = (Graphics2D) g.create();
         int width = getWidth();
         int height = getHeight();
-        g2d.drawImage(backImage, 0, 0, width, height, this);
-        g2d.dispose();
-    }
-
-    private void paintWithBackColor (Graphics g)
-    {
-        Graphics2D g2d = (Graphics2D) g.create();
-
-        int width = getWidth();
-        int height = getHeight();
-        g2d.setPaint(backColor);
-        g2d.fill(new Rectangle(0, 0, width, height));
-        g2d.dispose();
-    }
-
-    public void setBackgroundImage (Image backImage, int imageStrategy)
-    {
-        validateImgStrategy(imageStrategy);
-        this.backImage = backImage;
-        this.imageStrategy = imageStrategy;
-        repaint();
-    }
-
-    public void setBackgroundColor (Color solidColor)
-    {
-        this.backImage = null;
-        this.backColor = solidColor;
-        repaint();
+        if (!imageProvider.decorateMainView(g, width, height, this))
+        {
+            super.paintComponent(g);
+        }
     }
 
     public void resizeDesktop ()
     {
         manager.resizeDesktop();
-    }
-
-    private void validateImgStrategy (int imageStrategy)
-    {
-        switch (imageStrategy)
-        {
-            case CENTRALIZE:
-            case FILL:
-                break;
-            default:
-                throw new IllegalArgumentException("Image strategy invalid!");
-        }
     }
 
     private void setAllSize (Dimension d)

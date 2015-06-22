@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class CardsPnl extends JPanel
+public class CardLayoutPanel extends JPanel
 {
     private final CardLayout cardLayout = new CardLayout();
 
@@ -21,7 +21,7 @@ public class CardsPnl extends JPanel
     private static final String REMOVED  = "removed";
     private static final String ADDED    = "added";
 
-    public CardsPnl ()
+    public CardLayoutPanel ()
     {
         setLayout(cardLayout);
     }

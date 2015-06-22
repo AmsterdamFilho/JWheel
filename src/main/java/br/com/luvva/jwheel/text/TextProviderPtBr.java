@@ -1,16 +1,19 @@
 package br.com.luvva.jwheel.text;
 
-public final class TextProviderPtBr implements TextProvider
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+public class TextProviderPtBr implements TextProvider
 {
 
     @Override
-    public String JOptionPane_Yes_Option ()
+    public String getJOptionPane_Yes_Option ()
     {
         return "Sim";
     }
 
     @Override
-    public String JOptionPane_No_Option ()
+    public String getJOptionPane_No_Option ()
     {
         return "Não";
     }

@@ -1,31 +1,46 @@
 package br.com.luvva.jwheel.swing.utils;
 
+import br.com.luvva.jwheel.images.ImageProvider;
+import br.com.luvva.jwheel.text.TextProvider;
+
+import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import static br.com.luvva.jwheel.JWheelResourcesFactory.imageProvider;
-import static br.com.luvva.jwheel.JWheelResourcesFactory.textProvider;
-
 public final class SwingUtils
 {
+
+    @Inject
+    private ImageProvider imageProvider;
+
+    @Inject
+    private TextProvider textProvider;
+
+    private static SwingUtils instance = new SwingUtils();
+
     private SwingUtils ()
     {
     }
 
-    public static boolean getUserConfirmation (String msg)
+    public static SwingUtils getInstance ()
+    {
+        return instance;
+    }
+
+    public boolean getUserConfirmation (String msg)
     {
         return getUserConfirmation(msg, null);
     }
 
-    public static boolean getUserConfirmation (String msg, Component parentComponent)
+    public boolean getUserConfirmation (String msg, Component parentComponent)
     {
         MyJOptionPane optionPane = new MyJOptionPane(msg);
         optionPane.setIcon(imageProvider.getQuestionIcon());
         optionPane.setOptions(new Object[]{
-                getBtn(optionPane, textProvider.JOptionPane_Yes_Option(), JOptionPane.YES_OPTION),
-                getBtn(optionPane, textProvider.JOptionPane_No_Option(), JOptionPane.NO_OPTION)});
+                getBtn(optionPane, textProvider.getJOptionPane_Yes_Option(), JOptionPane.YES_OPTION),
+                getBtn(optionPane, textProvider.getJOptionPane_No_Option(), JOptionPane.NO_OPTION)});
 
         JDialog dialog = optionPane.createDialog(parentComponent, "");
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -34,7 +49,7 @@ public final class SwingUtils
         return Integer.valueOf(JOptionPane.YES_OPTION).equals(optionPane.getValue());
     }
 
-    private static JButton getBtn (final JOptionPane optionPane, final String text, final Object value)
+    private JButton getBtn (final JOptionPane optionPane, final String text, final Object value)
     {
         final JButton jButton = new JButton(text);
         jButton.addActionListener((actionEvent) -> optionPane.setValue(value));
@@ -63,7 +78,7 @@ public final class SwingUtils
         return jButton;
     }
 
-    private static class MyJOptionPane extends JOptionPane
+    private class MyJOptionPane extends JOptionPane
     {
         {
             InputMap im = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
