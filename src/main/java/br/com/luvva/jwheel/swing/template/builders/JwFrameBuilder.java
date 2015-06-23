@@ -1,16 +1,15 @@
 package br.com.luvva.jwheel.swing.template.builders;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
 public interface JwFrameBuilder
 {
     JMenuBar getJMenuBar ();
 
-    JPanel getPageStartPanel ();
+    JComponent getPageStartPanel ();
 
-    List<Component> getDesktopPaneComponents ();
+    List<JComponent> getDesktopPaneComponents ();
 
-    JPanel getPageEndPanel ();
+    JComponent getPageEndPanel ();
 }
