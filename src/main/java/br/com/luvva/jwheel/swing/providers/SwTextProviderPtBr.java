@@ -1,9 +1,9 @@
-package br.com.luvva.jwheel.text;
+package br.com.luvva.jwheel.swing.providers;
 
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class TextProviderPtBr implements TextProvider
+public class SwTextProviderPtBr implements SwTextProvider
 {
 
     @Override

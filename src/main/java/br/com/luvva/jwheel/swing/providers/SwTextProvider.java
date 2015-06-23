@@ -1,6 +1,6 @@
-package br.com.luvva.jwheel.text;
+package br.com.luvva.jwheel.swing.providers;
 
-public interface TextProvider
+public interface SwTextProvider
 {
 
     String getJOptionPane_Yes_Option ();

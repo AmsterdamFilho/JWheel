@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 @ApplicationScoped
-public class DefaultJwLookAndFeel implements JwLookAndFeel
+public class DefaultSwLookAndFeel implements SwLookAndFeel
 {
 
     private Border defaultBorder = new BlackAndWhiteEtchedBorder();

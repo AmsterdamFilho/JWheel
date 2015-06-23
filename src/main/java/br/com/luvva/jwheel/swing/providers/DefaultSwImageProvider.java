@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.images;
+package br.com.luvva.jwheel.swing.providers;
 
 import org.slf4j.Logger;
 
@@ -10,7 +10,7 @@ import java.awt.image.ImageObserver;
 import java.net.URL;
 
 @ApplicationScoped
-public class DefaultImageProvider implements ImageProvider
+public class DefaultSwImageProvider implements SwImageProvider
 {
 
     private static final String QUESTION_MARK = "question_mark.png";
@@ -23,12 +23,12 @@ public class DefaultImageProvider implements ImageProvider
     private Logger logger;
     private Image  mainViewArt;
 
-    public DefaultImageProvider ()
+    public DefaultSwImageProvider ()
     {
         mainViewArt = getImage(imagesDirectory + MAIN_VIEW_ART);
     }
 
-    public DefaultImageProvider (Image mainViewArt)
+    public DefaultSwImageProvider (Image mainViewArt)
     {
         this.mainViewArt = mainViewArt;
     }
@@ -38,7 +38,7 @@ public class DefaultImageProvider implements ImageProvider
         this.mainViewArt = mainViewArt;
     }
 
-    //<editor-fold desc="ImageProvider">
+    //<editor-fold desc="SwImageProvider">
     @Override
     public Icon getQuestionIcon ()
     {

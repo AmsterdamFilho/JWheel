@@ -3,7 +3,7 @@ package br.com.luvva.jwheel.swing.template.laf;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public interface JwLookAndFeel
+public interface SwLookAndFeel
 {
     Border getDefaultBorder ();
 

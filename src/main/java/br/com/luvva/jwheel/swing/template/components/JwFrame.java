@@ -1,10 +1,11 @@
-package br.com.luvva.jwheel.swing.template.crud;
+package br.com.luvva.jwheel.swing.template.components;
 
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.swing.components.CardLayoutPanel;
-import br.com.luvva.jwheel.swing.template.laf.JwLookAndFeel;
+import br.com.luvva.jwheel.swing.template.builders.JwFrameBuilder;
+import br.com.luvva.jwheel.swing.template.laf.SwLookAndFeel;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
-import br.com.luvva.jwheel.text.TextProvider;
+import br.com.luvva.jwheel.swing.providers.SwTextProvider;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -23,10 +24,10 @@ public class JwFrame extends JFrame
     private JwFrameBuilder jwFrameBuilder;
 
     @Inject
-    private JwLookAndFeel jwLookAndFeel;
+    private SwLookAndFeel jwLookAndFeel;
 
     @Inject
-    private TextProvider textProvider;
+    private SwTextProvider textProvider;
 
     @Inject
     private Logger logger;
@@ -71,14 +72,8 @@ public class JwFrame extends JFrame
             toolBar.setBorder(jwLookAndFeel.getDefaultBorder());
             mainPanel.add(toolBar, BorderLayout.PAGE_START);
         }
-        Component[] cps = jwFrameBuilder.getDesktopPaneComponents();
-        if (cps != null)
-        {
-            for (Component cp : cps)
-            {
-                jwDesktopPane.add(cp, javax.swing.JLayeredPane.DEFAULT_LAYER);
-            }
-        }
+        jwFrameBuilder.getDesktopPaneComponents().forEach(
+                cp -> jwDesktopPane.add(cp, javax.swing.JLayeredPane.DEFAULT_LAYER));
         JScrollPane jScrollPane = new JScrollPane();
         jScrollPane.setBorder(jwLookAndFeel.getDefaultBorder());
         jScrollPane.add(jwDesktopPane);

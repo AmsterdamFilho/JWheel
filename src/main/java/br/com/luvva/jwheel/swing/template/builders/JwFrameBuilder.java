@@ -1,7 +1,8 @@
-package br.com.luvva.jwheel.swing.template.crud;
+package br.com.luvva.jwheel.swing.template.builders;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public interface JwFrameBuilder
 {
@@ -9,7 +10,7 @@ public interface JwFrameBuilder
 
     JPanel getPageStartPanel ();
 
-    Component[] getDesktopPaneComponents ();
+    List<Component> getDesktopPaneComponents ();
 
     JPanel getPageEndPanel ();
 }

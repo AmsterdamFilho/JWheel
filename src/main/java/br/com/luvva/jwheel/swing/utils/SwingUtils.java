@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.swing.utils;
 
-import br.com.luvva.jwheel.images.ImageProvider;
-import br.com.luvva.jwheel.text.TextProvider;
+import br.com.luvva.jwheel.swing.providers.SwImageProvider;
+import br.com.luvva.jwheel.swing.providers.SwTextProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,10 +15,10 @@ public class SwingUtils
 {
 
     @Inject
-    private ImageProvider imageProvider;
+    private SwImageProvider imageProvider;
 
     @Inject
-    private TextProvider textProvider;
+    private SwTextProvider textProvider;
 
     public boolean getUserConfirmation (String msg)
     {

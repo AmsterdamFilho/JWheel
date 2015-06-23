@@ -1,7 +1,8 @@
-package br.com.luvva.jwheel.swing.template.crud;
+package br.com.luvva.jwheel.swing.template.components;
 
 import br.com.luvva.jwheel.AbstractTest;
 import br.com.luvva.jwheel.WeldContext;
+import br.com.luvva.jwheel.swing.template.builders.JwFrameBuilder;
 import br.com.luvva.jwheel.swing.utils.JMenuBarBuilder;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
 import org.junit.Test;

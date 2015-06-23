@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.swing.template.crud;
+package br.com.luvva.jwheel.swing.template.components;
 
 import javax.swing.*;
 

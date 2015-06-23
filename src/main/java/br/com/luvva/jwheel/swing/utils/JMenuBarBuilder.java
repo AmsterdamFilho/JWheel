@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.swing.utils;
 
-import br.com.luvva.jwheel.swing.template.laf.JwLookAndFeel;
+import br.com.luvva.jwheel.swing.template.laf.SwLookAndFeel;
 
 import javax.inject.Inject;
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class JMenuBarBuilder
     private final char         nullMnemonic = '\u0000';
 
     @Inject
-    private JwLookAndFeel jwLookAndFeel;
+    private SwLookAndFeel jwLookAndFeel;
 
     public void addMenu (String menuText)
     {

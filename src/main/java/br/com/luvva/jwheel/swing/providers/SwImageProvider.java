@@ -1,10 +1,10 @@
-package br.com.luvva.jwheel.images;
+package br.com.luvva.jwheel.swing.providers;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
-public interface ImageProvider
+public interface SwImageProvider
 {
 
     Icon getQuestionIcon ();

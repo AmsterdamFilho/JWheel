@@ -1,6 +1,6 @@
-package br.com.luvva.jwheel.swing.template.crud;
+package br.com.luvva.jwheel.swing.template.components;
 
-import br.com.luvva.jwheel.images.ImageProvider;
+import br.com.luvva.jwheel.swing.providers.SwImageProvider;
 
 import javax.inject.Inject;
 import javax.swing.*;
@@ -11,7 +11,7 @@ public class JwDesktopPane extends JDesktopPane
     private final MyDesktopManager manager = new MyDesktopManager(this);
 
     @Inject
-    private ImageProvider imageProvider;
+    private SwImageProvider imageProvider;
 
     @Override
     public void paintComponent (Graphics g)
