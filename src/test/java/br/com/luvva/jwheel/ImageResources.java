@@ -2,6 +2,9 @@ package br.com.luvva.jwheel;
 
 import javax.swing.*;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class ImageResources
 {
 

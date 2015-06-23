@@ -5,6 +5,9 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class CardLayoutPanel extends JPanel
 {
     private final CardLayout cardLayout = new CardLayout();

@@ -16,6 +16,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyVetoException;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class JwFrame extends JFrame
 {
     private JwDesktopPane jwDesktopPane = WeldContext.getInstance().getBean(JwDesktopPane.class);

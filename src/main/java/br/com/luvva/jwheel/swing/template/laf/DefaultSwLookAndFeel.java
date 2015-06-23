@@ -4,6 +4,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 @ApplicationScoped
 public class DefaultSwLookAndFeel implements SwLookAndFeel
 {

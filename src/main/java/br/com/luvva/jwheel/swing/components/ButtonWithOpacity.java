@@ -5,6 +5,9 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class ButtonWithOpacity extends JButton
 {
     private float opacity = 1f;

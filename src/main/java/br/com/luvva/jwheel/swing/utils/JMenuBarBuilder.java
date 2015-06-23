@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class JMenuBarBuilder
 {
 

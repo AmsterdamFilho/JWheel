@@ -11,6 +11,9 @@ import javax.swing.undo.UndoManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class UndoRedoDecorator
 {
     private final UndoAction           undoAction  = new UndoAction();

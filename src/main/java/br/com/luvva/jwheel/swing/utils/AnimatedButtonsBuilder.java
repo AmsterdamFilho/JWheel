@@ -9,6 +9,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class AnimatedButtonsBuilder
 {
 

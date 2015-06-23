@@ -2,6 +2,9 @@ package br.com.luvva.jwheel.swing.template.components;
 
 import javax.swing.*;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public abstract class JwInternalFrame extends JInternalFrame
 {
 

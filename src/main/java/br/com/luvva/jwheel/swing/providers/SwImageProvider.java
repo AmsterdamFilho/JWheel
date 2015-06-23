@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public interface SwImageProvider
 {
 

@@ -3,6 +3,9 @@ package br.com.luvva.jwheel;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class WeldContext
 {
     private static final WeldContext instance = new WeldContext();

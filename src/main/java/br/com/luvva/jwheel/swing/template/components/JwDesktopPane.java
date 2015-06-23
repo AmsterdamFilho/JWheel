@@ -6,6 +6,9 @@ import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Amsterdam Filho - amsterdam@luvva.com.br
+ */
 public class JwDesktopPane extends JDesktopPane
 {
     private final MyDesktopManager manager = new MyDesktopManager(this);
