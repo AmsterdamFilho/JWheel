@@ -4,12 +4,14 @@ import br.com.luvva.jwheel.images.ImageProvider;
 import br.com.luvva.jwheel.text.TextProvider;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public final class SwingUtils
+@Singleton
+public class SwingUtils
 {
 
     @Inject
@@ -17,17 +19,6 @@ public final class SwingUtils
 
     @Inject
     private TextProvider textProvider;
-
-    private static SwingUtils instance = new SwingUtils();
-
-    private SwingUtils ()
-    {
-    }
-
-    public static SwingUtils getInstance ()
-    {
-        return instance;
-    }
 
     public boolean getUserConfirmation (String msg)
     {

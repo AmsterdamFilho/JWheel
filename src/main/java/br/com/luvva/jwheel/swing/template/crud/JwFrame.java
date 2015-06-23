@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.swing.template.crud;
 
+import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.swing.components.CardLayoutPanel;
 import br.com.luvva.jwheel.swing.template.laf.JwLookAndFeel;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
@@ -16,8 +17,7 @@ import java.beans.PropertyVetoException;
 
 public class JwFrame extends JFrame
 {
-    private JwDesktopPane jwDesktopPane = new JwDesktopPane();
-    private JPanel        mainPanel     = new JPanel();
+    private JwDesktopPane jwDesktopPane = WeldContext.getInstance().getBean(JwDesktopPane.class);
 
     @Inject
     private JwFrameBuilder jwFrameBuilder;
@@ -30,6 +30,9 @@ public class JwFrame extends JFrame
 
     @Inject
     private Logger logger;
+
+    @Inject
+    private SwingUtils swingUtils;
 
     public static final String MAIN_CARD = "main_card";
 
@@ -55,14 +58,17 @@ public class JwFrame extends JFrame
     @PostConstruct
     protected void initComponents ()
     {
+        JPanel mainPanel = new JPanel(new BorderLayout());
         JMenuBar mb = jwFrameBuilder.getJMenuBar();
         if (mb != null)
         {
+            mb.setBorder(jwLookAndFeel.getDefaultBorder());
             setJMenuBar(mb);
         }
         JPanel toolBar = jwFrameBuilder.getPageStartPanel();
         if (toolBar != null)
         {
+            toolBar.setBorder(jwLookAndFeel.getDefaultBorder());
             mainPanel.add(toolBar, BorderLayout.PAGE_START);
         }
         Component[] cps = jwFrameBuilder.getDesktopPaneComponents();
@@ -81,10 +87,10 @@ public class JwFrame extends JFrame
         JPanel pnlStatus = jwFrameBuilder.getPageEndPanel();
         if (pnlStatus != null)
         {
+            pnlStatus.setBorder(jwLookAndFeel.getDefaultBorder());
             mainPanel.add(pnlStatus, BorderLayout.PAGE_END);
         }
-        setLayout(new CardLayout());
-        CardLayoutPanel contentPane   = new CardLayoutPanel();
+        CardLayoutPanel contentPane = new CardLayoutPanel();
         contentPane.addCard(mainPanel, MAIN_CARD);
         contentPane.setSelectedCard(MAIN_CARD);
         setContentPane(contentPane);
@@ -118,7 +124,7 @@ public class JwFrame extends JFrame
 
     protected void windowClosing ()
     {
-        boolean userConfirmed = SwingUtils.getInstance().getUserConfirmation(textProvider.getExitSystemQuestion(), this);
+        boolean userConfirmed = swingUtils.getUserConfirmation(textProvider.getExitSystemQuestion(), this);
 
         if (userConfirmed && validateExit())
         {
