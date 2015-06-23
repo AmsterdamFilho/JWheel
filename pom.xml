@@ -60,7 +60,7 @@
         </plugins>
         <testResources>
             <testResource>
-                <directory>${project.basedir}/src/main/resources</directory>
+                <directory>${project.basedir}/src/main/resources/template</directory>
             </testResource>
             <testResource>
                 <directory>${project.basedir}/src/test/resources</directory>
