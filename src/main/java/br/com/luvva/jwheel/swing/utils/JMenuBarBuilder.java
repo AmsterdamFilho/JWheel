@@ -2,7 +2,6 @@ package br.com.luvva.jwheel.swing.utils;
 
 import br.com.luvva.jwheel.swing.template.laf.JwLookAndFeel;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -18,12 +17,6 @@ public class JMenuBarBuilder
 
     @Inject
     private JwLookAndFeel jwLookAndFeel;
-
-    @PostConstruct
-    public void init ()
-    {
-        menuBar.setBorder(jwLookAndFeel.getDefaultBorder());
-    }
 
     public void addMenu (String menuText)
     {
