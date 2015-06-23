@@ -8,14 +8,14 @@ import javax.swing.*;
 public class ImageResources
 {
 
-    public static final String ATENDIMENTO = "atendimento.png";
-    public static final String PACIENTE = "paciente.png";
-    public static final String CAPTURA = "captura.png";
-    public static final String LAUDO = "laudo.png";
-    public static final String REPORTS = "relatórios.png";
+    public static final String APPOINTMENT = "appointment.png";
+    public static final String PATIENT = "patient.png";
+    public static final String CAMERA = "camera.png";
+    public static final String APPRAISAL = "appraisal.png";
+    public static final String REPORTS = "reports.png";
     public static final String CID = "cid.png";
 
-    private final String imagesDirectory = "/imagens/";
+    private final String imagesDirectory = "/images/";
 
     public Icon getIcon (String fileName)
     {

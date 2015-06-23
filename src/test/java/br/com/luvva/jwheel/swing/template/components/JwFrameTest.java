@@ -39,7 +39,7 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
         builder.addMenu("ParentMenu", 'P');
         builder.addMenuItem("ChildMenu1", null);
         builder.addChildMenu("ChildMenu11");
-        builder.addMenuItem("ChildMenu111", e -> swingUtils.getUserConfirmation("Teste"));
+        builder.addMenuItem("ChildMenu111", e -> swingUtils.getUserConfirmation("New test"));
         builder.addMenuItem("ChildMenu112", null);
         builder.addChildMenu("ChildMenu113");
         builder.addMenuItem("ChildMenu1131", null);
@@ -66,26 +66,26 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
     {
         AnimatedButtonsBuilder builder = new AnimatedButtonsBuilder();
 
-        builder.addNewButton("Iniciar Atendimento", "Atendimento (Ctrl+Alt+A)",
+        builder.addNewButton("Appointment", "Schedule appointment",
                 new Rectangle(10, 10, 145, 60),
-                imageResources.getIcon(ImageResources.ATENDIMENTO),
+                imageResources.getIcon(ImageResources.APPOINTMENT),
                 e -> {
                 });
-        builder.addNewButton("Pacientes/Histórico", "Pacientes/Histórico (Ctrl+Alt+P)",
+        builder.addNewButton("Patients", "Patients records",
                 new Rectangle(15, 75, 135, 60),
-                imageResources.getIcon(ImageResources.PACIENTE),
+                imageResources.getIcon(ImageResources.PATIENT),
                 e -> {
                 });
-        builder.addNewButton("Laudos/Fotos", null,
+        builder.addNewButton("APPRAISAL", null,
                 new Rectangle(15, 140, 135, 60),
-                imageResources.getIcon(ImageResources.LAUDO),
+                imageResources.getIcon(ImageResources.APPRAISAL),
                 e -> {
                 });
-        builder.addNewButton("Captura", "Captura (Ctrl+Alt+C)",
+        builder.addNewButton("CAMERA", "ACCESS CAMERA",
                 new Rectangle(15, 205, 135, 60),
-                imageResources.getIcon(ImageResources.CAPTURA),
+                imageResources.getIcon(ImageResources.CAMERA),
                 e -> swingUtils.getUserConfirmation("False"));
-        builder.addNewButton("Relatórios", "Todos os Relatórios (Ctrl+Alt+R)",
+        builder.addNewButton("Reports", "Generate reports",
                 new Rectangle(15, 270, 135, 60),
                 e -> {
                 });
