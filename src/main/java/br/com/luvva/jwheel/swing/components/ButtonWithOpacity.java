@@ -11,8 +11,11 @@ public class ButtonWithOpacity extends JButton
 
     public ButtonWithOpacity ()
     {
-        setHorizontalTextPosition(SwingConstants.CENTER);
-        setVerticalTextPosition(SwingConstants.BOTTOM);
+    }
+
+    public ButtonWithOpacity (float opacity)
+    {
+        this.opacity = opacity;
     }
 
     public float getOpacity ()

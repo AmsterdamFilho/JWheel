@@ -12,7 +12,7 @@ import java.util.*;
 public class AnimatedButtonsBuilder
 {
 
-    private List<ButtonWithOpacity>           buttons          = new ArrayList<>();
+    private ArrayList<ButtonWithOpacity>      buttons          = new ArrayList<>();
     private Map<ButtonWithOpacity, Rectangle> originalsBounds  = new IdentityHashMap<>();
     private Map<Integer, Float>               opacityFactorMap = new HashMap<>();
     private Map<Integer, Float>               sizeFactorMap    = new HashMap<>();
@@ -80,16 +80,22 @@ public class AnimatedButtonsBuilder
     public ButtonWithOpacity addNewButton (Rectangle bounds, ActionListener actionListener, String tooltipText)
     {
         ButtonWithOpacity button = new ButtonWithOpacity();
+
         button.setBounds(bounds);
         button.addActionListener(actionListener);
         button.setToolTipText(tooltipText);
+        button.setFocusable(false);
+        button.setHorizontalTextPosition(SwingConstants.CENTER);
+        button.setVerticalTextPosition(SwingConstants.BOTTOM);
+
         originalsBounds.put(button, bounds);
         button.setOpacity(defaultOpacity);
         button.addMouseListener(new MyMouseListener());
+
         return button;
     }
 
-    public List<JComponent> getButtons ()
+    public List<ButtonWithOpacity> getButtons ()
     {
         return Collections.unmodifiableList(buttons);
     }
