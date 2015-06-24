@@ -5,7 +5,6 @@ import br.com.luvva.jwheel.awt.utils.SystemUtils;
 import javax.swing.*;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
-import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import javax.swing.undo.UndoManager;
 import java.awt.event.ActionEvent;
@@ -16,14 +15,17 @@ import java.awt.event.KeyEvent;
  */
 public class UndoRedoDecorator
 {
-    private final UndoAction           undoAction  = new UndoAction();
-    private final RedoAction           redoAction  = new RedoAction();
-    private final UndoManager          undoManager = new UndoManager();
-    private final UndoableEditListener undoHandler = new MyUndoableEditListener();
-    private JTextComponent textComp;
+    private final UndoAction  undoAction  = new UndoAction();
+    private final RedoAction  redoAction  = new RedoAction();
+    private final UndoManager undoManager = new UndoManager();
+    private final JTextComponent textComp;
 
-    public UndoRedoDecorator ()
+    public UndoRedoDecorator (JTextComponent textComp)
     {
+        this.textComp = textComp;
+        setInputMap();
+        UndoableEditListener undoHandler = new MyUndoableEditListener();
+        textComp.getDocument().addUndoableEditListener(undoHandler);
     }
 
     public void undo ()
@@ -34,21 +36,6 @@ public class UndoRedoDecorator
     public void redo ()
     {
         redoAction.actionPerformed(null);
-    }
-
-    public void decorate (JTextComponent txtCp)
-    {
-        this.textComp = txtCp;
-        setInputMap();
-        txtCp.getDocument().addUndoableEditListener(undoHandler);
-    }
-
-    public void decorate (Document doc)
-    {
-        doc.addUndoableEditListener(undoHandler);
-        undoManager.discardAllEdits();
-        undoAction.updateUndoState();
-        redoAction.updateRedoState();
     }
 
     @SuppressWarnings("MagicConstant")
