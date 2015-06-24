@@ -5,7 +5,10 @@ import org.slf4j.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.ImageObserver;
 import java.net.URL;
 
@@ -22,9 +25,8 @@ public class DefaultSwImageProvider implements SwImageProvider
     private final String templateDirectory = "/template/";
     private final String imagesDirectory   = templateDirectory + "images/";
 
-    @Inject
-    private Logger logger;
-    private Image  mainViewArt;
+    private @Inject Logger logger;
+    private         Image  mainViewArt;
 
     public DefaultSwImageProvider ()
     {

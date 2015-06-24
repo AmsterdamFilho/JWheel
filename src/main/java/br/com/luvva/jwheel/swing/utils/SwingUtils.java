@@ -6,7 +6,7 @@ import br.com.luvva.jwheel.swing.providers.SwTextProvider;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -17,11 +17,8 @@ import java.awt.event.KeyEvent;
 public class SwingUtils
 {
 
-    @Inject
-    private SwImageProvider imageProvider;
-
-    @Inject
-    private SwTextProvider textProvider;
+    private @Inject SwImageProvider imageProvider;
+    private @Inject SwTextProvider  textProvider;
 
     public boolean getUserConfirmation (String msg)
     {

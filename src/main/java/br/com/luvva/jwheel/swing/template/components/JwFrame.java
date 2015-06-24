@@ -23,20 +23,11 @@ public class JwFrame extends JFrame
 {
     private JwDesktopPane jwDesktopPane = WeldContext.getInstance().getBean(JwDesktopPane.class);
 
-    @Inject
-    private JwFrameBuilder jwFrameBuilder;
-
-    @Inject
-    private SwLookAndFeel jwLookAndFeel;
-
-    @Inject
-    private SwTextProvider textProvider;
-
-    @Inject
-    private Logger logger;
-
-    @Inject
-    private SwingUtils swingUtils;
+    private @Inject JwFrameBuilder jwFrameBuilder;
+    private @Inject SwLookAndFeel  jwLookAndFeel;
+    private @Inject SwTextProvider textProvider;
+    private @Inject Logger         logger;
+    private @Inject SwingUtils     swingUtils;
 
     public static final String MAIN_CARD = "main_card";
 
