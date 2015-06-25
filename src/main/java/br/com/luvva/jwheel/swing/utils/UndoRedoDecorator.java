@@ -2,6 +2,7 @@ package br.com.luvva.jwheel.swing.utils;
 
 import br.com.luvva.jwheel.awt.utils.SystemUtils;
 
+import javax.inject.Inject;
 import javax.swing.*;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
@@ -18,9 +19,11 @@ public class UndoRedoDecorator
     private final UndoAction  undoAction  = new UndoAction();
     private final RedoAction  redoAction  = new RedoAction();
     private final UndoManager undoManager = new UndoManager();
-    private final JTextComponent textComp;
+    private JTextComponent textComp;
 
-    public UndoRedoDecorator (JTextComponent textComp)
+    private @Inject SystemUtils systemUtils;
+
+    public void decorate (JTextComponent textComp)
     {
         this.textComp = textComp;
         setInputMap();
@@ -43,10 +46,10 @@ public class UndoRedoDecorator
     {
         InputMap inputMap = textComp.getInputMap();
 
-        KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_Z, SystemUtils.getMenuShortcutMask());
+        KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_Z, systemUtils.getMenuShortcutMask());
         inputMap.put(key, undoAction);
 
-        key = KeyStroke.getKeyStroke(KeyEvent.VK_Y, SystemUtils.getMenuShortcutMask());
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_Y, systemUtils.getMenuShortcutMask());
         inputMap.put(key, redoAction);
     }
 
