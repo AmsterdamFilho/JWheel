@@ -31,6 +31,11 @@ public class SystemUtils
         return menuShortcutMask;
     }
 
+    /**
+     * Gets the JAR directory of the application. Does not work if the classes are not in JAR file
+     * @return the jar directory as a Path object
+     * @throws Exception if, for some reason, the method failed to figure out this information
+     */
     public Path getJarDirectory () throws Exception
     {
         if (currentDirectory == null)
@@ -43,7 +48,7 @@ public class SystemUtils
             }
             catch (Exception ex)
             {
-                logger.error("Can't determine JAR or Class root directory!", ex);
+                logger.error("Can't determine JAR directory!", ex);
                 throw ex;
             }
         }
