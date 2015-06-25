@@ -1,6 +1,7 @@
 package br.com.luvva.jwheel;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
@@ -16,7 +17,7 @@ public class JwLoggerFactory
     @Produces
     public Logger getLogger (InjectionPoint injectionPoint)
     {
-        return org.slf4j.LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+        return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 
 }
