@@ -69,23 +69,39 @@ public class DefaultSwImageProvider implements SwImageProvider
     {
         try
         {
-            return new ImageIcon(getClass().getResource(imagesDirectory + fileName));
+            return new ImageIcon(getResource(imagesDirectory + fileName));
         }
         catch (Exception ex)
         {
-            logger.error("Could not create icon for image: " + fileName, ex);
+            logger.error("Could not get icon resource: {}", ex, fileName);
             return null;
         }
     }
 
-    private Image getImage (String path)
+    private Image getImage (String fileName)
     {
-        return Toolkit.getDefaultToolkit().getImage(getUrl(path));
+        try
+        {
+            return Toolkit.getDefaultToolkit().getImage(getResource(imagesDirectory + fileName));
+        }
+        catch (Exception ex)
+        {
+            logger.error("Could not get image resource: {}", ex, fileName);
+            return null;
+        }
     }
 
-    private URL getUrl (String path)
+    private URL getResource (String fileName)
     {
-        return getClass().getResource(path);
+        try
+        {
+            return getClass().getResource(fileName);
+        }
+        catch (Exception ex)
+        {
+            logger.error("Could not get resource: {}", ex, fileName);
+            return null;
+        }
     }
     //</editor-fold>
 
