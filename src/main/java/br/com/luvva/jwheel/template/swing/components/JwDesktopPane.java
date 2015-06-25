@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.swing.template.components;
+package br.com.luvva.jwheel.template.swing.components;
 
 import br.com.luvva.jwheel.swing.providers.SwImageProvider;
 

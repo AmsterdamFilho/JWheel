@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.swing.template.laf;
+package br.com.luvva.jwheel.template.swing.laf;
 
 import javax.swing.border.EtchedBorder;
 import java.awt.*;

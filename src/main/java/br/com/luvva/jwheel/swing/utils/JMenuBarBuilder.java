@@ -1,8 +1,5 @@
 package br.com.luvva.jwheel.swing.utils;
 
-import br.com.luvva.jwheel.swing.template.laf.SwLookAndFeel;
-
-import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayDeque;
@@ -17,9 +14,6 @@ public class JMenuBarBuilder
     private final JMenuBar     menuBar      = new JMenuBar();
     private final Deque<JMenu> menus        = new ArrayDeque<>();
     private final char         nullMnemonic = '\u0000';
-
-    @Inject
-    private SwLookAndFeel jwLookAndFeel;
 
     public void addMenu (String menuText)
     {
@@ -76,7 +70,9 @@ public class JMenuBarBuilder
 
     public void addHorizontalSeparator ()
     {
-        menus.peek().add(jwLookAndFeel.createHorizontalJSeparator());
+        JSeparator jSeparator = new JSeparator();
+        jSeparator.setOrientation(JSeparator.HORIZONTAL);
+        menus.peek().add(jSeparator);
     }
 
     public void alignNextToTheRight ()

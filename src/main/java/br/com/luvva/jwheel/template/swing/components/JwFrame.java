@@ -1,9 +1,9 @@
-package br.com.luvva.jwheel.swing.template.components;
+package br.com.luvva.jwheel.template.swing.components;
 
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.swing.components.CardLayoutPanel;
-import br.com.luvva.jwheel.swing.template.builders.JwFrameBuilder;
-import br.com.luvva.jwheel.swing.template.laf.SwLookAndFeel;
+import br.com.luvva.jwheel.template.swing.builders.JwFrameBuilder;
+import br.com.luvva.jwheel.template.swing.laf.SwLookAndFeel;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
 import br.com.luvva.jwheel.swing.providers.SwTextProvider;
 import org.slf4j.Logger;

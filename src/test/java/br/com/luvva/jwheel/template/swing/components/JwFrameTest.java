@@ -1,9 +1,9 @@
-package br.com.luvva.jwheel.swing.template.components;
+package br.com.luvva.jwheel.template.swing.components;
 
 import br.com.luvva.jwheel.AbstractTest;
 import br.com.luvva.jwheel.ImageResources;
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.swing.template.builders.JwFrameBuilder;
+import br.com.luvva.jwheel.template.swing.builders.JwFrameBuilder;
 import br.com.luvva.jwheel.swing.utils.AnimatedButtonsBuilder;
 import br.com.luvva.jwheel.swing.utils.JMenuBarBuilder;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;

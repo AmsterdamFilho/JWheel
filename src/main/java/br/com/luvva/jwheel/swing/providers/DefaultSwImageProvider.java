@@ -93,9 +93,7 @@ public class DefaultSwImageProvider implements SwImageProvider
     {
         try
         {
-            String templateDirectory = "/template/";
-            String imagesDirectory = templateDirectory + "images/";
-            return getClass().getResource(imagesDirectory + fileName);
+            return getClass().getResource("/template/swing/images/" + fileName);
         }
         catch (Exception ex)
         {
