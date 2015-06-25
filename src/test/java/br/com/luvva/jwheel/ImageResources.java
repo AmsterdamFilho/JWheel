@@ -15,10 +15,9 @@ public class ImageResources
     public static final String REPORTS = "reports.png";
     public static final String CID = "cid.png";
 
-    private final String imagesDirectory = "/images/";
-
     public Icon getIcon (String fileName)
     {
+        String imagesDirectory = "/images/";
         return new ImageIcon(getClass().getResource(imagesDirectory + fileName));
     }
 

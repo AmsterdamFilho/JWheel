@@ -22,15 +22,12 @@ public class DefaultSwImageProvider implements SwImageProvider
     private static final String QUESTION_MARK = "question_mark.png";
     private static final String MAIN_VIEW_ART = "main_view_art.jpg";
 
-    private final String templateDirectory = "/template/";
-    private final String imagesDirectory   = templateDirectory + "images/";
-
     private @Inject Logger logger;
     private         Image  mainViewArt;
 
     public DefaultSwImageProvider ()
     {
-        mainViewArt = getImage(imagesDirectory + MAIN_VIEW_ART);
+        mainViewArt = getImage(MAIN_VIEW_ART);
     }
 
     public DefaultSwImageProvider (Image mainViewArt)
@@ -69,11 +66,12 @@ public class DefaultSwImageProvider implements SwImageProvider
     {
         try
         {
-            return new ImageIcon(getResource(imagesDirectory + fileName));
+            //noinspection ConstantConditions
+            return new ImageIcon(getImageResource(fileName));
         }
         catch (Exception ex)
         {
-            logger.error("Could not get icon resource: {}", ex, fileName);
+            logger.error("Could not get icon resource: " + fileName, ex);
             return null;
         }
     }
@@ -82,24 +80,26 @@ public class DefaultSwImageProvider implements SwImageProvider
     {
         try
         {
-            return Toolkit.getDefaultToolkit().getImage(getResource(imagesDirectory + fileName));
+            return Toolkit.getDefaultToolkit().getImage(getImageResource(fileName));
         }
         catch (Exception ex)
         {
-            logger.error("Could not get image resource: {}", ex, fileName);
+            logger.error("Could not get image resource: " + fileName, ex);
             return null;
         }
     }
 
-    private URL getResource (String fileName)
+    private URL getImageResource (String fileName)
     {
         try
         {
-            return getClass().getResource(fileName);
+            String templateDirectory = "/template/";
+            String imagesDirectory = templateDirectory + "images/";
+            return getClass().getResource(imagesDirectory + fileName);
         }
         catch (Exception ex)
         {
-            logger.error("Could not get resource: {}", ex, fileName);
+            logger.error("Could not get resource: " + fileName, ex);
             return null;
         }
     }
