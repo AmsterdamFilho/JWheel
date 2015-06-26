@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.security.CodeSource;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
 public class SystemUtils

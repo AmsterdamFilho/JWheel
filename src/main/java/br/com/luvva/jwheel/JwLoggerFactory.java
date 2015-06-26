@@ -8,7 +8,7 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Singleton;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
 public class JwLoggerFactory

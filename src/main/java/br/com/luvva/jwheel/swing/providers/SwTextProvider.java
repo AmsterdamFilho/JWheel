@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.swing.providers;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public interface SwTextProvider
 {

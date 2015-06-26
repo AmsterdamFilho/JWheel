@@ -13,7 +13,7 @@ import java.awt.image.ImageObserver;
 import java.net.URL;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @ApplicationScoped
 public class DefaultSwImageProvider implements SwImageProvider

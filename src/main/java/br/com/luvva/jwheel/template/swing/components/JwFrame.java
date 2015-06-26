@@ -17,7 +17,7 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyVetoException;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public class JwFrame extends JFrame
 {

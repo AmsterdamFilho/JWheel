@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.swing.border.Border;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @ApplicationScoped
 public class DefaultSwLookAndFeel implements SwLookAndFeel

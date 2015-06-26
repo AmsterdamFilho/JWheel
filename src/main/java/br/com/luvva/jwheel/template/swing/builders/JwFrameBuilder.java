@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.List;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public interface JwFrameBuilder
 {

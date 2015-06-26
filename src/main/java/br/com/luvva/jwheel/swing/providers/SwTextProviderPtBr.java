@@ -3,7 +3,7 @@ package br.com.luvva.jwheel.swing.providers;
 import javax.enterprise.context.ApplicationScoped;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @ApplicationScoped
 public class SwTextProviderPtBr implements SwTextProvider
