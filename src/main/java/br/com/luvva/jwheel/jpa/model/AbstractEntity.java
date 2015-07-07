@@ -1,7 +1,6 @@
 package br.com.luvva.jwheel.jpa.model;
 
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,9 +10,6 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class AbstractEntity
 {
-
-    @Version
-    private int version;
 
     public abstract Serializable getCodigo ();
 
