@@ -3,10 +3,10 @@ package br.com.luvva.jwheel.template.swing.components;
 import br.com.luvva.jwheel.AbstractTest;
 import br.com.luvva.jwheel.ImageResources;
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.template.swing.builders.JwFrameBuilder;
 import br.com.luvva.jwheel.swing.utils.AnimatedButtonsBuilder;
 import br.com.luvva.jwheel.swing.utils.JMenuBarBuilder;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
+import br.com.luvva.jwheel.template.swing.builders.JwFrameBuilder;
 import org.junit.Test;
 
 import javax.inject.Inject;
@@ -18,13 +18,11 @@ import java.util.List;
 public class JwFrameTest extends AbstractTest implements JwFrameBuilder
 {
 
-    @Inject
-    private SwingUtils swingUtils;
-
-    private ImageResources imageResources = new ImageResources();
+    private @Inject SwingUtils     swingUtils;
+    private @Inject ImageResources imageResources;
 
     @Test
-    public void testArtImage () throws InterruptedException
+    public void test () throws InterruptedException
     {
         JwFrame bean = WeldContext.getInstance().getBean(JwFrame.class);
         bean.setVisible(true);
@@ -68,22 +66,22 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
 
         builder.addNewButton("Appointment", "Schedule appointment",
                 new Rectangle(10, 10, 145, 60),
-                imageResources.getIcon(ImageResources.APPOINTMENT),
+                imageResources.getAppointmentIcon(),
                 e -> {
                 });
         builder.addNewButton("Patients", "Patients records",
                 new Rectangle(15, 75, 135, 60),
-                imageResources.getIcon(ImageResources.PATIENT),
+                imageResources.getPatientIcon(),
                 e -> {
                 });
         builder.addNewButton("APPRAISAL", null,
                 new Rectangle(15, 140, 135, 60),
-                imageResources.getIcon(ImageResources.APPRAISAL),
+                imageResources.getAppraisalIcon(),
                 e -> {
                 });
         builder.addNewButton("CAMERA", "ACCESS CAMERA",
                 new Rectangle(15, 205, 135, 60),
-                imageResources.getIcon(ImageResources.CAMERA),
+                imageResources.getCameraIcon(),
                 e -> swingUtils.getUserConfirmation("False"));
         builder.addNewButton("Reports", "Generate reports",
                 new Rectangle(15, 270, 135, 60),
@@ -91,7 +89,7 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
                 });
         builder.addNewButton("CID10",
                 new Rectangle(15, 335, 135, 60),
-                imageResources.getIcon(ImageResources.CID),
+                imageResources.getCidIcon(),
                 e -> {
                 });
 

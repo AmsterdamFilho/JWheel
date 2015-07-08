@@ -1,24 +1,46 @@
 package br.com.luvva.jwheel;
 
+import br.com.luvva.jwheel.java.utils.annotations.Initialized;
+import br.com.luvva.jwheel.swing.utils.ResourceProvider;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.*;
 
 /**
  * @author Amsterdam Filho - amsterdam@luvva.com.br
  */
+@Singleton
 public class ImageResources
 {
 
-    public static final String APPOINTMENT = "appointment.png";
-    public static final String PATIENT = "patient.png";
-    public static final String CAMERA = "camera.png";
-    public static final String APPRAISAL = "appraisal.png";
-    public static final String REPORTS = "reports.png";
-    public static final String CID = "cid.png";
+    @Inject
+    @Initialized (stringValue = "/images/")
+    private ResourceProvider resourceProvider;
 
-    public Icon getIcon (String fileName)
+    public Icon getCidIcon ()
     {
-        String imagesDirectory = "/images/";
-        return new ImageIcon(getClass().getResource(imagesDirectory + fileName));
+        return resourceProvider.getIcon("cid.png");
+    }
+
+    public Icon getCameraIcon ()
+    {
+        return resourceProvider.getIcon("camera.png");
+    }
+
+    public Icon getAppraisalIcon ()
+    {
+        return resourceProvider.getIcon("appraisal.png");
+    }
+
+    public Icon getPatientIcon ()
+    {
+        return resourceProvider.getIcon("patient.png");
+    }
+
+    public Icon getAppointmentIcon ()
+    {
+        return resourceProvider.getIcon("appointment.png");
     }
 
 }
