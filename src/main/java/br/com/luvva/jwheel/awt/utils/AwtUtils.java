@@ -13,11 +13,11 @@ import java.security.CodeSource;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-public class SystemUtils
+public class AwtUtils
 {
 
     // can not be injected, or else it would create a circular reference problem
-    private Logger logger = LoggerFactory.getLogger(SystemUtils.class);
+    private Logger logger = LoggerFactory.getLogger(AwtUtils.class);
 
     private Path currentDirectory;
     private int menuShortcutMask = -1;
@@ -40,7 +40,7 @@ public class SystemUtils
     {
         if (currentDirectory == null)
         {
-            CodeSource codeSource = SystemUtils.class.getProtectionDomain().getCodeSource();
+            CodeSource codeSource = AwtUtils.class.getProtectionDomain().getCodeSource();
             try
             {
                 currentDirectory = Paths.get(codeSource.getLocation().toURI()).getParent();

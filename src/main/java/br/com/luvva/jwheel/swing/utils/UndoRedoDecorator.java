@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.swing.utils;
 
-import br.com.luvva.jwheel.awt.utils.SystemUtils;
+import br.com.luvva.jwheel.awt.utils.AwtUtils;
 
 import javax.inject.Inject;
 import javax.swing.*;
@@ -21,7 +21,7 @@ public class UndoRedoDecorator
     private final UndoManager undoManager = new UndoManager();
     private JTextComponent textComp;
 
-    private @Inject SystemUtils systemUtils;
+    private @Inject AwtUtils awtUtils;
 
     public void decorate (JTextComponent textComp)
     {
@@ -41,15 +41,15 @@ public class UndoRedoDecorator
         redoAction.actionPerformed(null);
     }
 
-    @SuppressWarnings("MagicConstant")
+    @SuppressWarnings ("MagicConstant")
     private void setInputMap ()
     {
         InputMap inputMap = textComp.getInputMap();
 
-        KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_Z, systemUtils.getMenuShortcutMask());
+        KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_Z, awtUtils.getMenuShortcutMask());
         inputMap.put(key, undoAction);
 
-        key = KeyStroke.getKeyStroke(KeyEvent.VK_Y, systemUtils.getMenuShortcutMask());
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_Y, awtUtils.getMenuShortcutMask());
         inputMap.put(key, redoAction);
     }
 
