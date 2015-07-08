@@ -2,8 +2,8 @@ package br.com.luvva.jwheel.swing.providers;
 
 import org.slf4j.Logger;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,7 +15,7 @@ import java.net.URL;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@ApplicationScoped
+@Singleton
 public class DefaultSwImageProvider implements SwImageProvider
 {
 

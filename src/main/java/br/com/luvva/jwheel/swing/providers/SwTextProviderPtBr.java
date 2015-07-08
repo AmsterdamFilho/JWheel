@@ -1,11 +1,11 @@
 package br.com.luvva.jwheel.swing.providers;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Singleton;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@ApplicationScoped
+@Singleton
 public class SwTextProviderPtBr implements SwTextProvider
 {
 
