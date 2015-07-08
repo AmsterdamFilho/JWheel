@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author Amsterdam Filho - amsterdam@luvva.com.br
  */
 @Singleton
-public class ImageResources
+public class ImageProvider
 {
 
     @Inject
