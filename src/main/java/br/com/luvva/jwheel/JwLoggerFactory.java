@@ -30,7 +30,7 @@ public class JwLoggerFactory
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 
-    public void configureLogback (String logFileName, String loggerLevel)
+    public void configureLogbackAsDefault (String logFileName)
     {
         String userHome = System.getProperty("user.home");
         //@formatter:off
@@ -42,7 +42,7 @@ public class JwLoggerFactory
                             "<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>" +
                         "</encoder>" +
                     "</appender>" +
-                    "<root level=\"" + loggerLevel + "\">" +
+                    "<root level=\"warn\">" +
                         "<appender-ref ref=\"FILE\" />" +
                     "</root>" +
                 "</configuration>"
