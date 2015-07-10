@@ -1,8 +1,8 @@
 package br.com.luvva.jwheel.awt.utils;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.Toolkit;
 import java.nio.file.Path;
@@ -16,18 +16,14 @@ import java.security.CodeSource;
 public class AwtUtils
 {
 
-    // can not be injected, or else it would create a circular reference problem
-    private Logger logger = LoggerFactory.getLogger(AwtUtils.class);
+    @Inject
+    private Logger logger;
 
     private Path currentDirectory;
-    private int menuShortcutMask = -1;
+    private int menuShortcutMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 
     public int getMenuShortcutMask ()
     {
-        if (-1 == menuShortcutMask)
-        {
-            menuShortcutMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
-        }
         return menuShortcutMask;
     }
 
