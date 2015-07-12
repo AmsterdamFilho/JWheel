@@ -1,6 +1,8 @@
 package br.com.luvva.jwheel.java.utils;
 
 import javax.inject.Singleton;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -8,11 +10,15 @@ import javax.inject.Singleton;
 @Singleton
 public class SystemUtils
 {
-    private boolean isOsX = System.getProperty("os.name").toLowerCase().startsWith("mac os x");
 
     public boolean isOsX ()
     {
-        return isOsX;
+        return System.getProperty("os.name").toLowerCase().startsWith("mac os x");
+    }
+
+    public String getLocalhostName () throws UnknownHostException
+    {
+        return InetAddress.getLocalHost().getHostName();
     }
 
 }
