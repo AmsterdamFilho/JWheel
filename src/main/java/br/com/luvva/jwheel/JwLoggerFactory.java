@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel;
 
+import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
@@ -13,7 +14,6 @@ import javax.inject.Singleton;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.nio.file.FileSystems;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -30,25 +30,28 @@ public class JwLoggerFactory
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 
-    public void configureLogbackAsDefault (String logFileRelativePath)
+    public void configureLogbackAsDefault (String logFilePath)
     {
-        String userHome = System.getProperty("user.home");
+        configureLogbackAsDefault(logFilePath, Level.WARN);
+    }
+
+    public void configureLogbackAsDefault (String logFilePath, Level level)
+    {
         //@formatter:off
         configureLogback(
                 "<configuration>" +
                     "<appender name=\"FILE\" class=\"ch.qos.logback.core.FileAppender\">" +
-                        "<file>" + userHome + FileSystems.getDefault().getSeparator() + logFileRelativePath + ".log</file>" +
+                        "<file>" + logFilePath + "</file>" +
                         "<encoder>" +
                             "<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>" +
                         "</encoder>" +
                     "</appender>" +
-                    "<root level=\"warn\">" +
+                    "<root level=\"" + level.levelStr + "\">" +
                         "<appender-ref ref=\"FILE\" />" +
                     "</root>" +
                 "</configuration>"
         );
         //@formatter:on
-        logger.debug(userHome);
     }
 
     public void configureLogback (String xmlContent)
