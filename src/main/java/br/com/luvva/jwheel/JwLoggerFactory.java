@@ -30,14 +30,14 @@ public class JwLoggerFactory
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 
-    public void configureLogbackAsDefault (String logFileName)
+    public void configureLogbackAsDefault (String logFileRelativePath)
     {
         String userHome = System.getProperty("user.home");
         //@formatter:off
         configureLogback(
                 "<configuration>" +
                     "<appender name=\"FILE\" class=\"ch.qos.logback.core.FileAppender\">" +
-                        "<file>" + userHome + FileSystems.getDefault().getSeparator() + logFileName + ".log</file>" +
+                        "<file>" + userHome + FileSystems.getDefault().getSeparator() + logFileRelativePath + ".log</file>" +
                         "<encoder>" +
                             "<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>" +
                         "</encoder>" +
