@@ -1,33 +1,31 @@
 package br.com.luvva.jwheel.template.swing.components;
 
-import br.com.luvva.jwheel.AbstractTest;
-import br.com.luvva.jwheel.ImageResources;
-import br.com.luvva.jwheel.WeldContext;
+import br.com.luvva.jwheel.ImageProvider;
+import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.swing.utils.AnimatedButtonsBuilder;
 import br.com.luvva.jwheel.swing.utils.JMenuBarBuilder;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
-import br.com.luvva.jwheel.template.swing.builders.JwFrameBuilder;
-import org.junit.Test;
+import br.com.luvva.jwheel.template.swing.builders.DefaultJwFrameBuilder;
+import org.slf4j.Logger;
 
+import javax.enterprise.inject.Specializes;
 import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JwFrameTest extends AbstractTest implements JwFrameBuilder
+/**
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
+ */
+@Specializes
+public class JwFrameBuilderForTests extends DefaultJwFrameBuilder
 {
 
-    private @Inject SwingUtils     swingUtils;
-    private @Inject ImageResources imageResources;
-
-    @Test
-    public void test () throws InterruptedException
-    {
-        JwFrame bean = WeldContext.getInstance().getBean(JwFrame.class);
-        bean.setVisible(true);
-        Thread.sleep(10000000);
-    }
+    private @Inject SwingUtils      swingUtils;
+    private @Inject ImageProvider   imageProvider;
+    private @Inject Logger          logger;
+    private @Inject JwLoggerFactory jwLoggerFactory;
 
     @Override
     public JMenuBar getJMenuBar ()
@@ -38,7 +36,7 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
         builder.addMenuItem("ChildMenu1", null);
         builder.addChildMenu("ChildMenu11");
         builder.addMenuItem("ChildMenu111", e -> swingUtils.getUserConfirmation("New test"));
-        builder.addMenuItem("ChildMenu112", null);
+        builder.addMenuItem("ChildMenu112", e -> logger.warn("ok"));
         builder.addChildMenu("ChildMenu113");
         builder.addMenuItem("ChildMenu1131", null);
         builder.addMenuItem("ChildMenu1132", null);
@@ -66,22 +64,22 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
 
         builder.addNewButton("Appointment", "Schedule appointment",
                 new Rectangle(10, 10, 145, 60),
-                imageResources.getAppointmentIcon(),
+                imageProvider.getAppointmentIcon(),
                 e -> {
                 });
         builder.addNewButton("Patients", "Patients records",
                 new Rectangle(15, 75, 135, 60),
-                imageResources.getPatientIcon(),
+                imageProvider.getPatientIcon(),
                 e -> {
                 });
         builder.addNewButton("APPRAISAL", null,
                 new Rectangle(15, 140, 135, 60),
-                imageResources.getAppraisalIcon(),
+                imageProvider.getAppraisalIcon(),
                 e -> {
                 });
         builder.addNewButton("CAMERA", "ACCESS CAMERA",
                 new Rectangle(15, 205, 135, 60),
-                imageResources.getCameraIcon(),
+                imageProvider.getCameraIcon(),
                 e -> swingUtils.getUserConfirmation("False"));
         builder.addNewButton("Reports", "Generate reports",
                 new Rectangle(15, 270, 135, 60),
@@ -89,7 +87,7 @@ public class JwFrameTest extends AbstractTest implements JwFrameBuilder
                 });
         builder.addNewButton("CID10",
                 new Rectangle(15, 335, 135, 60),
-                imageResources.getCidIcon(),
+                imageProvider.getCidIcon(),
                 e -> {
                 });
 
