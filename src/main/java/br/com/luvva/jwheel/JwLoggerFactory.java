@@ -37,13 +37,18 @@ public class JwLoggerFactory
 
     public void configureLogbackAsDefault (String logFilePath, Level level)
     {
+        if (logFilePath == null || level == null)
+        {
+            logger.error("Neither logFilePath nor level can be null!");
+            return;
+        }
         //@formatter:off
         configureLogback(
                 "<configuration>" +
                     "<appender name=\"FILE\" class=\"ch.qos.logback.core.FileAppender\">" +
                         "<file>" + logFilePath + "</file>" +
                         "<encoder>" +
-                            "<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>" +
+                            "<pattern>%date %level [%thread] %logger{15} [%file:%line] %msg%n</pattern>" +
                         "</encoder>" +
                     "</appender>" +
                     "<root level=\"" + level.levelStr + "\">" +
@@ -56,6 +61,11 @@ public class JwLoggerFactory
 
     public void configureLogback (String xmlContent)
     {
+        if (xmlContent == null)
+        {
+            logger.error("XmlContent should not be null!");
+            return;
+        }
         InputStream inputStream = null;
         try
         {
