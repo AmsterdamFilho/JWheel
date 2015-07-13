@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
+@SuppressWarnings ("SpellCheckingInspection")
 @Singleton
 public class SwTextProviderPtBr implements SwTextProvider
 {

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import java.io.*;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -50,10 +51,10 @@ public class GenericXStreamDao<E extends Serializable>
         return null;
     }
 
-    public void merge (E entity) throws XStreamException, Exception
+    public void merge (E entity) throws XStreamException, IOException
     {
         File databaseFile = getDatabaseFile();
-        databaseFile.getParentFile().mkdirs();
+        Files.createDirectories(databaseFile.getParentFile().toPath());
         createXStream().toXML(entity, new FileOutputStream(databaseFile));
     }
 

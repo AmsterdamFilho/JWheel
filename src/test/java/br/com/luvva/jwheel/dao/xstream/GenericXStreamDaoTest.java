@@ -11,16 +11,14 @@ import org.junit.Test;
 public class GenericXStreamDaoTest extends AbstractTest
 {
 
-    private String property1 = "property1";
-    private String property2 = "property2";
-    private String property21 = "property21";
-
     @Test
     public void test () throws Exception
     {
         DaoPojo daoPojo = WeldContext.getInstance().getBean(DaoPojo.class);
         Pojo pojo = new Pojo();
+        String property1 = "property1";
         pojo.setProperty1(property1);
+        String property2 = "property2";
         pojo.setProperty2(property2);
         daoPojo.merge(pojo);
 
@@ -29,6 +27,7 @@ public class GenericXStreamDaoTest extends AbstractTest
         Assert.assertEquals(pojo.getProperty1(), property1);
         Assert.assertEquals(pojo.getProperty2(), property2);
 
+        String property21 = "property21";
         pojo.setProperty2(property21);
         daoPojo.merge(pojo);
 
