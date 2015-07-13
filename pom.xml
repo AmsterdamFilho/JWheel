@@ -72,7 +72,7 @@
                     <archive>
                         <index>true</index>
                         <manifestEntries>
-                            <Built-By>Luvva sistemas (amsterdam@luvva.com.br)</Built-By>
+                            <Built-By>Luvva (amsterdam@luvva.com.br)</Built-By>
                         </manifestEntries>
                     </archive>
                 </configuration>
