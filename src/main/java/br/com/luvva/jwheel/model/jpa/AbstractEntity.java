@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.jpa.model;
+package br.com.luvva.jwheel.model.jpa;
 
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
