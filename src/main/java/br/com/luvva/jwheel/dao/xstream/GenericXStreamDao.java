@@ -13,7 +13,7 @@ import java.nio.file.Files;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class GenericXStreamDao<E extends Serializable>
+public class GenericXStreamDao<E>
 {
 
     private @Inject Logger          logger;
@@ -43,7 +43,7 @@ public class GenericXStreamDao<E extends Serializable>
     public E find () throws XStreamException, ClassCastException
     {
         XStream xStream = createXStream();
-        File databaseFile = xStreamDatabase.getFile(fileName);
+        File databaseFile = getDatabaseFile();
         if (databaseFile.exists())
         {
             return (E) xStream.fromXML(databaseFile);

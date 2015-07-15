@@ -1,11 +1,9 @@
 package br.com.luvva.jwheel.dao.xstream;
 
-import java.io.Serializable;
-
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class Pojo implements Serializable
+public class Pojo
 {
     private String property1;
 

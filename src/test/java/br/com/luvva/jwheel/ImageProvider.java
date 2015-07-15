@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel;
 
-import br.com.luvva.jwheel.java.utils.annotations.Initialized;
+import br.com.luvva.jwheel.cdi.utils.Initialized;
 import br.com.luvva.jwheel.swing.utils.ResourceProvider;
 
 import javax.inject.Inject;

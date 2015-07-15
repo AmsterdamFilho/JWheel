@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.java.utils.annotations;
+package br.com.luvva.jwheel.cdi.utils;
 
 import javax.enterprise.util.Nonbinding;
 import javax.inject.Qualifier;

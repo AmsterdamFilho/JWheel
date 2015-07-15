@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.swing.utils;
 
-import br.com.luvva.jwheel.java.utils.annotations.Initialized;
+import br.com.luvva.jwheel.cdi.utils.Initialized;
 import org.slf4j.Logger;
 
 import javax.enterprise.inject.spi.InjectionPoint;
