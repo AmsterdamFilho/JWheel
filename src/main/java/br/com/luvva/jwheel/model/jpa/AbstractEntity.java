@@ -11,7 +11,7 @@ import java.util.Objects;
 public abstract class AbstractEntity
 {
 
-    public abstract Serializable getCodigo ();
+    public abstract Serializable getId ();
 
     @Override
     public boolean equals (Object o)
@@ -27,14 +27,14 @@ public abstract class AbstractEntity
             return false;
         }
 
-        return Objects.equals(getCodigo(), ((AbstractEntity) o).getCodigo());
+        return Objects.equals(getId(), ((AbstractEntity) o).getId());
 
     }
 
     @Override
     public int hashCode ()
     {
-        Object codigo = getCodigo();
+        Object codigo = getId();
         if (codigo == null)
         {
             return 0;
@@ -54,7 +54,7 @@ public abstract class AbstractEntity
     @Override
     public String toString ()
     {
-        return getClass().getSimpleName() + "{pk=" + String.valueOf(getCodigo()) + "}";
+        return getClass().getSimpleName() + "{pk=" + String.valueOf(getId()) + "}";
     }
 
 }
