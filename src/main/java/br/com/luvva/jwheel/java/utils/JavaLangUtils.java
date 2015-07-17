@@ -18,7 +18,7 @@ public class JavaLangUtils
 
     public static <T> Class<T> getTypeArgumentClass (Class clazz, int index)
     {
-       return (Class<T>) ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[index];
+        return (Class<T>) ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[index];
     }
 
 }

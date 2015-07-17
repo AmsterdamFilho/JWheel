@@ -29,6 +29,7 @@ public class AwtUtils
 
     /**
      * Gets the JAR directory of the application. Does not work if the classes are not in JAR file
+     *
      * @return the jar directory as a Path object
      * @throws Exception if, for some reason, the method failed to figure out this information
      */

@@ -13,5 +13,5 @@ import java.lang.annotation.*;
 @Documented
 public @interface Initialized
 {
-    @Nonbinding String stringValue() default "";
+    @Nonbinding String stringValue () default "";
 }
