@@ -1,31 +1,38 @@
 package br.com.luvva.jwheel.dao.xstream;
 
+import br.com.luvva.jwheel.java.utils.JavaLangUtils;
+import br.com.luvva.jwheel.model.beans.PathParameters;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.XStreamException;
 import org.slf4j.Logger;
 
+import javax.enterprise.inject.Vetoed;
 import javax.inject.Inject;
-import java.io.*;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
+@Vetoed
 public class GenericXStreamDao<E>
 {
 
-    private @Inject Logger          logger;
-    private @Inject XStreamDatabase xStreamDatabase;
+    private @Inject Logger         logger;
+    private @Inject PathParameters pathParameters;
 
     private String fileName;
 
     public GenericXStreamDao ()
     {
-        final Type[] typeArguments = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments();
-        Class<E> firstTypeArgument = (Class<E>) typeArguments[0];
-        this.fileName = firstTypeArgument.getSimpleName();
+        this.fileName = JavaLangUtils.getTypeArgumentClass(getClass()).getSimpleName();
+    }
+
+    protected GenericXStreamDao (String fileName)
+    {
+        this.fileName = fileName;
     }
 
     protected void setFileName (String fileName)
@@ -60,7 +67,7 @@ public class GenericXStreamDao<E>
 
     private File getDatabaseFile ()
     {
-        return xStreamDatabase.getFile(fileName);
+        return pathParameters.getParametersFile(fileName);
     }
 
 }

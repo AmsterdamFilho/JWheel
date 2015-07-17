@@ -7,59 +7,13 @@ import ch.qos.logback.classic.Level;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @NewInstance
-public class LocalParameters
+public class LogParameters
 {
-    private String databaseDriver;
-    private String databaseUrl;
-    private String databasePassword;
-    private String databaseUser;
-
     private Level   loggerLevel;
     private String  loggerConfigurationXml;
     private boolean useLoggerConfigurationXml;
 
-    private String appDataDirectory;
     private String logFilePath;
-
-    public String getDatabaseDriver ()
-    {
-        return databaseDriver;
-    }
-
-    public void setDatabaseDriver (String databaseDriver)
-    {
-        this.databaseDriver = databaseDriver;
-    }
-
-    public String getDatabaseUrl ()
-    {
-        return databaseUrl;
-    }
-
-    public void setDatabaseUrl (String databaseUrl)
-    {
-        this.databaseUrl = databaseUrl;
-    }
-
-    public String getDatabasePassword ()
-    {
-        return databasePassword;
-    }
-
-    public void setDatabasePassword (String databasePassword)
-    {
-        this.databasePassword = databasePassword;
-    }
-
-    public String getDatabaseUser ()
-    {
-        return databaseUser;
-    }
-
-    public void setDatabaseUser (String databaseUser)
-    {
-        this.databaseUser = databaseUser;
-    }
 
     public Level getLoggerLevel ()
     {
@@ -89,16 +43,6 @@ public class LocalParameters
     public void setUseLoggerConfigurationXml (boolean useLoggerConfigurationXml)
     {
         this.useLoggerConfigurationXml = useLoggerConfigurationXml;
-    }
-
-    public String getAppDataDirectory ()
-    {
-        return appDataDirectory;
-    }
-
-    public void setAppDataDirectory (String appDataDirectory)
-    {
-        this.appDataDirectory = appDataDirectory;
     }
 
     public String getLogFilePath ()

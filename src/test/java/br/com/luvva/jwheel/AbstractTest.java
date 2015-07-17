@@ -1,6 +1,7 @@
 package br.com.luvva.jwheel;
 
-import br.com.luvva.jwheel.model.beans.LocalParameters;
+import br.com.luvva.jwheel.model.beans.LogParameters;
+import ch.qos.logback.classic.Level;
 import org.junit.runner.RunWith;
 
 import javax.annotation.PostConstruct;
@@ -16,10 +17,8 @@ public abstract class AbstractTest
     @PostConstruct
     private void init ()
     {
-        LocalParameters lp = WeldContext.getInstance().getBean(LocalParameters.class, new AnnotationLiteral<Default>()
-        {
-        });
+        LogParameters lp = WeldContext.getInstance().getBean(LogParameters.class, new AnnotationLiteral<Default>() {});
         WeldContext.getInstance().getBean(JwLoggerFactory.class)
-                   .configureLogbackAsDefault(lp.getLogFilePath());
+                   .configureLogbackAsDefault(lp.getLogFilePath(), Level.INFO);
     }
 }

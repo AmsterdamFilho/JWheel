@@ -2,12 +2,13 @@ package br.com.luvva.jwheel.control;
 
 import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.model.beans.LocalParameters;
+import br.com.luvva.jwheel.model.beans.LogParameters;
 import ch.qos.logback.classic.Level;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Vetoed;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -16,8 +17,8 @@ import javax.inject.Inject;
 public class JWheelMain
 {
 
-    private @Inject JwLoggerFactory loggerFactory;
-    private @Inject LocalParameters localParameters;
+    protected @Inject JwLoggerFactory loggerFactory;
+    protected @Inject LogParameters   logParameters;
 
     public static void main (String[] args)
     {
@@ -25,27 +26,53 @@ public class JWheelMain
     }
 
     @PostConstruct
-    protected void init ()
+    private void init ()
     {
         setLogger();
+        if (!testDatabaseConnection())
+        {
+        }
         customInit();
+    }
+
+    protected void setConnection ()
+    {
+        Level loggerLevel = logParameters.getLoggerLevel();
+        if (loggerLevel == null)
+        {
+            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath());
+        }
+        else
+        {
+            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
+        }
+        if (logParameters.isUseLoggerConfigurationXml())
+        {
+            loggerFactory.configureLogback(logParameters.getLoggerConfigurationXml());
+        }
     }
 
     protected void setLogger ()
     {
-        Level loggerLevel = localParameters.getLoggerLevel();
+        Level loggerLevel = logParameters.getLoggerLevel();
         if (loggerLevel == null)
         {
-            loggerFactory.configureLogbackAsDefault(localParameters.getLogFilePath());
+            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath());
         }
         else
         {
-            loggerFactory.configureLogbackAsDefault(localParameters.getLogFilePath(), loggerLevel);
+            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
         }
-        if (localParameters.isUseLoggerConfigurationXml())
+        if (logParameters.isUseLoggerConfigurationXml())
         {
-            loggerFactory.configureLogback(localParameters.getLoggerConfigurationXml());
+            loggerFactory.configureLogback(logParameters.getLoggerConfigurationXml());
         }
+    }
+
+    protected boolean testDatabaseConnection ()
+    {
+        EntityManager em = WeldContext.getInstance().getBean(EntityManager.class);
+        return true;
     }
 
     @SuppressWarnings ("EmptyMethod")
