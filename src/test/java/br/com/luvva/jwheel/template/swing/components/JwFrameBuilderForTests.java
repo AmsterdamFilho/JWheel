@@ -1,7 +1,6 @@
 package br.com.luvva.jwheel.template.swing.components;
 
 import br.com.luvva.jwheel.ImageProvider;
-import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.swing.utils.AnimatedButtonsBuilder;
 import br.com.luvva.jwheel.swing.utils.JMenuBarBuilder;
 import br.com.luvva.jwheel.swing.utils.SwingUtils;
@@ -22,10 +21,9 @@ import java.util.List;
 public class JwFrameBuilderForTests extends DefaultJwFrameBuilder
 {
 
-    private @Inject SwingUtils      swingUtils;
-    private @Inject ImageProvider   imageProvider;
-    private @Inject Logger          logger;
-    private @Inject JwLoggerFactory jwLoggerFactory;
+    private @Inject SwingUtils    swingUtils;
+    private @Inject ImageProvider imageProvider;
+    private @Inject Logger        logger;
 
     @Override
     public JMenuBar getJMenuBar ()
