@@ -13,7 +13,12 @@ public class SystemUtils
 
     public boolean isOsX ()
     {
-        return System.getProperty("os.name").toLowerCase().startsWith("mac os x");
+        return System.getProperty("os.name").toLowerCase().contains("mac");
+    }
+
+    public boolean isWindows ()
+    {
+        return System.getProperty("os.name").toLowerCase().contains("windows");
     }
 
     public String getLocalhostName () throws UnknownHostException
