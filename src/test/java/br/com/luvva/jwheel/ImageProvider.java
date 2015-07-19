@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel;
 
 import br.com.luvva.jwheel.cdi.utils.Initialized;
-import br.com.luvva.jwheel.swing.utils.ResourceProvider;
+import br.com.luvva.jwheel.view.swing.utils.ResourceProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
