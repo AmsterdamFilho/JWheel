@@ -4,6 +4,7 @@ import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.LogParameters;
 import ch.qos.logback.classic.Level;
+import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Vetoed;
@@ -17,8 +18,9 @@ import javax.persistence.EntityManager;
 public class JWheelMain
 {
 
-    protected @Inject JwLoggerFactory loggerFactory;
-    protected @Inject LogParameters   logParameters;
+    private @Inject JwLoggerFactory loggerFactory;
+    private @Inject LogParameters   logParameters;
+    private @Inject Logger          logger;
 
     public static void main (String[] args)
     {
@@ -29,27 +31,10 @@ public class JWheelMain
     private void init ()
     {
         setLogger();
-        if (!testDatabaseConnection())
+        if (!databaseConnectionOk())
         {
         }
         customInit();
-    }
-
-    protected void setConnection ()
-    {
-        Level loggerLevel = logParameters.getLoggerLevel();
-        if (loggerLevel == null)
-        {
-            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath());
-        }
-        else
-        {
-            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
-        }
-        if (logParameters.isUseLoggerConfigurationXml())
-        {
-            loggerFactory.configureLogback(logParameters.getLoggerConfigurationXml());
-        }
     }
 
     protected void setLogger ()
@@ -69,10 +54,18 @@ public class JWheelMain
         }
     }
 
-    protected boolean testDatabaseConnection ()
+    protected boolean databaseConnectionOk ()
     {
-        EntityManager em = WeldContext.getInstance().getBean(EntityManager.class);
-        return true;
+        try
+        {
+            WeldContext.getInstance().getBean(EntityManager.class);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            logger.error("Could not connect to the database!", ex);
+            return false;
+        }
     }
 
     @SuppressWarnings ("EmptyMethod")
