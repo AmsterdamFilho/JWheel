@@ -43,17 +43,20 @@ public class JWheelMain
     protected void setLogger ()
     {
         Level loggerLevel = logParameters.getLoggerLevel();
-        if (loggerLevel == null)
-        {
-            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath());
-        }
-        else
-        {
-            loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
-        }
         if (logParameters.isUseLoggerConfigurationXml())
         {
             loggerFactory.configureLogback(logParameters.getLoggerConfigurationXml());
+        }
+        else
+        {
+            if (loggerLevel == null)
+            {
+                loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath());
+            }
+            else
+            {
+                loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
+            }
         }
     }
 
