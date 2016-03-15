@@ -94,6 +94,7 @@
                 </configuration>
             </plugin>
         </plugins>
+
         <testResources>
             <testResource>
                 <directory>${project.basedir}/src/main/resources/template</directory>
@@ -102,6 +103,7 @@
                 <directory>${project.basedir}/src/test/resources</directory>
             </testResource>
         </testResources>
+        
     </build>
 
 </project>

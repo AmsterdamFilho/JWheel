@@ -63,7 +63,7 @@ public class JWheelMain
         }
         catch (Exception ex)
         {
-            logger.error("Could not connect to the database!", ex);
+            logger.error("Could not create an EntityManager!", ex);
             return false;
         }
     }
