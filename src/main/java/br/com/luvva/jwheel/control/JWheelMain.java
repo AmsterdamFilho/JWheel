@@ -3,6 +3,7 @@ package br.com.luvva.jwheel.control;
 import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.LogParameters;
+import br.com.luvva.jwheel.view.interfaces.ViewConfigurator;
 import ch.qos.logback.classic.Level;
 import org.slf4j.Logger;
 
@@ -18,9 +19,10 @@ import javax.persistence.EntityManager;
 public class JWheelMain
 {
 
-    private @Inject JwLoggerFactory loggerFactory;
-    private @Inject LogParameters   logParameters;
-    private @Inject Logger          logger;
+    private @Inject JwLoggerFactory  loggerFactory;
+    private @Inject LogParameters    logParameters;
+    private @Inject Logger           logger;
+    private @Inject ViewConfigurator viewConfigurator;
 
     public static void main (String[] args)
     {
@@ -31,6 +33,7 @@ public class JWheelMain
     private void init ()
     {
         setLogger();
+        viewConfigurator.configureView();
         if (!databaseConnectionOk())
         {
         }

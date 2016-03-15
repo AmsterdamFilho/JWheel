@@ -27,4 +27,10 @@ public class SwTextProviderPtBr implements SwTextProvider
     {
         return "Deseja sair do sistema?";
     }
+
+    @Override
+    public String getLafErrorMessage ()
+    {
+        return "Não foi possível setar o Look and feel!";
+    }
 }

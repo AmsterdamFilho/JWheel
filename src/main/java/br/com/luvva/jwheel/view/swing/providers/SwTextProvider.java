@@ -11,4 +11,6 @@ public interface SwTextProvider
     String getJOptionPane_No_Option ();
 
     String getExitSystemQuestion ();
+
+    String getLafErrorMessage ();
 }
