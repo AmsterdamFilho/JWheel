@@ -2,9 +2,7 @@ package br.com.luvva.jwheel.view.swing.components;
 
 import javax.swing.*;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -16,42 +14,9 @@ import java.awt.event.WindowEvent;
 public abstract class JwDialog extends JDialog
 {
 
-    public JwDialog (boolean modal)
-    {
-        this(null, modal);
-        configure();
-    }
-
-    public JwDialog (boolean modal, int width, int height)
-    {
-        this(null, modal, width, height);
-    }
-
-    public JwDialog (Component cp, boolean modal, int width, int height)
-    {
-        super(JOptionPane.getFrameForComponent(cp), modal);
-        setSize(new Dimension(width, height));
-        centralize(cp);
-        configure();
-    }
-
-    public JwDialog (Component cp, boolean modal, Rectangle bounds)
-    {
-        super(JOptionPane.getFrameForComponent(cp), modal);
-        setBounds(bounds);
-        configure();
-    }
-
-    public JwDialog (Component cp, boolean modal)
-    {
-        super(JOptionPane.getFrameForComponent(cp), modal);
-        configure();
-    }
-
-    private void configure ()
+    public JwDialog ()
     {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
         addWindowListener(new WindowAdapter()
         {
 

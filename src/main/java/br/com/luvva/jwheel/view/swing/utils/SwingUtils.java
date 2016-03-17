@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.view.swing.utils;
 
 import br.com.luvva.jwheel.view.swing.providers.SwImageProvider;
-import br.com.luvva.jwheel.view.swing.providers.SwTextProvider;
+import br.com.luvva.jwheel.model.providers.TextProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,7 +18,7 @@ public class SwingUtils
 {
 
     private @Inject SwImageProvider imageProvider;
-    private @Inject SwTextProvider textProvider;
+    private @Inject TextProvider    textProvider;
 
     public boolean getUserConfirmation (String msg)
     {
@@ -30,8 +30,8 @@ public class SwingUtils
         MyJOptionPane optionPane = new MyJOptionPane(msg);
         optionPane.setIcon(imageProvider.getQuestionIcon());
         optionPane.setOptions(new Object[]{
-                getBtn(optionPane, textProvider.getJOptionPane_Yes_Option(), JOptionPane.YES_OPTION),
-                getBtn(optionPane, textProvider.getJOptionPane_No_Option(), JOptionPane.NO_OPTION)});
+                getBtn(optionPane, textProvider.yes(), JOptionPane.YES_OPTION),
+                getBtn(optionPane, textProvider.no(), JOptionPane.NO_OPTION)});
 
         JDialog dialog = optionPane.createDialog(parentComponent, "");
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

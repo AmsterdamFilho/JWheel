@@ -4,7 +4,7 @@ import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.view.swing.builders.JwFrameBuilder;
 import br.com.luvva.jwheel.view.swing.laf.SwLookAndFeel;
 import br.com.luvva.jwheel.view.swing.utils.SwingUtils;
-import br.com.luvva.jwheel.view.swing.providers.SwTextProvider;
+import br.com.luvva.jwheel.model.providers.TextProvider;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +24,7 @@ public class JwFrame extends JFrame
 
     private @Inject JwFrameBuilder jwFrameBuilder;
     private @Inject SwLookAndFeel  jwLookAndFeel;
-    private @Inject SwTextProvider textProvider;
+    private @Inject TextProvider   textProvider;
     private @Inject Logger         logger;
     private @Inject SwingUtils     swingUtils;
 
@@ -112,7 +112,7 @@ public class JwFrame extends JFrame
 
     protected void windowClosing ()
     {
-        boolean userConfirmed = swingUtils.getUserConfirmation(textProvider.getExitSystemQuestion(), this);
+        boolean userConfirmed = swingUtils.getUserConfirmation(textProvider.exitSystemQuestion(), this);
 
         if (userConfirmed && validateExit())
         {
