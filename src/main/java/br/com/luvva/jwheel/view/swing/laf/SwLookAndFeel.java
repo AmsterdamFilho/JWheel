@@ -7,6 +7,12 @@ import javax.swing.border.Border;
  */
 public interface SwLookAndFeel
 {
-    Border getDefaultBorder ();
+    Border defaultBorder ();
+
+    int verticalSpaceBetweenLabelAndComponent ();
+
+    int leftInsetsBetweenComponents ();
+
+    int topInsetsBetweenComponents ();
 
 }

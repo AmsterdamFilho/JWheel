@@ -56,26 +56,26 @@ public class JwFrame extends JFrame
         JMenuBar mb = jwFrameBuilder.getJMenuBar();
         if (mb != null)
         {
-            mb.setBorder(jwLookAndFeel.getDefaultBorder());
+            mb.setBorder(jwLookAndFeel.defaultBorder());
             setJMenuBar(mb);
         }
         JComponent pageStartPanel = jwFrameBuilder.getPageStartPanel();
         if (pageStartPanel != null)
         {
-            pageStartPanel.setBorder(jwLookAndFeel.getDefaultBorder());
+            pageStartPanel.setBorder(jwLookAndFeel.defaultBorder());
             mainPanel.add(pageStartPanel, BorderLayout.PAGE_START);
         }
         jwFrameBuilder.getDesktopPaneComponents().forEach(
                 cp -> jwDesktopPane.add(cp, javax.swing.JLayeredPane.DEFAULT_LAYER));
         JScrollPane jScrollPane = new JScrollPane();
-        jScrollPane.setBorder(jwLookAndFeel.getDefaultBorder());
+        jScrollPane.setBorder(jwLookAndFeel.defaultBorder());
         jScrollPane.add(jwDesktopPane);
         jScrollPane.setViewportView(jwDesktopPane);
         mainPanel.add(jScrollPane, BorderLayout.CENTER);
         JComponent pageEndPanel = jwFrameBuilder.getPageEndPanel();
         if (pageEndPanel != null)
         {
-            pageEndPanel.setBorder(jwLookAndFeel.getDefaultBorder());
+            pageEndPanel.setBorder(jwLookAndFeel.defaultBorder());
             mainPanel.add(pageEndPanel, BorderLayout.PAGE_END);
         }
         CardLayoutPanel contentPane = new CardLayoutPanel();

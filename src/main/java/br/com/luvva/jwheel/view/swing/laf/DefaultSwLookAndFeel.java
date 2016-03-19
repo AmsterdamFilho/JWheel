@@ -13,9 +13,26 @@ public class DefaultSwLookAndFeel implements SwLookAndFeel
     private Border defaultBorder = new BlackAndWhiteEtchedBorder();
 
     @Override
-    public Border getDefaultBorder ()
+    public Border defaultBorder ()
     {
         return defaultBorder;
     }
 
+    @Override
+    public int verticalSpaceBetweenLabelAndComponent ()
+    {
+        return 3;
+    }
+
+    @Override
+    public int leftInsetsBetweenComponents ()
+    {
+        return 5;
+    }
+
+    @Override
+    public int topInsetsBetweenComponents ()
+    {
+        return 5;
+    }
 }
