@@ -2,6 +2,10 @@ package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.cdi.utils.NewInstance;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
@@ -12,6 +16,18 @@ public class ConnectionParameters
     private String databaseUrl;
     private String databasePassword;
     private String databaseUser;
+
+    private static final List<String> driversSuggestions = new ArrayList<>();
+
+    static
+    {
+        driversSuggestions.add("org.postgresql.Driver");
+    }
+
+    public static List<String> getDriversSuggestions ()
+    {
+        return Collections.unmodifiableList(driversSuggestions);
+    }
 
     public String getDatabaseDriver ()
     {
