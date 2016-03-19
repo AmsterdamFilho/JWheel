@@ -1,12 +1,15 @@
 package br.com.luvva.jwheel.dao.jpa;
 
+import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.ConnectionParameters;
 import br.com.luvva.jwheel.model.jpa.PersistenceUnit;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
+import javax.enterprise.util.AnnotationLiteral;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,20 +24,24 @@ import java.util.Map;
 public class EntityManagerProducer
 {
 
-    private @Inject ConnectionParameters connectionParameters;
-    private @Inject PersistenceUnit      persistenceUnit;
-
     private EntityManagerFactory emf;
 
     @PostConstruct
-    private void init ()
+    public void init ()
     {
-        Map<String, String> settings = new HashMap<>();
-        settings.put("javax.persistence.jdbc.driver", connectionParameters.getDatabaseDriver());
-        settings.put("javax.persistence.jdbc.url", connectionParameters.getDatabaseUrl());
-        settings.put("javax.persistence.jdbc.user", connectionParameters.getDatabaseUser());
-        settings.put("javax.persistence.jdbc.password", connectionParameters.getDatabasePassword());
-        emf = Persistence.createEntityManagerFactory(persistenceUnit.getName(), settings);
+        init(WeldContext.getInstance().getBean(ConnectionParameters.class, new AnnotationLiteral<Default>() {}));
+    }
+
+    public void init (ConnectionParameters connectionParameters)
+    {
+        Map<String, String> propertiesMap = new HashMap<>();
+        propertiesMap.put("javax.persistence.jdbc.driver", connectionParameters.getDatabaseDriver());
+        propertiesMap.put("javax.persistence.jdbc.url", connectionParameters.getDatabaseUrl());
+        propertiesMap.put("javax.persistence.jdbc.user", connectionParameters.getDatabaseUser());
+        propertiesMap.put("javax.persistence.jdbc.password", connectionParameters.getDatabasePassword());
+        fillPropertiesMap(propertiesMap);
+        PersistenceUnit persistenceUnit = WeldContext.getInstance().getBean(PersistenceUnit.class);
+        emf = Persistence.createEntityManagerFactory(persistenceUnit.getName(), propertiesMap);
     }
 
     @Produces
@@ -43,11 +50,25 @@ public class EntityManagerProducer
         return emf.createEntityManager();
     }
 
-    public void close (@Disposes EntityManager entityManager)
+    private void close (@Disposes EntityManager entityManager)
     {
         if (entityManager.isOpen())
         {
             entityManager.close();
         }
     }
+
+    @PreDestroy
+    private void preDestroy ()
+    {
+        if (emf != null)
+        {
+            emf.close();
+        }
+    }
+
+    protected void fillPropertiesMap (Map<String, String> propertiesMap)
+    {
+    }
+
 }
