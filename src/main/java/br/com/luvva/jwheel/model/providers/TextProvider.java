@@ -12,6 +12,20 @@ public interface TextProvider
 
     String no ();
 
+    String save ();
+
+    String cancel ();
+
+    String ok ();
+
+    String success ();
+
+    String attention ();
+
+    String savedSuccessfully ();
+
+    String failedToSave ();
+
     String exitSystemQuestion ();
 
     String lafErrorMessage ();

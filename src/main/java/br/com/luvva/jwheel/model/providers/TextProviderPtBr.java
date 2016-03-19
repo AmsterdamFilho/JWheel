@@ -25,6 +25,48 @@ public class TextProviderPtBr implements TextProvider
     }
 
     @Override
+    public String cancel ()
+    {
+        return "Cancelar";
+    }
+
+    @Override
+    public String save ()
+    {
+        return "Salvar";
+    }
+
+    @Override
+    public String ok ()
+    {
+        return "Ok";
+    }
+
+    @Override
+    public String success ()
+    {
+        return "Sucesso";
+    }
+
+    @Override
+    public String attention ()
+    {
+        return "Atenção";
+    }
+
+    @Override
+    public String savedSuccessfully ()
+    {
+        return "Salvo com sucesso!";
+    }
+
+    @Override
+    public String failedToSave ()
+    {
+        return "Erro ao salvar";
+    }
+
+    @Override
     public String exitSystemQuestion ()
     {
         return "Deseja sair do sistema?";

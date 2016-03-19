@@ -35,9 +35,21 @@ public class DefaultSwImageProvider implements SwImageProvider
 
     //<editor-fold desc="SwImageProvider">
     @Override
-    public Icon getQuestionIcon ()
+    public Icon questionIcon ()
     {
         return resourceProvider.getIcon("question_mark.png");
+    }
+
+    @Override
+    public Icon successIcon ()
+    {
+        return resourceProvider.getIcon("success_icon.png");
+    }
+
+    @Override
+    public Icon errorIcon ()
+    {
+        return resourceProvider.getIcon("error_icon.png");
     }
 
     @Override

@@ -10,7 +10,11 @@ import java.awt.image.ImageObserver;
 public interface SwImageProvider
 {
 
-    Icon getQuestionIcon ();
+    Icon questionIcon ();
+
+    Icon successIcon ();
+
+    Icon errorIcon ();
 
     boolean decorateMainView (Graphics g, int mainViewWidth, int mainViewHeight, ImageObserver observer);
 

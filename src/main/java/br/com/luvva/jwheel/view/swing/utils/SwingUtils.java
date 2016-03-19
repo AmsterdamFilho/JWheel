@@ -28,7 +28,7 @@ public class SwingUtils
     public boolean getUserConfirmation (String msg, Component parentComponent)
     {
         MyJOptionPane optionPane = new MyJOptionPane(msg);
-        optionPane.setIcon(imageProvider.getQuestionIcon());
+        optionPane.setIcon(imageProvider.questionIcon());
         optionPane.setOptions(new Object[]{
                 getBtn(optionPane, textProvider.yes(), JOptionPane.YES_OPTION),
                 getBtn(optionPane, textProvider.no(), JOptionPane.NO_OPTION)});
@@ -38,6 +38,36 @@ public class SwingUtils
         dialog.setVisible(true);
         dialog.dispose();
         return Integer.valueOf(JOptionPane.YES_OPTION).equals(optionPane.getValue());
+    }
+
+    public void showSuccessMessage (Component cp, String msg)
+    {
+        MyJOptionPane optionPane = new MyJOptionPane(msg);
+        optionPane.setIcon(imageProvider.successIcon());
+        optionPane.setOptions(new Object[]
+                {
+                        getBtn(optionPane, textProvider.ok(), JOptionPane.OK_OPTION)
+                });
+
+        JDialog dialog = optionPane.createDialog(cp, textProvider.success());
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+        dialog.dispose();
+    }
+
+    public void showErrorMessage (Component cp, String msg)
+    {
+        MyJOptionPane optionPane = new MyJOptionPane(msg);
+        optionPane.setIcon(imageProvider.errorIcon());
+        optionPane.setOptions(new Object[]
+                {
+                        getBtn(optionPane, textProvider.ok(), JOptionPane.OK_OPTION)
+                });
+
+        JDialog dialog = optionPane.createDialog(cp, textProvider.attention());
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+        dialog.dispose();
     }
 
     private JButton getBtn (final JOptionPane optionPane, final String text, final Object value)
