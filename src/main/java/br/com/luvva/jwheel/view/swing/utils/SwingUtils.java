@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.Component;
+import java.awt.HeadlessException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -143,6 +144,20 @@ public class SwingUtils
         {
         }
 
+        @Override
+        public JDialog createDialog (Component parentComponent, String title) throws HeadlessException
+        {
+            // this method prevents creating a dialog for an invisible component, which would stop the
+            // component from disposing correctly (JVM would not exit).
+            if (parentComponent.isVisible())
+            {
+                return super.createDialog(parentComponent, title);
+            }
+            else
+            {
+                return super.createDialog(null, title);
+            }
+        }
     }
 
 }
