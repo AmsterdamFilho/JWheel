@@ -5,6 +5,7 @@ import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.providers.TextProvider;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
 import br.com.luvva.jwheel.view.swing.components.SwDecisionDialog;
+import br.com.luvva.jwheel.view.swing.utils.InvokeAndWaitHandler;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
@@ -12,7 +13,6 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.Font;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -20,8 +20,9 @@ import java.lang.reflect.InvocationTargetException;
 public class SwingStarter implements ViewStarter
 {
 
-    private @Inject Logger       logger;
-    private @Inject TextProvider textProvider;
+    private @Inject Logger               logger;
+    private @Inject TextProvider         textProvider;
+    private @Inject InvokeAndWaitHandler invokeAndWaitHandler;
 
     private JDialog connectionTestProgressDialog;
 
@@ -67,19 +68,11 @@ public class SwingStarter implements ViewStarter
     @Override
     public void showConnectionTestFailedDialogDecision (DecisionDialogModel decisionDialogModel)
     {
-        try
-        {
-            java.awt.EventQueue.invokeAndWait(() -> {
-                SwDecisionDialog swDecisionDialog = WeldContext.getInstance().getBean(SwDecisionDialog.class);
-                swDecisionDialog.setDecisionDialogModel(decisionDialogModel);
-                swDecisionDialog.setModal(true);
-                swDecisionDialog.setVisible(true);
-            });
-        }
-        catch (InterruptedException | InvocationTargetException e)
-        {
-            logger.error("Unexpected EDT error!", e);
-            System.exit(-1);
-        }
+        invokeAndWaitHandler.handle(() -> {
+            SwDecisionDialog swDecisionDialog = WeldContext.getInstance().getBean(SwDecisionDialog.class);
+            swDecisionDialog.setDecisionDialogModel(decisionDialogModel);
+            swDecisionDialog.setModal(true);
+            swDecisionDialog.setVisible(true);
+        });
     }
 }
