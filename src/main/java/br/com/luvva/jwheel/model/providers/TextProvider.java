@@ -28,10 +28,7 @@ public interface TextProvider
 
     String exitSystemQuestion ();
 
-    String lafErrorMessage ();
-
     String databaseConnectionTestMessage ();
 
     DecisionDialogModel connectionTestFailedDecision ();
-
 }

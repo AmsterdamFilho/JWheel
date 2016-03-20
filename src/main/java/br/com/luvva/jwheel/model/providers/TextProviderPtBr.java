@@ -73,12 +73,6 @@ public class TextProviderPtBr implements TextProvider
     }
 
     @Override
-    public String lafErrorMessage ()
-    {
-        return "Não foi possível setar o Look and feel!";
-    }
-
-    @Override
     public String databaseConnectionTestMessage ()
     {
         return "Tentando se conectar ao banco de dados...";

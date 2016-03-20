@@ -41,7 +41,7 @@ public class SwingStarter implements ViewStarter
             }
             catch (UnsupportedLookAndFeelException e)
             {
-                logger.warn(textProvider.lafErrorMessage(), e);
+                logger.warn("Exception while setting look and feel!", e);
             }
         });
     }
