@@ -13,28 +13,26 @@ public class BindingUtils
     public static void bind (JTextComponent textComponent, Property<String> property)
     {
         textComponent.setText(property.get());
-        if (textComponent instanceof JwPasswordField)
+        textComponent.getDocument().addDocumentListener(new TextChangedListener()
         {
-            JwPasswordField jwPasswordField = (JwPasswordField) textComponent;
-            jwPasswordField.getDocument().addDocumentListener(new TextChangedListener()
+            @Override
+            public void textChanged (DocumentEvent de)
             {
-                @Override
-                public void textChanged (DocumentEvent de)
-                {
-                    property.set(jwPasswordField.getStringPassword());
-                }
-            });
-        }
-        else
+                property.set(textComponent.getText());
+            }
+        });
+    }
+
+    public static void bind (JwPasswordField jwPasswordField, Property<String> property)
+    {
+        jwPasswordField.setText(property.get());
+        jwPasswordField.getDocument().addDocumentListener(new TextChangedListener()
         {
-            textComponent.getDocument().addDocumentListener(new TextChangedListener()
+            @Override
+            public void textChanged (DocumentEvent de)
             {
-                @Override
-                public void textChanged (DocumentEvent de)
-                {
-                    property.set(textComponent.getText());
-                }
-            });
-        }
+                property.set(jwPasswordField.getStringPassword());
+            }
+        });
     }
 }
