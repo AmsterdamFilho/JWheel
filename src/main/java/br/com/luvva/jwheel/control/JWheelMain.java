@@ -46,7 +46,6 @@ public class JWheelMain
             switch (ddm.getChosenOption())
             {
                 case 0:
-                    
                     break;
                 case 1:
                     break;
@@ -86,22 +85,17 @@ public class JWheelMain
         connectionTestTimer.start();
         ConnectionTestThread connectionTest = new ConnectionTestThread(connectionTestModel);
         connectionTest.start();
-        while (connectionTestModel.getConnectionTestResult() == null)
+        try
         {
-            try
+            //noinspection SynchronizationOnLocalVariableOrMethodParameter
+            synchronized (connectionTest)
             {
-                // without this line, this method does not work!
-                Thread.sleep(50);
+                connectionTest.wait();
             }
-            catch (InterruptedException e)
-            {
-                logger.error("Could not sleep main thread while connection test is running!", e);
-            }
-            if (connectionTestModel.isTimerExpired() && !connectionTestModel.isProgressDialogWasShown())
-            {
-                viewStarter.showConnectionTestProgressDialog();
-                connectionTestModel.setProgressDialogWasShown(true);
-            }
+        }
+        catch (InterruptedException e)
+        {
+            logger.error("Connection test was interrupted!", e);
         }
         if (connectionTestModel.isProgressDialogWasShown())
         {
@@ -129,18 +123,21 @@ public class JWheelMain
         @Override
         public void run ()
         {
-            try
+            synchronized (this)
             {
-                WeldContext.getInstance().getBean(EntityManager.class);
-                connectionTestModel.setTestSucceeded(true);
-            }
-            catch (Exception ex)
-            {
-                logger.error("Could not create an EntityManager!", ex);
-                connectionTestModel.setTestSucceeded(false);
+                try
+                {
+                    WeldContext.getInstance().getBean(EntityManager.class);
+                    connectionTestModel.setConnectionTestResult(true);
+                }
+                catch (Exception ex)
+                {
+                    logger.error("Could not create an EntityManager!", ex);
+                    connectionTestModel.setConnectionTestResult(false);
+                }
+                notify();
             }
         }
-
     }
 
     private class ConnectionTestTimer extends Timer
@@ -161,51 +158,38 @@ public class JWheelMain
                 @Override
                 public void run ()
                 {
-                    connectionTestModel.setTimerExpired(true);
+                    if (connectionTestModel.getConnectionTestResult() == null)
+                    {
+                        viewStarter.showConnectionTestProgressDialog();
+                        connectionTestModel.setProgressDialogWasShown(true);
+                    }
                     cancel();
                 }
             }, 2000);
         }
-
     }
 
     private class ConnectionTestModel
     {
-        private boolean timerExpired           = false;
-        private Boolean testSucceeded          = null;
+        private Boolean connectionTestResult   = null;
         private boolean progressDialogWasShown = false;
-
-        private boolean isTimerExpired ()
-        {
-            return timerExpired;
-        }
-
-        private void setTimerExpired (boolean timerExpired)
-        {
-            this.timerExpired = timerExpired;
-        }
 
         private Boolean getConnectionTestResult ()
         {
-            return testSucceeded;
+            return connectionTestResult;
         }
 
-        private void setTestSucceeded (Boolean testSucceeded)
+        private void setConnectionTestResult (Boolean connectionTestResult)
         {
-            this.testSucceeded = testSucceeded;
+            this.connectionTestResult = connectionTestResult;
         }
 
-        public Boolean getTestSucceeded ()
-        {
-            return testSucceeded;
-        }
-
-        public boolean isProgressDialogWasShown ()
+        private boolean isProgressDialogWasShown ()
         {
             return progressDialogWasShown;
         }
 
-        public void setProgressDialogWasShown (boolean progressDialogWasShown)
+        private void setProgressDialogWasShown (boolean progressDialogWasShown)
         {
             this.progressDialogWasShown = progressDialogWasShown;
         }
