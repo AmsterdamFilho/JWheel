@@ -18,7 +18,6 @@ public class ResponsivenessManager implements ActionListener
     private Component component;
 
     private boolean responded = false;
-    private Cursor originalCursor;
 
     private int waitCursor   = Cursor.WAIT_CURSOR;
     private int allowedDelay = 500;
@@ -44,7 +43,6 @@ public class ResponsivenessManager implements ActionListener
 
     public void runAction ()
     {
-        originalCursor = component.getCursor();
         MySw mySw = new MySw();
         mySw.execute();
         if (freezeUI)
@@ -124,7 +122,7 @@ public class ResponsivenessManager implements ActionListener
         {
             if (responded)
             {
-                component.setCursor(originalCursor);
+                component.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 responded = false;
             }
         }
