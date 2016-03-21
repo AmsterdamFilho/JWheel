@@ -49,8 +49,7 @@ public class LabeledPanel extends JPanel
 
     protected JLabel createLabel (String text, int alignment)
     {
-        BoldLabel label = new BoldLabel(text, alignment);
-        return label;
+        return new BoldLabel(text, alignment);
     }
 
     @Override

@@ -27,5 +27,6 @@ public abstract class TextChangedListener implements DocumentListener
         textChanged(e);
     }
 
+    @SuppressWarnings ("UnusedParameters")
     public abstract void textChanged (DocumentEvent de);
 }

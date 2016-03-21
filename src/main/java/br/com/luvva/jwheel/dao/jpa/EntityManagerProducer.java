@@ -39,7 +39,6 @@ public class EntityManagerProducer
         propertiesMap.put("javax.persistence.jdbc.url", connectionParameters.getDatabaseUrl());
         propertiesMap.put("javax.persistence.jdbc.user", connectionParameters.getDatabaseUser());
         propertiesMap.put("javax.persistence.jdbc.password", connectionParameters.getDatabasePassword());
-        fillPropertiesMap(propertiesMap);
         PersistenceUnit persistenceUnit = WeldContext.getInstance().getBean(PersistenceUnit.class);
         emf = Persistence.createEntityManagerFactory(persistenceUnit.getName(), propertiesMap);
     }
@@ -65,10 +64,6 @@ public class EntityManagerProducer
         {
             emf.close();
         }
-    }
-
-    protected void fillPropertiesMap (Map<String, String> propertiesMap)
-    {
     }
 
 }
