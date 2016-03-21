@@ -5,6 +5,9 @@ import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.beans.LogParameters;
 import br.com.luvva.jwheel.model.providers.TextProvider;
+import br.com.luvva.jwheel.model.starter.ConnectionTest;
+import br.com.luvva.jwheel.model.starter.ConnectionTestModel;
+import br.com.luvva.jwheel.model.starter.ConnectionTestStatus;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
 import ch.qos.logback.classic.Level;
 import org.slf4j.Logger;
@@ -12,15 +15,12 @@ import org.slf4j.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Vetoed;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Vetoed
-public class JWheelMain
+public class JWheelMain implements ConnectionTestModel
 {
 
     private @Inject JwLoggerFactory loggerFactory;
@@ -80,119 +80,34 @@ public class JWheelMain
 
     protected boolean databaseConnectionOk ()
     {
-        ConnectionTestModel connectionTestModel = new ConnectionTestModel();
-        ConnectionTestTimer connectionTestTimer = new ConnectionTestTimer(connectionTestModel);
-        connectionTestTimer.start();
-        ConnectionTestThread connectionTest = new ConnectionTestThread(connectionTestModel);
-        connectionTest.start();
-        try
+        return WeldContext.getInstance().getBean(ConnectionTest.class).execute(this);
+    }
+
+    @Override
+    public int timerDelay ()
+    {
+        return 2000;
+    }
+
+    @Override
+    public void statusChanged (ConnectionTestStatus newStatus)
+    {
+        switch (newStatus)
         {
-            //noinspection SynchronizationOnLocalVariableOrMethodParameter
-            synchronized (connectionTest)
-            {
-                connectionTest.wait();
-            }
+            case RUNNING_TAKING_TOO_LONG:
+                viewStarter.showConnectionTestProgressDialog();
+                break;
+            case FAILED:
+            case SUCCEEDED:
+                viewStarter.closeConnectionTestProgressDialog();
+                break;
+            default:
         }
-        catch (InterruptedException e)
-        {
-            logger.error("Connection test was interrupted!", e);
-        }
-        if (connectionTestModel.isProgressDialogWasShown())
-        {
-            viewStarter.closeConnectionTestProgressDialog();
-        }
-        return connectionTestModel.getConnectionTestResult();
     }
 
     @SuppressWarnings ("EmptyMethod")
     protected void customInit ()
     {
-    }
-
-    private class ConnectionTestThread extends Thread
-    {
-
-        private ConnectionTestModel connectionTestModel;
-
-        private ConnectionTestThread (ConnectionTestModel connectionTestModel)
-        {
-            setDaemon(true);
-            this.connectionTestModel = connectionTestModel;
-        }
-
-        @Override
-        public void run ()
-        {
-            synchronized (this)
-            {
-                try
-                {
-                    WeldContext.getInstance().getBean(EntityManager.class);
-                    connectionTestModel.setConnectionTestResult(true);
-                }
-                catch (Exception ex)
-                {
-                    logger.error("Could not create an EntityManager!", ex);
-                    connectionTestModel.setConnectionTestResult(false);
-                }
-                notify();
-            }
-        }
-    }
-
-    private class ConnectionTestTimer extends Timer
-    {
-
-        private ConnectionTestModel connectionTestModel;
-
-        private ConnectionTestTimer (ConnectionTestModel connectionTestModel)
-        {
-            super(true);
-            this.connectionTestModel = connectionTestModel;
-        }
-
-        private void start ()
-        {
-            schedule(new TimerTask()
-            {
-                @Override
-                public void run ()
-                {
-                    if (connectionTestModel.getConnectionTestResult() == null)
-                    {
-                        viewStarter.showConnectionTestProgressDialog();
-                        connectionTestModel.setProgressDialogWasShown(true);
-                    }
-                    cancel();
-                }
-            }, 2000);
-        }
-    }
-
-    private class ConnectionTestModel
-    {
-        private Boolean connectionTestResult   = null;
-        private boolean progressDialogWasShown = false;
-
-        private Boolean getConnectionTestResult ()
-        {
-            return connectionTestResult;
-        }
-
-        private void setConnectionTestResult (Boolean connectionTestResult)
-        {
-            this.connectionTestResult = connectionTestResult;
-        }
-
-        private boolean isProgressDialogWasShown ()
-        {
-            return progressDialogWasShown;
-        }
-
-        private void setProgressDialogWasShown (boolean progressDialogWasShown)
-        {
-            this.progressDialogWasShown = progressDialogWasShown;
-        }
     }
 
 }
