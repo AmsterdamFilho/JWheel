@@ -5,9 +5,9 @@ import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.beans.LogParameters;
 import br.com.luvva.jwheel.model.providers.TextProvider;
-import br.com.luvva.jwheel.model.starter.ConnectionTest;
-import br.com.luvva.jwheel.model.starter.ConnectionTestModel;
-import br.com.luvva.jwheel.model.starter.ConnectionTestStatus;
+import br.com.luvva.jwheel.dao.jpa.ConnectionTester;
+import br.com.luvva.jwheel.model.utils.Wrapper;
+import br.com.luvva.jwheel.model.utils.LongTaskManager;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
 import ch.qos.logback.classic.Level;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ import javax.inject.Inject;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Vetoed
-public class JWheelMain implements ConnectionTestModel
+public class JWheelMain
 {
 
     private @Inject JwLoggerFactory loggerFactory;
@@ -46,6 +46,7 @@ public class JWheelMain implements ConnectionTestModel
             switch (ddm.getChosenOption())
             {
                 case 0:
+                    viewStarter.showConnectionSettingsDialog();
                     break;
                 case 1:
                     break;
@@ -80,29 +81,14 @@ public class JWheelMain implements ConnectionTestModel
 
     protected boolean databaseConnectionOk ()
     {
-        return WeldContext.getInstance().getBean(ConnectionTest.class).execute(this);
-    }
-
-    @Override
-    public int timerDelay ()
-    {
-        return 2000;
-    }
-
-    @Override
-    public void statusChanged (ConnectionTestStatus newStatus)
-    {
-        switch (newStatus)
-        {
-            case RUNNING_TAKING_TOO_LONG:
-                viewStarter.showConnectionTestProgressDialog();
-                break;
-            case FAILED:
-            case SUCCEEDED:
-                viewStarter.closeConnectionTestProgressDialog();
-                break;
-            default:
-        }
+        ConnectionTester connectionTester = WeldContext.getInstance().getBean(ConnectionTester.class);
+        Wrapper<Boolean> wrapper = new Wrapper<>();
+        LongTaskManager connectionTestManager =
+                new LongTaskManager(() -> wrapper.setValue(connectionTester.execute()), 2000,
+                        () -> viewStarter.showConnectionTestProgressDialog());
+        connectionTestManager.executeAndWait();
+        viewStarter.closeConnectionTestProgressDialog();
+        return wrapper.getValue();
     }
 
     @SuppressWarnings ("EmptyMethod")
