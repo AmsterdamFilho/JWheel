@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.view.swing.utils;
+package br.com.luvva.jwheel.view.swing.components;
 
 import br.com.luvva.jwheel.view.swing.components.BoldLabel;
 import br.com.luvva.jwheel.view.swing.components.JwDialog;
