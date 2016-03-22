@@ -1,6 +1,7 @@
 package br.com.luvva.jwheel.view.swing.utils;
 
 import br.com.luvva.jwheel.cdi.utils.Initialized;
+import br.com.luvva.jwheel.cdi.utils.InjectionUtils;
 import org.slf4j.Logger;
 
 import javax.enterprise.inject.spi.InjectionPoint;
@@ -8,7 +9,6 @@ import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.lang.annotation.Annotation;
 import java.net.URL;
 
 /**
@@ -24,19 +24,7 @@ public class ResourceProvider
     @Inject
     public ResourceProvider (InjectionPoint ip)
     {
-        this.imageResourceDirectory = getImageResourceDirectory(ip);
-    }
-
-    private String getImageResourceDirectory (InjectionPoint ip)
-    {
-        for (Annotation annotation : ip.getQualifiers())
-        {
-            if (annotation.annotationType().equals(Initialized.class))
-            {
-                return ((Initialized) annotation).stringValue();
-            }
-        }
-        return null;
+        imageResourceDirectory = InjectionUtils.getString(ip);
     }
 
     public Icon getIcon (String fileName)
