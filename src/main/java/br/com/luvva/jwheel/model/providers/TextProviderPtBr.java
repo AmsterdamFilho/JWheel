@@ -39,7 +39,7 @@ public class TextProviderPtBr implements TextProvider
     @Override
     public String ok ()
     {
-        return "Ok";
+        return "OK";
     }
 
     @Override
