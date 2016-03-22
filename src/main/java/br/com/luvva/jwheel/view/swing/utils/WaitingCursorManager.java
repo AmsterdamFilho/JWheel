@@ -42,6 +42,7 @@ public class WaitingCursorManager implements ActionListener
     private synchronized void runAction ()
     {
         Wrapper<Boolean> cursorChanged = new Wrapper<>();
+        cursorChanged.setValue(false);
         if (freezeUI)
         {
             LongTaskManager taskManager = new LongTaskManager(task, allowedDelay,
