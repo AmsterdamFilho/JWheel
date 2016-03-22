@@ -16,6 +16,12 @@ public interface SwImageProvider
 
     Icon errorIcon ();
 
+    Icon confirmIcon ();
+
+    Icon cancelIcon ();
+
+    Icon saveIcon ();
+
     boolean decorateMainView (Graphics g, int mainViewWidth, int mainViewHeight, ImageObserver observer);
 
 }

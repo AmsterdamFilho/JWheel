@@ -30,26 +30,44 @@ public class DefaultSwImageProvider implements SwImageProvider
     @PostConstruct
     public void init ()
     {
-        mainViewArt = resourceProvider.getImage("main_view_art.jpg");
+        mainViewArt = resourceProvider.getImage("mainViewArt.jpg");
     }
 
     //<editor-fold desc="SwImageProvider">
     @Override
     public Icon questionIcon ()
     {
-        return resourceProvider.getIcon("question_mark.png");
+        return resourceProvider.getIcon("questionMark48x48.png");
     }
 
     @Override
     public Icon successIcon ()
     {
-        return resourceProvider.getIcon("success_icon.png");
+        return resourceProvider.getIcon("success64x64.png");
     }
 
     @Override
     public Icon errorIcon ()
     {
-        return resourceProvider.getIcon("error_icon.png");
+        return resourceProvider.getIcon("error64x64.png");
+    }
+
+    @Override
+    public Icon confirmIcon ()
+    {
+        return resourceProvider.getIcon("ok16x16.png");
+    }
+
+    @Override
+    public Icon cancelIcon ()
+    {
+        return resourceProvider.getIcon("cancel16x16.png");
+    }
+
+    @Override
+    public Icon saveIcon ()
+    {
+        return resourceProvider.getIcon("save16x16.png");
     }
 
     @Override
