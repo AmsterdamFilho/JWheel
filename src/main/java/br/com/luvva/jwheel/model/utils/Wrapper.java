@@ -3,16 +3,16 @@ package br.com.luvva.jwheel.model.utils;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class BooleanWrapper
+public class Wrapper<T>
 {
-    private boolean value;
+    private T value;
 
-    public boolean isValue ()
+    public T getValue ()
     {
         return value;
     }
 
-    public void setValue (boolean value)
+    public void setValue (T value)
     {
         this.value = value;
     }
