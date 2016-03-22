@@ -1,27 +1,27 @@
-package br.com.luvva.jwheel.view.swing.starter;
+package br.com.luvva.jwheel.view.swing.utils;
 
 import br.com.luvva.jwheel.view.swing.components.BoldLabel;
 import br.com.luvva.jwheel.view.swing.components.JwDialog;
 import br.com.luvva.jwheel.view.swing.components.SpacedPanel;
-import br.com.luvva.jwheel.model.providers.TextProvider;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class ConnectionTestProgressDialog extends JwDialog
+public class IndeterminateProgressBarDialog extends JwDialog
 {
 
-    private @Inject TextProvider textProvider;
+    private JLabel infoLabel;
 
-    public ConnectionTestProgressDialog ()
+    public IndeterminateProgressBarDialog ()
     {
         setModal(false);
-        setSize(400, 100);
+        setSize(400, 80);
         setUndecorated(true);
         setLocationRelativeTo(null);
     }
@@ -29,16 +29,25 @@ public class ConnectionTestProgressDialog extends JwDialog
     @PostConstruct
     private void init ()
     {
-        BoldLabel infoLabel = new BoldLabel(textProvider.databaseConnectionTestMessage());
+        infoLabel = new BoldLabel("", SwingConstants.CENTER);
+        infoLabel.setForeground(Color.black);
         JProgressBar jProgressBar = new JProgressBar();
         jProgressBar.setIndeterminate(true);
+        jProgressBar.setBorder(new LineBorder(Color.black));
 
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BorderLayout());
         jPanel.add(infoLabel, BorderLayout.CENTER);
-        jPanel.add(jProgressBar, BorderLayout.PAGE_END);
+        jPanel.add(new SpacedPanel(jProgressBar, 0, 5, 0, 0), BorderLayout.PAGE_END);
 
-        setContentPane(new SpacedPanel(jPanel, 5, 5));
+        JPanel contentPanel = new SpacedPanel(jPanel, 5, 5);
+        contentPanel.setBorder(new LineBorder(Color.black));
+        setContentPane(contentPanel);
+    }
+
+    public void setInfoLabelText (String text)
+    {
+        infoLabel.setText(text);
     }
 
     @Override

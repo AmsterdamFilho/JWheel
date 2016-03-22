@@ -1,81 +1,54 @@
 package br.com.luvva.jwheel.model.starter;
 
+import br.com.luvva.jwheel.WeldContext;
+import br.com.luvva.jwheel.model.utils.LongTaskManager;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class ConnectionTest
+public class ConnectionTest implements Runnable
 {
 
-    private ConnectionTestStatus status = ConnectionTestStatus.NOT_INITIATED;
+    private @Inject Logger  logger;
+    private         Boolean result;
 
-    private ConnectionTestModel model;
-    private Exception           connectionFailedException;
-
-    private @Inject Logger logger;
-
-    public synchronized boolean execute (ConnectionTestModel model)
+    public boolean execute ()
     {
-        if (status != ConnectionTestStatus.NOT_INITIATED)
+        if (result != null)
         {
-            throw new IllegalStateException("The test can only be executed once!");
+            throw new IllegalStateException("The test has ran already!");
         }
-        this.model = model;
-        status = ConnectionTestStatus.RUNNING;
-        ConnectionTestThread connectionTestThread = new ConnectionTestThread(this);
-        connectionTestThread.start();
-        new ConnectionTestTimer(this, model).start();
-        while (!statusIsSucceededOrFailed())
+        run();
+        return result;
+    }
+
+    public boolean execute (int acceptableDuration, Runnable acceptableDurationExpiredHandler)
+    {
+        if (result != null)
         {
-            try
-            {
-                wait();
-            }
-            catch (InterruptedException ignored)
-            {
-            }
+            throw new IllegalStateException("The test has ran already!");
         }
-        return ConnectionTestStatus.SUCCEEDED.equals(status);
+        new LongTaskManager(this, acceptableDuration, acceptableDurationExpiredHandler).executeAndWait();
+        return result;
     }
 
-    public Exception getConnectionFailedException ()
+    @Override
+    public void run ()
     {
-        return connectionFailedException;
-    }
-
-    void setConnectionFailedException (String description, Exception connectionFailedException)
-    {
-        this.connectionFailedException = connectionFailedException;
-        logger.error(description, connectionFailedException);
-    }
-
-    private boolean statusIsSucceededOrFailed ()
-    {
-        return ConnectionTestStatus.FAILED.equals(status) || ConnectionTestStatus.SUCCEEDED.equals(status);
-    }
-
-    ConnectionTestStatus getStatus ()
-    {
-        return status;
-    }
-
-    synchronized void setStatus (ConnectionTestStatus status)
-    {
-        if (status.equals(ConnectionTestStatus.RUNNING_TAKING_TOO_LONG))
+        try
         {
-            if (!this.status.equals(ConnectionTestStatus.RUNNING))
-            {
-                return;
-            }
+            Thread.sleep(10000);
+            WeldContext.getInstance().getBean(EntityManager.class);
+            this.result = Boolean.TRUE;
         }
-        this.status = status;
-        model.statusChanged(status);
-        if (statusIsSucceededOrFailed())
+        catch (Exception ex)
         {
-            notify();
+            logger.error("Could not create an EntityManager!", ex);
+            this.result = Boolean.FALSE;
         }
     }
 }

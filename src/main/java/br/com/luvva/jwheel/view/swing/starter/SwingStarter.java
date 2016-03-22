@@ -5,6 +5,7 @@ import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.providers.TextProvider;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
 import br.com.luvva.jwheel.view.swing.components.SwDecisionDialog;
+import br.com.luvva.jwheel.view.swing.utils.IndeterminateProgressBarDialog;
 import br.com.luvva.jwheel.view.swing.utils.InvokeAndWaitHandler;
 import org.slf4j.Logger;
 
@@ -24,7 +25,7 @@ public class SwingStarter implements ViewStarter
     private @Inject TextProvider         textProvider;
     private @Inject InvokeAndWaitHandler invokeAndWaitHandler;
 
-    private JDialog connectionTestProgressDialog;
+    private IndeterminateProgressBarDialog connectionTestProgressDialog;
 
     @Override
     public void configureView ()
@@ -51,7 +52,8 @@ public class SwingStarter implements ViewStarter
     public void showConnectionTestProgressDialog ()
     {
         java.awt.EventQueue.invokeLater(() -> {
-            connectionTestProgressDialog = WeldContext.getInstance().getBean(ConnectionTestProgressDialog.class);
+            connectionTestProgressDialog = WeldContext.getInstance().getBean(IndeterminateProgressBarDialog.class);
+            connectionTestProgressDialog.setInfoLabelText(textProvider.databaseConnectionTestMessage());
             connectionTestProgressDialog.setVisible(true);
         });
     }
@@ -59,10 +61,7 @@ public class SwingStarter implements ViewStarter
     @Override
     public void closeConnectionTestProgressDialog ()
     {
-        if (connectionTestProgressDialog != null)
-        {
-            java.awt.EventQueue.invokeLater(() -> connectionTestProgressDialog.dispose());
-        }
+        java.awt.EventQueue.invokeLater(() -> connectionTestProgressDialog.dispose());
     }
 
     @Override
