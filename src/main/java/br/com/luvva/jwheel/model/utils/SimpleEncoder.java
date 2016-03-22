@@ -5,7 +5,7 @@ import java.util.Base64;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class SimpleEncoding
+public class SimpleEncoder
 {
     public static String encode (String string)
     {

@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.cdi.utils.NewInstance;
-import br.com.luvva.jwheel.model.utils.SimpleEncoding;
+import br.com.luvva.jwheel.model.utils.SimpleEncoder;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,12 +52,12 @@ public class ConnectionParameters
 
     public String getDatabasePassword ()
     {
-        return SimpleEncoding.decode(databasePassword);
+        return SimpleEncoder.decode(databasePassword);
     }
 
     public void setDatabasePassword (String databasePassword)
     {
-        this.databasePassword = SimpleEncoding.encode(databasePassword);
+        this.databasePassword = SimpleEncoder.encode(databasePassword);
     }
 
     public String getDatabaseUser ()

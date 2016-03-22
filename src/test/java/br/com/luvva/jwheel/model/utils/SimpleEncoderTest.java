@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class SimpleEncodingTest
+public class SimpleEncoderTest
 {
 
     @Test
@@ -13,19 +13,19 @@ public class SimpleEncodingTest
     {
         System.out.println();
         System.out.println("Encoding empty String");
-        System.out.println(SimpleEncoding.encode(""));
+        System.out.println(SimpleEncoder.encode(""));
         String numbersString = "101020";
         System.out.println("Encoding simple numbers: " + numbersString);
-        System.out.println(SimpleEncoding.encode(numbersString));
+        System.out.println(SimpleEncoder.encode(numbersString));
         String ipString = "192.168.25.200";
         System.out.println("Encoding ip String: " + ipString);
-        System.out.println(SimpleEncoding.encode(ipString));
+        System.out.println(SimpleEncoder.encode(ipString));
         String simpleString = "Apple";
         System.out.println("Encoding simple String: " + simpleString);
-        System.out.println(SimpleEncoding.encode(simpleString));
+        System.out.println(SimpleEncoder.encode(simpleString));
         String complexString = "ÉéçÇÃã :!? xyz987";
         System.out.println("Encoding complex String: " + complexString);
-        System.out.println(SimpleEncoding.encode(complexString));
+        System.out.println(SimpleEncoder.encode(complexString));
         System.out.println();
     }
 
@@ -34,19 +34,19 @@ public class SimpleEncodingTest
     {
         System.out.println();
         System.out.println("Testing decoding of empty String");
-        System.out.println("".equals(SimpleEncoding.decode(SimpleEncoding.encode(""))) ? "OK" : "Not ok");
+        System.out.println("".equals(SimpleEncoder.decode(SimpleEncoder.encode(""))) ? "OK" : "Not ok");
         String numbersString = "101020";
         System.out.println("Testing decoding of numbers String: " + numbersString);
-        System.out.println(numbersString.equals(SimpleEncoding.decode(SimpleEncoding.encode(numbersString))) ? "OK" : "Not ok");
+        System.out.println(numbersString.equals(SimpleEncoder.decode(SimpleEncoder.encode(numbersString))) ? "OK" : "Not ok");
         String ipString = "192.168.25.200";
         System.out.println("Testing decoding of ip String: " + ipString);
-        System.out.println(ipString.equals(SimpleEncoding.decode(SimpleEncoding.encode(ipString))) ? "OK" : "Not ok");
+        System.out.println(ipString.equals(SimpleEncoder.decode(SimpleEncoder.encode(ipString))) ? "OK" : "Not ok");
         String simpleString = "Apple";
         System.out.println("Testing decoding of simple String: " + simpleString);
-        System.out.println(simpleString.equals(SimpleEncoding.decode(SimpleEncoding.encode(simpleString))) ? "OK" : "Not ok");
+        System.out.println(simpleString.equals(SimpleEncoder.decode(SimpleEncoder.encode(simpleString))) ? "OK" : "Not ok");
         String complexString = "ÉéçÇÃã :!? xyz987";
         System.out.println("Testing decoding of complex String: " + complexString);
-        System.out.println(complexString.equals(SimpleEncoding.decode(SimpleEncoding.encode(complexString))) ? "OK" : "Not ok");
+        System.out.println(complexString.equals(SimpleEncoder.decode(SimpleEncoder.encode(complexString))) ? "OK" : "Not ok");
         System.out.println();
     }
 }
