@@ -22,6 +22,8 @@ public interface SwImageProvider
 
     Icon saveIcon ();
 
+    Icon acButtonIcon ();
+
     boolean decorateMainView (Graphics g, int mainViewWidth, int mainViewHeight, ImageObserver observer);
 
 }

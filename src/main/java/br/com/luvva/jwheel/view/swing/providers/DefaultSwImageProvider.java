@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.view.swing.providers;
 
+import br.com.luvva.jwheel.Resources;
 import br.com.luvva.jwheel.cdi.utils.Initialized;
 import br.com.luvva.jwheel.view.swing.utils.ResourceProvider;
 import org.slf4j.Logger;
@@ -30,44 +31,50 @@ public class DefaultSwImageProvider implements SwImageProvider
     @PostConstruct
     public void init ()
     {
-        mainViewArt = resourceProvider.getImage("mainViewArt.jpg");
+        mainViewArt = resourceProvider.getImage(Resources.MAIN_VIEW_ART);
     }
 
     //<editor-fold desc="SwImageProvider">
     @Override
     public Icon questionIcon ()
     {
-        return resourceProvider.getIcon("questionMark48x48.png");
+        return resourceProvider.getIcon(Resources.QUESTION_MARK_48X48);
     }
 
     @Override
     public Icon successIcon ()
     {
-        return resourceProvider.getIcon("success64x64.png");
+        return resourceProvider.getIcon(Resources.SUCCESS_64X64);
     }
 
     @Override
     public Icon errorIcon ()
     {
-        return resourceProvider.getIcon("error64x64.png");
+        return resourceProvider.getIcon(Resources.ERROR_64X64);
     }
 
     @Override
     public Icon confirmIcon ()
     {
-        return resourceProvider.getIcon("ok16x16.png");
+        return resourceProvider.getIcon(Resources.OK_16X16);
     }
 
     @Override
     public Icon cancelIcon ()
     {
-        return resourceProvider.getIcon("cancel16x16.png");
+        return resourceProvider.getIcon(Resources.CANCEL_16X16);
     }
 
     @Override
     public Icon saveIcon ()
     {
-        return resourceProvider.getIcon("save16x16.png");
+        return resourceProvider.getIcon(Resources.SAVE_16X16);
+    }
+
+    @Override
+    public Icon acButtonIcon ()
+    {
+        return resourceProvider.getIcon(Resources.DOWN_ARROW_8X6);
     }
 
     @Override
