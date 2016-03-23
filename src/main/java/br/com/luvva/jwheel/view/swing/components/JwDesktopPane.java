@@ -4,7 +4,9 @@ import br.com.luvva.jwheel.view.swing.providers.SwImageProvider;
 
 import javax.inject.Inject;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Insets;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -80,18 +82,24 @@ public class JwDesktopPane extends JDesktopPane
 
             if (scrollPane != null)
             {
-                Dimension d = scrollPane.getVisibleRect().getSize();
-                if (scrollPane.getBorder() != null)
-                {
-                    d.setSize(d.getWidth() - scrollInsets.left - scrollInsets.right,
-                            d.getHeight() - scrollInsets.top - scrollInsets.bottom);
-                }
+                Dimension d = getDimension(scrollPane, scrollInsets);
 
                 d.setSize(d.getWidth() - 20, d.getHeight() - 20);
                 desktop.setAllSize(x, y);
                 scrollPane.invalidate();
                 scrollPane.validate();
             }
+        }
+
+        private Dimension getDimension (JComponent scrollPane, Insets scrollInsets)
+        {
+            Dimension d = scrollPane.getVisibleRect().getSize();
+            if (scrollPane.getBorder() != null)
+            {
+                d.setSize(d.getWidth() - scrollInsets.left - scrollInsets.right,
+                        d.getHeight() - scrollInsets.top - scrollInsets.bottom);
+            }
+            return d;
         }
 
         private Insets getScrollPaneInsets ()
@@ -141,12 +149,7 @@ public class JwDesktopPane extends JDesktopPane
                         y = allFrame.getY() + allFrame.getHeight();
                     }
                 }
-                Dimension d = scrollPane.getVisibleRect().getSize();
-                if (scrollPane.getBorder() != null)
-                {
-                    d.setSize(d.getWidth() - scrollInsets.left - scrollInsets.right,
-                            d.getHeight() - scrollInsets.top - scrollInsets.bottom);
-                }
+                Dimension d = getDimension(scrollPane, scrollInsets);
 
                 if (x <= d.getWidth())
                 {
