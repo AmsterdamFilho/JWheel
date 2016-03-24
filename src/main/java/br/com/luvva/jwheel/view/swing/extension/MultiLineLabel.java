@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package br.com.luvva.jwheel.view.swing.components;
+package br.com.luvva.jwheel.view.swing.extension;
 
 import javax.swing.*;
 import java.awt.Rectangle;

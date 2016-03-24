@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.view.swing.components;
+package br.com.luvva.jwheel.view.swing.extension;
 
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.view.swing.builders.JwFrameBuilder;

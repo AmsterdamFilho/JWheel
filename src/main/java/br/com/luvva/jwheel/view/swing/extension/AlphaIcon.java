@@ -1,7 +1,7 @@
 /**
  * @(#)AlphaIcon.java	1.0 08/16/10
  */
-package br.com.luvva.jwheel.view.swing.components;
+package br.com.luvva.jwheel.view.swing.extension;
 
 import javax.swing.*;
 import java.awt.AlphaComposite;

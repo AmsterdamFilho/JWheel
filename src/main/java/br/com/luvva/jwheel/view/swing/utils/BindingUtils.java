@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.view.swing.utils;
 
-import br.com.luvva.jwheel.view.swing.components.JwPasswordField;
+import br.com.luvva.jwheel.view.swing.extension.JwPasswordField;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.JTextComponent;

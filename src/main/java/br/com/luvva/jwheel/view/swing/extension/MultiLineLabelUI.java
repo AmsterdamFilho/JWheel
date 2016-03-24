@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.luvva.jwheel.view.swing.components;
+package br.com.luvva.jwheel.view.swing.extension;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;

@@ -1,8 +1,4 @@
-package br.com.luvva.jwheel.view.swing.components;
-
-import br.com.luvva.jwheel.view.swing.components.BoldLabel;
-import br.com.luvva.jwheel.view.swing.components.JwDialog;
-import br.com.luvva.jwheel.view.swing.components.SpacedPanel;
+package br.com.luvva.jwheel.view.swing.extension;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;

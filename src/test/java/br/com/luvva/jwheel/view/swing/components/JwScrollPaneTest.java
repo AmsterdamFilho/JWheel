@@ -1,5 +1,8 @@
 package br.com.luvva.jwheel.view.swing.components;
 
+import br.com.luvva.jwheel.view.swing.extension.BoldLabel;
+import br.com.luvva.jwheel.view.swing.extension.JwScrollPane;
+import br.com.luvva.jwheel.view.swing.extension.JwTextField;
 import org.junit.Test;
 
 import javax.swing.*;

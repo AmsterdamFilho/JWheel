@@ -3,7 +3,7 @@
  */
 package br.com.luvva.jwheel.view.swing.renderers;
 
-import br.com.luvva.jwheel.view.swing.components.AlphaIcon;
+import br.com.luvva.jwheel.view.swing.extension.AlphaIcon;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
