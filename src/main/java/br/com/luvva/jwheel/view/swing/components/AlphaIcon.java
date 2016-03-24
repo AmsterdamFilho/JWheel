@@ -1,13 +1,13 @@
 /**
  * @(#)AlphaIcon.java	1.0 08/16/10
  */
-package br.com.luvva.jwheel.view.swing.utils;
+package br.com.luvva.jwheel.view.swing.components;
 
+import javax.swing.*;
 import java.awt.AlphaComposite;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.Icon;
 
 /**
  * An Icon wrapper that paints the contained icon with a specified transparency.
