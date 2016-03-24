@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.view.swing.builders;
 
-import br.com.luvva.jwheel.view.swing.components.ButtonWithOpacity;
+import br.com.luvva.jwheel.view.swing.extension.AlphaButton;
 
 import javax.swing.*;
 import java.awt.Rectangle;
@@ -15,11 +15,11 @@ import java.util.*;
 public class AnimatedButtonsBuilder
 {
 
-    private ArrayList<ButtonWithOpacity>      buttons          = new ArrayList<>();
-    private Map<ButtonWithOpacity, Rectangle> originalsBounds  = new IdentityHashMap<>();
-    private Map<Integer, Float>               opacityFactorMap = new HashMap<>();
-    private Map<Integer, Float>               sizeFactorMap    = new HashMap<>();
-    private float                             defaultOpacity   = 0.7f;
+    private ArrayList<AlphaButton>      buttons          = new ArrayList<>();
+    private Map<AlphaButton, Rectangle> originalsBounds  = new IdentityHashMap<>();
+    private Map<Integer, Float>         opacityFactorMap = new HashMap<>();
+    private Map<Integer, Float>         sizeFactorMap    = new HashMap<>();
+    private float                       defaultOpacity   = 0.7f;
 
     {
         opacityFactorMap.put(0, 1f);
@@ -54,35 +54,35 @@ public class AnimatedButtonsBuilder
         this.opacityFactorMap = opacityFactorMap;
     }
 
-    public ButtonWithOpacity addNewButton (String tooltipText, Rectangle bounds, Icon icon, ActionListener al)
+    public AlphaButton addNewButton (String tooltipText, Rectangle bounds, Icon icon, ActionListener al)
     {
-        ButtonWithOpacity button = addNewButton(bounds, al, tooltipText);
+        AlphaButton button = addNewButton(bounds, al, tooltipText);
         button.setIcon(icon);
         buttons.add(button);
         return button;
     }
 
-    public ButtonWithOpacity addNewButton (String text, String tooltipText, Rectangle bounds, Icon icon,
-                                           ActionListener al)
+    public AlphaButton addNewButton (String text, String tooltipText, Rectangle bounds, Icon icon,
+                                     ActionListener al)
     {
-        ButtonWithOpacity button = addNewButton(bounds, al, tooltipText);
+        AlphaButton button = addNewButton(bounds, al, tooltipText);
         button.setText(text);
         button.setIcon(icon);
         buttons.add(button);
         return button;
     }
 
-    public ButtonWithOpacity addNewButton (String text, String tooltipText, Rectangle bounds, ActionListener al)
+    public AlphaButton addNewButton (String text, String tooltipText, Rectangle bounds, ActionListener al)
     {
-        ButtonWithOpacity button = addNewButton(bounds, al, tooltipText);
+        AlphaButton button = addNewButton(bounds, al, tooltipText);
         button.setText(text);
         buttons.add(button);
         return button;
     }
 
-    public ButtonWithOpacity addNewButton (Rectangle bounds, ActionListener actionListener, String tooltipText)
+    public AlphaButton addNewButton (Rectangle bounds, ActionListener actionListener, String tooltipText)
     {
-        ButtonWithOpacity button = new ButtonWithOpacity();
+        AlphaButton button = new AlphaButton();
 
         button.setBounds(bounds);
         button.addActionListener(actionListener);
@@ -92,13 +92,13 @@ public class AnimatedButtonsBuilder
         button.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         originalsBounds.put(button, bounds);
-        button.setOpacity(defaultOpacity);
+        button.setAlpha(defaultOpacity);
         button.addMouseListener(new MyMouseListener());
 
         return button;
     }
 
-    public List<ButtonWithOpacity> getButtons ()
+    public List<AlphaButton> getButtons ()
     {
         return Collections.unmodifiableList(buttons);
     }
@@ -109,13 +109,13 @@ public class AnimatedButtonsBuilder
         @Override
         public void mouseEntered (MouseEvent e)
         {
-            int focusedButtonIndex = positionOnTheList((ButtonWithOpacity) e.getSource());
+            int focusedButtonIndex = positionOnTheList((AlphaButton) e.getSource());
             // animate the buttons
             for (int buttonIndex = 0; buttonIndex < buttons.size(); buttonIndex++)
             {
-                ButtonWithOpacity jButton = buttons.get(buttonIndex);
+                AlphaButton jButton = buttons.get(buttonIndex);
                 int diff = Math.abs(buttonIndex - focusedButtonIndex);
-                jButton.setOpacity(getOpacityFactor(diff));
+                jButton.setAlpha(getOpacityFactor(diff));
                 resize(jButton, getSizeFactor(diff));
             }
         }
@@ -125,7 +125,7 @@ public class AnimatedButtonsBuilder
         {
             // inanimate
             buttons.forEach(b -> {
-                b.setOpacity(defaultOpacity);
+                b.setAlpha(defaultOpacity);
                 b.setBounds(originalsBounds.get(b));
             });
         }
@@ -165,11 +165,11 @@ public class AnimatedButtonsBuilder
 
     }
 
-    private int positionOnTheList (ButtonWithOpacity b)
+    private int positionOnTheList (AlphaButton b)
     {
         for (int i = 0; i < buttons.size(); i++)
         {
-            ButtonWithOpacity loopButton = buttons.get(i);
+            AlphaButton loopButton = buttons.get(i);
             if (b == loopButton)
             {
                 return i;
