@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.view.swing.utils;
+package br.com.luvva.jwheel.view.swing.providers;
 
 import br.com.luvva.jwheel.cdi.utils.Initialized;
 import br.com.luvva.jwheel.cdi.utils.InjectionUtils;

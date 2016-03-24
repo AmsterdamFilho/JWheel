@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.view.swing.components;
 
-import br.com.luvva.jwheel.ImageProvider;
+import br.com.luvva.jwheel.view.swing.providers.ImageProvider;
 import br.com.luvva.jwheel.view.swing.builders.AnimatedButtonsBuilder;
 import br.com.luvva.jwheel.view.swing.builders.JMenuBarBuilder;
 import br.com.luvva.jwheel.view.swing.utils.SwingUtils;
