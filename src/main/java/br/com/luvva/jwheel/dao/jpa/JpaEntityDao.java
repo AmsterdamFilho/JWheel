@@ -1,9 +1,8 @@
 package br.com.luvva.jwheel.dao.jpa;
 
-import br.com.luvva.jwheel.dao.GenericDao;
+import br.com.luvva.jwheel.dao.EntityDao;
 import br.com.luvva.jwheel.java.utils.JavaLangUtils;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.Collection;
@@ -11,9 +10,14 @@ import java.util.Collection;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class JpaGenericDao<T, PK> implements GenericDao<T, PK>
+public class JpaEntityDao<T, PK> implements EntityDao<T, PK>
 {
-    protected @Inject EntityManager entityManager;
+    protected EntityManager entityManager;
+
+    public JpaEntityDao (EntityManager entityManager)
+    {
+        this.entityManager = entityManager;
+    }
 
     public void persist (T entity)
     {

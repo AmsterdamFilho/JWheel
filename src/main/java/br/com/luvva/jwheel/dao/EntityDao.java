@@ -5,7 +5,7 @@ import java.util.Collection;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public interface GenericDao<T, PK>
+public interface EntityDao<T, PK>
 {
     void persist (T entity);
 
