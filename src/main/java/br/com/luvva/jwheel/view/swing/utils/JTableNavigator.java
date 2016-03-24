@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.view.swing.utils;
 
-import br.com.luvva.jwheel.view.interfaces.AbstractRecordViewNavigator;
+import br.com.luvva.jwheel.view.utils.AbstractRecordViewNavigator;
 
 import javax.swing.*;
 
