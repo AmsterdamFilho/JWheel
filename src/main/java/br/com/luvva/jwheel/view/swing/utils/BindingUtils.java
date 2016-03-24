@@ -35,4 +35,11 @@ public class BindingUtils
             }
         });
     }
+
+    public interface Property<T>
+    {
+        T get ();
+
+        void set (T t);
+    }
 }
