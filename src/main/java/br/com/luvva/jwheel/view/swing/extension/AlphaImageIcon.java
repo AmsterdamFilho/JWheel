@@ -54,7 +54,7 @@ public class AlphaImageIcon extends ImageIcon
      * Overridden to forward to a wrapped ImageIcon.  Does nothing if the wrapped icon
      * is not an ImageIcon.
      * <p>
-     * In common with <code>ImageIcom</code>, the newly set image will only be shown when the
+     * In common with <code>ImageIcon</code>, the newly set image will only be shown when the
      * concerned component(s) are repainted.
      *
      * @param image Sets the image displayed by a wrapped ImageIcon
@@ -162,7 +162,7 @@ public class AlphaImageIcon extends ImageIcon
 
     /**
      * Gets the width of the bounding rectangle of this <CODE>AlphaImageIcon</CODE>.
-     * Overridden to return the width of the wrapped icom.
+     * Overridden to return the width of the wrapped icon.
      *
      * @return the width in pixels
      */
