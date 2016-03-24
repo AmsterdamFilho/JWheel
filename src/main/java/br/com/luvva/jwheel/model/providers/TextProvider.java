@@ -18,6 +18,8 @@ public interface TextProvider
 
     String ok ();
 
+    String confirm ();
+
     String success ();
 
     String attention ();

@@ -43,6 +43,12 @@ public class TextProviderPtBr implements TextProvider
     }
 
     @Override
+    public String confirm ()
+    {
+        return "Confirmar";
+    }
+
+    @Override
     public String success ()
     {
         return "Sucesso";
