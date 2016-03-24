@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class WaitingCursorManager implements ActionListener
+public class WaitingCursorAction implements ActionListener
 {
 
     private Runnable  task;
@@ -20,12 +20,12 @@ public class WaitingCursorManager implements ActionListener
     private Component component;
     private boolean   freezeUI;
 
-    public WaitingCursorManager (Runnable task, int allowedDelay, Component component)
+    public WaitingCursorAction (Runnable task, int allowedDelay, Component component)
     {
         this(task, allowedDelay, component, true);
     }
 
-    public WaitingCursorManager (Runnable task, int allowedDelay, Component component, boolean freezeUI)
+    public WaitingCursorAction (Runnable task, int allowedDelay, Component component, boolean freezeUI)
     {
         this.task = task;
         this.allowedDelay = allowedDelay;
