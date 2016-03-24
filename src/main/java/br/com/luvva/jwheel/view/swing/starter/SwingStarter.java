@@ -4,8 +4,8 @@ import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.providers.TextProvider;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
-import br.com.luvva.jwheel.view.swing.components.SwDecisionDialog;
-import br.com.luvva.jwheel.view.swing.utils.IndeterminateProgressBarDialog;
+import br.com.luvva.jwheel.view.swing.extension.SwDecisionDialog;
+import br.com.luvva.jwheel.view.swing.extension.IndeterminateProgressBarDialog;
 import br.com.luvva.jwheel.view.swing.utils.InvokeAndWaitHandler;
 import org.slf4j.Logger;
 
@@ -61,13 +61,18 @@ public class SwingStarter implements ViewStarter
     @Override
     public void closeConnectionTestProgressDialog ()
     {
-        java.awt.EventQueue.invokeLater(() -> connectionTestProgressDialog.dispose());
+        java.awt.EventQueue.invokeLater(() -> {
+            if (connectionTestProgressDialog != null)
+            {
+                connectionTestProgressDialog.dispose();
+            }
+        });
     }
 
     @Override
     public void showConnectionTestFailedDialogDecision (DecisionDialogModel decisionDialogModel)
     {
-        invokeAndWaitHandler.handle(() -> {
+        invokeAndWaitHandler.invokeAndLogOnError(() -> {
             SwDecisionDialog swDecisionDialog = WeldContext.getInstance().getBean(SwDecisionDialog.class);
             swDecisionDialog.setDecisionDialogModel(decisionDialogModel);
             swDecisionDialog.setModal(true);

@@ -13,7 +13,7 @@ public class InvokeAndWaitHandler
 
     private @Inject Logger logger;
 
-    public void handle (Runnable runnable)
+    public void invokeAndLogOnError (Runnable runnable)
     {
         try
         {
@@ -22,7 +22,6 @@ public class InvokeAndWaitHandler
         catch (InterruptedException | InvocationTargetException e)
         {
             logger.error("Unexpected error while running invokeAndWait!", e);
-            System.exit(-1);
         }
     }
 }
