@@ -16,13 +16,13 @@ import java.util.prefs.Preferences;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Vetoed
-public class GenericXStreamDao<E>
+public class GenericXStreamDao<S> implements XStreamDao<S>
 {
 
     private @Inject Logger         logger;
     private @Inject PathParameters pathParameters;
 
-    private PersistenceProvider<E> provider;
+    private PersistenceProvider<S> provider;
     private XStream                xStream;
 
     @PostConstruct
@@ -34,7 +34,7 @@ public class GenericXStreamDao<E>
         {
             throw new NullPointerException();
         }
-        Class<E> typeClass = JavaLangUtils.getTypeArgumentClass(getClass());
+        Class<S> typeClass = JavaLangUtils.getTypeArgumentClass(getClass());
         switch (storageLocation)
         {
             case ASK_PATH_PARAMETERS:
@@ -66,14 +66,16 @@ public class GenericXStreamDao<E>
         return xStream;
     }
 
-    public E find () throws XStreamException, ClassCastException
+    @Override
+    public S find () throws XStreamException, ClassCastException
     {
         return provider.find(getXStream());
     }
 
-    public void merge (E entity) throws XStreamException, IOException
+    @Override
+    public void merge (S serializable) throws XStreamException, IOException
     {
-        provider.merge(getXStream(), entity);
+        provider.merge(getXStream(), serializable);
     }
 
 }
