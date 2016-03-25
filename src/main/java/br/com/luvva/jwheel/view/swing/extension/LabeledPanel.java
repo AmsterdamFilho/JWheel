@@ -13,6 +13,7 @@ import java.awt.Component;
 public class LabeledPanel extends JPanel
 {
 
+    private         JLabel        label;
     private         Component     component;
     private @Inject SwLookAndFeel lookAndFeel;
 
@@ -38,18 +39,24 @@ public class LabeledPanel extends JPanel
         {
             case SwingConstants.LEADING:
             case SwingConstants.LEFT:
-                add(createLabel(" " + notNullText, alignment), BorderLayout.PAGE_START);
+                label = createLabel(" " + notNullText, alignment);
                 break;
             default:
-                add(createLabel(notNullText, alignment), BorderLayout.PAGE_START);
+                label = createLabel(notNullText, alignment);
                 break;
         }
+        add(label, BorderLayout.PAGE_START);
         add(component, BorderLayout.CENTER);
     }
 
     protected JLabel createLabel (String text, int alignment)
     {
         return new BoldLabel(text, alignment);
+    }
+
+    public JLabel getLabel ()
+    {
+        return label;
     }
 
     @Override
