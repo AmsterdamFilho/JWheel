@@ -1,10 +1,7 @@
-package br.com.luvva.jwheel.view.swing.components;
+package br.com.luvva.jwheel.view.swing.builders;
 
 import br.com.luvva.jwheel.view.swing.providers.ImageProvider;
-import br.com.luvva.jwheel.view.swing.builders.AnimatedButtonsBuilder;
-import br.com.luvva.jwheel.view.swing.builders.JMenuBarBuilder;
 import br.com.luvva.jwheel.view.swing.utils.SwingUtils;
-import br.com.luvva.jwheel.view.swing.builders.DefaultJwFrameBuilder;
 import org.slf4j.Logger;
 
 import javax.enterprise.inject.Specializes;
