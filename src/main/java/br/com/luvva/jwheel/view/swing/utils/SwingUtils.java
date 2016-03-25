@@ -149,7 +149,11 @@ public class SwingUtils
         {
             // this method prevents creating a dialog for an invisible component, which would stop the
             // component from disposing correctly (JVM would not exit).
-            if (parentComponent.isVisible())
+            if (parentComponent == null)
+            {
+                return super.createDialog(null, title);
+            }
+            else if (parentComponent.isVisible())
             {
                 return super.createDialog(parentComponent, title);
             }
