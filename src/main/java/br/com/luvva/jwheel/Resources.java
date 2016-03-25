@@ -5,7 +5,7 @@ package br.com.luvva.jwheel;
  */
 public interface Resources
 {
-    String CANCEL_16X16 = "cancel16x16.jpg";
+    String CANCEL_16X16 = "cancel16x16.png";
     String DOWN_ARROW_8X6 = "downArrow8x6.png";
     String ERROR_64X64 = "error64x64.png";
     String MAIN_VIEW_ART = "mainViewArt.jpg";
