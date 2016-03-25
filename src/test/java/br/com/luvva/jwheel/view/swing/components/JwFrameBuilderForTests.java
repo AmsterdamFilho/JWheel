@@ -28,7 +28,6 @@ public class JwFrameBuilderForTests extends DefaultJwFrameBuilder
     @Override
     public JMenuBar getJMenuBar ()
     {
-
         JMenuBarBuilder builder = new JMenuBarBuilder();
         builder.addMenu("ParentMenu", 'P');
         builder.addMenuItem("ChildMenu1", null);

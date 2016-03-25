@@ -32,8 +32,7 @@ public class PathParametersFactory implements ParameterFactory<PathParameters>
 
     protected PathParameters createParameterBeanNewInstance ()
     {
-        return WeldContext.getInstance().getBean(PathParameters.class,
-                new AnnotationLiteral<NewInstance>() {});
+        return WeldContext.getInstance().getBean(PathParameters.class, new AnnotationLiteral<NewInstance>() {});
     }
 
     @Override
