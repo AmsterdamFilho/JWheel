@@ -12,13 +12,11 @@ import br.com.luvva.jwheel.view.interfaces.ViewStarter;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Vetoed;
 import javax.inject.Inject;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@Vetoed
 public class JWheelMain
 {
 
