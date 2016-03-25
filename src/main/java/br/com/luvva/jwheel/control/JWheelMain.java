@@ -2,14 +2,13 @@ package br.com.luvva.jwheel.control;
 
 import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.WeldContext;
+import br.com.luvva.jwheel.dao.jpa.ConnectionTester;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.beans.LogParameters;
 import br.com.luvva.jwheel.model.providers.TextProvider;
-import br.com.luvva.jwheel.dao.jpa.ConnectionTester;
-import br.com.luvva.jwheel.model.utils.Wrapper;
 import br.com.luvva.jwheel.model.utils.LongTaskManager;
+import br.com.luvva.jwheel.model.utils.Wrapper;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
-import ch.qos.logback.classic.Level;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -23,11 +22,11 @@ import javax.inject.Inject;
 public class JWheelMain
 {
 
-    private @Inject JwLoggerFactory loggerFactory;
-    private @Inject LogParameters   logParameters;
     private @Inject Logger          logger;
     private @Inject ViewStarter     viewStarter;
     private @Inject TextProvider    textProvider;
+    private @Inject JwLoggerFactory jwLoggerFactory;
+    private @Inject LogParameters   logParameters;
 
     public static void main (String[] args)
     {
@@ -37,7 +36,7 @@ public class JWheelMain
     @PostConstruct
     private void init ()
     {
-        setLogger();
+        configureLogger();
         viewStarter.configureView();
         while (!databaseConnectionOk())
         {
@@ -46,7 +45,6 @@ public class JWheelMain
             switch (ddm.getChosenOption())
             {
                 case 0:
-                    viewStarter.showConnectionSettingsDialog();
                     break;
                 case 1:
                     break;
@@ -59,24 +57,9 @@ public class JWheelMain
         customInit();
     }
 
-    protected void setLogger ()
+    protected void configureLogger ()
     {
-        Level loggerLevel = logParameters.getLoggerLevel();
-        if (logParameters.isUseLoggerConfigurationXml())
-        {
-            loggerFactory.configureLogback(logParameters.getLoggerConfigurationXml());
-        }
-        else
-        {
-            if (loggerLevel == null)
-            {
-                loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath());
-            }
-            else
-            {
-                loggerFactory.configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
-            }
-        }
+        jwLoggerFactory.configure(logParameters);
     }
 
     protected boolean databaseConnectionOk ()

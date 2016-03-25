@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel;
 
+import br.com.luvva.jwheel.model.beans.LogParameters;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
@@ -28,6 +29,26 @@ public class JwLoggerFactory
     public Logger getLogger (InjectionPoint injectionPoint)
     {
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+    }
+
+    public void configure (LogParameters logParameters)
+    {
+        Level loggerLevel = logParameters.getLoggerLevel();
+        if (logParameters.isUseLoggerConfigurationXml())
+        {
+            configureLogback(logParameters.getLoggerConfigurationXml());
+        }
+        else
+        {
+            if (loggerLevel == null)
+            {
+                configureLogbackAsDefault(logParameters.getLogFilePath());
+            }
+            else
+            {
+                configureLogbackAsDefault(logParameters.getLogFilePath(), loggerLevel);
+            }
+        }
     }
 
     public void configureLogbackAsDefault (String logFilePath)
