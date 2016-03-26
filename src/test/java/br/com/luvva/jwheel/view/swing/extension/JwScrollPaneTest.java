@@ -1,12 +1,13 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
+import br.com.luvva.jwheel.AbstractTest;
 import org.junit.Test;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -18,17 +19,20 @@ import java.util.List;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class JwScrollPaneTest
+public class JwScrollPaneTest extends AbstractTest
 {
+
+    private int textFieldHeight = 60;
+    private int textFieldWidth  = 100;
 
     @Test
     public void testUpdateScrollBars () throws Exception
     {
-        EventQueue.invokeLater(this::showTestFrame);
-//        Thread.sleep(1000000000);
+        showDialogTest("JwScrollPaneTest");
     }
 
-    private void showTestFrame ()
+    @Override
+    protected Container createTestContentPane ()
     {
         JwScrollPane jwScrollPane = new JwScrollPane();
         jwScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -38,7 +42,8 @@ public class JwScrollPaneTest
 
         BoldLabel infoLabel = new BoldLabel("Type an index from 0 to 99 and press enter to select a Text Field");
         JTextField indexTextField = new JTextField();
-        indexTextField.addKeyListener(new KeyAdapter() {
+        indexTextField.addKeyListener(new KeyAdapter()
+        {
             @Override
             public void keyReleased (KeyEvent e)
             {
@@ -64,28 +69,21 @@ public class JwScrollPaneTest
         JPanel contentPane = new JPanel(new BorderLayout());
         contentPane.add(jwScrollPane, BorderLayout.CENTER);
         contentPane.add(pageEndPanel, BorderLayout.PAGE_START);
-
-        JFrame jFrame = new JFrame();
-        jFrame.setTitle("JwScrollPaneTest");
-        jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        jFrame.setContentPane(contentPane);
-        jFrame.setPreferredSize(new Dimension(600, 350));
-        jFrame.setMinimumSize(new Dimension(600, 350));
-        jFrame.setMaximumSize(new Dimension(600, 350));
-        jFrame.setLocationRelativeTo(null);
-        jFrame.setVisible(true);
+        contentPane.setPreferredSize(new Dimension(600, 350));
+        return contentPane;
     }
 
     private class TextFieldForTheTest extends JwTextField
     {
         private JwScrollPane jwScrollPane;
         private FriendlyView friendlyView;
-        private int index;
+        private int          index;
 
         private TextFieldForTheTest (JwScrollPane jwScrollPane, FriendlyView friendlyView, int index)
         {
             this.jwScrollPane = jwScrollPane;
-            addFocusListener(new FocusAdapter() {
+            addFocusListener(new FocusAdapter()
+            {
                 @Override
                 public void focusGained (FocusEvent e)
                 {
@@ -100,9 +98,9 @@ public class JwScrollPaneTest
                 }
             });
             this.index = index;
-            setMinimumSize(new Dimension(100, 60));
-            setMaximumSize(new Dimension(100, 60));
-            setPreferredSize(new Dimension(100, 60));
+            setMinimumSize(new Dimension(textFieldWidth, textFieldHeight));
+            setMaximumSize(new Dimension(textFieldWidth, textFieldHeight));
+            setPreferredSize(new Dimension(textFieldWidth, textFieldHeight));
         }
     }
 
@@ -110,7 +108,7 @@ public class JwScrollPaneTest
     {
 
         private List<JTextComponent> jTextComponents = new ArrayList<>();
-        private int selectedIndex = -1;
+        private int                  selectedIndex   = -1;
 
         private FriendlyView (JwScrollPane jwScrollPane)
         {
@@ -162,6 +160,12 @@ public class JwScrollPaneTest
         }
 
         @Override
+        public int getVerticalUnitHeight ()
+        {
+            return textFieldHeight;
+        }
+
+        @Override
         public int getHorizontalUnitsCount ()
         {
             return 10;
@@ -171,6 +175,12 @@ public class JwScrollPaneTest
         public int getSelectedHorizontalUnitIndex ()
         {
             return selectedIndex % 10;
+        }
+
+        @Override
+        public int getHorizontalUnitWidth ()
+        {
+            return textFieldWidth;
         }
     }
 
