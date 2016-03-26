@@ -77,7 +77,7 @@ public class JwScrollPane extends JScrollPane
             @Override
             public int getSelectedVerticalUnitIndex ()
             {
-                return 0;
+                return jList.getSelectedIndex();
             }
 
             @Override
@@ -132,7 +132,7 @@ public class JwScrollPane extends JScrollPane
             @Override
             public int getSelectedVerticalUnitIndex ()
             {
-                return 0;
+                return jTable.getSelectedRow();
             }
 
             @Override

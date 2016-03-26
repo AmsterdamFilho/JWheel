@@ -54,7 +54,7 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
             }
             else if (selectedRecord >= 0 && selectedRecord < lastLineIndex)
             {
-                setSelectedRecord(selectedRecord);
+                setSelectedRecord(selectedRecord + 1);
             }
             else
             {
