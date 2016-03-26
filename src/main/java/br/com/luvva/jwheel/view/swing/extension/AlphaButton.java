@@ -10,15 +10,17 @@ import java.awt.Graphics2D;
  */
 public class AlphaButton extends JButton
 {
-    private float alpha = 1f;
+    private float alpha;
 
     public AlphaButton ()
     {
+        this(1.0f);
     }
 
     public AlphaButton (float alpha)
     {
         this.alpha = alpha;
+        setOpaque(false);
     }
 
     public float getAlpha ()
