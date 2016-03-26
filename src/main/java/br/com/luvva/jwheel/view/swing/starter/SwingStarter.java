@@ -30,7 +30,7 @@ public class SwingStarter implements ViewStarter
     @Override
     public void configureView ()
     {
-        java.awt.EventQueue.invokeLater(() -> {
+        invokeAndWaitHandler.invokeAndLogOnError(() -> {
             LookAndFeel laf = new NimbusLookAndFeel();
             laf.getDefaults().put("ProgressBarUI", "javax.swing.plaf.basic.BasicProgressBarUI");
             laf.getDefaults().put("ProgressBar.cycleTime", 2500);
