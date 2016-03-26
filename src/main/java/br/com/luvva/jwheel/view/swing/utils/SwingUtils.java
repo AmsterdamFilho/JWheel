@@ -6,10 +6,14 @@ import br.com.luvva.jwheel.model.providers.TextProvider;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.*;
+import java.awt.AWTKeyStroke;
 import java.awt.Component;
 import java.awt.HeadlessException;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -162,6 +166,25 @@ public class SwingUtils
                 return super.createDialog(null, title);
             }
         }
+    }
+
+    public static void addEnterAsForwardTraversalKey (Component component)
+    {
+        Set<AWTKeyStroke> forwardKeys = component.getFocusTraversalKeys(
+                KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS);
+        Set<AWTKeyStroke> newForwardKeys = new HashSet<>(forwardKeys);
+        newForwardKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
+        component.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newForwardKeys);
+    }
+
+    public static void removeEnterAsForwardTraversalKey (Component component)
+    {
+        Set<AWTKeyStroke> forwardKeys = component.getFocusTraversalKeys(
+                KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS);
+        Set<AWTKeyStroke> newForwardKeys = new HashSet<>(forwardKeys);
+        forwardKeys.stream().filter(forwardKey -> forwardKey.getKeyCode() == KeyEvent.VK_ENTER)
+                   .forEach(newForwardKeys::remove);
+        component.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, newForwardKeys);
     }
 
 }

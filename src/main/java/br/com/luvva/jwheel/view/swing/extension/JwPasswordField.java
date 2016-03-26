@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
-import br.com.luvva.jwheel.view.swing.utils.FocusManagerUtils;
+import br.com.luvva.jwheel.view.swing.utils.SwingUtils;
 
 import javax.swing.*;
 
@@ -11,7 +11,7 @@ public class JwPasswordField extends JPasswordField
 {
     public JwPasswordField ()
     {
-        FocusManagerUtils.addEnterAsForwardTraversalKey(this);
+        SwingUtils.addEnterAsForwardTraversalKey(this);
     }
 
     public String getStringPassword ()

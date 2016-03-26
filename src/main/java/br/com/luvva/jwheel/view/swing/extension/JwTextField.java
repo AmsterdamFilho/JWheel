@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
-import br.com.luvva.jwheel.view.swing.utils.FocusManagerUtils;
+import br.com.luvva.jwheel.view.swing.utils.SwingUtils;
 import br.com.luvva.jwheel.view.swing.utils.UndoRedoDecorator;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +18,7 @@ public class JwTextField extends JTextField
     public JwTextField ()
     {
         setColumns(0);
-        FocusManagerUtils.addEnterAsForwardTraversalKey(this);
+        SwingUtils.addEnterAsForwardTraversalKey(this);
     }
 
     @PostConstruct
