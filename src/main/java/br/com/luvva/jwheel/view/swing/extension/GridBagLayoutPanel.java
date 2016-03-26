@@ -14,18 +14,16 @@ import java.awt.GridBagLayout;
  */
 public class GridBagLayoutPanel extends JPanel
 {
-    private GridBagConstraints constraints = new GridBagConstraints();
-    private @Inject SwLookAndFeel lookAndFeel;
+    private         GridBagConstraints constraints;
+    private @Inject SwLookAndFeel      lookAndFeel;
 
     public GridBagLayoutPanel ()
     {
         super(new GridBagLayout());
+        constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
-    }
-
-    public GridBagConstraints getConstraints ()
-    {
-        return constraints;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
     }
 
     public void addWithConstraints (Component component)
@@ -60,4 +58,8 @@ public class GridBagLayoutPanel extends JPanel
         return labeledPanel;
     }
 
+    public GridBagConstraints getConstraints ()
+    {
+        return constraints;
+    }
 }
