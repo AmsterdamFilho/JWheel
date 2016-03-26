@@ -1,6 +1,7 @@
 package br.com.luvva.jwheel.awt.utils;
 
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -8,11 +9,17 @@ import java.awt.Toolkit;
 public class AwtUtils
 {
 
-    private static int menuShortcutMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+    private static final int menuShortcutKeyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+    private static final int controlShortcutMask = KeyEvent.CTRL_DOWN_MASK;
 
     public static int getMenuShortcutKeyMask ()
     {
-        return menuShortcutMask;
+        return menuShortcutKeyMask;
+    }
+
+    public static int getControlShortcutMask ()
+    {
+        return controlShortcutMask;
     }
 
 }

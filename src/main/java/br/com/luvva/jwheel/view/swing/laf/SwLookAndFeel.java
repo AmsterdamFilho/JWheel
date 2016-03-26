@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.view.swing.laf;
 
+import javax.swing.*;
 import javax.swing.border.Border;
 
 /**
@@ -15,4 +16,5 @@ public interface SwLookAndFeel
 
     int topInsetsBetweenComponents ();
 
+    LookAndFeel getLookAndFeel ();
 }

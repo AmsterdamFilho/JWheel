@@ -4,16 +4,14 @@ import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.providers.TextProvider;
 import br.com.luvva.jwheel.view.interfaces.ViewStarter;
-import br.com.luvva.jwheel.view.swing.extension.SwDecisionDialog;
 import br.com.luvva.jwheel.view.swing.extension.IndeterminateProgressBarDialog;
+import br.com.luvva.jwheel.view.swing.extension.SwDecisionDialog;
+import br.com.luvva.jwheel.view.swing.laf.SwLookAndFeel;
 import br.com.luvva.jwheel.view.swing.utils.InvokeAndWaitHandler;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import java.awt.Font;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -24,6 +22,7 @@ public class SwingStarter implements ViewStarter
     private @Inject Logger               logger;
     private @Inject TextProvider         textProvider;
     private @Inject InvokeAndWaitHandler invokeAndWaitHandler;
+    private @Inject SwLookAndFeel        lookAndFeel;
 
     private IndeterminateProgressBarDialog connectionTestProgressDialog;
 
@@ -31,15 +30,9 @@ public class SwingStarter implements ViewStarter
     public void configureView ()
     {
         invokeAndWaitHandler.invokeAndLogOnError(() -> {
-            LookAndFeel laf = new NimbusLookAndFeel();
-            laf.getDefaults().put("ProgressBarUI", "javax.swing.plaf.basic.BasicProgressBarUI");
-            laf.getDefaults().put("ProgressBar.cycleTime", 2500);
-            laf.getDefaults().put("PopupMenu.consumeEventOnClose", Boolean.FALSE);
-            laf.getDefaults().put("ToolTip.font", new FontUIResource(
-                    new FontUIResource("SansSerif", Font.PLAIN, 14)));
             try
             {
-                UIManager.setLookAndFeel(laf);
+                UIManager.setLookAndFeel(lookAndFeel.getLookAndFeel());
             }
             catch (UnsupportedLookAndFeelException e)
             {
@@ -77,6 +70,16 @@ public class SwingStarter implements ViewStarter
             swDecisionDialog.setDecisionDialogModel(decisionDialogModel);
             swDecisionDialog.setModal(true);
             swDecisionDialog.setVisible(true);
+        });
+    }
+
+    @Override
+    public void showConnectionSettingsDialog ()
+    {
+        invokeAndWaitHandler.invokeAndLogOnError(() -> {
+            ConnectionSettingsDialog dialog = WeldContext.getInstance().getBean(ConnectionSettingsDialog.class);
+            dialog.setModal(true);
+            dialog.setVisible(true);
         });
     }
 }
