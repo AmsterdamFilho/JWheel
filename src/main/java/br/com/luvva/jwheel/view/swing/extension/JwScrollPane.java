@@ -43,6 +43,14 @@ public class JwScrollPane extends JScrollPane
             friendlyView = (FriendlyView) view;
             createHorizontalAdapter();
             createVerticalAdapter();
+            if (friendlyView.shouldUpdateHorizontally())
+            {
+                getHorizontalScrollBar().setUnitIncrement(friendlyView.getHorizontalUnitWidth());
+            }
+            if (friendlyView.shouldUpdateVertically())
+            {
+                getVerticalScrollBar().setUnitIncrement(friendlyView.getVerticalUnitHeight());
+            }
         }
     }
 
@@ -81,6 +89,12 @@ public class JwScrollPane extends JScrollPane
             }
 
             @Override
+            public int getVerticalUnitHeight ()
+            {
+                return jList.getFixedCellHeight();
+            }
+
+            @Override
             public int getVisibleWidth ()
             {
                 return 0;
@@ -95,7 +109,13 @@ public class JwScrollPane extends JScrollPane
             @Override
             public int getSelectedHorizontalUnitIndex ()
             {
-                return -1;
+                return 0;
+            }
+
+            @Override
+            public int getHorizontalUnitWidth ()
+            {
+                return 0;
             }
         });
         jList.addListSelectionListener(e -> updateScrollBars());
@@ -136,6 +156,12 @@ public class JwScrollPane extends JScrollPane
             }
 
             @Override
+            public int getVerticalUnitHeight ()
+            {
+                return jTable.getRowHeight();
+            }
+
+            @Override
             public int getVisibleWidth ()
             {
                 return 0;
@@ -149,6 +175,12 @@ public class JwScrollPane extends JScrollPane
 
             @Override
             public int getSelectedHorizontalUnitIndex ()
+            {
+                return 0;
+            }
+
+            @Override
+            public int getHorizontalUnitWidth ()
             {
                 return 0;
             }
@@ -280,6 +312,8 @@ public class JwScrollPane extends JScrollPane
 
         public abstract int getSelectedVerticalUnitIndex ();
 
+        public abstract int getVerticalUnitHeight ();
+
         public int getVisibleWidth ()
         {
             return getVisibleRect().width;
@@ -288,6 +322,8 @@ public class JwScrollPane extends JScrollPane
         public abstract int getHorizontalUnitsCount ();
 
         public abstract int getSelectedHorizontalUnitIndex ();
+
+        public abstract int getHorizontalUnitWidth ();
     }
 
     public static abstract class FriendlyViewWrapper extends FriendlyView
