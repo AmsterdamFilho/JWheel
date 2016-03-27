@@ -1,8 +1,5 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
-import br.com.luvva.jwheel.view.swing.laf.SwLookAndFeel;
-
-import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -13,9 +10,10 @@ import java.awt.Component;
 public class LabeledPanel extends JPanel
 {
 
-    private         JLabel        label;
-    private         Component     component;
-    private @Inject SwLookAndFeel lookAndFeel;
+    private JLabel    label;
+    private Component component;
+
+    public static int LABEL_GAP = 3;
 
     public void setComponent (Component component)
     {
@@ -34,7 +32,7 @@ public class LabeledPanel extends JPanel
             throw new NullPointerException();
         }
         String notNullText = text == null ? "" : text;
-        setLayout(new BorderLayout(0, lookAndFeel.verticalSpaceBetweenLabelAndComponent()));
+        setLayout(new BorderLayout(0, LABEL_GAP));
         switch (alignment)
         {
             case SwingConstants.LEADING:

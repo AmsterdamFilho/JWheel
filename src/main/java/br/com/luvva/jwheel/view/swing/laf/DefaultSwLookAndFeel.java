@@ -30,24 +30,6 @@ public class DefaultSwLookAndFeel implements SwLookAndFeel
     }
 
     @Override
-    public int verticalSpaceBetweenLabelAndComponent ()
-    {
-        return 3;
-    }
-
-    @Override
-    public int leftInsetsBetweenComponents ()
-    {
-        return 5;
-    }
-
-    @Override
-    public int topInsetsBetweenComponents ()
-    {
-        return 5;
-    }
-
-    @Override
     public LookAndFeel getLookAndFeel ()
     {
         LookAndFeel laf = new NimbusLookAndFeel();

@@ -10,11 +10,5 @@ public interface SwLookAndFeel
 {
     Border defaultBorder ();
 
-    int verticalSpaceBetweenLabelAndComponent ();
-
-    int leftInsetsBetweenComponents ();
-
-    int topInsetsBetweenComponents ();
-
     LookAndFeel getLookAndFeel ();
 }

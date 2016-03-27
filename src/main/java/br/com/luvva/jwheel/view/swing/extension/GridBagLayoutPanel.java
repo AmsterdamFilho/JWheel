@@ -1,9 +1,7 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.view.swing.laf.SwLookAndFeel;
 
-import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -14,8 +12,10 @@ import java.awt.GridBagLayout;
  */
 public class GridBagLayoutPanel extends JPanel
 {
-    private         GridBagConstraints constraints;
-    private @Inject SwLookAndFeel      lookAndFeel;
+    private GridBagConstraints constraints;
+
+    public static int DEFAULT_LEFT_INSETS_WHEN_NEEDED = 5;
+    public static int DEFAULT_TOP_INSETS_WHEN_NEEDED = 5;
 
     public GridBagLayoutPanel ()
     {
@@ -30,11 +30,11 @@ public class GridBagLayoutPanel extends JPanel
     {
         if (constraints.gridx > 0)
         {
-            constraints.insets.left = lookAndFeel.leftInsetsBetweenComponents();
+            constraints.insets.left = DEFAULT_LEFT_INSETS_WHEN_NEEDED;
         }
         if (constraints.gridy > 0)
         {
-            constraints.insets.top = lookAndFeel.topInsetsBetweenComponents();
+            constraints.insets.top = DEFAULT_TOP_INSETS_WHEN_NEEDED;
         }
         add(component, constraints);
         constraints.insets.left = 0;
