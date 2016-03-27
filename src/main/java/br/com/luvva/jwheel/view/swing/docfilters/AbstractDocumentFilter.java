@@ -19,5 +19,6 @@ public abstract class AbstractDocumentFilter extends DocumentFilter
         }
     }
 
+    @SuppressWarnings ("UnusedParameters")
     public abstract boolean replaceOk (FilterBypass filterBypass, int offset, int length, String text, AttributeSet as);
 }

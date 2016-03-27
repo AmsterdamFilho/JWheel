@@ -82,7 +82,7 @@ public abstract class AbstractTest
         return null;
     }
 
-    protected Container createTestContentPane (int testContentPaneCode)
+    protected Container createTestContentPane (@SuppressWarnings ("UnusedParameters") int testContentPaneCode)
     {
         return null;
     }
