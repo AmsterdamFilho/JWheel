@@ -14,4 +14,6 @@ public interface ViewStarter
     void closeConnectionTestProgressDialog ();
 
     void showConnectionTestFailedDialogDecision (DecisionDialogModel ddm);
+
+    void showConnectionSettingsDialog ();
 }

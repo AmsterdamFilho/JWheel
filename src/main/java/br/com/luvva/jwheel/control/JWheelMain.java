@@ -43,6 +43,7 @@ public class JWheelMain
             switch (ddm.getChosenOption())
             {
                 case 0:
+                    viewStarter.showConnectionSettingsDialog();
                     break;
                 case 1:
                     break;

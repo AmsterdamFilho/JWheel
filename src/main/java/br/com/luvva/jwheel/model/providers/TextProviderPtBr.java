@@ -92,4 +92,54 @@ public class TextProviderPtBr implements TextProvider
                         "Talvez o servidor esteja inacessível ou os dados para conexão estejam incorretos!",
                 "Configurar conexão", "Tentar novamente", "Sair do sistema");
     }
+
+    //<editor-fold desc="ConnectionParametersRecord">
+    @Override
+    public String connectionParametersRecordTitle ()
+    {
+        return "Dados da conexão com o banco de dados";
+    }
+
+    @Override
+    public String connectionParametersRecordURL ()
+    {
+        return "URL";
+    }
+
+    @Override
+    public String connectionParametersRecordUser ()
+    {
+        return "Usuário";
+    }
+
+    @Override
+    public String connectionParametersRecordDriver ()
+    {
+        return "Driver";
+    }
+
+    @Override
+    public String connectionParametersRecordTest ()
+    {
+        return "Testar conexão";
+    }
+
+    @Override
+    public String connectionParametersRecordPassword ()
+    {
+        return "Senha";
+    }
+
+    @Override
+    public String connectionParametersRecordTestSuccessful ()
+    {
+        return "Conexão bem sucedida!";
+    }
+
+    @Override
+    public String connectionParametersRecordTestFailed ()
+    {
+        return "Não foi possível conectar-se ao banco de dados!";
+    }
+    //</editor-fold>
 }

@@ -33,4 +33,22 @@ public interface TextProvider
     String databaseConnectionTestMessage ();
 
     DecisionDialogModel connectionTestFailedDecision ();
+
+    //<editor-fold desc="ConnectionParametersRecord">
+    String connectionParametersRecordTitle ();
+
+    String connectionParametersRecordURL ();
+
+    String connectionParametersRecordUser ();
+
+    String connectionParametersRecordDriver ();
+
+    String connectionParametersRecordTest ();
+
+    String connectionParametersRecordPassword ();
+
+    String connectionParametersRecordTestSuccessful ();
+
+    String connectionParametersRecordTestFailed ();
+    //</editor-fold>
 }
