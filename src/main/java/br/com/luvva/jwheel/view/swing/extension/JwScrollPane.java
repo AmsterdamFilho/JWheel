@@ -1,7 +1,6 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
 import java.awt.Component;
 
 /**
@@ -51,141 +50,8 @@ public class JwScrollPane extends JScrollPane
             {
                 getVerticalScrollBar().setUnitIncrement(friendlyView.getVerticalUnitHeight());
             }
+            friendlyView.register(this);
         }
-    }
-
-    public void setAsFriendlyViewportView (JList jList)
-    {
-        setViewportView(new FriendlyViewWrapper(jList)
-        {
-            @Override
-            public boolean shouldUpdateVertically ()
-            {
-                return true;
-            }
-
-            @Override
-            public boolean shouldUpdateHorizontally ()
-            {
-                return false;
-            }
-
-            @Override
-            public int getVisibleHeight ()
-            {
-                return jList.getVisibleRect().height;
-            }
-
-            @Override
-            public int getVerticalUnitsCount ()
-            {
-                return jList.getModel().getSize();
-            }
-
-            @Override
-            public int getSelectedVerticalUnitIndex ()
-            {
-                return jList.getSelectedIndex();
-            }
-
-            @Override
-            public int getVerticalUnitHeight ()
-            {
-                return jList.getFixedCellHeight();
-            }
-
-            @Override
-            public int getVisibleWidth ()
-            {
-                return 0;
-            }
-
-            @Override
-            public int getHorizontalUnitsCount ()
-            {
-                return 0;
-            }
-
-            @Override
-            public int getSelectedHorizontalUnitIndex ()
-            {
-                return 0;
-            }
-
-            @Override
-            public int getHorizontalUnitWidth ()
-            {
-                return 0;
-            }
-        });
-        jList.addListSelectionListener(e -> updateScrollBars());
-    }
-
-    public void setAsFriendlyViewportView (JTable jTable)
-    {
-        setViewportView(new FriendlyViewWrapper(jTable)
-        {
-            @Override
-            public boolean shouldUpdateVertically ()
-            {
-                return true;
-            }
-
-            @Override
-            public boolean shouldUpdateHorizontally ()
-            {
-                return false;
-            }
-
-            @Override
-            public int getVisibleHeight ()
-            {
-                return jTable.getVisibleRect().height;
-            }
-
-            @Override
-            public int getVerticalUnitsCount ()
-            {
-                return jTable.getModel().getRowCount();
-            }
-
-            @Override
-            public int getSelectedVerticalUnitIndex ()
-            {
-                return jTable.getSelectedRow();
-            }
-
-            @Override
-            public int getVerticalUnitHeight ()
-            {
-                return jTable.getRowHeight();
-            }
-
-            @Override
-            public int getVisibleWidth ()
-            {
-                return 0;
-            }
-
-            @Override
-            public int getHorizontalUnitsCount ()
-            {
-                return 0;
-            }
-
-            @Override
-            public int getSelectedHorizontalUnitIndex ()
-            {
-                return 0;
-            }
-
-            @Override
-            public int getHorizontalUnitWidth ()
-            {
-                return 0;
-            }
-        });
-        jTable.getSelectionModel().addListSelectionListener(e -> updateScrollBars());
     }
 
     public void updateScrollBars ()
@@ -297,42 +163,33 @@ public class JwScrollPane extends JScrollPane
         int getSelectedUnitIndex ();
     }
 
-    public static abstract class FriendlyView extends JPanel
+    public interface FriendlyView
     {
-        public abstract boolean shouldUpdateVertically ();
+        boolean shouldUpdateVertically ();
 
-        public abstract boolean shouldUpdateHorizontally ();
+        boolean shouldUpdateHorizontally ();
 
-        public int getVisibleHeight ()
-        {
-            return getVisibleRect().height;
-        }
+        int getVisibleHeight ();
 
-        public abstract int getVerticalUnitsCount ();
+        int getVerticalUnitsCount ();
 
-        public abstract int getSelectedVerticalUnitIndex ();
+        int getSelectedVerticalUnitIndex ();
 
-        public abstract int getVerticalUnitHeight ();
+        int getVerticalUnitHeight ();
 
-        public int getVisibleWidth ()
-        {
-            return getVisibleRect().width;
-        }
+        int getHeight ();
 
-        public abstract int getHorizontalUnitsCount ();
+        int getVisibleWidth ();
 
-        public abstract int getSelectedHorizontalUnitIndex ();
+        int getHorizontalUnitsCount ();
 
-        public abstract int getHorizontalUnitWidth ();
-    }
+        int getSelectedHorizontalUnitIndex ();
 
-    public static abstract class FriendlyViewWrapper extends FriendlyView
-    {
-        public FriendlyViewWrapper (Component component)
-        {
-            setLayout(new BorderLayout());
-            add(component, BorderLayout.CENTER);
-        }
+        int getHorizontalUnitWidth ();
+
+        int getWidth ();
+
+        void register (JwScrollPane jwScrollPane);
     }
 
 }

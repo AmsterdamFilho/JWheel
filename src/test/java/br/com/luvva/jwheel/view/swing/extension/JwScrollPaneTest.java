@@ -104,7 +104,7 @@ public class JwScrollPaneTest extends AbstractTest
         }
     }
 
-    private class FriendlyView extends JwScrollPane.FriendlyView
+    private class FriendlyView extends JPanel implements JwScrollPane.FriendlyView
     {
 
         private List<JTextComponent> jTextComponents = new ArrayList<>();
@@ -181,6 +181,24 @@ public class JwScrollPaneTest extends AbstractTest
         public int getHorizontalUnitWidth ()
         {
             return textFieldWidth;
+        }
+
+        @Override
+        public int getVisibleHeight ()
+        {
+            return getVisibleRect().height;
+        }
+
+        @Override
+        public int getVisibleWidth ()
+        {
+            return getVisibleRect().width;
+        }
+
+        @Override
+        public void register (JwScrollPane jwScrollPane)
+        {
+
         }
     }
 
