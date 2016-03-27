@@ -18,15 +18,14 @@ public class ConnectionParameters
     private String databasePassword;
     private String databaseUser;
 
-    private static final List<String> driversSuggestions = new ArrayList<>();
-
-    static
+    public List<String> getDriversSuggestions ()
     {
+        List<String> driversSuggestions = new ArrayList<>();
         driversSuggestions.add("org.postgresql.Driver");
-    }
-
-    public static List<String> getDriversSuggestions ()
-    {
+        driversSuggestions.add("org.hsqldb.jdbcDriver");
+        driversSuggestions.add("com.mysql.jdbc.Driver");
+        driversSuggestions.add("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        driversSuggestions.add("oracle.jdbc.OracleDriver");
         return Collections.unmodifiableList(driversSuggestions);
     }
 
