@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.text.DefaultEditorKit;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
@@ -37,6 +38,10 @@ public class DefaultSwLookAndFeel implements SwLookAndFeel
         lafDefaults.put("ProgressBarUI", "javax.swing.plaf.basic.BasicProgressBarUI");
         lafDefaults.put("ProgressBar.cycleTime", 2500);
         lafDefaults.put("ToolTip.font", new FontUIResource(new FontUIResource("SansSerif", Font.PLAIN, 18)));
+        if (SystemUtils.isOsX())
+        {
+            UIManager.put("Table.alternateRowColor", new Color(175, 238, 238));
+        }
         if (SystemUtils.isOsX())
         {
             configureInputKeyMapForMac((InputMap) lafDefaults.get("TextPane.focusInputMap"));
