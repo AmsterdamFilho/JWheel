@@ -26,6 +26,8 @@ public class MultiSortTableHeaderCellRenderer implements TableCellRenderer
 
     /**
      * Constructs a <code>MultiSortTableHeaderCellRenderer</code> with a default alpha of 0.5.
+     *
+     * @param helperRenderer a renderer to add the MultiSortIcons to
      */
     public MultiSortTableHeaderCellRenderer (TableCellRenderer helperRenderer)
     {
@@ -37,7 +39,8 @@ public class MultiSortTableHeaderCellRenderer implements TableCellRenderer
      * A lower value represents greater contrast between icons, while a higher value can make
      * more sort icons visible.
      *
-     * @param alpha the opacity, in the range 0.0F to 1.0F.  Recommended range: 0.5F to 0.7F.
+     * @param helperRenderer a renderer to add the MultiSortIcons to
+     * @param alpha          the opacity, in the range 0.0F to 1.0F.  Recommended range: 0.5F to 0.7F.
      */
     public MultiSortTableHeaderCellRenderer (TableCellRenderer helperRenderer, float alpha)
     {

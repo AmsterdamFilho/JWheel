@@ -37,6 +37,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * <p>
  * Label UI delegate that supports multiple lines and line wrapping. Hard line
  * breaks (<code>\n</code>) are preserved. If the dimensions of the label is too
  * small to fit all content, the string will be clipped and "..." appended to
@@ -45,21 +46,22 @@ import java.util.List;
  * text alignment (horizontal and vertical) is supported. The UI delegate can be
  * used on a regular <code>JLabel</code> if text alignment isn't required. The
  * default alignment, left and vertically centered, will then be used.
+ * </p>
  * <p>
  * Example of usage:
- * <p>
+ * </p>
  * <pre>
  * JLabel myLabel = new JLabel();
  * myLabel.setUI(MultiLineLabelUI.labelUI);
  * myLabel.setText(&quot;A long label that will wrap automatically.&quot;);
  * </pre>
  * <p>
- * <p>
  * The line and wrapping support is implemented without using a
  * <code>View</code> to make it easy for subclasses to add custom text effects
  * by overriding {@link #paintEnabledText(JLabel, Graphics, String, int, int)}
  * and {@link #paintDisabledText(JLabel, Graphics, String, int, int)}. This
  * class is designed to be easily extended by subclasses.
+ * </p>
  *
  * @author Samuel Sjoberg, http://samuelsjoberg.com
  * @version 1.3.0
@@ -607,10 +609,9 @@ public class MultiLineLabelUI extends BasicLabelUI implements ComponentListener
     }
 
     /**
-     * Static singleton {@link Segment} cache.
+     * Static singleton Segment cache.
      *
      * @author Samuel Sjoberg
-     * @see javax.swing.text.SegmentCache
      */
     protected static final class SegmentCache
     {
@@ -652,6 +653,7 @@ public class MultiLineLabelUI extends BasicLabelUI implements ComponentListener
          * Releases a <code>Segment</code>. A segment should not be used after
          * it is released, and a segment should never be released more than
          * once.
+         * @param segment the segment to be released
          */
         public static void releaseSegment (Segment segment)
         {
