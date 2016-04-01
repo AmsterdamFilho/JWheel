@@ -13,6 +13,11 @@ public class AcControllerFromStringsList extends AbstractAcController
     private List<String>       database;
     private ListItemsCollector listItemsCollector;
 
+    public AcControllerFromStringsList ()
+    {
+        this(new ArrayList<>());
+    }
+
     public AcControllerFromStringsList (List<String> database)
     {
         this(database, new ListItemsCollector());
@@ -20,14 +25,24 @@ public class AcControllerFromStringsList extends AbstractAcController
 
     public AcControllerFromStringsList (List<String> database, ListItemsCollector listItemsCollector)
     {
-        if (listItemsCollector == null)
-        {
-            throw new IllegalArgumentException("ListItemCollector should not be null!");
-        }
+        setDatabase(database);
+        setListItemsCollector(listItemsCollector);
+    }
+
+    public void setDatabase (List<String> database)
+    {
         this.database = new ArrayList<>();
         if (database != null)
         {
             this.database.addAll(database);
+        }
+    }
+
+    public void setListItemsCollector (ListItemsCollector listItemsCollector)
+    {
+        if (listItemsCollector == null)
+        {
+            throw new IllegalArgumentException("ListItemCollector should not be null!");
         }
         this.listItemsCollector = listItemsCollector;
     }
