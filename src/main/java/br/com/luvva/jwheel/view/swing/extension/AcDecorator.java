@@ -240,7 +240,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
         buttonBorder.configureMargin();
     }
 
-    private void autoCompleteOptionAcceptedView ()
+    private void autoCompleteOptionAcceptedFromView ()
     {
         controller.autoCompleteAccepted(popup.getSelectedOption());
         closePopup();
@@ -316,7 +316,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
             case KeyEvent.VK_ENTER:
                 if (popup.isShowing() && popup.hasSelectedOption())
                 {
-                    autoCompleteOptionAcceptedView();
+                    autoCompleteOptionAcceptedFromView();
                     evt.consume();
                 }
                 break;
@@ -338,7 +338,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
         {
             if (popup.hasSelectedOption())
             {
-                autoCompleteOptionAcceptedView();
+                autoCompleteOptionAcceptedFromView();
             }
             else
             {
@@ -488,7 +488,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
                 @Override
                 public void mouseClicked (MouseEvent e)
                 {
-                    autoCompleteOptionAcceptedView();
+                    autoCompleteOptionAcceptedFromView();
                 }
             });
 
