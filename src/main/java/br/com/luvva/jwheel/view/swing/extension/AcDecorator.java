@@ -212,7 +212,13 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
             }
             else
             {
-                hintProvider = JTextComponent::getText;
+                hintProvider = source -> {
+                    if (controller.getSelectedAsString().isEmpty())
+                    {
+                        return source.getText();
+                    }
+                    return "";
+                };
             }
         }
         if (focusGainedHandler == null)
