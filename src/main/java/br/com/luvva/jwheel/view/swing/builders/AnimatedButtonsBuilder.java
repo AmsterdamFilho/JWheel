@@ -54,6 +54,7 @@ public class AnimatedButtonsBuilder
         this.opacityFactorMap = opacityFactorMap;
     }
 
+    @SuppressWarnings ("UnusedReturnValue")
     public AlphaButton addNewButton (String tooltipText, Rectangle bounds, Icon icon, ActionListener al)
     {
         AlphaButton button = addNewButton(bounds, al, tooltipText);
@@ -62,6 +63,7 @@ public class AnimatedButtonsBuilder
         return button;
     }
 
+    @SuppressWarnings ("UnusedReturnValue")
     public AlphaButton addNewButton (String text, String tooltipText, Rectangle bounds, Icon icon,
                                      ActionListener al)
     {
@@ -72,6 +74,7 @@ public class AnimatedButtonsBuilder
         return button;
     }
 
+    @SuppressWarnings ("UnusedReturnValue")
     public AlphaButton addNewButton (String text, String tooltipText, Rectangle bounds, ActionListener al)
     {
         AlphaButton button = addNewButton(bounds, al, tooltipText);
