@@ -87,10 +87,11 @@ public class CardLayoutPanel extends JPanel
 
     public void setSelectedCard (String cardId)
     {
+        //noinspection StatementWithEmptyBody
         if (Objects.equals(this.selectedCard, cardId))
         {
         }
-        if (!cards.contains(cardId))
+        else if (!cards.contains(cardId))
         {
             throw new IllegalArgumentException("CardId not found!");
         }
@@ -133,9 +134,6 @@ public class CardLayoutPanel extends JPanel
                 containersMap.remove(cardId);
                 notifyListeners(SELECTED, nextCardId);
             }
-        }
-        else
-        {
         }
     }
 

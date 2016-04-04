@@ -40,6 +40,7 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
         }
     }
 
+    @SuppressWarnings ("StatementWithEmptyBody")
     @Override
     public void next ()
     {
@@ -92,6 +93,7 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
         }
     }
 
+    @SuppressWarnings ("StatementWithEmptyBody")
     private int validateDestinationPageRecord (int rowCount, int destinationPageRecord)
     {
         if (destinationPageRecord <= 0)

@@ -53,6 +53,7 @@ public class JwTable extends JTable implements JwScrollPane.FriendlyView
     public void setColumnHeaderAlignment (int index, int alignment)
     {
         JTableHeader tableHeader = getTableHeader();
+        //noinspection StatementWithEmptyBody
         if (tableHeader == null)
         {
         }

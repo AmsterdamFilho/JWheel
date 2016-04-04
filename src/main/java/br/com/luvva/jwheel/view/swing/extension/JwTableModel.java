@@ -25,6 +25,7 @@ public class JwTableModel extends AbstractTableModel
         fireTableStructureChanged();
     }
 
+    @SuppressWarnings ("StatementWithEmptyBody")
     public void setData (List<Object[]> newData)
     {
         if (newData == null)

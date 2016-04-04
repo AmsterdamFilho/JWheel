@@ -11,6 +11,7 @@ public class AcUtils
     public static <T> List<Object[]> convertList (List<T> tList)
     {
         List<Object[]> result = new ArrayList<>();
+        //noinspection StatementWithEmptyBody
         if (tList == null)
         {
         }

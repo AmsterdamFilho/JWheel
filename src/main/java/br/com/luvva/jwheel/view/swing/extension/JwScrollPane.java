@@ -66,6 +66,7 @@ public class JwScrollPane extends JScrollPane
         }
     }
 
+    @SuppressWarnings ("StatementWithEmptyBody")
     private void updateScrollBar (JScrollBar scrollBar, JwScrollPaneFriendlyViewAdapter adapter)
     {
         int selectedIndex = adapter.getSelectedUnitIndex();
