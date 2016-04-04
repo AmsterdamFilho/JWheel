@@ -5,5 +5,5 @@ package br.com.luvva.jwheel.control.autocomplete;
  */
 public interface AcListener
 {
-    void autoCompleteOptionAccepted ();
+    void selectedOptionChanged ();
 }

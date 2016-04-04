@@ -365,7 +365,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
     }
 
     @Override
-    public void autoCompleteOptionAccepted ()
+    public void selectedOptionChanged ()
     {
         if (!textIsChanging)
         {

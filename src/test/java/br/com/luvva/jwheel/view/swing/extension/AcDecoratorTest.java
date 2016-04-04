@@ -815,14 +815,14 @@ public class AcDecoratorTest extends AbstractTest
         }
 
         @Override
-        public void autoCompleteOptionAccepted ()
+        public void selectedOptionChanged ()
         {
             mainTestLabel.setText(labelTextProvider.getLabelText());
         }
 
         private void update ()
         {
-            autoCompleteOptionAccepted();
+            selectedOptionChanged();
         }
     }
 

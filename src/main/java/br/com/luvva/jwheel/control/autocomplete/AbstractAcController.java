@@ -19,7 +19,7 @@ public abstract class AbstractAcController implements AcController
         if (!Arrays.equals(selected, option))
         {
             selected = option;
-            listeners.forEach(AcListener::autoCompleteOptionAccepted);
+            listeners.forEach(AcListener::selectedOptionChanged);
         }
     }
 
