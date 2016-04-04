@@ -18,7 +18,7 @@ public interface AcController
      * Notifies that an auto complete was accepted
      * @param option the chosen option
      */
-    void autoCompleteAccepted (Object[] option);
+    void setSelectedOption (Object[] option);
 
     /**
      * Informs the client if the controller might take a while to show auto complete options to the hint

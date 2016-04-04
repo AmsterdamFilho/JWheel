@@ -14,7 +14,7 @@ public abstract class AbstractAcController implements AcController
     private List<AcListener> listeners = new ArrayList<>();
 
     @Override
-    public void autoCompleteAccepted (Object[] option)
+    public void setSelectedOption (Object[] option)
     {
         if (!Arrays.equals(selected, option))
         {

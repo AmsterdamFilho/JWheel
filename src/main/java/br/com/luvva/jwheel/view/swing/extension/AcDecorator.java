@@ -69,7 +69,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
             if (!textIsMatching)
             {
                 textIsChanging = true;
-                controller.autoCompleteAccepted(null);
+                controller.setSelectedOption(null);
                 autoComplete();
                 textIsChanging = false;
             }
@@ -248,7 +248,7 @@ public class AcDecorator implements KeyListener, PropertyChangeListener, FocusLi
 
     private void autoCompleteOptionAcceptedFromView ()
     {
-        controller.autoCompleteAccepted(popup.getSelectedOption());
+        controller.setSelectedOption(popup.getSelectedOption());
         closePopup();
     }
 
