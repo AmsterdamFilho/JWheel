@@ -28,6 +28,7 @@ class PreferencesPersistenceProvider<E> implements PersistenceProvider<E>
         {
             return null;
         }
+        //noinspection unchecked
         return (E) xStream.fromXML(xml);
     }
 

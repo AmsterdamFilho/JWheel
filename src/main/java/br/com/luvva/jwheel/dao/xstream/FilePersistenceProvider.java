@@ -30,6 +30,7 @@ class FilePersistenceProvider<E> implements PersistenceProvider<E>
         File databaseFile = getDatabaseFile();
         if (databaseFile.exists())
         {
+            //noinspection unchecked
             return (E) xStream.fromXML(databaseFile);
         }
         return null;

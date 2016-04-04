@@ -18,6 +18,7 @@ public class JavaLangUtils
 
     public static <T> Class<T> getTypeArgumentClass (Class clazz, int index)
     {
+        //noinspection unchecked
         return (Class<T>) ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[index];
     }
 

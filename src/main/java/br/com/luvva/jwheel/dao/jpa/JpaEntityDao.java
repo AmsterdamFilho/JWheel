@@ -48,6 +48,7 @@ public class JpaEntityDao<T, PK> implements EntityDao<T, PK>
     public Collection<T> findAll ()
     {
         Query q = entityManager.createQuery("from " + JavaLangUtils.getTypeArgumentClass(getClass()).getName());
+        //noinspection unchecked
         return q.getResultList();
     }
 
