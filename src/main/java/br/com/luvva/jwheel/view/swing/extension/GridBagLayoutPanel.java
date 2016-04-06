@@ -12,7 +12,7 @@ import java.awt.GridBagLayout;
  */
 public class GridBagLayoutPanel extends JPanel
 {
-    private GridBagConstraints constraints;
+    private GridBagConstraints constraints = createDefaultConstraints();
 
     public static int DEFAULT_LEFT_INSETS_WHEN_NEEDED = 5;
     public static int DEFAULT_TOP_INSETS_WHEN_NEEDED = 5;
@@ -20,10 +20,15 @@ public class GridBagLayoutPanel extends JPanel
     public GridBagLayoutPanel ()
     {
         super(new GridBagLayout());
-        constraints = new GridBagConstraints();
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
+    }
+
+    private GridBagConstraints createDefaultConstraints ()
+    {
+        GridBagConstraints response = new GridBagConstraints();
+        response.fill = GridBagConstraints.BOTH;
+        response.gridx = 0;
+        response.gridy = 0;
+        return response;
     }
 
     public void addWithConstraints (Component component)
@@ -61,5 +66,10 @@ public class GridBagLayoutPanel extends JPanel
     public GridBagConstraints getConstraints ()
     {
         return constraints;
+    }
+
+    public void setConstraints (GridBagConstraints constraints)
+    {
+        this.constraints = constraints == null ? createDefaultConstraints() : constraints;
     }
 }
