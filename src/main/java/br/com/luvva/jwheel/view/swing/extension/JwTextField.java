@@ -1,8 +1,10 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
+import br.com.luvva.jwheel.view.swing.laf.SwLookAndFeel;
 import br.com.luvva.jwheel.view.swing.utils.SwingUtils;
 import br.com.luvva.jwheel.view.swing.utils.UndoRedoDecorator;
 
+import javax.inject.Inject;
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.Document;
@@ -13,6 +15,7 @@ import javax.swing.text.DocumentFilter;
  */
 public class JwTextField extends JTextField
 {
+    private @Inject SwLookAndFeel lookAndFeel;
 
     public JwTextField ()
     {
@@ -29,5 +32,10 @@ public class JwTextField extends JTextField
             AbstractDocument abstractDocument = (AbstractDocument) document;
             abstractDocument.setDocumentFilter(documentFilter);
         }
+    }
+
+    public void highlight ()
+    {
+        lookAndFeel.highlight(this);
     }
 }

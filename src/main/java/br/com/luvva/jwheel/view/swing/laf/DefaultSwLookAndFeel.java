@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.text.DefaultEditorKit;
+import javax.swing.text.JTextComponent;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -23,6 +24,7 @@ public class DefaultSwLookAndFeel implements SwLookAndFeel
     private final Border defaultBorder          = new BlackAndWhiteEtchedBorder();
     private final int    osxMenuShortcutKeyMask = AwtUtils.getMenuShortcutKeyMask();
     private final int    controlShortcutKeyMask = AwtUtils.getControlShortcutMask();
+    private final Color  highlightColor         = new Color(255, 255, 204);
 
     @Override
     public Border defaultBorder ()
@@ -64,5 +66,11 @@ public class DefaultSwLookAndFeel implements SwLookAndFeel
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_C, controlShortcutKeyMask), null);
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, controlShortcutKeyMask), null);
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_X, controlShortcutKeyMask), null);
+    }
+
+    @Override
+    public void highlight (JTextComponent jTextComponent)
+    {
+        jTextComponent.setBackground(highlightColor);
     }
 }
