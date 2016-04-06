@@ -91,7 +91,7 @@ public class CardLayoutPanel extends JPanel
         if (Objects.equals(this.selectedCard, cardId))
         {
         }
-        else if (!cards.contains(cardId))
+        else if (!containsCard(cardId))
         {
             throw new IllegalArgumentException("CardId not found!");
         }
@@ -194,6 +194,11 @@ public class CardLayoutPanel extends JPanel
         {
             listenersSetIsBeingRead = false;
         }
+    }
+
+    public boolean containsCard (String cardID)
+    {
+        return containersMap.containsKey(cardID);
     }
 
     @Override
