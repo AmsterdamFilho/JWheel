@@ -1,9 +1,9 @@
 package br.com.luvva.jwheel.view.swing.extension;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Container;
 import java.util.*;
-import java.util.List;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -13,12 +13,8 @@ public class CardLayoutPanel extends JPanel
     private final CardLayout cardLayout = new CardLayout();
 
     private       String                 selectedCard  = null;
-    private final List<String>           cards         = new ArrayList<>();
-    private final Map<String, Container> containersMap = new HashMap<>();
-
-    private final Set<CardsPnlListener> listeners                = new HashSet<>();
-    private       boolean               listenersSetIsBeingRead  = false;
-    private final List<Runnable>        alterListenersSetActions = new ArrayList<>();
+    private final Map<String, Container> containersMap = new LinkedHashMap<>();
+    private final Set<CardsPnlListener>  listeners     = new HashSet<>();
 
     private static final String SELECTED = "selected";
     private static final String REMOVED  = "removed";
@@ -41,26 +37,12 @@ public class CardLayoutPanel extends JPanel
 
     public void addCardListener (final CardsPnlListener listener)
     {
-        if (listenersSetIsBeingRead)
-        {
-            alterListenersSetActions.add(() -> listeners.add(listener));
-        }
-        else
-        {
-            listeners.add(listener);
-        }
+        listeners.add(listener);
     }
 
     public void removeCardListener (final CardsPnlListener listener)
     {
-        if (listenersSetIsBeingRead)
-        {
-            alterListenersSetActions.add(() -> listeners.remove(listener));
-        }
-        else
-        {
-            listeners.remove(listener);
-        }
+        listeners.remove(listener);
     }
 
     public void addCard (Container container, String cardId)
@@ -69,7 +51,7 @@ public class CardLayoutPanel extends JPanel
         {
             throw new IllegalArgumentException("Card ids can't be null!");
         }
-        if (cards.contains(cardId))
+        if (containersMap.containsKey(cardId))
         {
             throw new IllegalArgumentException("Card id already registered!");
         }
@@ -77,12 +59,9 @@ public class CardLayoutPanel extends JPanel
         {
             throw new IllegalArgumentException("Container can't be null!");
         }
-        if (cards.add(cardId))
-        {
-            add(container, cardId);
-            containersMap.put(cardId, container);
-            notifyListeners(ADDED, cardId);
-        }
+        add(container, cardId);
+        containersMap.put(cardId, container);
+        notifyListeners(ADDED, cardId);
     }
 
     public void setSelectedCard (String cardId)
@@ -105,94 +84,46 @@ public class CardLayoutPanel extends JPanel
         }
     }
 
+    private void removeContainer (Container container)
+    {
+        cardLayout.removeLayoutComponent(container);
+        remove(container);
+    }
+
     public void removeCard (String cardId)
     {
-        removeCard(cardId, false);
+        removeContainer(containersMap.get(cardId));
+        containersMap.remove(cardId);
+        notifyListeners(REMOVED, cardId);
     }
 
     public void removeAllCards ()
     {
-        for (String cardId : containersMap.keySet())
-        {
-            removeCard(cardId, true);
-        }
+        containersMap.forEach((cardId, container) -> removeContainer(container));
+        List<String> cardsIds = new ArrayList<>(containersMap.keySet());
         containersMap.clear();
+        cardsIds.forEach(cardId -> notifyListeners(REMOVED, cardId));
+        this.selectedCard = null;
         notifyListeners(SELECTED, null);
-    }
-
-    private void removeCard (String cardId, boolean removingAll)
-    {
-        if (cards.contains(cardId))
-        {
-            String nextCardId = getNextCardId(cardId);
-            cardLayout.removeLayoutComponent(containersMap.get(cardId));
-            remove(containersMap.get(cardId));
-            cards.remove(cardId);
-            notifyListeners(REMOVED, cardId);
-            if (!removingAll)
-            {
-                containersMap.remove(cardId);
-                notifyListeners(SELECTED, nextCardId);
-            }
-        }
-    }
-
-    private String getNextCardId (String cardId)
-    {
-        if (cards.size() == 1)
-        {
-            return null;
-        }
-        else
-        {
-            String nextCardId = null;
-            for (int i = 0; i < cards.size(); i++)
-            {
-                String card = cards.get(i);
-                if (cardId.equals(card))
-                {
-                    if (i == cards.size() - 1)
-                    {
-                        nextCardId = cards.get(0);
-                    }
-                    else
-                    {
-                        nextCardId = cards.get(i + 1);
-                    }
-                    break;
-                }
-            }
-            return nextCardId;
-        }
     }
 
     private void notifyListeners (String eventType, String cardId)
     {
-        try
+        for (CardsPnlListener cardsPnlListener : listeners)
         {
-            listenersSetIsBeingRead = true;
-            for (CardsPnlListener cardsPnlListener : listeners)
+            switch (eventType)
             {
-                switch (eventType)
-                {
-                    case ADDED:
-                        cardsPnlListener.cardAdded(cardId);
-                        break;
-                    case REMOVED:
-                        cardsPnlListener.cardRemoved(cardId);
-                        break;
-                    case SELECTED:
-                        cardsPnlListener.cardSelected(cardId);
-                        break;
-                    default:
-                }
+                case ADDED:
+                    cardsPnlListener.cardAdded(cardId);
+                    break;
+                case REMOVED:
+                    cardsPnlListener.cardRemoved(cardId);
+                    break;
+                case SELECTED:
+                    cardsPnlListener.cardSelected(cardId);
+                    break;
+                default:
             }
-            alterListenersSetActions.forEach(java.lang.Runnable::run);
-            alterListenersSetActions.clear();
-        }
-        finally
-        {
-            listenersSetIsBeingRead = false;
         }
     }
 
