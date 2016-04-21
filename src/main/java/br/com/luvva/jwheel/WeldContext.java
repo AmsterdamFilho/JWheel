@@ -19,14 +19,6 @@ public class WeldContext
     {
         this.weld = new Weld();
         this.container = weld.initialize();
-        Runtime.getRuntime().addShutdownHook(new Thread()
-        {
-            @Override
-            public void run ()
-            {
-                weld.shutdown();
-            }
-        });
     }
 
     public static WeldContext getInstance ()

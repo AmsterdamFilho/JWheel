@@ -54,5 +54,4 @@ public class LogParameters
     {
         this.logFilePath = logFilePath;
     }
-
 }

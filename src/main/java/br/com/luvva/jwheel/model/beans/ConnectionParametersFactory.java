@@ -13,7 +13,6 @@ import javax.inject.Singleton;
 @Singleton
 public class ConnectionParametersFactory implements ParameterFactory<ConnectionParameters>
 {
-
     private @Inject ConnectionParametersDao   xStreamDao;
     private @Inject Logger                    logger;
     private @Inject XStreamParametersProducer producer;
@@ -32,5 +31,4 @@ public class ConnectionParametersFactory implements ParameterFactory<ConnectionP
         parameters.setDatabaseUrl("jdbc:postgresql://localhost:5433/postgres");
         parameters.setDatabaseUser("postgres");
     }
-
 }

@@ -15,7 +15,6 @@ import javax.inject.Inject;
  */
 public class JwConnectionSettingsController implements ConnectionSettingsController
 {
-
     private @Inject ConnectionParameters    connectionParameters;
     private @Inject EntityManagerProducer   entityManagerProducer;
     private @Inject ConnectionParametersDao dao;
@@ -65,5 +64,4 @@ public class JwConnectionSettingsController implements ConnectionSettingsControl
     {
         this.view = view;
     }
-
 }

@@ -124,5 +124,4 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
     public abstract int getTotalHeight ();
 
     public abstract int getVisibleHeight ();
-
 }

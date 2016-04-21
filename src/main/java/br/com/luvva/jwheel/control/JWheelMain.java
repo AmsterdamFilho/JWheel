@@ -19,7 +19,6 @@ import javax.inject.Inject;
  */
 public class JWheelMain
 {
-
     private @Inject Logger          logger;
     private @Inject ViewStarter     viewStarter;
     private @Inject TextProvider    textProvider;
@@ -77,5 +76,4 @@ public class JWheelMain
     protected void customInit ()
     {
     }
-
 }

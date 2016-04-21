@@ -9,7 +9,6 @@ import java.util.List;
  */
 public abstract class AbstractAcController implements AcController
 {
-
     private Object[] selected;
     private List<AcListener> listeners = new ArrayList<>();
 

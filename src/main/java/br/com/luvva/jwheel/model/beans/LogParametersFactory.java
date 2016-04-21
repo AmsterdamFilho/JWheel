@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 @Singleton
 public class LogParametersFactory implements ParameterFactory<LogParameters>
 {
-
     private @Inject ProductData               productData;
     private @Inject PathParameters            pathParameters;
     private @Inject LogParametersDao          xStreamDao;

@@ -18,7 +18,6 @@ import java.util.prefs.Preferences;
 @Vetoed
 public class GenericXStreamDao<S> implements XStreamDao<S>
 {
-
     private @Inject Logger         logger;
     private @Inject PathParameters pathParameters;
 
@@ -77,5 +76,4 @@ public class GenericXStreamDao<S> implements XStreamDao<S>
     {
         provider.merge(getXStream(), serializable);
     }
-
 }

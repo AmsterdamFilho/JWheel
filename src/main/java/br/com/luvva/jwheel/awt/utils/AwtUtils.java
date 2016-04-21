@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
  */
 public class AwtUtils
 {
-
     private static final int menuShortcutKeyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
     private static final int controlShortcutMask = KeyEvent.CTRL_DOWN_MASK;
 
@@ -21,5 +20,4 @@ public class AwtUtils
     {
         return controlShortcutMask;
     }
-
 }

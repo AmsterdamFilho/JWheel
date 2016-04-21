@@ -10,7 +10,6 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class AbstractEntity
 {
-
     public abstract Serializable getId ();
 
     @Override
@@ -56,5 +55,4 @@ public abstract class AbstractEntity
     {
         return getClass().getSimpleName() + "{pk=" + String.valueOf(getId()) + "}";
     }
-
 }

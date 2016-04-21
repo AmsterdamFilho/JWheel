@@ -11,7 +11,6 @@ import javax.inject.Singleton;
 @Singleton
 public class TextProviderPtBr implements TextProvider
 {
-
     @Override
     public String yes ()
     {

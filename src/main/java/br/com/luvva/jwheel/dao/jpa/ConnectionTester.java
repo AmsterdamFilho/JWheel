@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
  */
 public class ConnectionTester
 {
-
     private @Inject Logger logger;
 
     public boolean execute ()
@@ -27,5 +26,4 @@ public class ConnectionTester
             return false;
         }
     }
-
 }

@@ -23,7 +23,6 @@ import java.util.Map;
 @Singleton
 public class EntityManagerProducer
 {
-
     private EntityManagerFactory emf;
 
     @PostConstruct
@@ -65,5 +64,4 @@ public class EntityManagerProducer
             emf.close();
         }
     }
-
 }

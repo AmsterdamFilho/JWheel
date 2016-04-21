@@ -14,7 +14,6 @@ import java.nio.file.Files;
  */
 class FilePersistenceProvider<E> implements PersistenceProvider<E>
 {
-
     private final PathParameters pathParameters;
     private final String         relativePath;
 

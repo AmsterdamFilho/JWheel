@@ -51,5 +51,4 @@ public class JpaEntityDao<T, PK> implements EntityDao<T, PK>
         //noinspection unchecked
         return q.getResultList();
     }
-
 }

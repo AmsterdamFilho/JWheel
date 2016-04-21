@@ -7,7 +7,6 @@ import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
  */
 public interface TextProvider
 {
-
     String yes ();
 
     String no ();

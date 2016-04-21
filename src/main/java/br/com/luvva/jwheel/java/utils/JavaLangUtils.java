@@ -21,5 +21,4 @@ public class JavaLangUtils
         //noinspection unchecked
         return (Class<T>) ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[index];
     }
-
 }

@@ -8,7 +8,6 @@ import java.net.UnknownHostException;
  */
 public class SystemUtils
 {
-
     public static boolean isOsX ()
     {
         return System.getProperty("os.name").toLowerCase().contains("mac");
@@ -23,5 +22,4 @@ public class SystemUtils
     {
         return InetAddress.getLocalHost().getHostName();
     }
-
 }

@@ -22,7 +22,6 @@ import java.io.UnsupportedEncodingException;
 @Singleton
 public class JwLoggerFactory
 {
-
     private Logger logger = LoggerFactory.getLogger(JwLoggerFactory.class);
 
     @Produces

@@ -15,7 +15,6 @@ import java.nio.file.Paths;
 @Singleton
 public class PathParametersFactory implements ParameterFactory<PathParameters>
 {
-
     private         PathParameters pathParameters;
     private @Inject ProductData    productData;
 

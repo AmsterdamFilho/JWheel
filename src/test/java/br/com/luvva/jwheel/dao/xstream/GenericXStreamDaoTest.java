@@ -10,7 +10,6 @@ import org.junit.Test;
  */
 public class GenericXStreamDaoTest extends AbstractTest
 {
-
     @Test
     public void test () throws Exception
     {
@@ -35,5 +34,4 @@ public class GenericXStreamDaoTest extends AbstractTest
         Assert.assertNotNull(pojo);
         Assert.assertEquals(pojo.getProperty2(), property21);
     }
-
 }
