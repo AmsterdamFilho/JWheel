@@ -1,5 +1,7 @@
 package br.com.luvva.jwheel.model.beans;
 
+import br.com.luvva.jwheel.model.utils.StringUtils;
+
 import java.util.*;
 
 /**
@@ -7,83 +9,63 @@ import java.util.*;
  */
 public class DecisionDialogModel
 {
-    private List<String> options = new ArrayList<>();
+    private List<String> extraOptions = new ArrayList<>();
+    private String defaultOption;
 
-    private String skipOption;
     private String decisionDescription;
-    private int chosenOption = -1;
+    private int chosenOption = 0;
 
-    public DecisionDialogModel (String decisionDescription, String... optionsArray)
+    public DecisionDialogModel (String decisionDescription, String defaultOption, String... extraOptions)
     {
-        if (optionsArray.length < 2)
+        if (StringUtils.isNullOrEmpty(decisionDescription) || StringUtils
+                .isNullOrEmpty(defaultOption) || extraOptions == null)
         {
-            throw new IllegalArgumentException("There must be at least 2 options!");
+            throw new IllegalArgumentException("No parameter should be null!");
+        }
+        if (extraOptions.length < 1)
+        {
+            throw new IllegalArgumentException("There must be at least 1 option besides the default option!");
         }
         this.decisionDescription = decisionDescription;
-        for (String option : optionsArray)
+        this.defaultOption = defaultOption;
+        for (String option : extraOptions)
         {
             if (option == null || option.trim().isEmpty())
             {
-                throw new IllegalArgumentException("Null or empty options won't be accepted!");
+                throw new IllegalArgumentException("Null or empty extra option won't be accepted!");
             }
-            if (options.contains(option))
+            if (this.extraOptions.contains(option))
             {
                 throw new IllegalArgumentException("Duplicated option!");
             }
-            options.add(option);
+            this.extraOptions.add(option);
         }
     }
 
-    public DecisionDialogModel (String decisionDescription, boolean lastOptionIsSkipOption, String... optionsArray)
+    public List<String> getExtraOptions ()
     {
-        this(decisionDescription, optionsArray);
-        if (lastOptionIsSkipOption)
-        {
-            skipOption = optionsArray[optionsArray.length - 1];
-        }
-    }
-
-    public List<String> getOptions ()
-    {
-        return Collections.unmodifiableList(options);
-    }
-
-    public boolean isSkipOptionAllowed ()
-    {
-        return skipOption != null;
-    }
-
-    public void setAsSkipOption (String option)
-    {
-        if (options.contains(option))
-        {
-            this.chosenOption = options.indexOf(option);
-        }
-        else
-        {
-            throw new IllegalArgumentException("Option was not present in the list!");
-        }
-    }
-
-    public void setDecisionAsSkipOption ()
-    {
-        if (!isSkipOptionAllowed())
-        {
-            throw new IllegalArgumentException("Skip option is not allowed!");
-        }
-        this.decisionDescription = skipOption;
+        return Collections.unmodifiableList(extraOptions);
     }
 
     public void setChosenOption (String chosenOption)
     {
-        if (options.contains(chosenOption))
+        if (Objects.equals(chosenOption, defaultOption))
         {
-            this.chosenOption = options.indexOf(chosenOption);
+            this.chosenOption = 0;
+        }
+        else if (extraOptions.contains(chosenOption))
+        {
+            this.chosenOption = extraOptions.indexOf(chosenOption) + 1;
         }
         else
         {
             throw new IllegalArgumentException("Option was not on the list!");
         }
+    }
+
+    public String getDefaultOption ()
+    {
+        return defaultOption;
     }
 
     public int getChosenOption ()

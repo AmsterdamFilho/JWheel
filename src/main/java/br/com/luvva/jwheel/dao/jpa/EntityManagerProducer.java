@@ -34,10 +34,10 @@ public class EntityManagerProducer
     public void init (ConnectionParameters connectionParameters)
     {
         Map<String, String> propertiesMap = new HashMap<>();
-        propertiesMap.put("javax.persistence.jdbc.driver", connectionParameters.getDatabaseDriver());
-        propertiesMap.put("javax.persistence.jdbc.url", connectionParameters.getDatabaseUrl());
-        propertiesMap.put("javax.persistence.jdbc.user", connectionParameters.getDatabaseUser());
-        propertiesMap.put("javax.persistence.jdbc.password", connectionParameters.getDatabasePassword());
+        propertiesMap.put("javax.persistence.jdbc.driver", connectionParameters.getDriver());
+        propertiesMap.put("javax.persistence.jdbc.url", connectionParameters.getUrl());
+        propertiesMap.put("javax.persistence.jdbc.user", connectionParameters.getUser());
+        propertiesMap.put("javax.persistence.jdbc.password", connectionParameters.getPassword());
         PersistenceUnit persistenceUnit = WeldContext.getInstance().getBean(PersistenceUnit.class);
         emf = Persistence.createEntityManagerFactory(persistenceUnit.getName(), propertiesMap);
     }

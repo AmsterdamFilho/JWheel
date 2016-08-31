@@ -26,9 +26,9 @@ public class ConnectionParametersFactory implements ParameterFactory<ConnectionP
     @Override
     public void setDefaultParameters (ConnectionParameters parameters)
     {
-        parameters.setDatabaseDriver("org.postgresql.Driver");
-        parameters.setDatabasePassword("postgres");
-        parameters.setDatabaseUrl("jdbc:postgresql://localhost:5433/postgres");
-        parameters.setDatabaseUser("postgres");
+        parameters.setDriver("org.postgresql.Driver");
+        parameters.setPassword("postgres");
+        parameters.setUrl("jdbc:postgresql://localhost:5433/postgres");
+        parameters.setUser("postgres");
     }
 }

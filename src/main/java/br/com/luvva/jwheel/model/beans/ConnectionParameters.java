@@ -2,6 +2,8 @@ package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.cdi.utils.NewInstance;
 import br.com.luvva.jwheel.model.utils.SimpleEncoder;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,10 +15,10 @@ import java.util.List;
 @NewInstance
 public class ConnectionParameters
 {
-    private String databaseDriver;
-    private String databaseUrl;
-    private String databasePassword;
-    private String databaseUser;
+    private StringProperty driver   = new SimpleStringProperty();
+    private StringProperty url      = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
+    private StringProperty user     = new SimpleStringProperty();
 
     public List<String> getDriversSuggestions ()
     {
@@ -29,43 +31,63 @@ public class ConnectionParameters
         return Collections.unmodifiableList(driversSuggestions);
     }
 
-    public String getDatabaseDriver ()
+    public String getDriver ()
     {
-        return databaseDriver;
+        return driver.get();
     }
 
-    public void setDatabaseDriver (String databaseDriver)
+    public StringProperty driverProperty ()
     {
-        this.databaseDriver = databaseDriver;
+        return driver;
     }
 
-    public String getDatabaseUrl ()
+    public void setDriver (String driver)
     {
-        return databaseUrl;
+        this.driver.set(driver);
     }
 
-    public void setDatabaseUrl (String databaseUrl)
+    public String getUrl ()
     {
-        this.databaseUrl = databaseUrl;
+        return url.get();
     }
 
-    public String getDatabasePassword ()
+    public StringProperty urlProperty ()
     {
-        return SimpleEncoder.decode(databasePassword);
+        return url;
     }
 
-    public void setDatabasePassword (String databasePassword)
+    public void setUrl (String url)
     {
-        this.databasePassword = SimpleEncoder.encode(databasePassword);
+        this.url.set(url);
     }
 
-    public String getDatabaseUser ()
+    public String getPassword ()
     {
-        return databaseUser;
+        return SimpleEncoder.decode(password.get());
     }
 
-    public void setDatabaseUser (String databaseUser)
+    public StringProperty passwordProperty ()
     {
-        this.databaseUser = databaseUser;
+        return password;
+    }
+
+    public void setPassword (String password)
+    {
+        this.password.set(SimpleEncoder.encode(password));
+    }
+
+    public String getUser ()
+    {
+        return user.get();
+    }
+
+    public StringProperty userProperty ()
+    {
+        return user;
+    }
+
+    public void setUser (String user)
+    {
+        this.user.set(user);
     }
 }
