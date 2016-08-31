@@ -1,3 +1,4 @@
 .idea*
-jwheel.iml
+*.iml
 target/*
+*.DS_Store
