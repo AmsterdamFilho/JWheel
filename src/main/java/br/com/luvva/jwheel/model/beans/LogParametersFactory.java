@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 @Singleton
 public class LogParametersFactory implements ParameterFactory<LogParameters>
 {
-    private @Inject ProductData               productData;
+    private @Inject PathNamesProducer         pathNamesProducer;
     private @Inject PathParameters            pathParameters;
     private @Inject LogParametersDao          xStreamDao;
     private @Inject Logger                    logger;
@@ -30,8 +30,8 @@ public class LogParametersFactory implements ParameterFactory<LogParameters>
     public void setDefaultParameters (LogParameters parameters)
     {
         parameters.setLoggerLevel(null);
-        parameters.setLogFilePath(
-                Paths.get(pathParameters.getAppDataDirectory(), productData.getProductName() + ".log").toString());
+        parameters.setLogFilePath(Paths.get(
+                pathParameters.getAppDataDirectory(), pathNamesProducer.produceAppLogFileName() + ".log").toString());
         //@formatter:off
         parameters.setLoggerConfigurationXml(
                 "<configuration>" +

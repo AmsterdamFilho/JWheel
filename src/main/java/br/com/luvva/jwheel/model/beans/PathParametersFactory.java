@@ -15,8 +15,8 @@ import java.nio.file.Paths;
 @Singleton
 public class PathParametersFactory implements ParameterFactory<PathParameters>
 {
-    private         PathParameters pathParameters;
-    private @Inject ProductData    productData;
+    private         PathParameters    pathParameters;
+    private @Inject PathNamesProducer pathNamesProducer;
 
     @Produces
     protected PathParameters produce ()
@@ -38,7 +38,7 @@ public class PathParametersFactory implements ParameterFactory<PathParameters>
     public void setDefaultParameters (PathParameters parameters)
     {
         parameters.setAppDataDirectory(
-                Paths.get(System.getProperty("user.home"), productData.getProductName()).toString());
+                Paths.get(System.getProperty("user.home"), pathNamesProducer.produceAppDataFolderName()).toString());
         parameters.setParametersDirectory(Paths.get(parameters.getAppDataDirectory(), "config").toString());
         parameters.setParametersFileExtension("xml");
     }
