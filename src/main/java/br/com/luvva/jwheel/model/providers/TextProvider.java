@@ -7,6 +7,7 @@ import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
  */
 public interface TextProvider
 {
+
     String yes ();
 
     String no ();
@@ -21,7 +22,11 @@ public interface TextProvider
 
     String success ();
 
-    String attention ();
+    String error ();
+
+    String info ();
+
+    String warning ();
 
     String savedSuccessfully ();
 
@@ -31,6 +36,13 @@ public interface TextProvider
 
     String databaseConnectionTestMessage ();
 
+    /**
+     * 0 means try again
+     * 1 means configure connection
+     * 2 means exit
+     *
+     * @return the decision model
+     */
     DecisionDialogModel connectionTestFailedDecision ();
 
     //<editor-fold desc="ConnectionParametersRecord">

@@ -2,40 +2,37 @@ package br.com.luvva.jwheel.model.providers;
 
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 
-import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@SuppressWarnings ("SpellCheckingInspection")
 @Singleton
-@Alternative
-public class TextProviderPtBr implements TextProvider
+public class TextProviderEnUs implements TextProvider
 {
 
     @Override
     public String yes ()
     {
-        return "Sim";
+        return "Yes";
     }
 
     @Override
     public String no ()
     {
-        return "Não";
+        return "No";
     }
 
     @Override
     public String cancel ()
     {
-        return "Cancelar";
+        return "Cancel";
     }
 
     @Override
     public String save ()
     {
-        return "Salvar";
+        return "Save";
     }
 
     @Override
@@ -47,71 +44,70 @@ public class TextProviderPtBr implements TextProvider
     @Override
     public String confirm ()
     {
-        return "Confirmar";
+        return "Confirm";
     }
 
     @Override
     public String success ()
     {
-        return "Sucesso";
+        return "Success";
     }
 
     @Override
     public String error ()
     {
-        return "Erro";
+        return "Error";
     }
 
     @Override
     public String info ()
     {
-        return "Informação";
+        return "Information";
     }
 
     @Override
     public String warning ()
     {
-        return "Aviso";
+        return "Warning";
     }
 
     @Override
     public String savedSuccessfully ()
     {
-        return "Salvo com sucesso!";
+        return "Saved successfully!";
     }
 
     @Override
     public String failedToSave ()
     {
-        return "Erro ao salvar";
+        return "Error when saving";
     }
 
     @Override
     public String exitSystemQuestion ()
     {
-        return "Deseja sair do sistema?";
+        return "Do you wish to exit?";
     }
 
     @Override
     public String databaseConnectionTestMessage ()
     {
-        return "Tentando se conectar ao banco de dados...";
+        return "Trying to connect to the database...";
     }
 
     @Override
     public DecisionDialogModel connectionTestFailedDecision ()
     {
         return new DecisionDialogModel(
-                "Não foi possível conectar-se com o banco de dados! " +
-                        "Talvez o servidor esteja inacessível ou os dados para conexão estejam incorretos!",
-                "Tentar novamente", "Configurar conexão", "Sair do sistema");
+                "Could not connect to the database! Maybe the server is down or the connection data is incorrect!",
+                "Try again", "Configure connection", "Exit");
     }
 
     //<editor-fold desc="ConnectionParametersRecord">
     @Override
     public String connectionParametersRecordTitle ()
     {
-        return "Dados da conexão com o banco de dados";
+        return "Database connection data";
     }
 
     @Override
@@ -123,7 +119,7 @@ public class TextProviderPtBr implements TextProvider
     @Override
     public String connectionParametersRecordUser ()
     {
-        return "Usuário";
+        return "User";
     }
 
     @Override
@@ -135,25 +131,25 @@ public class TextProviderPtBr implements TextProvider
     @Override
     public String connectionParametersRecordTest ()
     {
-        return "Testar conexão";
+        return "Test connection";
     }
 
     @Override
     public String connectionParametersRecordPassword ()
     {
-        return "Senha";
+        return "Password";
     }
 
     @Override
     public String connectionParametersRecordTestSuccessful ()
     {
-        return "Conexão bem sucedida!";
+        return "Connection succeeded!";
     }
 
     @Override
     public String connectionParametersRecordTestFailed ()
     {
-        return "Não foi possível conectar-se ao banco de dados!";
+        return "Could not connect to the database!";
     }
     //</editor-fold>
 }
