@@ -11,4 +11,9 @@ public class StringUtils
     {
         return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
     }
+
+    public static boolean isNullOrEmpty (String string)
+    {
+        return string == null || string.trim().isEmpty();
+    }
 }
