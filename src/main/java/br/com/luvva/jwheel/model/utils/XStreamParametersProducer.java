@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.model.beans;
+package br.com.luvva.jwheel.model.utils;
 
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.cdi.utils.NewInstance;

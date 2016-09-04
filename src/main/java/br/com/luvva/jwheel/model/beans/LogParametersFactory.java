@@ -1,6 +1,8 @@
 package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.dao.xstream.LogParametersDao;
+import br.com.luvva.jwheel.model.utils.ParameterFactory;
+import br.com.luvva.jwheel.model.utils.XStreamParametersProducer;
 import org.slf4j.Logger;
 
 import javax.enterprise.inject.Produces;

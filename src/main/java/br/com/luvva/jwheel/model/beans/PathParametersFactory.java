@@ -2,6 +2,7 @@ package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.cdi.utils.NewInstance;
+import br.com.luvva.jwheel.model.utils.ParameterFactory;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.util.AnnotationLiteral;
