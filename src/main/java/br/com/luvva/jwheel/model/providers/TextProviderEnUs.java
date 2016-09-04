@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.model.providers;
 
+import br.com.luvva.jwheel.cdi.utils.Custom;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 
 import javax.inject.Singleton;
@@ -8,6 +9,7 @@ import javax.inject.Singleton;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
+@Custom
 public class TextProviderEnUs implements TextProvider
 {
 

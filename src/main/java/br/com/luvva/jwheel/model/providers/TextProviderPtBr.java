@@ -1,8 +1,8 @@
 package br.com.luvva.jwheel.model.providers;
 
+import br.com.luvva.jwheel.cdi.utils.Custom;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 
-import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 /**
@@ -10,7 +10,7 @@ import javax.inject.Singleton;
  */
 @SuppressWarnings ("SpellCheckingInspection")
 @Singleton
-@Alternative
+@Custom
 public class TextProviderPtBr implements TextProvider
 {
 
