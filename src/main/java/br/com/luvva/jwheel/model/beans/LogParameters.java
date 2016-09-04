@@ -1,12 +1,12 @@
 package br.com.luvva.jwheel.model.beans;
 
-import br.com.luvva.jwheel.cdi.utils.NewInstance;
+import br.com.luvva.jwheel.cdi.utils.Custom;
 import ch.qos.logback.classic.Level;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@NewInstance
+@Custom
 public class LogParameters
 {
     private Level   loggerLevel;

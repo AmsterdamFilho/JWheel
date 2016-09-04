@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.model.utils;
 
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.cdi.utils.NewInstance;
+import br.com.luvva.jwheel.cdi.utils.Custom;
 import br.com.luvva.jwheel.dao.xstream.GenericXStreamDao;
 import br.com.luvva.jwheel.java.utils.JavaLangUtils;
 import org.slf4j.Logger;
@@ -43,6 +43,6 @@ public class XStreamParametersProducer
     protected <T> T createParametersBeanNewInstance (GenericXStreamDao<T> xStreamDao)
     {
         return WeldContext.getInstance().getBean(JavaLangUtils.getTypeArgumentClass(xStreamDao.getClass()),
-                new AnnotationLiteral<NewInstance>() {});
+                new AnnotationLiteral<Custom>() {});
     }
 }

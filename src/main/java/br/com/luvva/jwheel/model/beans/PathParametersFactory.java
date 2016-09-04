@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.cdi.utils.NewInstance;
+import br.com.luvva.jwheel.cdi.utils.Custom;
 import br.com.luvva.jwheel.model.utils.ParameterFactory;
 
 import javax.enterprise.inject.Produces;
@@ -32,7 +32,7 @@ public class PathParametersFactory implements ParameterFactory<PathParameters>
 
     protected PathParameters createParameterBeanNewInstance ()
     {
-        return WeldContext.getInstance().getBean(PathParameters.class, new AnnotationLiteral<NewInstance>() {});
+        return WeldContext.getInstance().getBean(PathParameters.class, new AnnotationLiteral<Custom>() {});
     }
 
     @Override

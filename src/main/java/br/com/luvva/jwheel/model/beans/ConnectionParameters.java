@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.model.beans;
 
-import br.com.luvva.jwheel.cdi.utils.NewInstance;
+import br.com.luvva.jwheel.cdi.utils.Custom;
 import br.com.luvva.jwheel.model.utils.SimpleEncoder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@NewInstance
+@Custom
 public class ConnectionParameters
 {
     private StringProperty driver   = new SimpleStringProperty();
