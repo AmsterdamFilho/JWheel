@@ -6,4 +6,4 @@ Its main benefit is helping desktop applications developers to build their softw
 
 It will also have some general purpose Java utility classes, that can be used in any Java project.
 
-So, if you're developing a Java application and to save yourself some time, maybe this is what you need. After all, why would you reinvent JWheel?
+So, if you're developing a Java application and want to save yourself some time, maybe this is what you need. After all, why would you reinvent JWheel?

@@ -12,12 +12,11 @@ public class WeldContext
 {
     private static final WeldContext instance = new WeldContext();
 
-    private final Weld          weld;
     private final WeldContainer container;
 
     private WeldContext ()
     {
-        this.weld = new Weld();
+        Weld weld = new Weld();
         this.container = weld.initialize();
     }
 
