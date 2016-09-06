@@ -9,13 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>test-utils</artifactId>
+    <artifactId>jwheel-test-utils</artifactId>
 
     <dependencies>
 
         <dependency>
             <groupId>br.com.luvva.jwheel</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>jwheel-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
