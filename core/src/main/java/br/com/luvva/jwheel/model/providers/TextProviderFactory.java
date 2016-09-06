@@ -10,17 +10,17 @@ import javax.inject.Inject;
  */
 public class TextProviderFactory
 {
-    private @Inject LanguageSelector languageSelector;
+    private @Inject JwLocaleSelector jwLocaleSelector;
 
     @Produces
     private TextProvider produceTextProvider ()
     {
-        LANGUAGE language = languageSelector.selectLanguage();
-        if (language == null)
+        JwLocale jwLocale = jwLocaleSelector.selectLocale();
+        if (jwLocale == null)
         {
             return getDefault();
         }
-        switch (language)
+        switch (jwLocale)
         {
             case EN_US:
                 return WeldContext.getInstance().getBean(TextProviderEnUs.class);

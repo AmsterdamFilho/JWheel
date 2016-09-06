@@ -3,11 +3,11 @@ package br.com.luvva.jwheel.model.providers;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class MyLanguageSelector implements LanguageSelector
+public class MyJwLocaleSelector implements JwLocaleSelector
 {
     @Override
-    public LANGUAGE selectLanguage ()
+    public JwLocale selectLocale ()
     {
-        return LANGUAGE.EN_US;
+        return JwLocale.EN_US;
     }
 }
