@@ -3,12 +3,18 @@ package br.com.luvva.jwheel.view.javafx.starter;
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.control.JwApplication;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
+import br.com.luvva.jwheel.view.javafx.utils.FxUtils;
 import javafx.application.Application;
 import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceDialog;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -24,19 +30,7 @@ public class FxApplication extends Application
     {
         this.primaryStage = primaryStage;
 
-        try
-        {
-            // shows splash if clients specified one
-            Class<?> fxSplashImplClass = Class.forName("br.com.luvva.jwheel.view.javafx.starter.FxSplashImpl");
-            FxSplash fxSplashImpl = (FxSplash) fxSplashImplClass.newInstance();
-            primaryStage.initStyle(StageStyle.UNDECORATED);
-            primaryStage.setScene(fxSplashImpl.getScene());
-        }
-        catch (Exception ignored)
-        {
-        }
-
-        primaryStage.show();
+        showSplash();
 
         // execute initial system configuration (JavaFX configuration, Logger, Database connection test etc.)
         JWheelStarterTask starterTask = new JWheelStarterTask();
@@ -44,6 +38,47 @@ public class FxApplication extends Application
         Thread thread = new Thread(starterTask);
         thread.setDaemon(true);
         thread.start();
+    }
+
+    /**
+     * Shows splash if client specified one. Clients should create an uber jar and add splash.fxml to its root resource
+     * directory. A splash.properties resource bundle in the same directory is also used if provided. If JWheel is used
+     * as a jar (client did not create an uber jar), it will not work, unless client extends this class and runs launch
+     * method in it.
+     */
+    private void showSplash ()
+    {
+        ResourceBundle resourceBundle = null;
+        try
+        {
+            resourceBundle = ResourceBundle.getBundle("splash", Locale.getDefault());
+        }
+        catch (MissingResourceException ignored)
+        {
+            System.out.println("Info: file splash.properties not found in resources root directory.");
+        }
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        if (resourceBundle != null)
+        {
+            fxmlLoader.setResources(resourceBundle);
+        }
+        try
+        {
+            primaryStage.setScene(new Scene(fxmlLoader.load(getClass().getResourceAsStream("/splash.fxml"))));
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            FxUtils.centerOnScreen(primaryStage);
+            primaryStage.show();
+
+        }
+        catch (NullPointerException ignored)
+        {
+            System.out.println("Info: file splash.fxml not found in resources root directory.");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     private void testDatabaseConnection ()
@@ -73,6 +108,7 @@ public class FxApplication extends Application
     private void handleFailedTestConnection ()
     {
         DecisionDialogModel ddm = jwApplication.getConnectionTestFailedDecisionModel();
+        primaryStage.close();
         showConnectionTestFailedDialogDecision(ddm);
         switch (ddm.getChosenOption())
         {
