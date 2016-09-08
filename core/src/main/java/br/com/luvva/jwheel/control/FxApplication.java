@@ -2,7 +2,6 @@ package br.com.luvva.jwheel.control;
 
 import br.com.luvva.jwheel.WeldContext;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
-import br.com.luvva.jwheel.view.javafx.starter.FxConnectionSettings;
 import br.com.luvva.jwheel.view.javafx.utils.FxUtils;
 import javafx.application.Application;
 import javafx.concurrent.Task;
@@ -118,12 +117,11 @@ public class FxApplication extends Application
                 break;
             case 1:
                 // show connection settings dialog
-                WeldContext.getInstance().getBean(FxConnectionSettings.class).showAndWait();
+                jwApplication.showConnectionSettingsDialog();
                 testDatabaseConnection();
                 break;
             case 2:
-                // exit
-                primaryStage.close();
+                // give up
                 break;
             default:
                 assert false : "Connection test failed decision invalid!";

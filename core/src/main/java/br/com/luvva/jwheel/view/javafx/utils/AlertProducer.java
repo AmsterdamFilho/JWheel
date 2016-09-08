@@ -43,4 +43,9 @@ public class AlertProducer
         alert.setContentText(textProvider.failedToSave());
         alert.showAndWait();
     }
+
+    public void showInternalError ()
+    {
+        // TODO: 08/09/16 implement this method
+    }
 }

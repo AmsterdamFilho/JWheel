@@ -1,6 +1,5 @@
 package br.com.luvva.jwheel.control;
 
-import br.com.luvva.jwheel.view.javafx.starter.FxApplication;
 import org.junit.Test;
 
 /**
