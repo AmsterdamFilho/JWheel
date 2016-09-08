@@ -1,8 +1,8 @@
-package br.com.luvva.jwheel.view.javafx.starter;
+package br.com.luvva.jwheel.control;
 
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.control.JwApplication;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
+import br.com.luvva.jwheel.view.javafx.starter.FxConnectionSettings;
 import br.com.luvva.jwheel.view.javafx.utils.FxUtils;
 import javafx.application.Application;
 import javafx.concurrent.Task;
