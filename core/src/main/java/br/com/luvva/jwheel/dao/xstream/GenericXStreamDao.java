@@ -57,7 +57,19 @@ public class GenericXStreamDao<S> implements XStreamDao<S>
     {
         XStream xStream = new XStream();
         xStream.autodetectAnnotations(true);
+        addSimpleStringPropertyConverter(xStream);
+        addPasswordPropertyConverter(xStream);
         return xStream;
+    }
+
+    protected void addSimpleStringPropertyConverter (XStream xStream)
+    {
+        xStream.registerConverter(new SimpleStringPropertyConverter());
+    }
+
+    protected void addPasswordPropertyConverter (XStream xStream)
+    {
+        xStream.registerConverter(new PasswordPropertyConverter());
     }
 
     protected XStream getXStream ()

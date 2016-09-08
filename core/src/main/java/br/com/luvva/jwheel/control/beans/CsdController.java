@@ -76,10 +76,10 @@ public class CsdController implements Initializable
 
     private void bindModel (ConnectionParameters model)
     {
-        model.urlProperty().bindBidirectional(txtUrl.textProperty());
-        model.userProperty().bindBidirectional(txtUser.textProperty());
-        model.passwordProperty().bindBidirectional(txtPassword.textProperty());
-        model.driverProperty().bindBidirectional(cmbDriver.valueProperty());
+        txtUrl.textProperty().bindBidirectional(model.urlProperty());
+        txtUser.textProperty().bindBidirectional(model.userProperty());
+        txtPassword.textProperty().bindBidirectional(model.passwordProperty());
+        cmbDriver.valueProperty().bindBidirectional(model.driverProperty());
     }
 
     @Override

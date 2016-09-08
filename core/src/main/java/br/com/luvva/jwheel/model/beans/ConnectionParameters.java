@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.model.beans;
 
 import br.com.luvva.jwheel.cdi.utils.Custom;
-import br.com.luvva.jwheel.model.utils.SimpleEncoder;
+import br.com.luvva.jwheel.view.javafx.utils.PasswordProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -17,7 +17,7 @@ public class ConnectionParameters
 {
     private StringProperty driver   = new SimpleStringProperty();
     private StringProperty url      = new SimpleStringProperty();
-    private StringProperty password = new SimpleStringProperty();
+    private StringProperty password = new PasswordProperty();
     private StringProperty user     = new SimpleStringProperty();
 
     public List<String> getDriversSuggestions ()
@@ -63,7 +63,7 @@ public class ConnectionParameters
 
     public String getPassword ()
     {
-        return SimpleEncoder.decode(password.get());
+        return password.get();
     }
 
     public StringProperty passwordProperty ()
@@ -73,7 +73,7 @@ public class ConnectionParameters
 
     public void setPassword (String password)
     {
-        this.password.set(SimpleEncoder.encode(password));
+        this.password.set(password);
     }
 
     public String getUser ()
