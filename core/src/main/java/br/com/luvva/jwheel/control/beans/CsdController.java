@@ -25,14 +25,10 @@ import java.util.ResourceBundle;
  */
 public class CsdController implements Initializable
 {
-    @FXML
-    private TextField        txtUrl;
-    @FXML
-    private ComboBox<String> cmbDriver;
-    @FXML
-    private TextField        txtUser;
-    @FXML
-    private PasswordField    txtPassword;
+    private @FXML TextField        txtUrl;
+    private @FXML ComboBox<String> cmbDriver;
+    private @FXML TextField        txtUser;
+    private @FXML PasswordField    txtPassword;
 
     private @Inject ConnectionParameters    connectionParameters;
     private @Inject EntityManagerProducer   entityManagerProducer;
