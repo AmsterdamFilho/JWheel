@@ -34,9 +34,7 @@ public class FxApplication extends Application
         // execute initial system configuration (JavaFX configuration, Logger, Database connection test etc.)
         JWheelStarterTask starterTask = new JWheelStarterTask();
         starterTask.setOnSucceeded(event -> testDatabaseConnection());
-        Thread thread = new Thread(starterTask);
-        thread.setDaemon(true);
-        thread.start();
+        new Thread(starterTask).start();
     }
 
     /**
@@ -99,15 +97,12 @@ public class FxApplication extends Application
             {
             }
         });
-        Thread thread = new Thread(starterTask);
-        thread.setDaemon(true);
-        thread.start();
+        new Thread(starterTask).start();
     }
 
     private void handleFailedTestConnection ()
     {
         DecisionDialogModel ddm = jwApplication.getConnectionTestFailedDecisionModel();
-        primaryStage.close();
         showConnectionTestFailedDialogDecision(ddm);
         switch (ddm.getChosenOption())
         {
