@@ -117,6 +117,7 @@ public class FxApplication extends Application
                 break;
             case 2:
                 // give up
+                primaryStage.close();
                 break;
             default:
                 assert false : "Connection test failed decision invalid!";
