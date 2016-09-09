@@ -107,12 +107,12 @@ public class FxApplication extends Application
         switch (ddm.getChosenOption())
         {
             case 0:
-                // try again
+                // show connection settings dialog
+                jwApplication.showConnectionSettingsDialog();
                 testDatabaseConnection();
                 break;
             case 1:
-                // show connection settings dialog
-                jwApplication.showConnectionSettingsDialog();
+                // try again
                 testDatabaseConnection();
                 break;
             case 2:

@@ -5,6 +5,7 @@ import br.com.luvva.jwheel.dao.jpa.ConnectionTester;
 import br.com.luvva.jwheel.dao.jpa.EntityManagerProducer;
 import br.com.luvva.jwheel.dao.xstream.ConnectionParametersDao;
 import br.com.luvva.jwheel.model.beans.ConnectionParameters;
+import br.com.luvva.jwheel.model.i18n.TextProvider;
 import br.com.luvva.jwheel.view.javafx.utils.AlertProducer;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -38,17 +39,18 @@ public class CsdController implements Initializable
     private @Inject ConnectionParametersDao dao;
     private @Inject Logger                  logger;
     private @Inject AlertProducer           alertProducer;
+    private @Inject TextProvider            textProvider;
 
     public void testConnection ()
     {
         entityManagerProducer.init(connectionParameters);
         if (WeldContext.getInstance().getBean(ConnectionTester.class).execute())
         {
-            alertProducer.showConnectionTestSucceededMessage();
+            alertProducer.showSuccessAlert(textProvider.getText(TextProvider.cs_testSucceeded));
         }
         else
         {
-            alertProducer.showConnectionTestFailedMessage();
+            alertProducer.showErrorAlert(textProvider.getText(TextProvider.cs_testFailed));
         }
         entityManagerProducer.init();
     }
@@ -58,12 +60,12 @@ public class CsdController implements Initializable
         try
         {
             dao.merge(connectionParameters);
-            alertProducer.showSaveSucceededMessage();
+            alertProducer.showSuccessAlert(textProvider.getText(TextProvider.g_saveSucceeded));
             exit();
         }
         catch (Exception e)
         {
-            alertProducer.showSaveFailedMessage();
+            alertProducer.showErrorAlert(textProvider.getText(TextProvider.g_saveFailed));
             logger.error("Could not persist Connection Parameters", e);
         }
         entityManagerProducer.init();

@@ -1,51 +1,34 @@
 package br.com.luvva.jwheel.view.javafx.utils;
 
-import br.com.luvva.jwheel.model.providers.TextProvider;
+import br.com.luvva.jwheel.model.i18n.TextProvider;
 import javafx.scene.control.Alert;
+import org.slf4j.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
+@Singleton
 public class AlertProducer
 {
+    private @Inject Logger       logger;
     private @Inject TextProvider textProvider;
 
-    public void showConnectionTestSucceededMessage ()
-    {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(textProvider.success());
-        alert.setContentText(textProvider.connectionParametersRecordTestSuccessful());
-        alert.showAndWait();
-    }
-
-    public void showConnectionTestFailedMessage ()
-    {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(textProvider.warning());
-        alert.setContentText(textProvider.connectionParametersRecordTestFailed());
-        alert.showAndWait();
-    }
-
-    public void showSaveSucceededMessage ()
-    {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(textProvider.success());
-        alert.setContentText(textProvider.savedSuccessfully());
-        alert.showAndWait();
-    }
-
-    public void showSaveFailedMessage ()
+    public void showErrorAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(textProvider.error());
-        alert.setContentText(textProvider.failedToSave());
+        alert.setTitle(textProvider.getText(TextProvider.g_error));
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
-    public void showInternalError ()
+    public void showSuccessAlert (String message)
     {
-        // TODO: 08/09/16 implement this method
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(textProvider.getText(TextProvider.g_success));
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
