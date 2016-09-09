@@ -133,7 +133,6 @@ public class FxApplication extends Application
         protected Void call () throws Exception
         {
             jwApplication = WeldContext.getInstance().getBean(JwApplication.class);
-            jwApplication.configureJavaFX();
             jwApplication.configureLogger();
             return null;
         }

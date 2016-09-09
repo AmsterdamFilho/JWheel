@@ -27,10 +27,6 @@ public class JwApplication
     private @Inject AlertProducer    alertProducer;
     private @Inject TextProvider     textProvider;
 
-    public void configureJavaFX ()
-    {
-    }
-
     public void configureLogger ()
     {
         jwLoggerFactory.configure(logParameters);
