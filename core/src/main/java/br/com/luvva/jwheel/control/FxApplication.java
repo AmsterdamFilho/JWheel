@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceDialog;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -102,8 +101,7 @@ public class FxApplication extends Application
 
     private void handleFailedTestConnection ()
     {
-        DecisionDialogModel ddm = jwApplication.getConnectionTestFailedDecisionModel();
-        showConnectionTestFailedDialogDecision(ddm);
+        DecisionDialogModel ddm = jwApplication.showConnectionTestFailedDialogDecision();
         switch (ddm.getChosenOption())
         {
             case 0:
@@ -122,14 +120,6 @@ public class FxApplication extends Application
             default:
                 assert false : "Connection test failed decision invalid!";
         }
-    }
-
-    private void showConnectionTestFailedDialogDecision (DecisionDialogModel ddm)
-    {
-        ChoiceDialog<String> choiceDialog = new ChoiceDialog<>(ddm.getDefaultOption(), ddm.getExtraOptions());
-        choiceDialog.setContentText(ddm.getDecisionDescription());
-        choiceDialog.showAndWait();
-        ddm.setChosenOption(choiceDialog.getSelectedItem());
     }
 
     public static void main (String[] args)

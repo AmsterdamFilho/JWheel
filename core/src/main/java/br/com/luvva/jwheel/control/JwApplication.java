@@ -41,12 +41,15 @@ public class JwApplication
         return connectionTester.execute();
     }
 
-    public DecisionDialogModel getConnectionTestFailedDecisionModel ()
+    public DecisionDialogModel showConnectionTestFailedDialogDecision ()
     {
-        return new DecisionDialogModel(textProvider.getText(TextProvider.cs_ddmTitle),
-                textProvider.getText(TextProvider.cs_ddmConfigureConnection),
-                textProvider.getText(TextProvider.cs_ddmTryAgain),
-                textProvider.getText(TextProvider.cs_ddmExit));
+        DecisionDialogModel decisionDialogModel =
+                new DecisionDialogModel(textProvider.getText(TextProvider.cs_ddmTitle),
+                        textProvider.getText(TextProvider.cs_ddmConfigureConnection),
+                        textProvider.getText(TextProvider.cs_ddmTryAgain),
+                        textProvider.getText(TextProvider.cs_ddmExit));
+        alertProducer.showDecisionDialog(decisionDialogModel);
+        return decisionDialogModel;
     }
 
     public void init (Stage primaryStage)
