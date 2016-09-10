@@ -6,7 +6,7 @@ import org.junit.runners.model.InitializationError;
 /**
  * @author Amsterdam Filho - amsterdam@luvva.com.br
  */
-public class WeldJUnit4Runner extends BlockJUnit4ClassRunner
+class WeldJUnit4Runner extends BlockJUnit4ClassRunner
 {
     public WeldJUnit4Runner (Class<?> clazz) throws InitializationError
     {
