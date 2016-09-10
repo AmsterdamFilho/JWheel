@@ -6,7 +6,7 @@
 
 <?import br.com.luvva.jwheel.view.javafx.controls.JwContentPane?>
 
-<JwContentPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<JwContentPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="jwContentPane"
                fx:controller="br.com.luvva.jwheel.control.beans.CsdController">
 
     <GridPane>

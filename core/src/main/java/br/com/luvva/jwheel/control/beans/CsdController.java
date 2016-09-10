@@ -1,6 +1,7 @@
 package br.com.luvva.jwheel.control.beans;
 
 import br.com.luvva.jwheel.WeldContext;
+import br.com.luvva.jwheel.control.DefaultController;
 import br.com.luvva.jwheel.dao.jpa.ConnectionTester;
 import br.com.luvva.jwheel.dao.jpa.EntityManagerProducer;
 import br.com.luvva.jwheel.dao.xstream.ConnectionParametersDao;
@@ -9,7 +10,6 @@ import br.com.luvva.jwheel.model.i18n.TextProvider;
 import br.com.luvva.jwheel.view.javafx.utils.AlertProducer;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -17,13 +17,11 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class CsdController implements Initializable
+public class CsdController extends DefaultController
 {
     private @FXML TextField        txtUrl;
     private @FXML ComboBox<String> cmbDriver;
@@ -81,7 +79,7 @@ public class CsdController implements Initializable
     }
 
     @Override
-    public void initialize (URL location, ResourceBundle resources)
+    public void start ()
     {
         cmbDriver.setItems(FXCollections.observableArrayList(connectionParameters.getDriversSuggestions()));
         bindModel(connectionParameters);

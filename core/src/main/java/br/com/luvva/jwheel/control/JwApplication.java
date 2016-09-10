@@ -14,6 +14,10 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -26,6 +30,17 @@ public class JwApplication
     private @Inject ConnectionTester connectionTester;
     private @Inject AlertProducer    alertProducer;
     private @Inject TextProvider     textProvider;
+
+    private List<String> styleSheets = new ArrayList<>();
+
+    public JwApplication ()
+    {
+        URL resource = getClass().getResource("/jw-theme.css");
+        if (resource != null)
+        {
+            styleSheets.add(resource.toExternalForm());
+        }
+    }
 
     public void configureLogger ()
     {
@@ -70,5 +85,10 @@ public class JwApplication
             alertProducer.showErrorAlert(textProvider.getText(TextProvider.g_internalError));
             logger.error("Error loading Connection Settings Dialog!", e);
         }
+    }
+
+    public Collection<? extends String> getStylesheets ()
+    {
+        return styleSheets;
     }
 }
