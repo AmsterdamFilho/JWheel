@@ -33,11 +33,11 @@ public class CsdController extends DefaultController
     {
         if (csdService.testConnection(connectionParameters))
         {
-            alertProducer.showSuccessAlert(textProvider.getText(TextProvider.cs_testSucceeded));
+            alertProducer.showSuccessAlert(textProvider.getText(TextProvider.z_cs_testSucceededMessage));
         }
         else
         {
-            alertProducer.showErrorAlert(textProvider.getText(TextProvider.cs_testFailed));
+            alertProducer.showErrorAlert(textProvider.getText(TextProvider.z_cs_testFailedMessage));
         }
     }
 

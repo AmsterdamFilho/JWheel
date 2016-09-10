@@ -8,35 +8,35 @@ import java.util.ResourceBundle;
 public interface TextProvider
 {
 
-    //<editor-fold desc="General">
+    //<editor-fold desc="Alerts">
 
-    String g_error = "g-error";
+    String z_a_errorTitle = "z_a_errorTitle";
     
-    String g_internalError = "g-internalError";
+    String z_a_internalErrorMessage = "z_a_internalErrorMessage";
 
-    String g_saveFailed = "g-saveFailed";
+    String z_a_saveFailedMessage = "z_a_saveFailedMessage";
 
-    String g_saveSucceeded = "g-saveSucceeded";
+    String z_a_saveSucceededMessage = "z_a_saveSucceededMessage";
 
-    String g_success = "g-success";
+    String z_a_successTitle = "z_a_successTitle";
 
     //</editor-fold>
 
     //<editor-fold desc="Connection settings">
+
+    String z_cs_ddmConfigureConnectionOption = "z_cs_ddmConfigureConnectionOption";
+
+    String z_cs_ddmExitOption = "z_cs_ddmExitOption";
+
+    String z_cs_ddmTitle = "z_cs_ddmTitle";
+
+    String z_cs_ddmTryAgainOption = "z_cs_ddmTryAgainOption";
     
-    String cs_testFailed = "cs-testFailed";
+    String z_cs_testFailedMessage = "z_cs_testFailedMessage";
 
-    String cs_testSucceeded = "cs-testSucceeded";
+    String z_cs_testSucceededMessage = "z_cs_testSucceededMessage";
 
-    String cs_title = "cs-title";
-
-    String cs_ddmConfigureConnection = "cs-ddmConfigureConnection";
-
-    String cs_ddmExit = "cs-ddmExit";
-
-    String cs_ddmTitle = "cs-ddmTitle";
-
-    String cs_ddmTryAgain = "cs-ddmTryAgain";
+    String z_cs_title = "z_cs_title";
 
     //</editor-fold>
 

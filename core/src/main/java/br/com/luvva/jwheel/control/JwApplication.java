@@ -55,10 +55,10 @@ public class JwApplication
     public DecisionDialogModel showConnectionTestFailedDialogDecision ()
     {
         DecisionDialogModel decisionDialogModel =
-                new DecisionDialogModel(textProvider.getText(TextProvider.cs_ddmTitle),
-                        textProvider.getText(TextProvider.cs_ddmConfigureConnection),
-                        textProvider.getText(TextProvider.cs_ddmTryAgain),
-                        textProvider.getText(TextProvider.cs_ddmExit));
+                new DecisionDialogModel(textProvider.getText(TextProvider.z_cs_ddmTitle),
+                        textProvider.getText(TextProvider.z_cs_ddmConfigureConnectionOption),
+                        textProvider.getText(TextProvider.z_cs_ddmTryAgainOption),
+                        textProvider.getText(TextProvider.z_cs_ddmExitOption));
         alertProducer.showDecisionDialog(decisionDialogModel);
         return decisionDialogModel;
     }
@@ -76,13 +76,13 @@ public class JwApplication
             fxmlLoader.setResources(textProvider.getResourceBundle());
             Parent csPane = fxmlLoader.load(getClass().getResourceAsStream("/fxml/csd.fxml"));
             Stage stage = new Stage();
-            stage.setTitle(textProvider.getText(TextProvider.cs_title));
+            stage.setTitle(textProvider.getText(TextProvider.z_cs_title));
             stage.setScene(new Scene(csPane));
             stage.showAndWait();
         }
         catch (Exception e)
         {
-            alertProducer.showErrorAlert(textProvider.getText(TextProvider.g_internalError));
+            alertProducer.showErrorAlert(textProvider.getText(TextProvider.z_a_internalErrorMessage));
             logger.error("Error loading Connection Settings Dialog!", e);
         }
     }

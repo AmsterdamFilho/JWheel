@@ -21,7 +21,7 @@ public class AlertProducer
     public void showErrorAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(textProvider.getText(TextProvider.g_error));
+        alert.setTitle(textProvider.getText(TextProvider.z_a_errorTitle));
         alert.setContentText(message);
         alert.showAndWait();
     }
@@ -29,7 +29,7 @@ public class AlertProducer
     public void showSuccessAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(textProvider.getText(TextProvider.g_success));
+        alert.setTitle(textProvider.getText(TextProvider.z_a_successTitle));
         alert.setContentText(message);
         alert.showAndWait();
     }
