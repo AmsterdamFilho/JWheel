@@ -2,7 +2,6 @@ package br.com.luvva.jwheel.control;
 
 import br.com.luvva.jwheel.JwLoggerFactory;
 import br.com.luvva.jwheel.WeldContext;
-import br.com.luvva.jwheel.dao.jpa.ConnectionTester;
 import br.com.luvva.jwheel.model.beans.DecisionDialogModel;
 import br.com.luvva.jwheel.model.beans.LogParameters;
 import br.com.luvva.jwheel.model.i18n.TextProvider;
@@ -14,6 +13,7 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +27,6 @@ public class JwApplication
     private @Inject JwLoggerFactory  jwLoggerFactory;
     private @Inject Logger           logger;
     private @Inject LogParameters    logParameters;
-    private @Inject ConnectionTester connectionTester;
     private @Inject AlertProducer    alertProducer;
     private @Inject TextProvider     textProvider;
 
@@ -49,7 +48,16 @@ public class JwApplication
 
     public boolean databaseConnectionOk ()
     {
-        return connectionTester.execute();
+        try
+        {
+            WeldContext.getInstance().getBean(EntityManager.class);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            logger.error("Could not create an EntityManager!", ex);
+            return false;
+        }
     }
 
     public DecisionDialogModel showConnectionTestFailedDialogDecision ()
