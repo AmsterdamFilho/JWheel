@@ -29,19 +29,19 @@
         <Label text="Driver" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
         <ComboBox fx:id="cmbDriver" GridPane.columnSpan="2" GridPane.rowIndex="3" maxWidth="Infinity" editable="true"/>
 
-        <Label text="%cs-user" GridPane.rowIndex="4"/>
+        <Label text="%cs_user" GridPane.rowIndex="4"/>
         <TextField fx:id="txtUser" GridPane.rowIndex="5"/>
 
-        <Label text="%cs-password" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <Label text="%cs_password" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
         <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
         <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="2" alignment="CENTER">
 
-            <Button text="%cs-testConnection" onAction="#testConnection"/>
+            <Button text="%cs_testConnection" onAction="#testConnection"/>
 
-            <Button text="%cs-saveAndExit" onAction="#saveAndExit"/>
+            <Button text="%cs_saveAndExit" onAction="#saveAndExit"/>
 
-            <Button text="%cs-cancel" onAction="#exit"/>
+            <Button text="%cs_cancel" onAction="#exit"/>
 
         </HBox>
 
