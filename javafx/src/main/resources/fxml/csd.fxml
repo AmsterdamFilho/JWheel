@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<?import br.com.luvva.jwheel.javafx.view.controls.JwContentPane?>
+
+<JwContentPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="jwContentPane"
+               fx:controller="br.com.luvva.jwheel.javafx.control.form.CsdController">
+
+    <GridPane>
+
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <hgap>10</hgap>
+        <vgap>10</vgap>
+
+        <columnConstraints>
+            <ColumnConstraints prefWidth="270"/>
+            <ColumnConstraints prefWidth="220"/>
+        </columnConstraints>
+
+        <Label text="URL" GridPane.columnSpan="2" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtUrl" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
+
+        <Label text="Driver" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="cmbDriver" GridPane.columnSpan="2" GridPane.rowIndex="3" maxWidth="Infinity" editable="true"/>
+
+        <Label text="%cs_user" GridPane.rowIndex="4"/>
+        <TextField fx:id="txtUser" GridPane.rowIndex="5"/>
+
+        <Label text="%cs_password" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="2" alignment="CENTER">
+
+            <Button text="%cs_testConnection" onAction="#testConnection"/>
+
+            <Button text="%cs_saveAndExit" onAction="#saveAndExit"/>
+
+            <Button text="%cs_cancel" onAction="#exit"/>
+
+        </HBox>
+
+    </GridPane>
+
+</JwContentPane>
