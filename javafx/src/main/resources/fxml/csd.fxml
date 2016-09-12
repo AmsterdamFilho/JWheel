@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import br.com.luvva.jwheel.javafx.view.controls.JwContentPane?>
+<GridPane fx:id="contentPane" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+          styleClass="contentGridPane" fx:controller="br.com.luvva.jwheel.javafx.control.form.CsdController">
 
-<JwContentPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="jwContentPane"
-               fx:controller="br.com.luvva.jwheel.javafx.control.form.CsdController">
+    <columnConstraints>
+        <ColumnConstraints prefWidth="270"/>
+        <ColumnConstraints prefWidth="220"/>
+    </columnConstraints>
 
-    <GridPane>
+    <Label text="URL" GridPane.columnSpan="2" GridPane.rowIndex="0"/>
+    <TextField fx:id="txtUrl" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
 
-        <padding>
-            <Insets top="10" right="10" bottom="10" left="10"/>
-        </padding>
+    <Label text="Driver" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
+    <ComboBox fx:id="cmbDriver" editable="true" maxWidth="Infinity" GridPane.columnSpan="2" GridPane.rowIndex="3"/>
 
-        <hgap>10</hgap>
-        <vgap>10</vgap>
+    <Label text="%cs_user" GridPane.rowIndex="4"/>
+    <TextField fx:id="txtUser" GridPane.rowIndex="5"/>
 
-        <columnConstraints>
-            <ColumnConstraints prefWidth="270"/>
-            <ColumnConstraints prefWidth="220"/>
-        </columnConstraints>
+    <Label text="%cs_password" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
-        <Label text="URL" GridPane.columnSpan="2" GridPane.rowIndex="0"/>
-        <TextField fx:id="txtUrl" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
+    <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6" styleClass="hBox">
 
-        <Label text="Driver" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
-        <ComboBox fx:id="cmbDriver" GridPane.columnSpan="2" GridPane.rowIndex="3" maxWidth="Infinity" editable="true"/>
+        <GridPane.margin>
+            <Insets top="20"/>
+        </GridPane.margin>
 
-        <Label text="%cs_user" GridPane.rowIndex="4"/>
-        <TextField fx:id="txtUser" GridPane.rowIndex="5"/>
+        <Button onAction="#testConnection" text="%cs_testConnection"/>
 
-        <Label text="%cs_password" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-        <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <Button onAction="#saveAndExit" text="%cs_saveAndExit"/>
 
-        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="2" alignment="CENTER">
+        <Button onAction="#exit" text="%cs_cancel"/>
 
-            <Button text="%cs_testConnection" onAction="#testConnection"/>
+    </HBox>
 
-            <Button text="%cs_saveAndExit" onAction="#saveAndExit"/>
-
-            <Button text="%cs_cancel" onAction="#exit"/>
-
-        </HBox>
-
-    </GridPane>
-
-</JwContentPane>
+</GridPane>

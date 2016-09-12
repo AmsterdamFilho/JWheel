@@ -16,7 +16,7 @@ import javax.inject.Inject;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class CsdController extends DefaultController
+public class CsdController extends RecordPaneController
 {
     private @FXML TextField        txtUrl;
     private @FXML ComboBox<String> cmbDriver;

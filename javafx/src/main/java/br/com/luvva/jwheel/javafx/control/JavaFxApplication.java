@@ -13,9 +13,6 @@ import org.slf4j.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -25,17 +22,6 @@ public abstract class JavaFxApplication
     private @Inject Logger        logger;
     private @Inject AlertProducer alertProducer;
     private @Inject TextProvider  textProvider;
-
-    private List<String> styleSheets = new ArrayList<>();
-
-    public JavaFxApplication ()
-    {
-        URL resource = getClass().getResource("/jw-theme.css");
-        if (resource != null)
-        {
-            styleSheets.add(resource.toExternalForm());
-        }
-    }
 
     public boolean databaseConnectionOk ()
     {
@@ -82,9 +68,22 @@ public abstract class JavaFxApplication
         }
     }
 
-    public Collection<? extends String> getStylesheets ()
+    protected String getStyleSheetResource (String resourcePath)
     {
-        return styleSheets;
+        URL resource = getClass().getResource(resourcePath);
+        if (resource == null)
+        {
+            return null;
+        }
+        else
+        {
+            return resource.toExternalForm();
+        }
+    }
+
+    public String getRecordPaneStyleSheet ()
+    {
+        return getStyleSheetResource("/record-pane.css");
     }
 
     public abstract void init (Stage primaryStage);
