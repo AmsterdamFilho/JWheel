@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.java;
 
 import java.text.Normalizer;
 
@@ -19,5 +19,17 @@ public class StringUtils
     public static boolean isNullOrEmpty (String string)
     {
         return string == null || string.trim().isEmpty();
+    }
+
+    /**
+     * Left pads an integer with zeros and return a String
+     *
+     * @param intToPad the number to be transformed in a fixed length String
+     * @param fixedLength the length of the returned String
+     * @return the padded integer as a fixed length String
+     */
+    public static String leftPadIntWithZeros (int intToPad, int fixedLength)
+    {
+        return String.format("%0" + fixedLength + "d", intToPad);
     }
 }

@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.javafx.model.utils;
 
-import br.com.luvva.jwheel.model.StringUtils;
+import br.com.luvva.jwheel.java.StringUtils;
 
 import java.util.*;
 

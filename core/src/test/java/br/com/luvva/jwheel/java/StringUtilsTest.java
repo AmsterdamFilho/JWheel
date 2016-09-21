@@ -1,16 +1,25 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.java;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static br.com.luvva.jwheel.model.StringUtils.isNullOrEmpty;
-import static br.com.luvva.jwheel.model.StringUtils.stripAccents;
+import static br.com.luvva.jwheel.java.StringUtils.isNullOrEmpty;
+import static br.com.luvva.jwheel.java.StringUtils.leftPadIntWithZeros;
+import static br.com.luvva.jwheel.java.StringUtils.stripAccents;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public class StringUtilsTest
 {
+    @Test
+    public void testLeftPadIntWithZeros () throws Exception
+    {
+        Assert.assertTrue("01".equals(leftPadIntWithZeros(1, 2)));
+        Assert.assertTrue("00".equals(leftPadIntWithZeros(0, 2)));
+        Assert.assertTrue("00100".equals(leftPadIntWithZeros(100, 5)));
+    }
+
     @Test
     @SuppressWarnings("SpellCheckingInspection")
     public void testStripAccents () throws Exception
