@@ -1,6 +1,7 @@
 package br.com.luvva.jwheel.javafx.control;
 
 import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.javafx.CdiEnabledFxmlLoader;
 import br.com.luvva.jwheel.javafx.model.i18n.TextProvider;
 import br.com.luvva.jwheel.javafx.model.utils.DecisionDialogModel;
 import br.com.luvva.jwheel.javafx.view.utils.AlertProducer;
@@ -52,8 +53,7 @@ public abstract class JavaFxApplication
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getBean(param));
+            FXMLLoader fxmlLoader = new CdiEnabledFxmlLoader();
             fxmlLoader.setResources(textProvider.getResourceBundle());
             Parent csPane = fxmlLoader.load(getClass().getResourceAsStream("/jwheel-javafx/fxml/csd.fxml"));
             Stage stage = new Stage();
