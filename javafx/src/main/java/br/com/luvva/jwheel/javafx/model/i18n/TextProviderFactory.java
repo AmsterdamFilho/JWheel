@@ -24,7 +24,7 @@ public class TextProviderFactory
         {
             try
             {
-                ResourceBundle resourceBundle = ResourceBundle.getBundle("locale/jw-locale");
+                ResourceBundle resourceBundle = ResourceBundle.getBundle("jwheel-javafx/locale/jw-locale");
                 DefaultTextProvider defaultTextProvider = WeldContext.getInstance().getBean(DefaultTextProvider.class);
                 defaultTextProvider.setResourceBundle(resourceBundle);
                 textProvider = defaultTextProvider;

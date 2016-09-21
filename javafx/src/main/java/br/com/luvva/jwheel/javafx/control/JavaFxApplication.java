@@ -55,7 +55,7 @@ public abstract class JavaFxApplication
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getBean(param));
             fxmlLoader.setResources(textProvider.getResourceBundle());
-            Parent csPane = fxmlLoader.load(getClass().getResourceAsStream("/fxml/csd.fxml"));
+            Parent csPane = fxmlLoader.load(getClass().getResourceAsStream("/jwheel-javafx/fxml/csd.fxml"));
             Stage stage = new Stage();
             stage.setTitle(textProvider.getText(TextProvider.z_cs_title));
             stage.setScene(new Scene(csPane));
@@ -83,7 +83,7 @@ public abstract class JavaFxApplication
 
     public String getRecordPaneStyleSheet ()
     {
-        return getStyleSheetResource("/record-pane.css");
+        return getStyleSheetResource("/jwheel-javafx/css/record-pane.css");
     }
 
     public abstract void init (Stage primaryStage);
