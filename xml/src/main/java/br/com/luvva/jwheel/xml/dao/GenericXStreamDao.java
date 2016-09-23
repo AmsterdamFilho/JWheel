@@ -1,9 +1,7 @@
 package br.com.luvva.jwheel.xml.dao;
 
 import br.com.luvva.jwheel.java.JavaLangUtils;
-import br.com.luvva.jwheel.xml.model.FilePersistenceProvider;
 import br.com.luvva.jwheel.xml.model.PathPreferences;
-import br.com.luvva.jwheel.xml.model.PersistenceProvider;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.XStreamException;
 
@@ -18,15 +16,15 @@ public abstract class GenericXStreamDao<S> implements XStreamDao<S>
 {
     private @Inject PathPreferences pathPreferences;
 
-    private PersistenceProvider<S> provider;
-    private XStream                xStream;
+    private PreferencesDao<S> provider;
+    private XStream           xStream;
 
     @PostConstruct
     protected void configure ()
     {
         xStream = createXStream();
         Class<S> typeClass = JavaLangUtils.getSuperclassTypeArgument(this);
-        provider = new FilePersistenceProvider<>(pathPreferences, typeClass.getSimpleName());
+        provider = new PreferencesDaoFromFile<>(pathPreferences, typeClass.getSimpleName());
     }
 
     protected XStream createXStream ()

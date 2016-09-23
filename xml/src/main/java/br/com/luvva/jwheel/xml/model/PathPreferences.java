@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 @Singleton
 public class PathPreferences
 {
-    private @Inject PathNamesProducer pathNamesProducer;
+    private @Inject PathNames pathNames;
 
     private String appDataDirectory;
     private String preferencesDirectory;
@@ -21,9 +21,9 @@ public class PathPreferences
     private void init ()
     {
         setAppDataDirectory(
-                Paths.get(System.getProperty("user.home"), pathNamesProducer.produceAppDataFolderName()).toString());
+                Paths.get(System.getProperty("user.home"), pathNames.getAppDataFolderName()).toString());
         setPreferencesDirectory(
-                Paths.get(getAppDataDirectory(), pathNamesProducer.produceAppPreferencesFolderName()).toString());
+                Paths.get(getAppDataDirectory(), pathNames.getAppPreferencesFolderName()).toString());
     }
 
     public String getPreferencesDirectory ()

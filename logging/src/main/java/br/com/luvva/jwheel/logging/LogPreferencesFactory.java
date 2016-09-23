@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.logging;
 
 import br.com.luvva.jwheel.xml.model.PathPreferences;
-import br.com.luvva.jwheel.xml.model.PreferencesFactoryFromXml;
+import br.com.luvva.jwheel.xml.service.PreferencesFactoryFromXml;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;

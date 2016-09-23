@@ -1,8 +1,8 @@
 package br.com.luvva.jwheel.jpa;
 
 import br.com.luvva.jwheel.xml.dao.GenericXStreamDao;
-import br.com.luvva.jwheel.xml.dao.PasswordPropertyConverter;
-import br.com.luvva.jwheel.xml.dao.SimpleStringPropertyConverter;
+import br.com.luvva.jwheel.xml.service.PasswordPropertyConverter;
+import br.com.luvva.jwheel.xml.service.SimpleStringPropertyConverter;
 import com.thoughtworks.xstream.XStream;
 
 /**
