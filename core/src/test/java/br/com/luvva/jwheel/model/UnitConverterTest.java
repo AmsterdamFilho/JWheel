@@ -9,7 +9,7 @@ import org.junit.Test;
 public class UnitConverterTest
 {
     @Test
-    public void convertToPixels () throws Exception
+    public void convertToPixels ()
     {
         // expected values are from http://pixelyzer.com/inches_to_pixels.html
         Assert.assertEquals(23622, UnitConverter.convertToPixels(100, 600), 0.001);
