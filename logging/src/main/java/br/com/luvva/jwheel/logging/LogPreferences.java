@@ -9,20 +9,32 @@ import ch.qos.logback.classic.Level;
 @Custom
 public class LogPreferences
 {
-    private Level   loggerLevel;
+    private String  loggerLevel;
     private String  loggerConfigurationXml;
     private boolean useLoggerConfigurationXml;
 
     private String logFilePath;
 
-    public Level getLoggerLevel ()
+    public String getLoggerLevel ()
     {
         return loggerLevel;
     }
 
-    public void setLoggerLevel (Level loggerLevel)
+    public void setLoggerLevel (String loggerLevel)
     {
         this.loggerLevel = loggerLevel;
+    }
+
+    public void setLoggerLevel (Level loggerLevel)
+    {
+        if (loggerLevel == null)
+        {
+            this.loggerLevel = null;
+        }
+        else
+        {
+            this.loggerLevel = loggerLevel.levelStr;
+        }
     }
 
     public String getLoggerConfigurationXml ()

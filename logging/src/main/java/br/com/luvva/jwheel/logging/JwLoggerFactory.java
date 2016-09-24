@@ -39,27 +39,15 @@ public class JwLoggerFactory
 
     private void configure (LogPreferences logPreferences)
     {
-        Level loggerLevel = logPreferences.getLoggerLevel();
+        Level loggerLevel = Level.toLevel(logPreferences.getLoggerLevel(), Level.WARN);
         if (logPreferences.isUseLoggerConfigurationXml())
         {
             configureLogback(logPreferences.getLoggerConfigurationXml());
         }
         else
         {
-            if (loggerLevel == null)
-            {
-                configureLogbackAsDefault(logPreferences.getLogFilePath());
-            }
-            else
-            {
-                configureLogbackAsDefault(logPreferences.getLogFilePath(), loggerLevel);
-            }
+            configureLogbackAsDefault(logPreferences.getLogFilePath(), loggerLevel);
         }
-    }
-
-    private void configureLogbackAsDefault (String logFilePath)
-    {
-        configureLogbackAsDefault(logFilePath, Level.WARN);
     }
 
     private void configureLogbackAsDefault (String logFilePath, Level level)

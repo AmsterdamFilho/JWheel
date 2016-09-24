@@ -2,6 +2,7 @@ package br.com.luvva.jwheel.logging;
 
 import br.com.luvva.jwheel.xml.model.PathPreferences;
 import br.com.luvva.jwheel.xml.service.PreferencesFactoryFromXml;
+import ch.qos.logback.classic.Level;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
@@ -28,7 +29,7 @@ public class LogPreferencesFactory extends PreferencesFactoryFromXml<LogPreferen
     @Override
     public void setDefaultPreferences (LogPreferences parameters)
     {
-        parameters.setLoggerLevel(null);
+        parameters.setLoggerLevel(Level.WARN.levelStr);
         parameters.setLogFilePath(getLogFilePath().toString());
         //@formatter:off
         parameters.setLoggerConfigurationXml(
