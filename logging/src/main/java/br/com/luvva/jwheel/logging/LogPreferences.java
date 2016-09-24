@@ -7,7 +7,7 @@ import ch.qos.logback.classic.Level;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Custom
-class LogPreferences
+public class LogPreferences
 {
     private Level   loggerLevel;
     private String  loggerConfigurationXml;
