@@ -14,40 +14,72 @@ import java.util.ResourceBundle;
  */
 public class ExtensionTestController implements Initializable
 {
-    private @FXML TextField integerTx;
-    private @FXML TextField decimalTx;
-    private @FXML TextField fixedContentLengthTx;
-    private @FXML TextField autoCompleteTx1;
-    private @FXML TextField autoCompleteTx2;
+    private @FXML TextField integerTf;
+    private @FXML TextField decimalTf;
+    private @FXML TextField fixedContentLengthTf;
+    private @FXML TextField autoCompleteTf1;
+    private @FXML TextField autoCompleteTf2;
 
-    private IntegerTxDecorator integerTxDecorator;
+    private NumberTfDecorator integerTfDecorator;
+    private NumberTfDecorator decimalTfDecorator;
 
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
-        integerTxDecorator = new IntegerTxDecorator(integerTx);
+        integerTfDecorator = new NumberTfDecorator(integerTf);
+        decimalTfDecorator = new NumberTfDecorator(decimalTf, 100, 2);
     }
 
-    public void undoIntegerTxDecoration ()
+    public void undoIntegerTfDecoration ()
     {
-        integerTxDecorator.undo();
+        integerTfDecorator.undo();
     }
 
-    public void doIntegerTxDecoration ()
+    public void doIntegerTfDecoration ()
     {
-        final int[] upperBound = new int[1];
-
-        TextInputDialog dialog = new TextInputDialog("10");
-        dialog.setTitle("Decoration dialog");
-        dialog.setContentText("Type the upper bound:");
-        Optional<String> result = dialog.showAndWait();
-        if (!result.isPresent())
+        final double[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable integer", "10");
+        if (limit == null)
         {
             return;
         }
-        result.ifPresent(name -> upperBound[0] = Integer.valueOf(name));
+        undoIntegerTfDecoration();
+        integerTfDecorator = new NumberTfDecorator(integerTf, limit[0]);
+    }
 
-        undoIntegerTxDecoration();
-        integerTxDecorator = new IntegerTxDecorator(integerTx, upperBound[0]);
+    public void undoDecimalTfDecoration ()
+    {
+        decimalTfDecorator.undo();
+    }
+
+    public void doDecimalTfDecoration ()
+    {
+        final double[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable double", "100.00");
+        if (limit == null)
+        {
+            return;
+        }
+        final double[] scale = promptUserForNumber("Decoration dialog", "Type maximum the decimal places", "2");
+        if (scale == null)
+        {
+            return;
+        }
+        undoDecimalTfDecoration();
+        decimalTfDecorator = new NumberTfDecorator(decimalTf, limit[0], (int) scale[0]);
+    }
+
+    private double[] promptUserForNumber (String title, String contentText, String initialValue)
+    {
+        final double[] response = new double[1];
+
+        TextInputDialog dialog = new TextInputDialog(initialValue);
+        dialog.setTitle(title);
+        dialog.setContentText(contentText);
+        Optional<String> result = dialog.showAndWait();
+        if (!result.isPresent())
+        {
+            return null;
+        }
+        result.ifPresent(name -> response[0] = Double.valueOf(name));
+        return response;
     }
 }

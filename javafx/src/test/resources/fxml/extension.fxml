@@ -12,20 +12,22 @@
     </columnConstraints>
 
     <Label text="Integer text field"/>
-    <TextField fx:id="integerTx" GridPane.columnIndex="1"/>
-    <Button text="undo decoration" onAction="#undoIntegerTxDecoration" GridPane.columnIndex="2"/>
-    <Button text="decorate again" onAction="#doIntegerTxDecoration" GridPane.columnIndex="3"/>
+    <TextField fx:id="integerTf" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoIntegerTfDecoration" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doIntegerTfDecoration" GridPane.columnIndex="3"/>
 
     <Label text="Decimal text field" GridPane.rowIndex="1"/>
-    <TextField fx:id="decimalTx" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <TextField fx:id="decimalTf" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoDecimalTfDecoration" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doDecimalTfDecoration" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
 
     <Label text="Fixed content length text field" GridPane.rowIndex="2"/>
-    <TextField fx:id="fixedContentLengthTx" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <TextField fx:id="fixedContentLengthTf" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
     <Label text="Autocomplete text field 1" GridPane.rowIndex="3"/>
-    <TextField fx:id="autoCompleteTx1" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    <TextField fx:id="autoCompleteTf1" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
     <Label text="Autocomplete text field 2" GridPane.rowIndex="4"/>
-    <TextField fx:id="autoCompleteTx2" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <TextField fx:id="autoCompleteTf2" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
 </GridPane>
