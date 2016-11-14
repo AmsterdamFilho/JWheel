@@ -1,4 +1,11 @@
-.idea*
+.idea
 *.iml
-*/target/*
-*.DS_Store
+
+core/target
+javafx/target
+jpa/target
+logging/target
+rpn/target
+template/target
+test-utils/target
+xml/target
