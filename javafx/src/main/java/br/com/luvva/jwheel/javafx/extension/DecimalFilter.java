@@ -18,7 +18,7 @@ public class DecimalFilter implements UnaryOperator<TextFormatter.Change>
     private final String decimalRegex1;
     private final String decimalRegex2;
 
-    private static final String integerRegex     = "[0-9]+";
+    private static final String integerRegex     = "[0-9]{1,5}";
     private static final char   decimalSeparator = DecimalFormatSymbols.getInstance().getDecimalSeparator();
 
     /**
