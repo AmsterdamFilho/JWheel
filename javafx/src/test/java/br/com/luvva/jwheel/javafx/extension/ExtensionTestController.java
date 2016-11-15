@@ -3,6 +3,7 @@ package br.com.luvva.jwheel.javafx.extension;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputDialog;
 
 import java.net.URL;
@@ -20,74 +21,66 @@ public class ExtensionTestController implements Initializable
     private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
-    private NumberTfDecorator        integerTfDecorator;
-    private NumberTfDecorator        decimalTfDecorator;
-    private LimitedLengthTfDecorator limitedLengthTfDecorator;
-
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
-        integerTfDecorator = new NumberTfDecorator(integerTf);
-        decimalTfDecorator = new NumberTfDecorator(decimalTf, 100, 2);
-        limitedLengthTfDecorator = new LimitedLengthTfDecorator(limitedLengthTf, 7);
+        integerTf.setTextFormatter(new TextFormatter<>(new IntegerFilter()));
+        decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(100, 2)));
+        limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter(7)));
     }
 
     public void undoIntegerTfDecoration ()
     {
-        integerTfDecorator.undo();
+        integerTf.setTextFormatter(null);
     }
 
     public void doIntegerTfDecoration ()
     {
-        final double[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable integer", "10");
-        if (limit == null)
+        float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "125");
+        if (limit != null)
         {
-            return;
+            integerTf.setText("");
+            integerTf.setTextFormatter(new TextFormatter<>(new IntegerFilter((int) limit[0])));
         }
-        undoIntegerTfDecoration();
-        integerTfDecorator = new NumberTfDecorator(integerTf, limit[0]);
     }
 
     public void undoDecimalTfDecoration ()
     {
-        decimalTfDecorator.undo();
+        decimalTf.setTextFormatter(null);
     }
 
     public void doDecimalTfDecoration ()
     {
-        final double[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable double", "100.00");
-        if (limit == null)
+        float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "100.00");
+        if (limit != null)
         {
-            return;
+            float[] scale = promptUserForNumber("Decoration dialog", "Type the scale", "2");
+            if (scale != null)
+            {
+                decimalTf.setText("");
+                decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(limit[0], (int) scale[0])));
+            }
         }
-        final double[] scale = promptUserForNumber("Decoration dialog", "Type maximum the decimal places", "2");
-        if (scale == null)
-        {
-            return;
-        }
-        undoDecimalTfDecoration();
-        decimalTfDecorator = new NumberTfDecorator(decimalTf, limit[0], (int) scale[0]);
     }
 
     public void undoLimitedLengthTfDecoration ()
     {
-        limitedLengthTfDecorator.undo();
+        limitedLengthTf.setTextFormatter(null);
     }
 
     public void doLimitedLengthTfDecoration ()
     {
-        final double[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable length", "5");
-        if (limit == null)
+        final float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable length", "5");
+        if (limit != null)
         {
-            return;
+            limitedLengthTf.setText("");
+            limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter((int) limit[0])));
         }
-        undoLimitedLengthTfDecoration();
-        limitedLengthTfDecorator = new LimitedLengthTfDecorator(limitedLengthTf, (int) limit[0]);
     }
 
-    private double[] promptUserForNumber (String title, String contentText, String initialValue)
+    private float[] promptUserForNumber (String title, String contentText, String initialValue)
     {
-        final double[] response = new double[1];
+        final float[] response = new float[1];
 
         TextInputDialog dialog = new TextInputDialog(initialValue);
         dialog.setTitle(title);
@@ -97,7 +90,7 @@ public class ExtensionTestController implements Initializable
         {
             return null;
         }
-        result.ifPresent(name -> response[0] = Double.valueOf(name));
+        result.ifPresent(name -> response[0] = Float.valueOf(name));
         return response;
     }
 }
