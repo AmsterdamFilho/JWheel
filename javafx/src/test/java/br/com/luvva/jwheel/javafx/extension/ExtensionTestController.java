@@ -16,18 +16,20 @@ public class ExtensionTestController implements Initializable
 {
     private @FXML TextField integerTf;
     private @FXML TextField decimalTf;
-    private @FXML TextField fixedContentLengthTf;
+    private @FXML TextField limitedLengthTf;
     private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
-    private NumberTfDecorator integerTfDecorator;
-    private NumberTfDecorator decimalTfDecorator;
+    private NumberTfDecorator        integerTfDecorator;
+    private NumberTfDecorator        decimalTfDecorator;
+    private LimitedLengthTfDecorator limitedLengthTfDecorator;
 
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
         integerTfDecorator = new NumberTfDecorator(integerTf);
         decimalTfDecorator = new NumberTfDecorator(decimalTf, 100, 2);
+        limitedLengthTfDecorator = new LimitedLengthTfDecorator(limitedLengthTf, 7);
     }
 
     public void undoIntegerTfDecoration ()
@@ -65,6 +67,22 @@ public class ExtensionTestController implements Initializable
         }
         undoDecimalTfDecoration();
         decimalTfDecorator = new NumberTfDecorator(decimalTf, limit[0], (int) scale[0]);
+    }
+
+    public void undoLimitedLengthTfDecoration ()
+    {
+        limitedLengthTfDecorator.undo();
+    }
+
+    public void doLimitedLengthTfDecoration ()
+    {
+        final double[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable length", "5");
+        if (limit == null)
+        {
+            return;
+        }
+        undoLimitedLengthTfDecoration();
+        limitedLengthTfDecorator = new LimitedLengthTfDecorator(limitedLengthTf, (int) limit[0]);
     }
 
     private double[] promptUserForNumber (String title, String contentText, String initialValue)
