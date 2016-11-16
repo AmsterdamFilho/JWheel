@@ -18,6 +18,7 @@ public class ExtensionTestController implements Initializable
     private @FXML TextField integerTf;
     private @FXML TextField decimalTf;
     private @FXML TextField limitedLengthTf;
+    private @FXML TextField dateTf;
     private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
@@ -27,6 +28,7 @@ public class ExtensionTestController implements Initializable
         integerTf.setTextFormatter(new TextFormatter<>(new IntegerFilter()));
         decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(100, 2)));
         limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter(7)));
+        dateTf.setTextFormatter(new TextFormatter<>(new DateFilter()));
     }
 
     public void undoIntegerTfDecoration ()
