@@ -1,5 +1,9 @@
-package br.com.luvva.jwheel.javafx.extension;
+package br.com.luvva.jwheel.javafx.control;
 
+import br.com.luvva.jwheel.javafx.control.DateFilter;
+import br.com.luvva.jwheel.javafx.control.DecimalFilter;
+import br.com.luvva.jwheel.javafx.control.IntegerFilter;
+import br.com.luvva.jwheel.javafx.control.LengthFilter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -13,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class ExtensionTestController implements Initializable
+public class ControlsTestController implements Initializable
 {
     private @FXML TextField integerTf;
     private @FXML TextField decimalTf;

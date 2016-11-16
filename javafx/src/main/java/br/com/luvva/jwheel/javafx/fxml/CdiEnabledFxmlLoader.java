@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.javafx.extension;
+package br.com.luvva.jwheel.javafx.fxml;
 
 import br.com.luvva.jwheel.cdi.WeldContext;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.javafx.extension;
+package br.com.luvva.jwheel.javafx.control;
 
 import javafx.scene.control.TextFormatter;
 

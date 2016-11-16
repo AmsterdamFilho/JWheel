@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.javafx.view;
+package br.com.luvva.jwheel.javafx.event;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;

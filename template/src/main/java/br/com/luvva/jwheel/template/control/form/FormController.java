@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.template.control.form;
 
 import br.com.luvva.jwheel.cdi.WeldContext;
-import br.com.luvva.jwheel.javafx.view.EnterPressedEventHandler;
+import br.com.luvva.jwheel.javafx.event.EnterPressedEventHandler;
 import br.com.luvva.jwheel.template.control.JavaFxApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

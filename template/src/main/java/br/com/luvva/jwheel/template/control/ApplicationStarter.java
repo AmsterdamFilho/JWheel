@@ -2,7 +2,7 @@ package br.com.luvva.jwheel.template.control;
 
 import br.com.luvva.jwheel.cdi.WeldContext;
 import br.com.luvva.jwheel.javafx.model.DecisionDialogModel;
-import br.com.luvva.jwheel.javafx.view.JavaFxUtils;
+import br.com.luvva.jwheel.javafx.utils.JavaFxUtils;
 import br.com.luvva.jwheel.logging.JwLoggerFactory;
 import javafx.application.Application;
 import javafx.concurrent.Task;

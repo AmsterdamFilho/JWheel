@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.javafx.view;
+package br.com.luvva.jwheel.javafx.utils;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableDoubleValue;

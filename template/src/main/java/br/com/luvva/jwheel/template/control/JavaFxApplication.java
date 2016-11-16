@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.template.control;
 
 import br.com.luvva.jwheel.cdi.WeldContext;
-import br.com.luvva.jwheel.javafx.extension.CdiEnabledFxmlLoader;
+import br.com.luvva.jwheel.javafx.fxml.CdiEnabledFxmlLoader;
 import br.com.luvva.jwheel.javafx.model.DecisionDialogModel;
 import br.com.luvva.jwheel.template.i18n.TextProvider;
 import br.com.luvva.jwheel.template.view.AlertProducer;
