@@ -50,6 +50,7 @@ public class DecimalFilter implements UnaryOperator<TextFormatter.Change>
         {
             return change;
         }
+        // if new value can be parsed to a Float, check if it is not greater than the limit
         else if (newValue.matches(decimalRegex1) || newValue.matches(decimalRegex2) || newValue.matches(integerRegex))
         {
             Float floatNewValue = Float.valueOf(newValue.replaceAll(",", "."));
@@ -62,6 +63,7 @@ public class DecimalFilter implements UnaryOperator<TextFormatter.Change>
                 return change;
             }
         }
+        // if new value is equal to a decimal separator, add a zero before it so it can be parsed to a Float
         else if (String.valueOf(decimalSeparator).equals(newValue))
         {
             change.setRange(0, change.getControlText().length());
