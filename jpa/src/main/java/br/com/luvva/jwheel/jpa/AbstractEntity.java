@@ -33,21 +33,21 @@ public abstract class AbstractEntity
     @Override
     public int hashCode ()
     {
-        Object codigo = getId();
-        if (codigo == null)
+        Object id = getId();
+        if (id == null)
         {
             return 0;
         }
-        if (Integer.class.equals(codigo.getClass()))
+        if (Integer.class.equals(id.getClass()))
         {
-            return ((Integer) codigo);
+            return ((Integer) id);
         }
-        if (Long.class.equals(codigo.getClass()))
+        if (Long.class.equals(id.getClass()))
         {
-            Long codigoLong = (Long) codigo;
-            return (int) (codigoLong ^ (codigoLong >>> 32));
+            Long idAsLong = (Long) id;
+            return (int) (idAsLong ^ (idAsLong >>> 32));
         }
-        return codigo.hashCode();
+        return id.hashCode();
     }
 
     @Override

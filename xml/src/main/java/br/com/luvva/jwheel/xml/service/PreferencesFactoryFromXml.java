@@ -52,10 +52,12 @@ public abstract class PreferencesFactoryFromXml<T>
         return defaultParameter;
     }
 
+    @SuppressWarnings({"EmptyMethod", "UnusedParameters"})
     protected void handleMergeException (IOException e)
     {
     }
 
+    @SuppressWarnings("UnusedParameters")
     protected boolean shouldAbortAfterFindException (Exception ex)
     {
         return false;

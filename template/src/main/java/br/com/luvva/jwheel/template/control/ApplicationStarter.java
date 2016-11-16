@@ -38,9 +38,9 @@ public class ApplicationStarter extends Application
     }
 
     /**
-     * Shows splash if client specified one. Clients should create an uber jar and add splash.fxml to its root resource
+     * Shows splash if client specified one. Clients should create a shaded jar and add splash.fxml to its root resource
      * directory. A splash.properties resource bundle in the same directory is also used if provided. If JWheel is used
-     * as a jar (client did not create an uber jar), it will not work, unless client extends this class and runs launch
+     * as a jar (client did not create a shaded jar), it will not work, unless client extends this class and runs launch
      * method in it.
      */
     private void showSplash ()
