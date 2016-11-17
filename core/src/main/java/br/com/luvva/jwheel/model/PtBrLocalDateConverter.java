@@ -34,4 +34,27 @@ public class PtBrLocalDateConverter extends LocalDateConverter
             return null;
         }
     }
+
+    @Override
+    protected boolean validateNotEmptyPartial (String partial)
+    {
+        return partial.replaceAll("[^/]", "").length() < 3 && partial.replaceAll("[^0-9]", "").length() < 9 &&
+                partial.replaceAll("[0-9/]", "").length() == 0;
+    }
+
+    @Override
+    public String formatPartial (String partial)
+    {
+        // if partial is a 3 digit number, add the missing date separator
+        if (partial.matches("[0-9]{3}"))
+        {
+            return partial.substring(0, 2) + "/" + partial.substring(2);
+        }
+        // if partial has 2 digits followed by the date separator and 3 more digits, add the missing date separator
+        else if (partial.matches("[0-9]{2}/[0-9]{3}"))
+        {
+            return partial.substring(0, 5) + "/" + partial.substring(5);
+        }
+        return null;
+    }
 }

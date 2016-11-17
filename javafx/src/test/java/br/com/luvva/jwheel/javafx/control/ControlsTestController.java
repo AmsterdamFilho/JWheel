@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.javafx.control;
 
+import br.com.luvva.jwheel.cdi.WeldContext;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -28,7 +29,7 @@ public class ControlsTestController implements Initializable
         integerTf.setTextFormatter(new TextFormatter<>(new IntegerFilter()));
         decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(100, 2)));
         limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter(7)));
-        dateTf.setTextFormatter(new TextFormatter<>(new LocalDateFilter()));
+        dateTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(LocalDateFilter.class)));
     }
 
     public void undoIntegerTfDecoration ()
