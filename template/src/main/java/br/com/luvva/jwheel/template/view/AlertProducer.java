@@ -4,7 +4,6 @@ import br.com.luvva.jwheel.javafx.model.DecisionDialogModel;
 import br.com.luvva.jwheel.template.i18n.TextProvider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
-import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,7 +14,6 @@ import javax.inject.Singleton;
 @Singleton
 public class AlertProducer
 {
-    private @Inject Logger       logger;
     private @Inject TextProvider textProvider;
 
     public void showErrorAlert (String message)
