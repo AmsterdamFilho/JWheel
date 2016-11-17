@@ -6,7 +6,7 @@ import java.util.function.UnaryOperator;
 
 /**
  * A TextFormatter filter that helps a user to insert a Date in a Text Control. When set, the TextControl initial
- * content must be valid. The text in the control might be empty, a valid date or an incomplete date.
+ * content must be valid. It filters the input, but it is not guaranteed that the text can represent a Date at any time.
  *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
