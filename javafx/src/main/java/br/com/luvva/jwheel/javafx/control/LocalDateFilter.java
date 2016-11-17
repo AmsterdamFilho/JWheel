@@ -10,9 +10,9 @@ import java.util.function.UnaryOperator;
  *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class DateFilter implements UnaryOperator<TextFormatter.Change>
+public class LocalDateFilter implements UnaryOperator<TextFormatter.Change>
 {
-    public DateFilter ()
+    public LocalDateFilter ()
     {
     }
 
