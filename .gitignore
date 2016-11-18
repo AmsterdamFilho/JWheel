@@ -9,5 +9,5 @@ logging/target
 rpn/target
 template/target
 template-view/target
-test-utils/target
+test/target
 xml/target

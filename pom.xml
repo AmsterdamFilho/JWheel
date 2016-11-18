@@ -17,7 +17,7 @@
         <module>rpn</module>
         <module>template</module>
         <module>template-view</module>
-        <module>test-utils</module>
+        <module>test</module>
         <module>xml</module>
     </modules>
 

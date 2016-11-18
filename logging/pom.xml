@@ -33,7 +33,7 @@
 
         <dependency>
             <groupId>br.com.luvva.jwheel</groupId>
-            <artifactId>jwheel-test-utils</artifactId>
+            <artifactId>jwheel-test</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
