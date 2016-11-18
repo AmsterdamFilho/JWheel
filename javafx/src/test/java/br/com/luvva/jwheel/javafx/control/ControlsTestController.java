@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.javafx.control;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;

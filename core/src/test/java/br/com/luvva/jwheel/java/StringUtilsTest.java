@@ -3,9 +3,9 @@ package br.com.luvva.jwheel.java;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static br.com.luvva.jwheel.java.StringUtils.isNullOrEmpty;
-import static br.com.luvva.jwheel.java.StringUtils.leftPadIntWithZeros;
-import static br.com.luvva.jwheel.java.StringUtils.stripAccents;
+import static br.com.luvva.jwheel.core.java.StringUtils.isNullOrEmpty;
+import static br.com.luvva.jwheel.core.java.StringUtils.leftPadIntWithZeros;
+import static br.com.luvva.jwheel.core.java.StringUtils.stripAccents;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br

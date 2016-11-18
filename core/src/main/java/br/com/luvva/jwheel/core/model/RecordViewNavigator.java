@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.core.model;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br

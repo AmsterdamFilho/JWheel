@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.awt;
+package br.com.luvva.jwheel.core.awt;
 
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;

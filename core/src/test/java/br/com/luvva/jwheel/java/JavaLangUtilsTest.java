@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.java;
 
+import br.com.luvva.jwheel.core.java.JavaLangUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

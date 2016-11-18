@@ -1,5 +1,6 @@
 package br.com.luvva.jwheel.model;
 
+import br.com.luvva.jwheel.core.model.UnitConverter;
 import org.junit.Assert;
 import org.junit.Test;
 

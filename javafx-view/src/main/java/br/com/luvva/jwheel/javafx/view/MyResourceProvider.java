@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.javafx.view;
 
-import br.com.luvva.jwheel.model.DecisionDialogModel;
-import br.com.luvva.jwheel.model.ResourceProvider;
+import br.com.luvva.jwheel.core.model.DecisionDialogModel;
+import br.com.luvva.jwheel.core.model.ResourceProvider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 

@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.javafx.control;
 
-import br.com.luvva.jwheel.model.LocalDateConverter;
+import br.com.luvva.jwheel.core.model.LocalDateConverter;
 import javafx.scene.control.TextFormatter;
 
 import javax.inject.Inject;

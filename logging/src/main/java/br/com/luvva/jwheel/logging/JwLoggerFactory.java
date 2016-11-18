@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.logging;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;

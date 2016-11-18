@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.jpa;
 
-import br.com.luvva.jwheel.java.JavaLangUtils;
+import br.com.luvva.jwheel.core.java.JavaLangUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

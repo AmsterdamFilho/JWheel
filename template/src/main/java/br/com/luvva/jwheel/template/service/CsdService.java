@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.template.service;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 import br.com.luvva.jwheel.template.control.JavaFxApplication;
 import br.com.luvva.jwheel.jpa.ConnectionParametersDao;
 import br.com.luvva.jwheel.jpa.EntityManagerProducer;

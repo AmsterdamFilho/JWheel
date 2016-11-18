@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.xml.service;
 
-import br.com.luvva.jwheel.model.SimpleEncoder;
+import br.com.luvva.jwheel.core.model.SimpleEncoder;
 import br.com.luvva.jwheel.xml.model.PasswordProperty;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;

@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.cdi;
+package br.com.luvva.jwheel.core.cdi;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.*;

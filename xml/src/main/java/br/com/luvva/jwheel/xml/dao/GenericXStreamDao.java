@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.xml.dao;
 
-import br.com.luvva.jwheel.java.JavaLangUtils;
+import br.com.luvva.jwheel.core.java.JavaLangUtils;
 import br.com.luvva.jwheel.xml.model.PathPreferences;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.XStreamException;

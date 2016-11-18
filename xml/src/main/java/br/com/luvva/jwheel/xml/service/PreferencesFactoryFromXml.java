@@ -1,8 +1,8 @@
 package br.com.luvva.jwheel.xml.service;
 
-import br.com.luvva.jwheel.cdi.Custom;
-import br.com.luvva.jwheel.cdi.WeldContext;
-import br.com.luvva.jwheel.java.JavaLangUtils;
+import br.com.luvva.jwheel.core.cdi.Custom;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
+import br.com.luvva.jwheel.core.java.JavaLangUtils;
 import br.com.luvva.jwheel.xml.dao.GenericXStreamDao;
 import com.thoughtworks.xstream.XStreamException;
 

@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.core.model;
 
 /**
  * A ready to use Delegate that provides a T object

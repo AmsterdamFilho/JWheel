@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.javafx.control;
 
 import br.com.luvva.jwheel.javafx.view.MyResourceProvider;
-import br.com.luvva.jwheel.model.DecisionDialogModel;
+import br.com.luvva.jwheel.core.model.DecisionDialogModel;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

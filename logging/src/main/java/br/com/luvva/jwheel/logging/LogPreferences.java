@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.logging;
 
-import br.com.luvva.jwheel.cdi.Custom;
+import br.com.luvva.jwheel.core.cdi.Custom;
 import ch.qos.logback.classic.Level;
 
 /**

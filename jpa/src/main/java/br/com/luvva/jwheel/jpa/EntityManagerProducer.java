@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.jpa;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

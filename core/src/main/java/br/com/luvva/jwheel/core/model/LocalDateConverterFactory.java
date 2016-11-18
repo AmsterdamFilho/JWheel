@@ -1,6 +1,6 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.core.model;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;

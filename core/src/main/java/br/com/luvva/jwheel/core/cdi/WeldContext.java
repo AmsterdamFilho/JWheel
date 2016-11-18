@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.cdi;
+package br.com.luvva.jwheel.core.cdi;
 
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;

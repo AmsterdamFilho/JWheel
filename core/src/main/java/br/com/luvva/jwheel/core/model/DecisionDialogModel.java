@@ -1,6 +1,6 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.core.model;
 
-import br.com.luvva.jwheel.java.StringUtils;
+import br.com.luvva.jwheel.core.java.StringUtils;
 
 import java.util.*;
 

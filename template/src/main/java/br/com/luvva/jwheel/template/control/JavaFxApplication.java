@@ -1,9 +1,9 @@
 package br.com.luvva.jwheel.template.control;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 import br.com.luvva.jwheel.javafx.control.AlertProducer;
 import br.com.luvva.jwheel.javafx.fxml.CdiEnabledFxmlLoader;
-import br.com.luvva.jwheel.model.DecisionDialogModel;
+import br.com.luvva.jwheel.core.model.DecisionDialogModel;
 import br.com.luvva.jwheel.template.view.MyResourceProvider;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

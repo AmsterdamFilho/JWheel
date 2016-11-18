@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.template.view;
 
-import br.com.luvva.jwheel.model.ResourceProvider;
+import br.com.luvva.jwheel.core.model.ResourceProvider;
 
 import javax.inject.Singleton;
 import java.io.InputStream;

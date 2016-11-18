@@ -1,7 +1,7 @@
 package br.com.luvva.jwheel.logging;
 
 import br.com.luvva.jwheel.WeldEnabledTest;
-import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.core.cdi.WeldContext;
 import org.junit.Test;
 import org.slf4j.Logger;
 

@@ -1,6 +1,6 @@
 package br.com.luvva.jwheel.jpa;
 
-import br.com.luvva.jwheel.cdi.Custom;
+import br.com.luvva.jwheel.core.cdi.Custom;
 import br.com.luvva.jwheel.xml.model.PasswordProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.java;
+package br.com.luvva.jwheel.core.java;
 
 import java.text.Normalizer;
 

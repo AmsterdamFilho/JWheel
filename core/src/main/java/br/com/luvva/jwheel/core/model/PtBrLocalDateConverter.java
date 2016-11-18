@@ -1,6 +1,6 @@
-package br.com.luvva.jwheel.model;
+package br.com.luvva.jwheel.core.model;
 
-import br.com.luvva.jwheel.cdi.Custom;
+import br.com.luvva.jwheel.core.cdi.Custom;
 
 import javax.inject.Singleton;
 import java.time.LocalDate;
