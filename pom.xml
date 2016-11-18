@@ -11,10 +11,12 @@
     <modules>
         <module>core</module>
         <module>javafx</module>
+        <module>javafx-view</module>
         <module>jpa</module>
         <module>logging</module>
         <module>rpn</module>
         <module>template</module>
+        <module>template-view</module>
         <module>test-utils</module>
         <module>xml</module>
     </modules>

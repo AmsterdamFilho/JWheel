@@ -1,10 +1,11 @@
 package br.com.luvva.jwheel.template.control;
 
 import br.com.luvva.jwheel.cdi.WeldContext;
+import br.com.luvva.jwheel.javafx.control.AlertProducer;
 import br.com.luvva.jwheel.javafx.fxml.CdiEnabledFxmlLoader;
-import br.com.luvva.jwheel.javafx.model.DecisionDialogModel;
-import br.com.luvva.jwheel.template.i18n.TextProvider;
-import br.com.luvva.jwheel.template.view.AlertProducer;
+import br.com.luvva.jwheel.model.DecisionDialogModel;
+import br.com.luvva.jwheel.template.provider.MyTextProvider;
+import br.com.luvva.jwheel.template.view.MyResourceProvider;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,16 +14,16 @@ import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.net.URL;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public abstract class JavaFxApplication
 {
-    private @Inject Logger        logger;
-    private @Inject AlertProducer alertProducer;
-    private @Inject TextProvider  textProvider;
+    private @Inject Logger             logger;
+    private @Inject AlertProducer      alertProducer;
+    private @Inject MyTextProvider     textProvider;
+    private @Inject MyResourceProvider resourceProvider;
 
     public boolean databaseConnectionOk ()
     {
@@ -41,10 +42,10 @@ public abstract class JavaFxApplication
     public DecisionDialogModel showConnectionTestFailedDialogDecision ()
     {
         DecisionDialogModel decisionDialogModel =
-                new DecisionDialogModel(textProvider.getText(TextProvider.z_cs_ddmTitle),
-                        textProvider.getText(TextProvider.z_cs_ddmConfigureConnectionOption),
-                        textProvider.getText(TextProvider.z_cs_ddmTryAgainOption),
-                        textProvider.getText(TextProvider.z_cs_ddmExitOption));
+                new DecisionDialogModel(textProvider.getText(MyTextProvider.z_cs_ddmTitle),
+                        textProvider.getText(MyTextProvider.z_cs_ddmConfigureConnectionOption),
+                        textProvider.getText(MyTextProvider.z_cs_ddmTryAgainOption),
+                        textProvider.getText(MyTextProvider.z_cs_ddmExitOption));
         alertProducer.showDecisionDialog(decisionDialogModel);
         return decisionDialogModel;
     }
@@ -55,35 +56,17 @@ public abstract class JavaFxApplication
         {
             FXMLLoader fxmlLoader = new CdiEnabledFxmlLoader();
             fxmlLoader.setResources(textProvider.getResourceBundle());
-            Parent csPane = fxmlLoader.load(getClass().getResourceAsStream("/jwheel-template/fxml/csd.fxml"));
+            Parent csPane = fxmlLoader.load(resourceProvider.csdFxml());
             Stage stage = new Stage();
-            stage.setTitle(textProvider.getText(TextProvider.z_cs_title));
+            stage.setTitle(textProvider.getText(MyTextProvider.z_cs_title));
             stage.setScene(new Scene(csPane));
             stage.showAndWait();
         }
         catch (Exception e)
         {
-            alertProducer.showErrorAlert(textProvider.getText(TextProvider.z_a_internalErrorMessage));
+            alertProducer.showErrorAlert(textProvider.getText(MyTextProvider.z_a_internalErrorMessage));
             logger.error("Error loading Connection Settings Dialog!", e);
         }
-    }
-
-    protected String getStyleSheetResource (String resourcePath)
-    {
-        URL resource = getClass().getResource(resourcePath);
-        if (resource == null)
-        {
-            return null;
-        }
-        else
-        {
-            return resource.toExternalForm();
-        }
-    }
-
-    public String getFormStyleSheet ()
-    {
-        return getStyleSheetResource("/jwheel-template/css/record-pane.css");
     }
 
     public abstract void init (Stage primaryStage);

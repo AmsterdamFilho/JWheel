@@ -1,24 +1,28 @@
-package br.com.luvva.jwheel.template.i18n;
+package br.com.luvva.jwheel.provider;
 
-import br.com.luvva.jwheel.cdi.Custom;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.util.ResourceBundle;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@Singleton
-@Custom
-public class DefaultTextProvider implements TextProvider
+public abstract class TextProvider
 {
-    private @Inject Logger logger;
+    private @Inject Logger         logger;
+    private final   ResourceBundle resourceBundle;
 
-    private ResourceBundle resourceBundle;
+    public TextProvider ()
+    {
+        resourceBundle = ResourceBundle.getBundle(resourceBundlePath());
+    }
 
-    @Override
+    public ResourceBundle getResourceBundle ()
+    {
+        return resourceBundle;
+    }
+
     public String getText (String property)
     {
         try
@@ -32,14 +36,5 @@ public class DefaultTextProvider implements TextProvider
         }
     }
 
-    @Override
-    public ResourceBundle getResourceBundle ()
-    {
-        return resourceBundle;
-    }
-
-    void setResourceBundle (ResourceBundle resourceBundle)
-    {
-        this.resourceBundle = resourceBundle;
-    }
+    protected abstract String resourceBundlePath ();
 }

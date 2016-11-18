@@ -1,8 +1,8 @@
-package br.com.luvva.jwheel.template.control.form;
+package br.com.luvva.jwheel.template.control;
 
-import br.com.luvva.jwheel.template.i18n.TextProvider;
+import br.com.luvva.jwheel.template.provider.MyTextProvider;
 import br.com.luvva.jwheel.template.service.CsdService;
-import br.com.luvva.jwheel.template.view.AlertProducer;
+import br.com.luvva.jwheel.javafx.control.AlertProducer;
 import br.com.luvva.jwheel.jpa.ConnectionParameters;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ import javax.inject.Inject;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class CsdController extends FormController
+public class CsdController extends RecordPaneController
 {
     private @FXML TextField        txtUrl;
     private @FXML ComboBox<String> cmbDriver;
@@ -26,17 +26,17 @@ public class CsdController extends FormController
     private @Inject ConnectionParameters connectionParameters;
     private @Inject CsdService           csdService;
     private @Inject AlertProducer        alertProducer;
-    private @Inject TextProvider         textProvider;
+    private @Inject MyTextProvider       textProvider;
 
     public void testConnection ()
     {
         if (csdService.testConnection(connectionParameters))
         {
-            alertProducer.showSuccessAlert(textProvider.getText(TextProvider.z_cs_testSucceededMessage));
+            alertProducer.showSuccessAlert(textProvider.getText(MyTextProvider.z_cs_testSucceededMessage));
         }
         else
         {
-            alertProducer.showErrorAlert(textProvider.getText(TextProvider.z_cs_testFailedMessage));
+            alertProducer.showErrorAlert(textProvider.getText(MyTextProvider.z_cs_testFailedMessage));
         }
     }
 
@@ -44,12 +44,12 @@ public class CsdController extends FormController
     {
         if (csdService.saveOk(connectionParameters))
         {
-            alertProducer.showSuccessAlert(textProvider.getText(TextProvider.z_a_saveSucceededMessage));
+            alertProducer.showSuccessAlert(textProvider.getText(MyTextProvider.z_a_saveSucceededMessage));
             exit();
         }
         else
         {
-            alertProducer.showErrorAlert(textProvider.getText(TextProvider.z_a_saveFailedMessage));
+            alertProducer.showErrorAlert(textProvider.getText(MyTextProvider.z_a_saveFailedMessage));
         }
     }
 

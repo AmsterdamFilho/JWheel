@@ -1,4 +1,4 @@
-package br.com.luvva.jwheel.javafx.model;
+package br.com.luvva.jwheel.model;
 
 import br.com.luvva.jwheel.java.StringUtils;
 

@@ -1,7 +1,7 @@
-package br.com.luvva.jwheel.template.view;
+package br.com.luvva.jwheel.javafx.view;
 
-import br.com.luvva.jwheel.javafx.model.DecisionDialogModel;
-import br.com.luvva.jwheel.template.i18n.TextProvider;
+import br.com.luvva.jwheel.model.DecisionDialogModel;
+import br.com.luvva.jwheel.provider.ResourceProvider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 
@@ -12,14 +12,20 @@ import javax.inject.Singleton;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-public class AlertProducer
+public class MyResourceProvider extends ResourceProvider
 {
-    private @Inject TextProvider textProvider;
+    private @Inject MyTextProvider myTextProvider;
+
+    @Override
+    protected String rootResourceDirectory ()
+    {
+        return "jwheel-javafx-view/laf/default/";
+    }
 
     public void showErrorAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(textProvider.getText(TextProvider.z_a_errorTitle));
+        alert.setTitle(myTextProvider.getText(MyTextProvider.z_a_errorTitle));
         alert.setContentText(message);
         alert.showAndWait();
     }
@@ -27,7 +33,7 @@ public class AlertProducer
     public void showSuccessAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(textProvider.getText(TextProvider.z_a_successTitle));
+        alert.setTitle(myTextProvider.getText(MyTextProvider.z_a_successTitle));
         alert.setContentText(message);
         alert.showAndWait();
     }

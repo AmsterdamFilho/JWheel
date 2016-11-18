@@ -1,24 +1,25 @@
-package br.com.luvva.jwheel.template.control.form;
+package br.com.luvva.jwheel.template.control;
 
-import br.com.luvva.jwheel.cdi.WeldContext;
 import br.com.luvva.jwheel.javafx.event.EnterPressedEventHandler;
-import br.com.luvva.jwheel.template.control.JavaFxApplication;
+import br.com.luvva.jwheel.template.view.MyResourceProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class FormController implements Initializable
+public abstract class RecordPaneController implements Initializable
 {
-    private @FXML Pane           contentPane;
-    private       URL            location;
-    private       ResourceBundle resources;
+    private @FXML   Pane               contentPane;
+    private         URL                location;
+    private         ResourceBundle     resources;
+    private @Inject MyResourceProvider resourceProvider;
 
     private EnterPressedEventHandler enterPressedEventHandler = new EnterPressedEventHandler();
 
@@ -47,8 +48,7 @@ public abstract class FormController implements Initializable
     {
         this.location = location;
         this.resources = resources;
-        contentPane.getStylesheets()
-                   .add(WeldContext.getInstance().getBean(JavaFxApplication.class).getFormStyleSheet());
+        contentPane.getStylesheets().add(resourceProvider.recordPaneCss());
         contentPane.addEventFilter(KeyEvent.KEY_PRESSED, enterPressedEventHandler);
         start();
     }

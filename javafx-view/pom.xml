@@ -9,19 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jwheel-javafx</artifactId>
+    <artifactId>jwheel-javafx-view</artifactId>
 
     <dependencies>
 
         <dependency>
             <groupId>br.com.luvva.jwheel</groupId>
             <artifactId>jwheel-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>br.com.luvva.jwheel</groupId>
-            <artifactId>jwheel-javafx-view</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
