@@ -1,11 +1,10 @@
 package br.com.luvva.jwheel.javafx.view;
 
 import br.com.luvva.jwheel.model.DecisionDialogModel;
-import br.com.luvva.jwheel.provider.ResourceProvider;
+import br.com.luvva.jwheel.model.ResourceProvider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
@@ -14,18 +13,16 @@ import javax.inject.Singleton;
 @Singleton
 public class MyResourceProvider extends ResourceProvider
 {
-    private @Inject MyTextProvider myTextProvider;
-
     @Override
-    protected String rootResourceDirectory ()
+    protected String root ()
     {
-        return "jwheel-javafx-view/laf/default/";
+        return "jwheel-javafx-view";
     }
 
     public void showErrorAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(myTextProvider.getText(MyTextProvider.z_a_errorTitle));
+        alert.setTitle(getI18nProperty("z_a_errorTitle"));
         alert.setContentText(message);
         alert.showAndWait();
     }
@@ -33,7 +30,7 @@ public class MyResourceProvider extends ResourceProvider
     public void showSuccessAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(myTextProvider.getText(MyTextProvider.z_a_successTitle));
+        alert.setTitle(getI18nProperty("z_a_successTitle"));
         alert.setContentText(message);
         alert.showAndWait();
     }
