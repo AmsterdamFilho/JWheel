@@ -13,6 +13,8 @@ import javax.inject.Singleton;
 @Singleton
 public class MyResourceProvider extends ResourceProvider
 {
+    public static final String invalidated = "z_control_invalidated";
+
     @Override
     protected String root ()
     {
@@ -22,7 +24,7 @@ public class MyResourceProvider extends ResourceProvider
     public void showErrorAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(getI18nProperty("z_a_errorTitle"));
+        alert.setTitle(getI18nProperty("z_alert_errorTitle"));
         alert.setContentText(message);
         alert.showAndWait();
     }
@@ -30,7 +32,7 @@ public class MyResourceProvider extends ResourceProvider
     public void showSuccessAlert (String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(getI18nProperty("z_a_successTitle"));
+        alert.setTitle(getI18nProperty("z_alert_successTitle"));
         alert.setContentText(message);
         alert.showAndWait();
     }
@@ -41,5 +43,10 @@ public class MyResourceProvider extends ResourceProvider
         choiceDialog.setContentText(ddm.getDecisionDescription());
         choiceDialog.showAndWait();
         ddm.setChosenOption(choiceDialog.getSelectedItem());
+    }
+
+    public String getInvalidatedControlCss ()
+    {
+        return getCss("invalidated");
     }
 }

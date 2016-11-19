@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputDialog;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -23,6 +24,8 @@ public class ControlsTestController implements Initializable
     private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
+    private @Inject LocalDateValidator dateValidator;
+
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
@@ -30,6 +33,7 @@ public class ControlsTestController implements Initializable
         decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(100, 2)));
         limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter(7)));
         dateTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(LocalDateFilter.class)));
+        dateValidator.bind(dateTf);
     }
 
     public void undoIntegerTfDecoration ()
