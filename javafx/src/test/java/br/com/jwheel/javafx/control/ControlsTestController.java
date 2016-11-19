@@ -21,6 +21,7 @@ public class ControlsTestController implements Initializable
     private @FXML TextField decimalTf;
     private @FXML TextField limitedLengthTf;
     private @FXML TextField dateTf;
+    private @FXML TextField phoneTf;
     private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
@@ -35,6 +36,7 @@ public class ControlsTestController implements Initializable
         dateTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(LocalDateFilter.class)));
         new YearCompleter().bind(dateTf);
         dateValidator.bind(dateTf);
+        phoneTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(PhoneFilter.class)));
     }
 
     public void undoIntegerTfDecoration ()

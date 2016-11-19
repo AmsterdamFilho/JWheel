@@ -1,6 +1,7 @@
-package br.com.jwheel.core.model;
+package br.com.jwheel.core.model.converter.ptbr;
 
 import br.com.jwheel.core.cdi.Custom;
+import br.com.jwheel.core.model.converter.LocalDateMask;
 
 import javax.inject.Singleton;
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ import java.time.format.DateTimeParseException;
  */
 @Singleton
 @Custom
-public class PtBrLocalDateConverter extends LocalDateConverter
+public class PtBrLocalDateMask extends LocalDateMask
 {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -36,7 +37,7 @@ public class PtBrLocalDateConverter extends LocalDateConverter
     }
 
     @Override
-    protected boolean validateNotEmptyPartial (String partial)
+    public boolean validateNotEmptyPartial (String partial)
     {
         return partial.replaceAll("[^/]", "").length() < 3 && partial.replaceAll("[^0-9]", "").length() < 9 &&
                 partial.replaceAll("[0-9/]", "").length() == 0;

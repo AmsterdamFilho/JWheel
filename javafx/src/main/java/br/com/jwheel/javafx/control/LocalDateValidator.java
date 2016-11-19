@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx.control;
 
-import br.com.jwheel.core.model.LocalDateConverter;
+import br.com.jwheel.core.model.converter.LocalDateMask;
 import br.com.jwheel.javafx.view.MyResourceProvider;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.TextField;
@@ -18,7 +18,7 @@ public class LocalDateValidator
     private         TextField          textField;
     private         boolean            validated;
     private         Tooltip            backup;
-    private @Inject LocalDateConverter converter;
+    private @Inject LocalDateMask      converter;
     private @Inject MyResourceProvider resourceProvider;
 
     private final ChangeListener<Boolean> focusListener = (observable, oldValue, newValue) -> focusChanged(newValue);
