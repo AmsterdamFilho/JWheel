@@ -33,6 +33,7 @@ public class ControlsTestController implements Initializable
         decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(100, 2)));
         limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter(7)));
         dateTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(LocalDateFilter.class)));
+        new YearCompleter().bind(dateTf);
         dateValidator.bind(dateTf);
     }
 
