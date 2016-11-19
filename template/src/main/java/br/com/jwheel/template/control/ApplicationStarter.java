@@ -34,6 +34,12 @@ public class ApplicationStarter extends Application
         // execute initial system configuration (JavaFX configuration, Logger, Database connection test etc.)
         JWheelStarterTask starterTask = new JWheelStarterTask();
         starterTask.setOnSucceeded(event -> testDatabaseConnection());
+        starterTask.setOnFailed(event ->
+        {
+            //noinspection ThrowableResultOfMethodCallIgnored
+            event.getSource().getException().printStackTrace();
+            primaryStage.close();
+        });
         new Thread(starterTask).start();
     }
 
