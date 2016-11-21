@@ -100,7 +100,7 @@ public class PtBrLocalPhoneMask extends LocalPhoneMask
         }
         else if (formattedPhoneNumber.matches(validPhone1) || formattedPhoneNumber.matches(validPhone2))
         {
-            return formattedPhoneNumber.replaceAll("[0-9]", "");
+            return formattedPhoneNumber.replaceAll("[^0-9]", "");
         }
         else
         {
