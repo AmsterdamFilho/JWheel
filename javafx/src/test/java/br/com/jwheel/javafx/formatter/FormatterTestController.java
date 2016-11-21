@@ -7,6 +7,7 @@ import javafx.scene.control.TextInputDialog;
 
 import javax.inject.Inject;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -27,7 +28,7 @@ public class FormatterTestController implements Initializable
     private FloatFormatter   floatFormatter   = new FloatFormatter(100.00f, 2);
     private LengthFormatter  lengthFormatter  = new LengthFormatter(7);
 
-    private @Inject PhoneFormatter     phoneFormatter;
+    private @Inject PhoneFormatter     localPhoneFormatter;
     private @Inject LocalDateFormatter localDateFormatter;
 
     @Override
@@ -37,7 +38,7 @@ public class FormatterTestController implements Initializable
         floatFormatter.bind(floatTf);
         lengthFormatter.bind(limitedLengthTf);
         localDateFormatter.bind(dateTf);
-        phoneFormatter.bind(phoneTf);
+        localPhoneFormatter.bind(phoneTf);
     }
 
     public void undoIntegerFormatting ()
@@ -102,20 +103,28 @@ public class FormatterTestController implements Initializable
         localDateFormatter.bind(dateTf);
     }
 
-    public void undoPhoneFormatting ()
+    public void undoLocalPhoneFormatting ()
     {
-        phoneFormatter.unbind();
+        localPhoneFormatter.unbind();
     }
 
-    public void doPhoneFormatting ()
+    public void doLocalPhoneFormatting ()
     {
-        phoneFormatter.bind(phoneTf);
+        localPhoneFormatter.bind(phoneTf);
     }
 
     private float[] promptUserForNumber (String title, String contentText, String initialValue)
     {
-        final float[] response = new float[1];
+        String response = promptUserForString(title, contentText, initialValue);
+        if (response == null)
+        {
+            return null;
+        }
+        return new float[]{Float.valueOf(response)};
+    }
 
+    private String promptUserForString (String title, String contentText, String initialValue)
+    {
         TextInputDialog dialog = new TextInputDialog(initialValue);
         dialog.setTitle(title);
         dialog.setContentText(contentText);
@@ -124,7 +133,87 @@ public class FormatterTestController implements Initializable
         {
             return null;
         }
-        result.ifPresent(name -> response[0] = Float.valueOf(name));
-        return response;
+        final String[] response = new String[1];
+        result.ifPresent(name -> response[0] = name);
+        return response[0];
+    }
+
+    public void printInteger ()
+    {
+        System.out.println(integerFormatter.valueProperty().getValue());
+    }
+
+    public void setInteger ()
+    {
+        integerFormatter.valueProperty().setValue(10);
+    }
+
+    public void setIntegerNull ()
+    {
+        integerFormatter.valueProperty().setValue(null);
+    }
+
+    public void printFloat ()
+    {
+        System.out.println(floatFormatter.valueProperty().getValue());
+    }
+
+    public void setFloat ()
+    {
+        floatFormatter.valueProperty().setValue(5.6789f);
+    }
+
+    public void setFloatNull ()
+    {
+        floatFormatter.valueProperty().setValue(null);
+    }
+
+    public void printLength ()
+    {
+        System.out.println(lengthFormatter.valueProperty().getValue());
+    }
+
+    public void setLength ()
+    {
+        lengthFormatter.valueProperty().setValue("12345");
+    }
+
+    public void setLengthNull ()
+    {
+        lengthFormatter.valueProperty().setValue("");
+    }
+
+    public void printDate ()
+    {
+        System.out.println(localDateFormatter.valueProperty().getValue());
+    }
+
+    public void setDate ()
+    {
+        localDateFormatter.valueProperty().setValue(LocalDate.now());
+    }
+
+    public void setDateNull ()
+    {
+        localDateFormatter.valueProperty().setValue(null);
+    }
+
+    public void printPhone ()
+    {
+        System.out.println(localPhoneFormatter.valueProperty().getValue());
+    }
+
+    public void setPhone ()
+    {
+        String phone = promptUserForString("Decoration dialog", "Type only the digits of a phone", "40043535");
+        if (phone != null)
+        {
+            localPhoneFormatter.valueProperty().setValue(phone);
+        }
+    }
+
+    public void setPhoneNull ()
+    {
+        localPhoneFormatter.valueProperty().setValue(null);
     }
 }
