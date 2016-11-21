@@ -73,6 +73,7 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
     private class MaskValidator implements ChangeListener<Boolean>
     {
         private boolean validated;
+        private ChangeListener<String> textListener = this::textChanged;
 
         public boolean isValidated ()
         {
@@ -108,11 +109,13 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
         private void configureInvalidatedControl ()
         {
             getNode().getStylesheets().add(resourceProvider.getInvalidatedControlCss());
+            getNode().textProperty().addListener(textListener);
         }
 
         private void resetInvalidatedControl ()
         {
             getNode().getStylesheets().remove(resourceProvider.getInvalidatedControlCss());
+            getNode().textProperty().removeListener(textListener);
         }
 
         private void validate ()
@@ -126,6 +129,15 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
             {
                 T t = getMask().fromString(text);
                 validated = !(t == null || "".equals(t));
+            }
+        }
+
+        public void textChanged (ObservableValue<? extends String> observable, String oldValue, String newValue)
+        {
+            validate();
+            if (validated)
+            {
+                resetInvalidatedControl();
             }
         }
     }
