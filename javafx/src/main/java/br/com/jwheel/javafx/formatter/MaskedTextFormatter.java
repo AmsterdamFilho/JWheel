@@ -5,6 +5,7 @@ import br.com.jwheel.javafx.view.MyResourceProvider;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextFormatter;
+import javafx.util.StringConverter;
 
 import javax.inject.Inject;
 
@@ -159,6 +160,12 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
                 }
             }
         }
+    }
+
+    @Override
+    protected StringConverter<T> getConverter ()
+    {
+        return getMask();
     }
 
     protected abstract Mask<T> getMask ();
