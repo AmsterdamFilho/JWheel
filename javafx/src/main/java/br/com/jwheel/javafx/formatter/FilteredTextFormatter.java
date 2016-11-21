@@ -25,7 +25,6 @@ public abstract class FilteredTextFormatter<T> extends Binder<TextField> impleme
     {
         getNode().setTextFormatter(null);
         getNode().textProperty().unbindBidirectional(valueProperty);
-        valueProperty().unbind();
     }
 
     @Override
@@ -34,7 +33,6 @@ public abstract class FilteredTextFormatter<T> extends Binder<TextField> impleme
         getNode().setText("");
         getNode().setTextFormatter(new TextFormatter<>(this));
         getNode().textProperty().bindBidirectional(valueProperty, getConverter());
-        valueProperty().unbind();
     }
 
     protected abstract StringConverter<T> getConverter ();
