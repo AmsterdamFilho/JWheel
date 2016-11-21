@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx;
 
 import javafx.scene.Node;
 

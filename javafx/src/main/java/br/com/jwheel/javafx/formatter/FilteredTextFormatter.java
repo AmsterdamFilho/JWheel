@@ -1,5 +1,6 @@
 package br.com.jwheel.javafx.formatter;
 
+import br.com.jwheel.javafx.Binder;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.TextField;
