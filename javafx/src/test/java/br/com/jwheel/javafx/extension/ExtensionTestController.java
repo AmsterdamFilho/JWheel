@@ -1,5 +1,7 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx.extension;
 
+import br.com.jwheel.javafx.autocomplete.AutoCompleteDecorator;
+import br.com.jwheel.javafx.formatter.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -14,14 +16,14 @@ import java.util.ResourceBundle;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class FormatterTestController implements Initializable
+public class ExtensionTestController implements Initializable
 {
     private @FXML TextField integerTf;
     private @FXML TextField floatTf;
     private @FXML TextField limitedLengthTf;
     private @FXML TextField dateTf;
     private @FXML TextField phoneTf;
-    private @FXML TextField autoCompleteTf1;
+    private @FXML TextField citiesTf;
     private @FXML TextField autoCompleteTf2;
 
     private IntegerFormatter integerFormatter = new IntegerFormatter();
@@ -31,6 +33,8 @@ public class FormatterTestController implements Initializable
     private @Inject PhoneFormatter     localPhoneFormatter;
     private @Inject LocalDateFormatter localDateFormatter;
 
+    private AutoCompleteDecorator<String> citiesDecorator = new CitiesAcDecorator();
+
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
@@ -39,6 +43,7 @@ public class FormatterTestController implements Initializable
         lengthFormatter.bind(limitedLengthTf);
         localDateFormatter.bind(dateTf);
         localPhoneFormatter.bind(phoneTf);
+        citiesDecorator.bind(citiesTf);
     }
 
     public void undoIntegerFormatting ()
@@ -215,5 +220,54 @@ public class FormatterTestController implements Initializable
     public void setPhoneNull ()
     {
         localPhoneFormatter.valueProperty().setValue(null);
+    }
+
+    public void undoCitiesAcDecoration ()
+    {
+        citiesDecorator.unbind();
+    }
+
+    public void doCitiesAcDecoration1 ()
+    {
+
+    }
+
+    public void printCity ()
+    {
+
+    }
+
+    public void setCity ()
+    {
+
+    }
+
+    public void setCityToNull ()
+    {
+
+    }
+
+    public void undoUnitsAcDecoration ()
+    {
+    }
+
+    public void doUnitsAcDecoration ()
+    {
+
+    }
+
+    public void printUnit ()
+    {
+
+    }
+
+    public void setUnit ()
+    {
+
+    }
+
+    public void setUnitToNull ()
+    {
+
     }
 }
