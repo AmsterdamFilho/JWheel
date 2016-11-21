@@ -1,4 +1,4 @@
-package br.com.jwheel.core.awt;
+package br.com.jwheel.core.java;
 
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
