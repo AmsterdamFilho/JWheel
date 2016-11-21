@@ -1,8 +1,8 @@
-package br.com.jwheel.core.model.converter;
+package br.com.jwheel.core.model.mask;
 
 import br.com.jwheel.core.cdi.WeldContext;
 import br.com.jwheel.core.model.ProviderDelegate;
-import br.com.jwheel.core.model.converter.ptbr.PtBrLocalDateMask;
+import br.com.jwheel.core.model.mask.ptbr.PtBrLocalPhoneMask;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
@@ -11,18 +11,18 @@ import javax.inject.Singleton;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-public class LocalDateMaskFactory
+public class LocalPhoneMaskFactory
 {
-    private static final ProviderDelegate<LocalDateMask> PROVIDER_DELEGATE;
+    private static final ProviderDelegate<LocalPhoneMask> PROVIDER_DELEGATE;
 
     static
     {
         // some code can be added to achieve automatic i18n
-        PROVIDER_DELEGATE = () -> WeldContext.getInstance().getBean(PtBrLocalDateMask.class);
+        PROVIDER_DELEGATE = () -> WeldContext.getInstance().getBean(PtBrLocalPhoneMask.class);
     }
 
     @Produces
-    public LocalDateMask produce ()
+    public LocalPhoneMask produce ()
     {
         return PROVIDER_DELEGATE.provide();
     }

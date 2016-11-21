@@ -1,11 +1,11 @@
-package br.com.jwheel.core.model.converter;
+package br.com.jwheel.core.model.mask;
 
 import javafx.util.StringConverter;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class MaskFormatter<T> extends StringConverter<T>
+public abstract class Mask<T> extends StringConverter<T>
 {
     /**
      * Checks if the String argument is accepted as a partial String being typed
@@ -14,7 +14,7 @@ public abstract class MaskFormatter<T> extends StringConverter<T>
      */
     public boolean validatePartial (String partial)
     {
-        return partial.isEmpty() || validateNotEmptyPartial(partial);
+        return partial == null || partial.isEmpty() || validateNotEmptyPartial(partial);
     }
 
     /**
@@ -24,6 +24,14 @@ public abstract class MaskFormatter<T> extends StringConverter<T>
      * @return the formatted String or null if it was not possible or necessary to format
      */
     public abstract String formatPartial (String partial);
+
+    /**
+     * Formats a String that is not exactly like the mask expects, but it can be inferred.
+     *
+     * @param complete the complete String
+     * @return the formatted String or null if it was not possible or necessary to format
+     */
+    public abstract String formatComplete (String complete);
 
     public abstract boolean validateNotEmptyPartial (String partial);
 }

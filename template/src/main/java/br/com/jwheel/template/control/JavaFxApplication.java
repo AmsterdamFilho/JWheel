@@ -4,7 +4,7 @@ import br.com.jwheel.core.cdi.WeldContext;
 import br.com.jwheel.core.model.DecisionDialogModel;
 import br.com.jwheel.javafx.fxml.CdiEnabledFxmlLoader;
 import br.com.jwheel.template.view.MyResourceProvider;
-import br.com.jwheel.javafx.control.AlertProducer;
+import br.com.jwheel.javafx.utils.AlertProducer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

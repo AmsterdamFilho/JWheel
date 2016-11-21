@@ -1,10 +1,8 @@
-package br.com.jwheel.javafx.control;
+package br.com.jwheel.javafx.formatter;
 
-import br.com.jwheel.core.cdi.WeldContext;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputDialog;
 
 import javax.inject.Inject;
@@ -15,51 +13,55 @@ import java.util.ResourceBundle;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class ControlsTestController implements Initializable
+public class FormatterTestController implements Initializable
 {
     private @FXML TextField integerTf;
-    private @FXML TextField decimalTf;
+    private @FXML TextField floatTf;
     private @FXML TextField limitedLengthTf;
     private @FXML TextField dateTf;
     private @FXML TextField phoneTf;
     private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
-    private @Inject LocalDateValidator dateValidator;
+    private IntegerFormatter integerFormatter = new IntegerFormatter();
+    private FloatFormatter   floatFormatter   = new FloatFormatter(100.00f, 2);
+    private LengthFormatter  lengthFormatter  = new LengthFormatter(7);
+
+    private @Inject PhoneFormatter     phoneFormatter;
+    private @Inject LocalDateFormatter localDateFormatter;
 
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
-        integerTf.setTextFormatter(new TextFormatter<>(new IntegerFilter()));
-        decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(100, 2)));
-        limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter(7)));
-        dateTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(LocalDateFilter.class)));
-        new YearCompleter().bind(dateTf);
-        dateValidator.bind(dateTf);
-        phoneTf.setTextFormatter(new TextFormatter<>(WeldContext.getInstance().getBean(PhoneFilter.class)));
+        integerFormatter.bind(integerTf);
+        floatFormatter.bind(floatTf);
+        lengthFormatter.bind(limitedLengthTf);
+        localDateFormatter.bind(dateTf);
+        phoneFormatter.bind(phoneTf);
     }
 
-    public void undoIntegerTfDecoration ()
+    public void undoIntegerFormatting ()
     {
-        integerTf.setTextFormatter(null);
+        integerFormatter.unbind();
     }
 
-    public void doIntegerTfDecoration ()
+    public void doIntegerFormatting ()
     {
         float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "125");
         if (limit != null)
         {
-            integerTf.setText("");
-            integerTf.setTextFormatter(new TextFormatter<>(new IntegerFilter((int) limit[0])));
+            integerFormatter.unbind();
+            integerFormatter = new IntegerFormatter((int) limit[0]);
+            integerFormatter.bind(integerTf);
         }
     }
 
-    public void undoDecimalTfDecoration ()
+    public void undoFloatFormatting ()
     {
-        decimalTf.setTextFormatter(null);
+        floatFormatter.unbind();
     }
 
-    public void doDecimalTfDecoration ()
+    public void doFloatFormatting ()
     {
         float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "100.00");
         if (limit != null)
@@ -67,25 +69,47 @@ public class ControlsTestController implements Initializable
             float[] scale = promptUserForNumber("Decoration dialog", "Type the scale", "2");
             if (scale != null)
             {
-                decimalTf.setText("");
-                decimalTf.setTextFormatter(new TextFormatter<>(new DecimalFilter(limit[0], (int) scale[0])));
+                floatFormatter.unbind();
+                floatFormatter = new FloatFormatter(limit[0], (int) scale[0]);
+                floatFormatter.bind(floatTf);
             }
         }
     }
 
-    public void undoLimitedLengthTfDecoration ()
+    public void undoLengthFormatting ()
     {
-        limitedLengthTf.setTextFormatter(null);
+        lengthFormatter.unbind();
     }
 
-    public void doLimitedLengthTfDecoration ()
+    public void doLengthFormatting ()
     {
         final float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable length", "5");
         if (limit != null)
         {
-            limitedLengthTf.setText("");
-            limitedLengthTf.setTextFormatter(new TextFormatter<>(new LengthFilter((int) limit[0])));
+            lengthFormatter.unbind();
+            lengthFormatter = new LengthFormatter((int) limit[0]);
+            lengthFormatter.bind(limitedLengthTf);
         }
+    }
+
+    public void undoLocalDateFormatting ()
+    {
+        localDateFormatter.unbind();
+    }
+
+    public void doLocalDateFormatting ()
+    {
+        localDateFormatter.bind(dateTf);
+    }
+
+    public void undoPhoneFormatting ()
+    {
+        phoneFormatter.unbind();
+    }
+
+    public void doPhoneFormatting ()
+    {
+        phoneFormatter.bind(phoneTf);
     }
 
     private float[] promptUserForNumber (String title, String contentText, String initialValue)

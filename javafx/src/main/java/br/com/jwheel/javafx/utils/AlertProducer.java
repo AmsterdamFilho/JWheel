@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.control;
+package br.com.jwheel.javafx.utils;
 
 import br.com.jwheel.core.model.DecisionDialogModel;
 import br.com.jwheel.javafx.view.MyResourceProvider;

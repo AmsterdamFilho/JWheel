@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="br.com.jwheel.javafx.formatter.FormatterTestController" style="-fx-padding: 12px">
+
+    <columnConstraints>
+        <ColumnConstraints prefWidth="250"/>
+        <ColumnConstraints prefWidth="200"/>
+    </columnConstraints>
+
+    <Label text="Integer text field"/>
+    <TextField fx:id="integerTf" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoIntegerFormatting" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doIntegerFormatting" GridPane.columnIndex="3"/>
+
+    <Label text="Float text field" GridPane.rowIndex="1"/>
+    <TextField fx:id="floatTf" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoFloatFormatting" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doFloatFormatting" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+    <Label text="Limited length text field" GridPane.rowIndex="2"/>
+    <TextField fx:id="limitedLengthTf" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoLengthFormatting" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doLengthFormatting" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+    <Label text="Date field" GridPane.rowIndex="3"/>
+    <TextField fx:id="dateTf" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoLocalDateFormatting" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doLocalDateFormatting" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+    <Label text="Phone field" GridPane.rowIndex="4"/>
+    <TextField fx:id="phoneTf" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoPhoneFormatting" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doPhoneFormatting" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+
+    <Label text="Autocomplete from list" GridPane.rowIndex="5"/>
+    <TextField fx:id="autoCompleteTf1" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="Autocomplete from table" GridPane.rowIndex="6"/>
+    <TextField fx:id="autoCompleteTf2" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+</GridPane>

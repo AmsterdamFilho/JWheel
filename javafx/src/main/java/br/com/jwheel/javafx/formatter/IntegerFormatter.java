@@ -1,33 +1,35 @@
-package br.com.jwheel.javafx.control;
+package br.com.jwheel.javafx.formatter;
 
 import javafx.scene.control.TextFormatter;
-
-import java.util.function.UnaryOperator;
+import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 /**
- * A TextFormatter filter that ensures the content can be parsed to an Integer or is empty. When set, the TextControl
- * initial content must be valid.
+ * A TextFormatter that ensures the content can be parsed to an Integer or is empty.
  *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class IntegerFilter implements UnaryOperator<TextFormatter.Change>
+public class IntegerFormatter extends FilteredTextFormatter<Integer>
 {
-    private final int limit;
+    private static final String                 numberRegex = "[0-9]+";
+    private static final IntegerStringConverter converter   = new IntegerStringConverter();
 
-    private static final String numberRegex = "[0-9]+";
+    private int limit;
 
-    public IntegerFilter ()
+    public IntegerFormatter ()
     {
         this(Integer.MAX_VALUE);
     }
 
-    public IntegerFilter (int limit)
+    public IntegerFormatter (int limit)
     {
-        if (limit < 0)
-        {
-            throw new IllegalArgumentException("Limit can not be negative!");
-        }
         this.limit = limit;
+    }
+
+    @Override
+    protected StringConverter<Integer> getConverter ()
+    {
+        return converter;
     }
 
     @Override
