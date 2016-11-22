@@ -2,14 +2,13 @@ package br.com.jwheel.javafx.adapter;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
-import javafx.util.converter.DefaultStringConverter;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public class LengthAdapter extends AdapterByFilter<String>
 {
-    private static final StringConverter<String> converter = new DefaultStringConverter();
+    private static final StringConverter<String> converter = new MyConverter();
 
     private int limit;
 
@@ -35,6 +34,21 @@ public class LengthAdapter extends AdapterByFilter<String>
         else
         {
             return change;
+        }
+    }
+
+    private static class MyConverter extends StringConverter<String>
+    {
+        @Override
+        public String toString (String object)
+        {
+            return object == null ? "" : object;
+        }
+
+        @Override
+        public String fromString (String string)
+        {
+            return string == null ? "" : string;
         }
     }
 }
