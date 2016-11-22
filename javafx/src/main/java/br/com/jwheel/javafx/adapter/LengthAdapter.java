@@ -1,21 +1,19 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx.adapter;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 import javafx.util.converter.DefaultStringConverter;
 
 /**
- * A TextFormatter that does not allow that the content length go beyond a specified limit.
- *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class LengthFormatter extends FilteredTextFormatter<String>
+public class LengthAdapter extends AdapterByFilter<String>
 {
     private static final StringConverter<String> converter = new DefaultStringConverter();
 
     private int limit;
 
-    public LengthFormatter (int limit)
+    public LengthAdapter (int limit)
     {
         this.limit = limit;
     }

@@ -1,7 +1,6 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.javafx.autocomplete.AutoCompleteDecorator;
-import br.com.jwheel.javafx.formatter.*;
+import br.com.jwheel.javafx.adapter.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -23,32 +22,29 @@ public class ExtensionTestController implements Initializable
     private @FXML TextField limitedLengthTf;
     private @FXML TextField dateTf;
     private @FXML TextField phoneTf;
-    private @FXML TextField citiesTf;
+    private @FXML TextField autoCompleteTf1;
     private @FXML TextField autoCompleteTf2;
 
-    private IntegerFormatter integerFormatter = new IntegerFormatter();
-    private FloatFormatter   floatFormatter   = new FloatFormatter(100.00f, 2);
-    private LengthFormatter  lengthFormatter  = new LengthFormatter(7);
+    private IntegerAdapter integerAdapter = new IntegerAdapter();
+    private FloatAdapter   floatAdapter   = new FloatAdapter(100.00f, 2);
+    private LengthAdapter  lengthAdapter  = new LengthAdapter(7);
 
-    private @Inject PhoneFormatter     localPhoneFormatter;
-    private @Inject LocalDateFormatter localDateFormatter;
-
-    private AutoCompleteDecorator<String> citiesDecorator = new CitiesAcDecorator();
+    private @Inject LocalPhoneAdapter localLocalPhoneAdapter;
+    private @Inject LocalDateAdapter  localDateAdapter;
 
     @Override
     public void initialize (URL location, ResourceBundle resources)
     {
-        integerFormatter.bind(integerTf);
-        floatFormatter.bind(floatTf);
-        lengthFormatter.bind(limitedLengthTf);
-        localDateFormatter.bind(dateTf);
-        localPhoneFormatter.bind(phoneTf);
-        citiesDecorator.bind(citiesTf);
+        integerAdapter.adapt(integerTf);
+        floatAdapter.adapt(floatTf);
+        lengthAdapter.adapt(limitedLengthTf);
+        localDateAdapter.adapt(dateTf);
+        localLocalPhoneAdapter.adapt(phoneTf);
     }
 
     public void undoIntegerFormatting ()
     {
-        integerFormatter.unbind();
+        integerAdapter.reset();
     }
 
     public void doIntegerFormatting ()
@@ -56,15 +52,15 @@ public class ExtensionTestController implements Initializable
         float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "125");
         if (limit != null)
         {
-            integerFormatter.unbind();
-            integerFormatter = new IntegerFormatter((int) limit[0]);
-            integerFormatter.bind(integerTf);
+            integerAdapter.reset();
+            integerAdapter = new IntegerAdapter((int) limit[0]);
+            integerAdapter.adapt(integerTf);
         }
     }
 
     public void undoFloatFormatting ()
     {
-        floatFormatter.unbind();
+        floatAdapter.reset();
     }
 
     public void doFloatFormatting ()
@@ -75,16 +71,16 @@ public class ExtensionTestController implements Initializable
             float[] scale = promptUserForNumber("Decoration dialog", "Type the scale", "2");
             if (scale != null)
             {
-                floatFormatter.unbind();
-                floatFormatter = new FloatFormatter(limit[0], (int) scale[0]);
-                floatFormatter.bind(floatTf);
+                floatAdapter.reset();
+                floatAdapter = new FloatAdapter(limit[0], (int) scale[0]);
+                floatAdapter.adapt(floatTf);
             }
         }
     }
 
     public void undoLengthFormatting ()
     {
-        lengthFormatter.unbind();
+        lengthAdapter.reset();
     }
 
     public void doLengthFormatting ()
@@ -92,30 +88,30 @@ public class ExtensionTestController implements Initializable
         final float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable length", "5");
         if (limit != null)
         {
-            lengthFormatter.unbind();
-            lengthFormatter = new LengthFormatter((int) limit[0]);
-            lengthFormatter.bind(limitedLengthTf);
+            lengthAdapter.reset();
+            lengthAdapter = new LengthAdapter((int) limit[0]);
+            lengthAdapter.adapt(limitedLengthTf);
         }
     }
 
     public void undoLocalDateFormatting ()
     {
-        localDateFormatter.unbind();
+        localDateAdapter.reset();
     }
 
     public void doLocalDateFormatting ()
     {
-        localDateFormatter.bind(dateTf);
+        localDateAdapter.adapt(dateTf);
     }
 
     public void undoLocalPhoneFormatting ()
     {
-        localPhoneFormatter.unbind();
+        localLocalPhoneAdapter.reset();
     }
 
     public void doLocalPhoneFormatting ()
     {
-        localPhoneFormatter.bind(phoneTf);
+        localLocalPhoneAdapter.adapt(phoneTf);
     }
 
     private float[] promptUserForNumber (String title, String contentText, String initialValue)
@@ -145,67 +141,67 @@ public class ExtensionTestController implements Initializable
 
     public void printInteger ()
     {
-        System.out.println(integerFormatter.valueProperty().getValue());
+        System.out.println(integerAdapter.valueProperty().getValue());
     }
 
     public void setInteger ()
     {
-        integerFormatter.valueProperty().setValue(10);
+        integerAdapter.valueProperty().setValue(10);
     }
 
     public void setIntegerNull ()
     {
-        integerFormatter.valueProperty().setValue(null);
+        integerAdapter.valueProperty().setValue(null);
     }
 
     public void printFloat ()
     {
-        System.out.println(floatFormatter.valueProperty().getValue());
+        System.out.println(floatAdapter.valueProperty().getValue());
     }
 
     public void setFloat ()
     {
-        floatFormatter.valueProperty().setValue(5.6789f);
+        floatAdapter.valueProperty().setValue(5.6789f);
     }
 
     public void setFloatNull ()
     {
-        floatFormatter.valueProperty().setValue(null);
+        floatAdapter.valueProperty().setValue(null);
     }
 
     public void printLength ()
     {
-        System.out.println(lengthFormatter.valueProperty().getValue());
+        System.out.println(lengthAdapter.valueProperty().getValue());
     }
 
     public void setLength ()
     {
-        lengthFormatter.valueProperty().setValue("12345");
+        lengthAdapter.valueProperty().setValue("12345");
     }
 
     public void setLengthNull ()
     {
-        lengthFormatter.valueProperty().setValue("");
+        lengthAdapter.valueProperty().setValue("");
     }
 
     public void printDate ()
     {
-        System.out.println(localDateFormatter.valueProperty().getValue());
+        System.out.println(localDateAdapter.valueProperty().getValue());
     }
 
     public void setDate ()
     {
-        localDateFormatter.valueProperty().setValue(LocalDate.now());
+        localDateAdapter.valueProperty().setValue(LocalDate.now());
     }
 
     public void setDateNull ()
     {
-        localDateFormatter.valueProperty().setValue(null);
+        localDateAdapter.valueProperty().setValue(null);
     }
 
     public void printPhone ()
     {
-        System.out.println(localPhoneFormatter.valueProperty().getValue());
+        System.out.println(localLocalPhoneAdapter.valueProperty().getValue());
     }
 
     public void setPhone ()
@@ -213,60 +209,61 @@ public class ExtensionTestController implements Initializable
         String phone = promptUserForString("Decoration dialog", "Type only the digits of a phone", "40043535");
         if (phone != null)
         {
-            localPhoneFormatter.valueProperty().setValue(phone);
+            localLocalPhoneAdapter.valueProperty().setValue(phone);
         }
     }
 
     public void setPhoneNull ()
     {
-        localPhoneFormatter.valueProperty().setValue(null);
+        localLocalPhoneAdapter.valueProperty().setValue(null);
     }
 
-    public void undoCitiesAcDecoration ()
-    {
-        citiesDecorator.unbind();
-    }
-
-    public void doCitiesAcDecoration1 ()
+    public void undoAutoComplete1 ()
     {
 
     }
 
-    public void printCity ()
+    public void doAutoComplete1 ()
     {
 
     }
 
-    public void setCity ()
+    public void printAutoComplete1 ()
     {
 
     }
 
-    public void setCityToNull ()
+    public void setAutoComplete1 ()
     {
 
     }
 
-    public void undoUnitsAcDecoration ()
-    {
-    }
-
-    public void doUnitsAcDecoration ()
+    public void setAutoComplete1ToNull ()
     {
 
     }
 
-    public void printUnit ()
+    public void undoAutoComplete2 ()
     {
 
     }
 
-    public void setUnit ()
+    public void doAutoComplete2 ()
     {
 
     }
 
-    public void setUnitToNull ()
+    public void printAutoComplete2 ()
+    {
+
+    }
+
+    public void setAutoComplete2 ()
+    {
+
+    }
+
+    public void setAutoComplete2ToNull ()
     {
 
     }

@@ -1,27 +1,25 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx.adapter;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 /**
- * A TextFormatter that ensures the content can be parsed to an Integer or is empty.
- *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class IntegerFormatter extends FilteredTextFormatter<Integer>
+public class IntegerAdapter extends AdapterByFilter<Integer>
 {
     private static final String                 numberRegex = "[0-9]+";
     private static final IntegerStringConverter converter   = new IntegerStringConverter();
 
     private int limit;
 
-    public IntegerFormatter ()
+    public IntegerAdapter ()
     {
         this(Integer.MAX_VALUE);
     }
 
-    public IntegerFormatter (int limit)
+    public IntegerAdapter (int limit)
     {
         this.limit = limit;
     }

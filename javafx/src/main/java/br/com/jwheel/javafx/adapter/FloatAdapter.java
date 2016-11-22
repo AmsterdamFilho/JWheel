@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx.adapter;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
@@ -6,12 +6,12 @@ import javafx.util.StringConverter;
 import java.text.DecimalFormatSymbols;
 
 /**
- * A TextFormatter that ensures the content is either empty or a String that can be parsed to Float. The integer part of
- * the content is filtered so that it won't be higher than 99999.
+ * An Adapter that ensures the content is either empty or a String that can be parsed to Float and is not greater than
+ * a specified limit.
  *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class FloatFormatter extends FilteredTextFormatter<Float>
+public class FloatAdapter extends AdapterByFilter<Float>
 {
     private static final String                 integerRegex;
     private static final String                 decimalSeparator;
@@ -19,7 +19,7 @@ public class FloatFormatter extends FilteredTextFormatter<Float>
 
     static
     {
-        integerRegex = "[0-9]{1,5}";
+        integerRegex = "[0-9]+";
         converter = new StringConverter<Float>()
         {
             @Override
@@ -50,24 +50,28 @@ public class FloatFormatter extends FilteredTextFormatter<Float>
     private final String floatRegex2;
 
     /**
-     * Default constructor
-     *
      * @param limit the maximum value accepted
-     * @param scale the maximum decimal places accepted (up to five)
+     * @param scale the maximum decimal places accepted
      */
-    public FloatFormatter (float limit, int scale)
+    public FloatAdapter (float limit, int scale)
     {
-        if (scale <= 0 || scale > 5)
+        if (scale <= 0)
         {
-            throw new IllegalArgumentException("Scale should be between 1 and 5!");
+            throw new IllegalArgumentException("Scale should be greater than 0!");
         }
         if (limit < 0)
         {
             throw new IllegalArgumentException("Limit can not be negative!");
         }
         this.limit = limit;
-        floatRegex1 = "[0-9]{0,5}\\" + decimalSeparator + "[0-9]{1," + scale + "}";
-        floatRegex2 = "[0-9]{1,5}\\" + decimalSeparator + "[0-9]{0," + scale + "}";
+        floatRegex1 = "[0-9]*\\" + decimalSeparator + "[0-9]{1," + scale + "}";
+        floatRegex2 = "[0-9]+\\" + decimalSeparator + "[0-9]{0," + scale + "}";
+    }
+
+    @Override
+    protected StringConverter<Float> getConverter ()
+    {
+        return converter;
     }
 
     @Override
@@ -78,19 +82,6 @@ public class FloatFormatter extends FilteredTextFormatter<Float>
         {
             return change;
         }
-        // if new value can be parsed to a Float, check if it is not greater than the limit
-        else if (newValue.matches(floatRegex1) || newValue.matches(floatRegex2) || newValue.matches(integerRegex))
-        {
-            Float floatNewValue = Float.valueOf(newValue.replace(decimalSeparator, "."));
-            if (floatNewValue > limit)
-            {
-                return null;
-            }
-            else
-            {
-                return change;
-            }
-        }
         // if new value is equal to a decimal separator, add a zero before it so it can be parsed to a Float
         else if (decimalSeparator.equals(newValue))
         {
@@ -100,15 +91,30 @@ public class FloatFormatter extends FilteredTextFormatter<Float>
             change.setAnchor(2);
             return change;
         }
+        // if new value might be parsed to a Float, check if it is not greater than the limit
+        else if (newValue.matches(floatRegex1) || newValue.matches(floatRegex2) || newValue.matches(integerRegex))
+        {
+            Float floatNewValue;
+            try
+            {
+                floatNewValue = Float.valueOf(newValue.replace(decimalSeparator, "."));
+            }
+            catch (NumberFormatException e)
+            {
+                return null;
+            }
+            if (floatNewValue > limit)
+            {
+                return null;
+            }
+            else
+            {
+                return change;
+            }
+        }
         else
         {
             return null;
         }
-    }
-
-    @Override
-    protected StringConverter<Float> getConverter ()
-    {
-        return converter;
     }
 }

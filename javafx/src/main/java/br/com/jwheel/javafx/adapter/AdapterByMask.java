@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx.adapter;
 
 import br.com.jwheel.core.model.mask.Mask;
 import br.com.jwheel.javafx.view.MyResourceProvider;
@@ -10,13 +10,9 @@ import javafx.util.StringConverter;
 import javax.inject.Inject;
 
 /**
- * A FilteredTextFormatter based on a {@link Mask}. It filters the input, but it is not guaranteed that the text will be
- * valid at any time. When focus is lost, the input will be formatted, the control will be validated, and the control
- * will be styled if validation fails.
- *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
+public abstract class AdapterByMask<T> extends AdapterByFilter<T>
 {
     private MaskValidator maskValidator = new MaskValidator();
     private MaskFormatter maskFormatter = new MaskFormatter();
@@ -29,11 +25,11 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
     }
 
     @Override
-    protected void unbindImpl ()
+    protected void resetImpl ()
     {
-        super.unbindImpl();
-        getNode().focusedProperty().removeListener(maskFormatter);
-        getNode().focusedProperty().removeListener(maskValidator);
+        super.resetImpl();
+        getControl().focusedProperty().removeListener(maskFormatter);
+        getControl().focusedProperty().removeListener(maskValidator);
         if (!maskValidator.isValidated())
         {
             maskValidator.resetInvalidatedControl();
@@ -41,12 +37,12 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
     }
 
     @Override
-    protected void bindImpl ()
+    protected void adaptImpl ()
     {
-        super.bindImpl();
+        super.adaptImpl();
         // the order is important! formatting must occur first than validation
-        getNode().focusedProperty().addListener(maskFormatter);
-        getNode().focusedProperty().addListener(maskValidator);
+        getControl().focusedProperty().addListener(maskFormatter);
+        getControl().focusedProperty().addListener(maskValidator);
     }
 
     @Override
@@ -78,7 +74,7 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
 
         public boolean isValidated ()
         {
-            if (getNode() == null)
+            if (getControl() == null)
             {
                 throw new IllegalStateException("No control is set to be validated!");
             }
@@ -109,19 +105,19 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
 
         private void configureInvalidatedControl ()
         {
-            getNode().getStylesheets().add(resourceProvider.getInvalidatedControlCss());
-            getNode().textProperty().addListener(textListener);
+            getControl().getStylesheets().add(resourceProvider.getInvalidatedControlCss());
+            getControl().textProperty().addListener(textListener);
         }
 
         private void resetInvalidatedControl ()
         {
-            getNode().getStylesheets().remove(resourceProvider.getInvalidatedControlCss());
-            getNode().textProperty().removeListener(textListener);
+            getControl().getStylesheets().remove(resourceProvider.getInvalidatedControlCss());
+            getControl().textProperty().removeListener(textListener);
         }
 
         private void validate ()
         {
-            String text = getNode().getText();
+            String text = getControl().getText();
             if (text.isEmpty())
             {
                 validated = true;
@@ -152,11 +148,11 @@ public abstract class MaskedTextFormatter<T> extends FilteredTextFormatter<T>
             if (!newValue)
             {
                 // format the text
-                String text = getNode().getText();
+                String text = getControl().getText();
                 String formatted = getMask().formatComplete(text);
                 if (formatted != null)
                 {
-                    getNode().setText(formatted);
+                    getControl().setText(formatted);
                 }
             }
         }

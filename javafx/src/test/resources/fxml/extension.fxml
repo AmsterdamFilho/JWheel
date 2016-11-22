@@ -51,20 +51,20 @@
     <Button text="set value" onAction="#setPhone" GridPane.rowIndex="4" GridPane.columnIndex="5"/>
     <Button text="set to null" onAction="#setPhoneNull" GridPane.rowIndex="4" GridPane.columnIndex="6"/>
 
-    <Label text="Autocomplete from cities list" GridPane.rowIndex="5"/>
-    <TextField fx:id="citiesTf" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-    <Button text="undo decoration" onAction="#undoCitiesAcDecoration" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
-    <Button text="decorate again" onAction="#doCitiesAcDecoration1" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
-    <Button text="print value" onAction="#printCity" GridPane.rowIndex="5" GridPane.columnIndex="4"/>
-    <Button text="set value to Chicago" onAction="#setCity" GridPane.rowIndex="5" GridPane.columnIndex="5"/>
-    <Button text="set to null" onAction="#setCityToNull" GridPane.rowIndex="5" GridPane.columnIndex="6"/>
+    <Label text="Auto complete field (cities or names)" GridPane.rowIndex="5"/>
+    <TextField fx:id="autoCompleteTf1" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    <Button text="undo decoration" onAction="#undoAutoComplete1" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doAutoComplete1" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+    <Button text="print value" onAction="#printAutoComplete1" GridPane.rowIndex="5" GridPane.columnIndex="4"/>
+    <Button text="set to Chicago / Julia" onAction="#setAutoComplete1" GridPane.rowIndex="5" GridPane.columnIndex="5"/>
+    <Button text="set to null" onAction="#setAutoComplete1ToNull" GridPane.rowIndex="5" GridPane.columnIndex="6"/>
 
-    <Label text="Autocomplete from table of units" GridPane.rowIndex="6"/>
+    <Label text="Auto complete field (units or countries)" GridPane.rowIndex="6"/>
     <TextField fx:id="autoCompleteTf2" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
-    <Button text="undo decoration" onAction="#undoUnitsAcDecoration" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
-    <Button text="decorate again" onAction="#doUnitsAcDecoration" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
-    <Button text="print value" onAction="#printUnit" GridPane.rowIndex="6" GridPane.columnIndex="4"/>
-    <Button text="set value to kg" onAction="#setUnit" GridPane.rowIndex="6" GridPane.columnIndex="5"/>
-    <Button text="set to null" onAction="#setUnitToNull" GridPane.rowIndex="6" GridPane.columnIndex="6"/>
+    <Button text="undo decoration" onAction="#undoAutoComplete2" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+    <Button text="decorate again" onAction="#doAutoComplete2" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
+    <Button text="print value" onAction="#printAutoComplete2" GridPane.rowIndex="6" GridPane.columnIndex="4"/>
+    <Button text="set to kg / USA" onAction="#setAutoComplete2" GridPane.rowIndex="6" GridPane.columnIndex="5"/>
+    <Button text="set to null" onAction="#setAutoComplete2ToNull" GridPane.rowIndex="6" GridPane.columnIndex="6"/>
 
 </GridPane>

@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.formatter;
+package br.com.jwheel.javafx.adapter;
 
 import br.com.jwheel.core.model.mask.LocalPhoneMask;
 import br.com.jwheel.core.model.mask.Mask;
@@ -8,7 +8,7 @@ import javax.inject.Inject;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class PhoneFormatter extends MaskedTextFormatter<String>
+public class LocalPhoneAdapter extends AdapterByMask<String>
 {
     private @Inject LocalPhoneMask localPhoneMask;
 
