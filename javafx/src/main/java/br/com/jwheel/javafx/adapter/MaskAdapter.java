@@ -12,7 +12,7 @@ import javax.inject.Inject;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class AdapterByMask<T> extends AdapterByFilter<T>
+public abstract class MaskAdapter<T> extends FilterAdapter<T>
 {
     private MaskValidator maskValidator = new MaskValidator();
     private MaskFormatter maskFormatter = new MaskFormatter();

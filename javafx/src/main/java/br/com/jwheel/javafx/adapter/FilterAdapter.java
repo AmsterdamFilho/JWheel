@@ -9,7 +9,7 @@ import java.util.function.UnaryOperator;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class AdapterByFilter<T> extends ControlAdapter<TextField, T>
+public abstract class FilterAdapter<T> extends ControlAdapter<TextField, T>
         implements UnaryOperator<TextFormatter.Change>
 {
     @Override

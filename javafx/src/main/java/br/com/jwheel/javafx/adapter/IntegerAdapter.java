@@ -7,7 +7,7 @@ import javafx.util.converter.IntegerStringConverter;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class IntegerAdapter extends AdapterByFilter<Integer>
+public class IntegerAdapter extends FilterAdapter<Integer>
 {
     private static final String                 numberRegex = "[0-9]+";
     private static final IntegerStringConverter converter   = new IntegerStringConverter();

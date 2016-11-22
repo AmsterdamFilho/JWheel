@@ -9,7 +9,7 @@ import java.time.LocalDate;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class LocalDateAdapter extends AdapterByMask<LocalDate>
+public class LocalDateAdapter extends MaskAdapter<LocalDate>
 {
     private @Inject LocalDateMask localDateMask;
 

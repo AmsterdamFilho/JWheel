@@ -11,7 +11,7 @@ import java.text.DecimalFormatSymbols;
  *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class FloatAdapter extends AdapterByFilter<Float>
+public class FloatAdapter extends FilterAdapter<Float>
 {
     private static final String                 integerRegex;
     private static final String                 decimalSeparator;

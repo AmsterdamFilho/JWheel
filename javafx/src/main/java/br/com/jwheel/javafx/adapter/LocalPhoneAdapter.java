@@ -8,7 +8,7 @@ import javax.inject.Inject;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class LocalPhoneAdapter extends AdapterByMask<String>
+public class LocalPhoneAdapter extends MaskAdapter<String>
 {
     private @Inject LocalPhoneMask localPhoneMask;
 
