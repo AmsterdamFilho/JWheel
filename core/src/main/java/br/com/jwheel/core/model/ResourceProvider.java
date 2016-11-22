@@ -13,6 +13,10 @@ import java.util.ResourceBundle;
  * |        file1.css
  * |        file2.css
  * |        ...
+ * |    images
+ * |        image1.png
+ * |        image2.png
+ * |        ...
  * |    fxml
  * |        file1.fxml
  * |        file2.fxml
@@ -87,6 +91,11 @@ public abstract class ResourceProvider
     protected String cssDirectoryPath ()
     {
         return root() + "/css/";
+    }
+
+    protected String imagesDirectoryPath ()
+    {
+        return root() + "/images/";
     }
 
     protected String fxmlExtension ()
