@@ -46,7 +46,6 @@ public class LogPreferencesFactory extends PreferencesFactoryFromXml<LogPreferen
                 "</configuration>"
         );
         //@formatter:on
-        parameters.setUseLoggerConfigurationXml(false);
     }
 
     private Path getLogFilePath ()

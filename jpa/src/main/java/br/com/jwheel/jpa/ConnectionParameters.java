@@ -15,10 +15,10 @@ import java.util.List;
 @Custom
 public class ConnectionParameters
 {
-    private StringProperty driver   = new SimpleStringProperty();
-    private StringProperty url      = new SimpleStringProperty();
-    private StringProperty password = new PasswordProperty();
-    private StringProperty user     = new SimpleStringProperty();
+    private final StringProperty driver   = new SimpleStringProperty();
+    private final StringProperty url      = new SimpleStringProperty();
+    private final StringProperty password = new PasswordProperty();
+    private final StringProperty user     = new SimpleStringProperty();
 
     public List<String> getDriversSuggestions ()
     {

@@ -21,7 +21,7 @@ public abstract class RecordPaneController implements Initializable
     private         ResourceBundle     resources;
     private @Inject MyResourceProvider resourceProvider;
 
-    private EnterPressedEventHandler enterPressedEventHandler = new EnterPressedEventHandler();
+    private final EnterPressedEventHandler enterPressedEventHandler = new EnterPressedEventHandler();
 
     protected EnterPressedEventHandler getEnterPressedEventHandler ()
     {

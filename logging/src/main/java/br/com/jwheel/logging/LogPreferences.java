@@ -11,7 +11,7 @@ public class LogPreferences
 {
     private String  loggerLevel;
     private String  loggerConfigurationXml;
-    private boolean useLoggerConfigurationXml;
+    private boolean useLoggerConfigurationXml = false;
 
     private String logFilePath;
 

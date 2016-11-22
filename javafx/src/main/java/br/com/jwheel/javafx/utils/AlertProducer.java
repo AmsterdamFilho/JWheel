@@ -12,20 +12,20 @@ import javax.inject.Singleton;
 @Singleton
 public class AlertProducer
 {
-    private @Inject MyResourceProvider myViewProvider;
+    private @Inject MyResourceProvider resourceProvider;
 
     public void showErrorAlert (String message)
     {
-        myViewProvider.showErrorAlert(message);
+        resourceProvider.showErrorAlert(message);
     }
 
     public void showSuccessAlert (String message)
     {
-        myViewProvider.showSuccessAlert(message);
+        resourceProvider.showSuccessAlert(message);
     }
 
     public void showDecisionDialog (DecisionDialogModel ddm)
     {
-        myViewProvider.showDecisionDialog(ddm);
+        resourceProvider.showDecisionDialog(ddm);
     }
 }

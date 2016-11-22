@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class EnterPressedEventHandler implements EventHandler<KeyEvent>
 {
-    private List<EventTarget> skippedTargets = new ArrayList<>();
+    private final List<EventTarget> skippedTargets = new ArrayList<>();
 
     public void addTargetException (EventTarget target)
     {

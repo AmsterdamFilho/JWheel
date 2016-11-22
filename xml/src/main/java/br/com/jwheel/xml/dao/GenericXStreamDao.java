@@ -34,20 +34,15 @@ public abstract class GenericXStreamDao<S> implements XStreamDao<S>
         return xStream;
     }
 
-    protected XStream getXStream ()
-    {
-        return xStream;
-    }
-
     @Override
     public S find () throws XStreamException, ClassCastException
     {
-        return provider.find(getXStream());
+        return provider.find(xStream);
     }
 
     @Override
     public void merge (S serializable) throws XStreamException, IOException
     {
-        provider.merge(getXStream(), serializable);
+        provider.merge(xStream, serializable);
     }
 }

@@ -49,7 +49,7 @@ public class ExtensionTestController implements Initializable
 
     public void doIntegerFormatting ()
     {
-        float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "125");
+        float[] limit = promptUserForNumber("Type the maximum acceptable value", "125");
         if (limit != null)
         {
             integerAdapter.reset();
@@ -65,10 +65,10 @@ public class ExtensionTestController implements Initializable
 
     public void doFloatFormatting ()
     {
-        float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable value", "100.00");
+        float[] limit = promptUserForNumber("Type the maximum acceptable value", "100.00");
         if (limit != null)
         {
-            float[] scale = promptUserForNumber("Decoration dialog", "Type the scale", "2");
+            float[] scale = promptUserForNumber("Type the scale", "2");
             if (scale != null)
             {
                 floatAdapter.reset();
@@ -85,7 +85,7 @@ public class ExtensionTestController implements Initializable
 
     public void doLengthFormatting ()
     {
-        final float[] limit = promptUserForNumber("Decoration dialog", "Type the maximum acceptable length", "5");
+        final float[] limit = promptUserForNumber("Type the maximum acceptable length", "5");
         if (limit != null)
         {
             lengthAdapter.reset();
@@ -114,9 +114,9 @@ public class ExtensionTestController implements Initializable
         localLocalPhoneAdapter.adapt(phoneTf);
     }
 
-    private float[] promptUserForNumber (String title, String contentText, String initialValue)
+    private float[] promptUserForNumber (String contentText, String initialValue)
     {
-        String response = promptUserForString(title, contentText, initialValue);
+        String response = promptUserForString(contentText, initialValue);
         if (response == null)
         {
             return null;
@@ -124,10 +124,10 @@ public class ExtensionTestController implements Initializable
         return new float[]{Float.valueOf(response)};
     }
 
-    private String promptUserForString (String title, String contentText, String initialValue)
+    private String promptUserForString (String contentText, String initialValue)
     {
         TextInputDialog dialog = new TextInputDialog(initialValue);
-        dialog.setTitle(title);
+        dialog.setTitle("Decoration dialog");
         dialog.setContentText(contentText);
         Optional<String> result = dialog.showAndWait();
         if (!result.isPresent())
@@ -206,7 +206,7 @@ public class ExtensionTestController implements Initializable
 
     public void setPhone ()
     {
-        String phone = promptUserForString("Decoration dialog", "Type only the digits of a phone", "40043535");
+        String phone = promptUserForString("Type only the digits of a phone", "40043535");
         if (phone != null)
         {
             localLocalPhoneAdapter.valueProperty().setValue(phone);

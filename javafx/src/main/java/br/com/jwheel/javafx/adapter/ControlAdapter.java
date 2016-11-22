@@ -9,7 +9,7 @@ import javafx.scene.Node;
  */
 public abstract class ControlAdapter<N extends Node, T>
 {
-    private ObjectProperty<T> valueProperty = new SimpleObjectProperty<>();
+    private final ObjectProperty<T> valueProperty = new SimpleObjectProperty<>();
 
     public ObjectProperty<T> valueProperty ()
     {

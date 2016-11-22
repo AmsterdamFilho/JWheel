@@ -18,8 +18,8 @@ public class ListItemsCollector
     public static final int COLLECT_WHEN_CONTAINS    = 1;
 
     // settings
-    private Validator         validator;
-    private StringTransformer transformer;
+    private final Validator         validator;
+    private final StringTransformer transformer;
 
     public ListItemsCollector ()
     {
@@ -28,18 +28,12 @@ public class ListItemsCollector
 
     public ListItemsCollector (int strategy)
     {
-        validateStrategyAndSetValidator(strategy);
-        this.transformer = defaultTransformer();
+        this(strategy, new DefaultStringTransformer());
     }
 
-    public ListItemsCollector (int type, StringTransformer transformer)
+    public ListItemsCollector (int strategy, StringTransformer transformer)
     {
-        validateStrategyAndSetValidator(type);
-        this.transformer = transformer;
-    }
-
-    private void validateStrategyAndSetValidator (int strategy)
-    {
+        // validate strategy and set validator
         switch (strategy)
         {
             case COLLECT_WHEN_STARTS_WITH:
@@ -51,6 +45,7 @@ public class ListItemsCollector
             default:
                 throw new IllegalArgumentException("Strategy invalid!");
         }
+        this.transformer = transformer;
     }
 
     public List<String> collect (List<String> list, String filter)
@@ -60,23 +55,23 @@ public class ListItemsCollector
         {
             String transformedFilter = transformer.transform(filter);
             response.addAll(list.stream().filter(string -> validator.validate(string, transformedFilter))
-                                    .collect(Collectors.toList()));
+                    .collect(Collectors.toList()));
         }
         return response;
     }
 
     /**
      * Returns a transformer that converts to upper case, strip the accents and treat null as empty string
-     *
-     * @return the transformer
      */
-    private StringTransformer defaultTransformer ()
+    private static class DefaultStringTransformer implements StringTransformer
     {
-        return string -> {
+        @Override
+        public String transform (String string)
+        {
             String notNullString = string == null ? "" : string;
             String stringWithNoAccents = StringUtils.stripAccents(notNullString);
             return stringWithNoAccents.toUpperCase();
-        };
+        }
     }
 
     /**

@@ -12,7 +12,7 @@ public class IntegerAdapter extends FilterAdapter<Integer>
     private static final String                 numberRegex = "[0-9]+";
     private static final IntegerStringConverter converter   = new IntegerStringConverter();
 
-    private int limit;
+    private final int limit;
 
     public IntegerAdapter ()
     {

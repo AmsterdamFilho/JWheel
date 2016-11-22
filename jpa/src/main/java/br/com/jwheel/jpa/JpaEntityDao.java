@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 public class JpaEntityDao<T, PK> implements EntityDao<T, PK>
 {
-    protected EntityManager entityManager;
+    protected final EntityManager entityManager;
 
     public JpaEntityDao (EntityManager entityManager)
     {

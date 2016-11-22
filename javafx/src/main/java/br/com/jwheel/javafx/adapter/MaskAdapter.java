@@ -14,8 +14,8 @@ import javax.inject.Inject;
  */
 public abstract class MaskAdapter<T> extends FilterAdapter<T>
 {
-    private MaskValidator maskValidator = new MaskValidator();
-    private MaskFormatter maskFormatter = new MaskFormatter();
+    private final MaskValidator maskValidator = new MaskValidator();
+    private final MaskFormatter maskFormatter = new MaskFormatter();
 
     private @Inject MyResourceProvider resourceProvider;
 
@@ -70,9 +70,9 @@ public abstract class MaskAdapter<T> extends FilterAdapter<T>
     private class MaskValidator implements ChangeListener<Boolean>
     {
         private boolean validated;
-        private ChangeListener<String> textListener = this::textChanged;
+        private final ChangeListener<String> textListener = (observable, oldValue, newValue) -> textChanged();
 
-        public boolean isValidated ()
+        private boolean isValidated ()
         {
             if (getControl() == null)
             {
@@ -129,7 +129,7 @@ public abstract class MaskAdapter<T> extends FilterAdapter<T>
             }
         }
 
-        public void textChanged (ObservableValue<? extends String> observable, String oldValue, String newValue)
+        private void textChanged ()
         {
             validate();
             if (validated)

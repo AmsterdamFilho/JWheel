@@ -10,7 +10,7 @@ public class LengthAdapter extends FilterAdapter<String>
 {
     private static final StringConverter<String> converter = new MyConverter();
 
-    private int limit;
+    private final int limit;
 
     public LengthAdapter (int limit)
     {

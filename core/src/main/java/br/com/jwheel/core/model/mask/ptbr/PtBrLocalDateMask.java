@@ -15,7 +15,7 @@ import java.time.format.DateTimeParseException;
 @Custom
 public class PtBrLocalDateMask extends LocalDateMask
 {
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     @Override
     public String toString (LocalDate localDate)

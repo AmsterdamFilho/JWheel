@@ -9,11 +9,11 @@ import java.util.*;
  */
 public class DecisionDialogModel
 {
-    private List<String> extraOptions = new ArrayList<>();
-    private String defaultOption;
+    private final List<String> extraOptions = new ArrayList<>();
+    private       int          chosenOption = 0;
 
     private String decisionDescription;
-    private int chosenOption = 0;
+    private String defaultOption;
 
     public DecisionDialogModel (String decisionDescription, String defaultOption, String... extraOptions)
     {
