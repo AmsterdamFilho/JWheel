@@ -13,8 +13,6 @@ import javax.inject.Singleton;
 @Singleton
 public class MyResourceProvider extends ResourceProvider
 {
-    public static final String invalidated = "z_control_invalidated";
-
     @Override
     protected String root ()
     {
