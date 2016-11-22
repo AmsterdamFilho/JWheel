@@ -47,9 +47,4 @@ public class MyResourceProvider extends ResourceProvider
     {
         return getCss("invalidated");
     }
-
-    public String getAutoCompleterCss ()
-    {
-        return getCss("auto-completer");
-    }
 }
