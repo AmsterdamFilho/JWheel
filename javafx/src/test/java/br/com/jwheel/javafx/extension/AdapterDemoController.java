@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class AdapterTestController implements Initializable
+public class AdapterDemoController implements Initializable
 {
     private @FXML TextField integerTf;
     private @FXML TextField floatTf;

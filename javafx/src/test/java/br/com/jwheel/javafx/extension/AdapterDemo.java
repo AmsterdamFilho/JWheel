@@ -10,13 +10,13 @@ import javafx.stage.Stage;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class AdapterTest extends Application
+public class AdapterDemo extends Application
 {
     @Override
     public void start (Stage primaryStage) throws Exception
     {
         FXMLLoader fxmlLoader = new CdiEnabledFxmlLoader();
-        primaryStage.setScene(new Scene(fxmlLoader.load(getClass().getResourceAsStream("/fxml/adapter.fxml"))));
+        primaryStage.setScene(new Scene(fxmlLoader.load(getClass().getResourceAsStream("/fxml/adapter-demo.fxml"))));
         JavaFxUtils.centerOnScreen(primaryStage);
         primaryStage.show();
     }
