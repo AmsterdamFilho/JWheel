@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.view;
+package br.com.jwheel.javafx;
 
 import br.com.jwheel.core.model.ResourceProvider;
 
@@ -13,7 +13,7 @@ public class MyResourceProvider extends ResourceProvider
     @Override
     protected String root ()
     {
-        return "jwheel-javafx-view";
+        return "jwheel-javafx";
     }
 
     public String getInvalidatedControlCss ()

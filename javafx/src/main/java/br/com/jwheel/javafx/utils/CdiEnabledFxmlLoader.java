@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.fxml;
+package br.com.jwheel.javafx.utils;
 
 import br.com.jwheel.core.cdi.WeldContext;
 import javafx.fxml.FXMLLoader;

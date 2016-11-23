@@ -2,9 +2,9 @@ package br.com.jwheel.template.control;
 
 import br.com.jwheel.core.cdi.WeldContext;
 import br.com.jwheel.core.model.DecisionDialogModel;
-import br.com.jwheel.javafx.fxml.CdiEnabledFxmlLoader;
-import br.com.jwheel.javafx.view.AlertProducer;
-import br.com.jwheel.template.view.MyResourceProvider;
+import br.com.jwheel.javafx.DialogProducer;
+import br.com.jwheel.javafx.utils.CdiEnabledFxmlLoader;
+import br.com.jwheel.template.MyResourceProvider;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +20,7 @@ import javax.persistence.EntityManager;
 public abstract class JavaFxApplication
 {
     private @Inject Logger             logger;
-    private @Inject AlertProducer      alertProducer;
+    private @Inject DialogProducer     dialogProducer;
     private @Inject MyResourceProvider resourceProvider;
 
     public boolean databaseConnectionOk ()
@@ -44,7 +44,7 @@ public abstract class JavaFxApplication
                         resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmConfigureConnectionOption),
                         resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmTryAgainOption),
                         resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmExitOption));
-        alertProducer.showDecisionDialog(decisionDialogModel);
+        dialogProducer.showDecisionDialog(decisionDialogModel);
         return decisionDialogModel;
     }
 
@@ -62,7 +62,7 @@ public abstract class JavaFxApplication
         }
         catch (Exception e)
         {
-            alertProducer.showErrorAlert(resourceProvider.getI18nProperty(MyResourceProvider.z_a_internalErrorMessage));
+            dialogProducer.showErrorAlert(resourceProvider.getI18nProperty(MyResourceProvider.z_a_internalErrorMessage));
             logger.error("Error loading Connection Settings Dialog!", e);
         }
     }

@@ -19,12 +19,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>br.com.luvva.jwheel</groupId>
-            <artifactId>jwheel-javafx-view</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>

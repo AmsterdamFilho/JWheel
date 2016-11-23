@@ -1,6 +1,6 @@
-package br.com.jwheel.javafx.extension;
+package br.com.jwheel.javafx.adapter;
 
-import br.com.jwheel.javafx.fxml.CdiEnabledFxmlLoader;
+import br.com.jwheel.javafx.utils.CdiEnabledFxmlLoader;
 import br.com.jwheel.javafx.utils.JavaFxUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

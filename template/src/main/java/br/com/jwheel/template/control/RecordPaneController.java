@@ -1,7 +1,7 @@
 package br.com.jwheel.template.control;
 
-import br.com.jwheel.javafx.event.EnterPressedEventHandler;
-import br.com.jwheel.template.view.MyResourceProvider;
+import br.com.jwheel.javafx.utils.EnterPressedEventHandler;
+import br.com.jwheel.template.MyResourceProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;

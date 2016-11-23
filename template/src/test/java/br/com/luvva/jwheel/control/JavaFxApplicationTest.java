@@ -1,4 +1,4 @@
-package br.com.jwheel.control;
+package br.com.luvva.jwheel.control;
 
 import br.com.jwheel.template.control.JavaFxApplication;
 import javafx.stage.Stage;

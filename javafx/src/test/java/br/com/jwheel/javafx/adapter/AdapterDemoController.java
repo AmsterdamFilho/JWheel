@@ -1,6 +1,5 @@
-package br.com.jwheel.javafx.extension;
+package br.com.jwheel.javafx.adapter;
 
-import br.com.jwheel.javafx.adapter.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;

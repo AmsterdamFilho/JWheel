@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.event;
+package br.com.jwheel.javafx.utils;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;

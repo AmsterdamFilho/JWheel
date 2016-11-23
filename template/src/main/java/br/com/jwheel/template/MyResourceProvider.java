@@ -1,4 +1,4 @@
-package br.com.jwheel.template.view;
+package br.com.jwheel.template;
 
 import br.com.jwheel.core.model.ResourceProvider;
 
@@ -40,7 +40,7 @@ public class MyResourceProvider extends ResourceProvider
     @Override
     protected String root ()
     {
-        return "jwheel-template-view";
+        return "jwheel-template";
     }
 
     public InputStream csdFxml ()

@@ -1,7 +1,7 @@
 package br.com.jwheel.javafx.adapter;
 
 import br.com.jwheel.core.model.mask.Mask;
-import br.com.jwheel.javafx.view.MyResourceProvider;
+import br.com.jwheel.javafx.MyResourceProvider;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextFormatter;

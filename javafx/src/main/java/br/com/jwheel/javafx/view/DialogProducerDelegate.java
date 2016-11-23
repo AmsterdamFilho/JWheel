@@ -4,34 +4,32 @@ import br.com.jwheel.core.model.DecisionDialogModel;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@Singleton
-public class AlertProducer
+public class DialogProducerDelegate
 {
-    private @Inject MyResourceProvider resourceProvider;
+    private DialogProducerDelegate ()
+    {
+    }
 
-    public void showErrorAlert (String message)
+    public static void showErrorAlert (String title, String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(resourceProvider.getI18nProperty("z_alert_errorTitle"));
+        alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    public void showSuccessAlert (String message)
+    public static void showSuccessAlert (String title, String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(resourceProvider.getI18nProperty("z_alert_successTitle"));
+        alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    public void showDecisionDialog (DecisionDialogModel ddm)
+    public static void showDecisionDialog (DecisionDialogModel ddm)
     {
         ChoiceDialog<String> choiceDialog = new ChoiceDialog<>(ddm.getDefaultOption(), ddm.getExtraOptions());
         choiceDialog.setContentText(ddm.getDecisionDescription());

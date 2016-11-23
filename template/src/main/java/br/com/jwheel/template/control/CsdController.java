@@ -1,9 +1,9 @@
 package br.com.jwheel.template.control;
 
-import br.com.jwheel.javafx.view.AlertProducer;
+import br.com.jwheel.javafx.DialogProducer;
 import br.com.jwheel.jpa.ConnectionParameters;
+import br.com.jwheel.template.MyResourceProvider;
 import br.com.jwheel.template.service.CsdService;
-import br.com.jwheel.template.view.MyResourceProvider;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import javax.inject.Inject;
 
-import static br.com.jwheel.template.view.MyResourceProvider.*;
+import static br.com.jwheel.template.MyResourceProvider.*;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -27,18 +27,18 @@ public class CsdController extends RecordPaneController
 
     private @Inject ConnectionParameters connectionParameters;
     private @Inject CsdService           csdService;
-    private @Inject AlertProducer        alertProducer;
+    private @Inject DialogProducer       dialogProducer;
     private @Inject MyResourceProvider   resourceProvider;
 
     public void testConnection ()
     {
         if (csdService.testConnection(connectionParameters))
         {
-            alertProducer.showSuccessAlert(resourceProvider.getI18nProperty(z_cs_testSucceededMessage));
+            dialogProducer.showSuccessAlert(resourceProvider.getI18nProperty(z_cs_testSucceededMessage));
         }
         else
         {
-            alertProducer.showErrorAlert(resourceProvider.getI18nProperty(z_cs_testFailedMessage));
+            dialogProducer.showErrorAlert(resourceProvider.getI18nProperty(z_cs_testFailedMessage));
         }
     }
 
@@ -46,12 +46,12 @@ public class CsdController extends RecordPaneController
     {
         if (csdService.saveOk(connectionParameters))
         {
-            alertProducer.showSuccessAlert(resourceProvider.getI18nProperty(z_a_saveSucceededMessage));
+            dialogProducer.showSuccessAlert(resourceProvider.getI18nProperty(z_a_saveSucceededMessage));
             exit();
         }
         else
         {
-            alertProducer.showErrorAlert(resourceProvider.getI18nProperty(z_a_saveFailedMessage));
+            dialogProducer.showErrorAlert(resourceProvider.getI18nProperty(z_a_saveFailedMessage));
         }
     }
 
