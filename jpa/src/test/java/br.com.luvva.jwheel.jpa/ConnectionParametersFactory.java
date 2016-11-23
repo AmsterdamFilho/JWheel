@@ -1,4 +1,4 @@
-package br.com.jwheel.control;
+package br.com.luvva.jwheel.jpa;
 
 import br.com.jwheel.jpa.ConnectionParameters;
 import br.com.jwheel.jpa.ConnectionParametersDao;
