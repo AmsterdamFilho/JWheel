@@ -24,8 +24,8 @@ public class ConnectionParametersFactory extends PreferencesFactoryFromXml<Conne
     public void setDefaultPreferences (ConnectionParameters parameters)
     {
         parameters.setDriver("org.postgresql.Driver");
-        parameters.setPassword("postgres");
-        parameters.setUrl("jdbc:postgresql://localhost:5433/postgres");
-        parameters.setUser("postgres");
+        parameters.setPassword("jwheel");
+        parameters.setUrl("jdbc:postgresql://localhost:5433/jwheel");
+        parameters.setUser("jwheel");
     }
 }
