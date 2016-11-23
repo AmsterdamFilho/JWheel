@@ -17,7 +17,7 @@ public class SimpleStringPropertyConverter implements Converter
     {
         SimpleStringProperty ssp = (SimpleStringProperty) object;
         writer.startNode("value");
-        writer.setValue(ssp.getValue());
+        writer.setValue(ssp.getValue() == null ? "" : ssp.getValue());
         writer.endNode();
     }
 
