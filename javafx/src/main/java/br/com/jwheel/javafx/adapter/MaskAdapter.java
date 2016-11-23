@@ -19,11 +19,6 @@ public abstract class MaskAdapter<T> extends FilterAdapter<T>
 
     private @Inject MyResourceProvider resourceProvider;
 
-    public boolean isValidated ()
-    {
-        return maskValidator.isValidated();
-    }
-
     @Override
     protected void resetImpl ()
     {
