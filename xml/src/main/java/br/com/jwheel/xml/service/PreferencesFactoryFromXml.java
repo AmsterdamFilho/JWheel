@@ -48,12 +48,21 @@ public abstract class PreferencesFactoryFromXml<T>
         {
             handleMergeException(e);
         }
+        catch (XStreamException e)
+        {
+            handleMergeException(e);
+        }
 
         return defaultParameter;
     }
 
     @SuppressWarnings({"EmptyMethod", "UnusedParameters"})
-    protected void handleMergeException (IOException e)
+    protected void handleMergeException (Exception e)
+    {
+    }
+
+    @SuppressWarnings({"EmptyMethod", "UnusedParameters"})
+    protected void handleMergeException (XStreamException e)
     {
     }
 
