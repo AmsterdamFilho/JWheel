@@ -3,11 +3,9 @@
 
 core/target
 javafx/target
-javafx-view/target
 jpa/target
 logging/target
 rpn/target
 template/target
-template-view/target
 test/target
 xml/target
