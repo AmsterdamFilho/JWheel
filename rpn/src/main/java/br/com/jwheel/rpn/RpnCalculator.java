@@ -4,6 +4,10 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
+ * An RPN calculator. It is intended to be used with simple calculations, with few operations. Otherwise, the result
+ * precision might be a problem, in which case an implementation that uses {@link java.math.BigDecimal} would be a much
+ * better choice.
+ *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public class RpnCalculator
