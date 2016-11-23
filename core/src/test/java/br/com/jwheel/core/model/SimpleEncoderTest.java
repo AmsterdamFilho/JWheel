@@ -11,16 +11,19 @@ public class SimpleEncoderTest
     @Test
     public void testEncode () throws Exception
     {
-        SimpleEncoder.encode("");
-        SimpleEncoder.encode("101020");
-        SimpleEncoder.encode("192.168.25.200");
-        SimpleEncoder.encode("Apple");
-        SimpleEncoder.encode("ÉéçÇÃã :!? xyz987");
+        System.out.println(SimpleEncoder.encode(null));
+        System.out.println(SimpleEncoder.encode(""));
+        System.out.println(SimpleEncoder.encode("101020"));
+        System.out.println(SimpleEncoder.encode("192.168.25.200"));
+        System.out.println(SimpleEncoder.encode("Apple"));
+        System.out.println(SimpleEncoder.encode("ÉéçÇÃã :!? xyz987"));
     }
 
     @Test
     public void testDecode () throws Exception
     {
+        Assert.assertTrue("".equals(SimpleEncoder.decode(null)));
+
         Assert.assertTrue("".equals(SimpleEncoder.decode(SimpleEncoder.encode(""))));
 
         String numbersString = "101020";
