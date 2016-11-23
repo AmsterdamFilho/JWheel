@@ -1,8 +1,8 @@
 package br.com.jwheel.template.control;
 
+import br.com.jwheel.javafx.view.AlertProducer;
 import br.com.jwheel.jpa.ConnectionParameters;
 import br.com.jwheel.template.service.CsdService;
-import br.com.jwheel.javafx.utils.AlertProducer;
 import br.com.jwheel.template.view.MyResourceProvider;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
