@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import br.com.jwheel.javafx.extension.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="br.com.jwheel.javafx.extension.ExtensionDemo1Controller" style="-fx-padding: 12px">
+
+    <columnConstraints>
+        <ColumnConstraints prefWidth="200"/>
+        <ColumnConstraints prefWidth="200"/>
+    </columnConstraints>
+
+    <Label text="Integer text field"/>
+    <IntegerField fx:id="integerTf" GridPane.columnIndex="1"/>
+    <Button text="set value" onAction="#setIntegerValue" GridPane.columnIndex="2"/>
+    <Button text="print value" onAction="#printInteger" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+    <Button text="configure" onAction="#configureInteger" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+
+    <Label text="Float text field" GridPane.rowIndex="1"/>
+    <FloatField fx:id="floatTf" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Button text="set value" onAction="#setFloatValue" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+    <Button text="print value" onAction="#printFloat" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+    <Button text="configure" onAction="#configureFloat" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+
+    <Label text="Limited length text field" GridPane.rowIndex="2"/>
+    <LimitedTextField fx:id="limitedLengthTf" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <Button text="set value" onAction="#setLimitedTextFieldValue" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+    <Button text="print value" onAction="#printLimitedTextFieldValue" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+    <Button text="configure" onAction="#configureLimitedTextField" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
+
+    <Label text="Date field" GridPane.rowIndex="3"/>
+    <LocalDateField fx:id="localDateTf" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    <Button text="print value" onAction="#printLocalDate" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+    <Button text="set to null" onAction="#setLocalDateNull" GridPane.rowIndex="3" GridPane.columnIndex="4"/>
+
+    <Label text="Phone field" GridPane.rowIndex="4"/>
+    <LocalPhoneField fx:id="localPhoneTf" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <Button text="set value" onAction="#setLocalPhone" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+    <Button text="print value" onAction="#printPhone" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+    <Button text="set to null" onAction="#setPhoneNull" GridPane.rowIndex="4" GridPane.columnIndex="4"/>
+
+</GridPane>

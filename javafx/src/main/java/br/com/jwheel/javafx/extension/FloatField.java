@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.adapter;
+package br.com.jwheel.javafx.extension;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
@@ -6,12 +6,9 @@ import javafx.util.StringConverter;
 import java.text.DecimalFormatSymbols;
 
 /**
- * An Adapter that ensures the content is either empty or a String that can be parsed to Float and is not greater than
- * a specified limit.
- *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class FloatAdapter extends FilterAdapter<Float>
+public class FloatField extends FilteredTextField<Float>
 {
     private static final String                 integerRegex;
     private static final String                 decimalSeparator;
@@ -45,15 +42,21 @@ public class FloatAdapter extends FilterAdapter<Float>
         decimalSeparator = String.valueOf(DecimalFormatSymbols.getInstance().getDecimalSeparator());
     }
 
-    private final float  limit;
-    private final String floatRegex1;
-    private final String floatRegex2;
+    private float limit;
+
+    public FloatField ()
+    {
+        configure(Float.MAX_VALUE, 2);
+    }
+
+    private String floatRegex1;
+    private String floatRegex2;
 
     /**
      * @param limit the maximum value accepted
      * @param scale the maximum decimal places accepted
      */
-    public FloatAdapter (float limit, int scale)
+    public void configure (float limit, int scale)
     {
         if (scale <= 0)
         {

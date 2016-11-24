@@ -1,5 +1,6 @@
-package br.com.jwheel.javafx.adapter;
+package br.com.jwheel.javafx.extension;
 
+import br.com.jwheel.core.cdi.WeldContext;
 import br.com.jwheel.core.model.mask.Mask;
 import br.com.jwheel.javafx.MyResourceProvider;
 import javafx.beans.value.ChangeListener;
@@ -7,37 +8,28 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 
-import javax.inject.Inject;
-
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class MaskAdapter<T> extends FilterAdapter<T>
+public abstract class MaskedTextField<T> extends FilteredTextField<T>
 {
     private final MaskValidator maskValidator = new MaskValidator();
-    private final MaskFormatter maskFormatter = new MaskFormatter();
 
-    private @Inject MyResourceProvider resourceProvider;
-
-    @Override
-    protected void resetImpl ()
+    public MaskedTextField ()
     {
-        super.resetImpl();
-        getControl().focusedProperty().removeListener(maskFormatter);
-        getControl().focusedProperty().removeListener(maskValidator);
-        if (!maskValidator.isValidated())
-        {
-            maskValidator.resetInvalidatedControl();
-        }
+        // the order is important! formatting must occur first than validation
+        focusedProperty().addListener(new MaskFormatter());
+        focusedProperty().addListener(maskValidator);
     }
 
-    @Override
-    protected void adaptImpl ()
+    public boolean isValidated ()
     {
-        super.adaptImpl();
-        // the order is important! formatting must occur first than validation
-        getControl().focusedProperty().addListener(maskFormatter);
-        getControl().focusedProperty().addListener(maskValidator);
+        return maskValidator.validated;
+    }
+
+    private String getInvalidatedControlCss ()
+    {
+        return WeldContext.getInstance().getBean(MyResourceProvider.class).getInvalidatedControlCss();
     }
 
     @Override
@@ -67,15 +59,6 @@ public abstract class MaskAdapter<T> extends FilterAdapter<T>
         private boolean validated;
         private final ChangeListener<String> textListener = (observable, oldValue, newValue) -> textChanged();
 
-        private boolean isValidated ()
-        {
-            if (getControl() == null)
-            {
-                throw new IllegalStateException("No control is set to be validated!");
-            }
-            return validated;
-        }
-
         @Override
         public void changed (ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue)
         {
@@ -100,19 +83,19 @@ public abstract class MaskAdapter<T> extends FilterAdapter<T>
 
         private void configureInvalidatedControl ()
         {
-            getControl().getStylesheets().add(resourceProvider.getInvalidatedControlCss());
-            getControl().textProperty().addListener(textListener);
+            getStylesheets().add(getInvalidatedControlCss());
+            textProperty().addListener(textListener);
         }
 
         private void resetInvalidatedControl ()
         {
-            getControl().getStylesheets().remove(resourceProvider.getInvalidatedControlCss());
-            getControl().textProperty().removeListener(textListener);
+            getStylesheets().remove(getInvalidatedControlCss());
+            textProperty().removeListener(textListener);
         }
 
         private void validate ()
         {
-            String text = getControl().getText();
+            String text = getText();
             if (text.isEmpty())
             {
                 validated = true;
@@ -143,11 +126,11 @@ public abstract class MaskAdapter<T> extends FilterAdapter<T>
             if (!newValue)
             {
                 // format the text
-                String text = getControl().getText();
+                String text = getText();
                 String formatted = getMask().formatComplete(text);
                 if (formatted != null)
                 {
-                    getControl().setText(formatted);
+                    setText(formatted);
                 }
             }
         }

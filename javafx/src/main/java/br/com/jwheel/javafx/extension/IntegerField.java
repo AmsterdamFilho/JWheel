@@ -1,4 +1,4 @@
-package br.com.jwheel.javafx.adapter;
+package br.com.jwheel.javafx.extension;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
@@ -7,19 +7,14 @@ import javafx.util.converter.IntegerStringConverter;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class IntegerAdapter extends FilterAdapter<Integer>
+public class IntegerField extends FilteredTextField<Integer>
 {
     private static final String                 numberRegex = "[0-9]+";
     private static final IntegerStringConverter converter   = new IntegerStringConverter();
 
-    private final int limit;
+    private int limit = Integer.MAX_VALUE;
 
-    public IntegerAdapter ()
-    {
-        this(Integer.MAX_VALUE);
-    }
-
-    public IntegerAdapter (int limit)
+    public void setLimit (int limit)
     {
         this.limit = limit;
     }
