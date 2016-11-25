@@ -40,7 +40,6 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
         }
     }
 
-    @SuppressWarnings ("StatementWithEmptyBody")
     @Override
     public void next ()
     {
@@ -57,10 +56,7 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
             {
                 setSelectedRecord(selectedRecord + 1);
             }
-            else
-            {
-                // last row is selected, so there is no next
-            }
+            // last row is selected, so there is no next
         }
     }
 
@@ -93,7 +89,6 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
         }
     }
 
-    @SuppressWarnings ("StatementWithEmptyBody")
     private int validateDestinationPageRecord (int rowCount, int destinationPageRecord)
     {
         if (destinationPageRecord <= 0)
@@ -103,9 +98,6 @@ public abstract class AbstractRecordViewNavigator implements RecordViewNavigator
         else if (destinationPageRecord > rowCount - 1)
         {
             destinationPageRecord = rowCount - 1;
-        }
-        else
-        {
         }
         return destinationPageRecord;
     }
