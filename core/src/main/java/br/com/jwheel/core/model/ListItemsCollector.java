@@ -1,8 +1,9 @@
 package br.com.jwheel.core.model;
 
 import br.com.jwheel.core.java.StringUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,9 +49,9 @@ public class ListItemsCollector
         this.transformer = transformer;
     }
 
-    public List<String> collect (List<String> list, String filter)
+    public ObservableList<String> collect (List<String> list, String filter)
     {
-        List<String> response = new ArrayList<>();
+        ObservableList<String> response = FXCollections.observableArrayList();
         if (!(list == null || list.isEmpty()))
         {
             String transformedFilter = transformer.transform(filter);
