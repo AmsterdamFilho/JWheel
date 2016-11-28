@@ -19,7 +19,7 @@ public class PathPreferences
     {
         try
         {
-            String appDataDirFromEnv = System.getenv("JWHEEL");
+            String appDataDirFromEnv = System.getenv(getEnvKey());
             if (appDataDirFromEnv == null)
             {
                 setAppDataDirectoryAsDefault();
@@ -74,5 +74,10 @@ public class PathPreferences
     public String getRootFolderName ()
     {
         return "jwheel";
+    }
+
+    public String getEnvKey ()
+    {
+        return "JWHEEL";
     }
 }
