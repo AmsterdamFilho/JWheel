@@ -1,5 +1,7 @@
 package br.com.jwheel.xml.model;
 
+import br.com.jwheel.core.java.SystemUtils;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import java.io.File;
@@ -48,7 +50,15 @@ public class PathPreferences
 
     private void setAppDataDirectoryAsDefault ()
     {
-        appDataDirectory = Paths.get(System.getProperty("user.home"), getRootFolderName()).toString();
+        if (SystemUtils.isWindows())
+        {
+            appDataDirectory = Paths.get(System.getenv("APPDATA"), getRootFolderName()).toString();
+
+        }
+        else
+        {
+            appDataDirectory = Paths.get(System.getProperty("user.home"), "." + getRootFolderName()).toString();
+        }
     }
 
     public String getPreferencesDirectory ()
