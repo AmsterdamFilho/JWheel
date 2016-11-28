@@ -45,6 +45,6 @@ public class PreferencesDaoFromFile<E> implements PreferencesDao<E>
 
     private File getDatabaseFile ()
     {
-        return pathPreferences.getParametersFile(relativePath);
+        return pathPreferences.getPreferencesFile(relativePath);
     }
 }

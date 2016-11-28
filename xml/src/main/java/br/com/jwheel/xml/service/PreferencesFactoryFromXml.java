@@ -44,11 +44,7 @@ public abstract class PreferencesFactoryFromXml<T>
         {
             dao.merge(defaultParameter);
         }
-        catch (IOException e)
-        {
-            handleMergeException(e);
-        }
-        catch (XStreamException e)
+        catch (IOException | XStreamException e)
         {
             handleMergeException(e);
         }
