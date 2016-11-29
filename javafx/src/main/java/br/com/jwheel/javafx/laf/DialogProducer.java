@@ -1,6 +1,6 @@
-package br.com.jwheel.javafx.view;
+package br.com.jwheel.javafx.laf;
 
-import br.com.jwheel.core.model.DecisionDialogModel;
+import br.com.jwheel.core.model.view.DecisionDialogModel;
 import br.com.jwheel.javafx.MyResourceProvider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;

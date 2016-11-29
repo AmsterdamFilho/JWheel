@@ -1,8 +1,8 @@
 package br.com.jwheel.template.control;
 
 import br.com.jwheel.core.cdi.WeldContext;
-import br.com.jwheel.core.model.DecisionDialogModel;
-import br.com.jwheel.javafx.view.DialogProducer;
+import br.com.jwheel.core.model.view.DecisionDialogModel;
+import br.com.jwheel.javafx.laf.DialogProducer;
 import br.com.jwheel.javafx.utils.CdiEnabledFxmlLoader;
 import br.com.jwheel.template.MyResourceProvider;
 import javafx.fxml.FXMLLoader;

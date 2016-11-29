@@ -1,6 +1,6 @@
 package br.com.jwheel.template.control;
 
-import br.com.jwheel.javafx.view.DialogProducer;
+import br.com.jwheel.javafx.laf.DialogProducer;
 import br.com.jwheel.jpa.ConnectionParameters;
 import br.com.jwheel.template.MyResourceProvider;
 import br.com.jwheel.template.service.CsdService;

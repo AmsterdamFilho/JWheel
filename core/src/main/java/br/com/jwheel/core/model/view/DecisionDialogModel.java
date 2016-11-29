@@ -1,4 +1,4 @@
-package br.com.jwheel.core.model;
+package br.com.jwheel.core.model.view;
 
 import br.com.jwheel.core.java.StringUtils;
 
