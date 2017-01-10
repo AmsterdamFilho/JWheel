@@ -68,5 +68,5 @@ public abstract class PreferencesFactoryFromXml<T>
         return false;
     }
 
-    protected abstract void setDefaultPreferences (T parametersBean);
+    protected abstract void setDefaultPreferences (T preferencesBean);
 }
