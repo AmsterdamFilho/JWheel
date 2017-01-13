@@ -1,7 +1,10 @@
 package br.com.jwheel.core.java;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.nio.file.Path;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -17,7 +20,7 @@ public class JavaLangUtils
      * does not work for generic interfaces!
      *
      * @param object the object which first superclass has a type argument
-     * @param <T> the type argument class type
+     * @param <T>    the type argument class type
      * @return the type as a Class object
      */
     public static <T> Class<T> getSuperclassTypeArgument (Object object)
@@ -30,8 +33,8 @@ public class JavaLangUtils
      * does not work for generic interfaces!
      *
      * @param object the object which first superclass has a type argument
-     * @param index the desired type argument index
-     * @param <T> the type argument class type
+     * @param index  the desired type argument index
+     * @param <T>    the type argument class type
      * @return the type as a Class object
      */
     public static <T> Class<T> getSuperclassTypeArgument (Object object, int index)
@@ -46,6 +49,14 @@ public class JavaLangUtils
         else
         {
             throw new IllegalArgumentException("Object's class does not have a ParameterizedType generic superclass!");
+        }
+    }
+
+    public static void saveBytesToFile (Path path, byte[] bytes) throws IOException
+    {
+        try (FileOutputStream fos = new FileOutputStream(path.toFile()))
+        {
+            fos.write(bytes);
         }
     }
 }
