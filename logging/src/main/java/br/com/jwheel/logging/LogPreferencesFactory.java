@@ -7,7 +7,6 @@ import ch.qos.logback.classic.Level;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -50,8 +49,7 @@ public class LogPreferencesFactory extends PreferencesFactoryFromXml<LogPreferen
 
     private Path getLogFilePath ()
     {
-        String appDataDirectory = pathPreferences.getAppDataDirectory();
-        String logFileName = new File(appDataDirectory).getName();
-        return Paths.get(appDataDirectory, logFileName + ".log");
+        Path appDataDirectory = pathPreferences.getAppDataDirectory();
+        return Paths.get(appDataDirectory.toString(), pathPreferences.getRootFolderName() + ".log");
     }
 }

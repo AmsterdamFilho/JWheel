@@ -4,10 +4,10 @@ import br.com.jwheel.xml.model.PathPreferences;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.XStreamException;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -26,11 +26,11 @@ public class PreferencesDaoFromFile<E> implements PreferencesDao<E>
     @Override
     public E find (XStream xStream) throws XStreamException, ClassCastException
     {
-        File databaseFile = getDatabaseFile();
-        if (databaseFile.exists())
+        Path databaseFile = getDatabaseFile();
+        if (Files.exists(databaseFile))
         {
             //noinspection unchecked
-            return (E) xStream.fromXML(databaseFile);
+            return (E) xStream.fromXML(databaseFile.toFile());
         }
         return null;
     }
@@ -38,12 +38,12 @@ public class PreferencesDaoFromFile<E> implements PreferencesDao<E>
     @Override
     public void merge (XStream xStream, E entity) throws XStreamException, IOException
     {
-        File databaseFile = getDatabaseFile();
-        Files.createDirectories(databaseFile.getParentFile().toPath());
-        xStream.toXML(entity, new FileOutputStream(databaseFile));
+        Path databaseFile = getDatabaseFile();
+        Files.createDirectories(databaseFile.getParent());
+        xStream.toXML(entity, new FileOutputStream(databaseFile.toFile()));
     }
 
-    private File getDatabaseFile ()
+    private Path getDatabaseFile ()
     {
         return pathPreferences.getPreferencesFile(relativePath);
     }

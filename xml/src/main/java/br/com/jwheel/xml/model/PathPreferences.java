@@ -4,7 +4,8 @@ import br.com.jwheel.core.java.SystemUtils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -13,8 +14,8 @@ import java.nio.file.Paths;
 @Singleton
 public class PathPreferences
 {
-    private String appDataDirectory;
-    private String preferencesDirectory;
+    private Path appDataDirectory;
+    private Path preferencesDirectory;
 
     @PostConstruct
     private void init ()
@@ -28,12 +29,11 @@ public class PathPreferences
             }
             else
             {
-                File appDataFile = Paths.get(appDataDirFromEnv).toFile();
-                //noinspection ResultOfMethodCallIgnored
-                appDataFile.mkdirs();
-                if (appDataFile.isDirectory())
+                Path appDataDirectoryPath = Paths.get(appDataDirFromEnv);
+                Files.createDirectories(appDataDirectoryPath);
+                if (Files.isDirectory(appDataDirectoryPath))
                 {
-                    appDataDirectory = appDataDirFromEnv;
+                    appDataDirectory = appDataDirectoryPath;
                 }
                 else
                 {
@@ -45,35 +45,35 @@ public class PathPreferences
         {
             setAppDataDirectoryAsDefault();
         }
-        preferencesDirectory = Paths.get(getAppDataDirectory(), getPreferencesFolderName()).toString();
+        preferencesDirectory = Paths.get(appDataDirectory.toString(), getPreferencesFolderName());
     }
 
     private void setAppDataDirectoryAsDefault ()
     {
         if (SystemUtils.isWindows())
         {
-            appDataDirectory = Paths.get(System.getenv("APPDATA"), getRootFolderName()).toString();
+            appDataDirectory = Paths.get(System.getenv("APPDATA"), getRootFolderName());
 
         }
         else
         {
-            appDataDirectory = Paths.get(System.getProperty("user.home"), "." + getRootFolderName()).toString();
+            appDataDirectory = Paths.get(System.getProperty("user.home"), "." + getRootFolderName());
         }
     }
 
-    public String getPreferencesDirectory ()
+    public Path getPreferencesDirectory ()
     {
         return preferencesDirectory;
     }
 
-    public String getAppDataDirectory ()
+    public Path getAppDataDirectory ()
     {
         return appDataDirectory;
     }
 
-    public File getPreferencesFile (String relativePath)
+    public Path getPreferencesFile (String relativePath)
     {
-        return Paths.get(getPreferencesDirectory(), relativePath + ".xml").toFile();
+        return Paths.get(getPreferencesDirectory().toString(), relativePath + ".xml");
     }
 
     public String getPreferencesFolderName ()
