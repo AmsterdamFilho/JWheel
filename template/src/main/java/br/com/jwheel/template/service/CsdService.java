@@ -1,6 +1,6 @@
 package br.com.jwheel.template.service;
 
-import br.com.jwheel.core.cdi.WeldContext;
+import br.com.jwheel.core.service.cdi.WeldContext;
 import br.com.jwheel.jpa.ConnectionParametersDao;
 import br.com.jwheel.template.control.JavaFxApplication;
 import br.com.jwheel.jpa.EntityManagerProducer;

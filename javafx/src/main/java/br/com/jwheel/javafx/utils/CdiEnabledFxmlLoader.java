@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx.utils;
 
-import br.com.jwheel.core.cdi.WeldContext;
+import br.com.jwheel.core.service.cdi.WeldContext;
 import javafx.fxml.FXMLLoader;
 
 /**

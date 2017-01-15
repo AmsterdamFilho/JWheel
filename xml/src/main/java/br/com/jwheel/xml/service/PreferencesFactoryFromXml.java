@@ -1,8 +1,8 @@
 package br.com.jwheel.xml.service;
 
-import br.com.jwheel.core.cdi.WeldContext;
-import br.com.jwheel.core.cdi.Custom;
-import br.com.jwheel.core.java.JavaLangUtils;
+import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.core.model.cdi.Custom;
+import br.com.jwheel.core.service.java.JavaLangUtils;
 import br.com.jwheel.xml.dao.GenericXStreamDao;
 import com.thoughtworks.xstream.XStreamException;
 

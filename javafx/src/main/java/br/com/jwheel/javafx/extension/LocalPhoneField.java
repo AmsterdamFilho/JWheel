@@ -1,8 +1,8 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.core.cdi.WeldContext;
-import br.com.jwheel.core.model.mask.LocalPhoneMask;
-import br.com.jwheel.core.model.mask.Mask;
+import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.core.service.formatter.Formatter;
+import br.com.jwheel.core.service.formatter.LocalPhoneFormatter;
 
 import javax.enterprise.inject.Default;
 import javax.enterprise.util.AnnotationLiteral;
@@ -10,11 +10,11 @@ import javax.enterprise.util.AnnotationLiteral;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class LocalPhoneField extends MaskedTextField<String>
+public class LocalPhoneField extends FormattedTextField<String>
 {
     @Override
-    protected Mask<String> getMask ()
+    protected Formatter<String> getFormatter ()
     {
-        return WeldContext.getInstance().getBean(LocalPhoneMask.class, new AnnotationLiteral<Default>() {});
+        return WeldContext.getInstance().getBean(LocalPhoneFormatter.class, new AnnotationLiteral<Default>() {});
     }
 }

@@ -1,6 +1,6 @@
 package br.com.jwheel.jpa;
 
-import br.com.jwheel.core.cdi.WeldContext;
+import br.com.jwheel.core.service.cdi.WeldContext;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

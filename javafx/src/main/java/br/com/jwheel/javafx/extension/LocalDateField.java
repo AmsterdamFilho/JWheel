@@ -1,8 +1,8 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.core.cdi.WeldContext;
-import br.com.jwheel.core.model.mask.LocalDateMask;
-import br.com.jwheel.core.model.mask.Mask;
+import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.core.service.formatter.Formatter;
+import br.com.jwheel.core.service.formatter.LocalDateFormatter;
 
 import javax.enterprise.inject.Default;
 import javax.enterprise.util.AnnotationLiteral;
@@ -11,11 +11,11 @@ import java.time.LocalDate;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class LocalDateField extends MaskedTextField<LocalDate>
+public class LocalDateField extends FormattedTextField<LocalDate>
 {
     @Override
-    protected Mask<LocalDate> getMask ()
+    protected Formatter<LocalDate> getFormatter ()
     {
-        return WeldContext.getInstance().getBean(LocalDateMask.class, new AnnotationLiteral<Default>() {});
+        return WeldContext.getInstance().getBean(LocalDateFormatter.class, new AnnotationLiteral<Default>() {});
     }
 }

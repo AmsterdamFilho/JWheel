@@ -1,6 +1,6 @@
 package br.com.jwheel.core.model.view;
 
-import br.com.jwheel.core.java.StringUtils;
+import br.com.jwheel.core.service.java.StringUtils;
 
 import java.util.*;
 

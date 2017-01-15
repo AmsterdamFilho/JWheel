@@ -1,6 +1,6 @@
 package br.com.jwheel.xml.dao;
 
-import br.com.jwheel.core.java.JavaLangUtils;
+import br.com.jwheel.core.service.java.JavaLangUtils;
 import br.com.jwheel.xml.model.PathPreferences;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.XStreamException;

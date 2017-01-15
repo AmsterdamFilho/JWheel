@@ -1,6 +1,6 @@
 package br.com.jwheel.template;
 
-import br.com.jwheel.core.model.ResourceProvider;
+import br.com.jwheel.core.service.java.ResourceProvider;
 
 import javax.inject.Singleton;
 import java.io.InputStream;

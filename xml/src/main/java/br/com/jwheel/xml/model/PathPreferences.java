@@ -1,6 +1,6 @@
 package br.com.jwheel.xml.model;
 
-import br.com.jwheel.core.java.SystemUtils;
+import br.com.jwheel.core.service.java.SystemUtils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;

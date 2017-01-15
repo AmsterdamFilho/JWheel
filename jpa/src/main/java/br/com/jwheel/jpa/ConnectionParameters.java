@@ -1,7 +1,7 @@
 package br.com.jwheel.jpa;
 
 import br.com.jwheel.xml.model.PasswordProperty;
-import br.com.jwheel.core.cdi.Custom;
+import br.com.jwheel.core.model.cdi.Custom;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

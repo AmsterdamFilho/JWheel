@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx;
 
-import br.com.jwheel.core.model.ResourceProvider;
+import br.com.jwheel.core.service.java.ResourceProvider;
 
 import javax.inject.Singleton;
 
@@ -19,5 +19,15 @@ public class MyResourceProvider extends ResourceProvider
     public String getInvalidatedControlCss ()
     {
         return getCss("invalidated");
+    }
+
+    public String getAutoCompleteListCss ()
+    {
+        return getCss("auto-complete-list");
+    }
+
+    public String getAutoCompleteTableCss ()
+    {
+        return getCss("auto-complete-table");
     }
 }

@@ -1,6 +1,6 @@
 package br.com.jwheel.logging;
 
-import br.com.jwheel.core.cdi.WeldContext;
+import br.com.jwheel.core.service.cdi.WeldContext;
 import br.com.jwheel.test.WeldEnabledTest;
 import org.junit.Test;
 import org.slf4j.Logger;
