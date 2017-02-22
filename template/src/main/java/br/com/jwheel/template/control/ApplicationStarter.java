@@ -1,9 +1,8 @@
 package br.com.jwheel.template.control;
 
-import br.com.jwheel.core.service.cdi.WeldContext;
 import br.com.jwheel.core.model.view.DecisionDialogModel;
+import br.com.jwheel.core.service.cdi.WeldContext;
 import br.com.jwheel.logging.JwLoggerFactory;
-import br.com.jwheel.javafx.utils.JavaFxUtils;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -70,9 +69,8 @@ public class ApplicationStarter extends Application
         {
             primaryStage.setScene(new Scene(fxmlLoader.load(getClass().getResourceAsStream("/splash.fxml"))));
             primaryStage.initStyle(StageStyle.UNDECORATED);
-            JavaFxUtils.centerOnScreen(primaryStage);
+            primaryStage.centerOnScreen();
             primaryStage.show();
-
         }
         catch (NullPointerException ignored)
         {
