@@ -28,7 +28,9 @@ public class DialogProducer
 
     public void showDecisionDialog (DecisionDialogModel ddm)
     {
-        ChoiceDialog<String> choiceDialog = new ChoiceDialog<>(ddm.getDefaultOption(), ddm.getExtraOptions());
+        // TODO: 22/02/17 change the UI. Remove cancel and confirm buttons, leaving just the options list.
+        // If the user closes the dialog without choosing an option, default option is the chosen option
+        ChoiceDialog<String> choiceDialog = new ChoiceDialog<>(ddm.getDefaultOption(), ddm.getOtherOptions());
         choiceDialog.setContentText(ddm.getDecisionDescription());
         choiceDialog.showAndWait();
         ddm.setChosenOption(choiceDialog.getSelectedItem());

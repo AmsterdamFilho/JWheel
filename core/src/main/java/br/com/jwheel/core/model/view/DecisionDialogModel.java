@@ -9,42 +9,49 @@ import java.util.*;
  */
 public class DecisionDialogModel
 {
-    private final List<String> extraOptions = new ArrayList<>();
+    private final List<String> otherOptions = new ArrayList<>();
     private       int          chosenOption = 0;
 
     private String decisionDescription;
     private String defaultOption;
 
-    public DecisionDialogModel (String decisionDescription, String defaultOption, String... extraOptions)
+    /**
+     * Default constructor
+     *
+     * @param decisionDescription the description of the decision the user must make
+     * @param defaultOption the option that is chosen if the user closes the dialog without committing to any option
+     * @param otherOptions the others options
+     */
+    public DecisionDialogModel (String decisionDescription, String defaultOption, String... otherOptions)
     {
         if (StringUtils.isNullOrEmpty(decisionDescription) || StringUtils
-                .isNullOrEmpty(defaultOption) || extraOptions == null)
+                .isNullOrEmpty(defaultOption) || otherOptions == null)
         {
             throw new IllegalArgumentException("No parameter should be null!");
         }
-        if (extraOptions.length < 1)
+        if (otherOptions.length < 1)
         {
             throw new IllegalArgumentException("There must be at least 1 option besides the default option!");
         }
         this.decisionDescription = decisionDescription;
         this.defaultOption = defaultOption;
-        for (String option : extraOptions)
+        for (String option : otherOptions)
         {
             if (option == null || option.trim().isEmpty())
             {
                 throw new IllegalArgumentException("Null or empty extra option won't be accepted!");
             }
-            if (this.extraOptions.contains(option))
+            if (this.otherOptions.contains(option))
             {
                 throw new IllegalArgumentException("Duplicated option!");
             }
-            this.extraOptions.add(option);
+            this.otherOptions.add(option);
         }
     }
 
-    public List<String> getExtraOptions ()
+    public List<String> getOtherOptions ()
     {
-        return Collections.unmodifiableList(extraOptions);
+        return Collections.unmodifiableList(otherOptions);
     }
 
     public void setChosenOption (String chosenOption)
@@ -53,9 +60,9 @@ public class DecisionDialogModel
         {
             this.chosenOption = 0;
         }
-        else if (extraOptions.contains(chosenOption))
+        else if (otherOptions.contains(chosenOption))
         {
-            this.chosenOption = extraOptions.indexOf(chosenOption) + 1;
+            this.chosenOption = otherOptions.indexOf(chosenOption) + 1;
         }
         else
         {
