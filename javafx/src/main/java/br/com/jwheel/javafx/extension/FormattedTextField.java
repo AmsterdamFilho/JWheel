@@ -2,7 +2,7 @@ package br.com.jwheel.javafx.extension;
 
 import br.com.jwheel.core.service.cdi.WeldContext;
 import br.com.jwheel.core.service.formatter.Formatter;
-import br.com.jwheel.javafx.MyResourceProvider;
+import br.com.jwheel.javafx.JwJavaFxResourceProvider;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextFormatter;
@@ -29,7 +29,7 @@ public abstract class FormattedTextField<T> extends FilteredTextField<T>
 
     private String getInvalidatedControlCss ()
     {
-        return WeldContext.getInstance().getBean(MyResourceProvider.class).getInvalidatedControlCss();
+        return WeldContext.getInstance().getBean(JwJavaFxResourceProvider.class).getInvalidatedControlCss();
     }
 
     @Override

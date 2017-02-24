@@ -8,7 +8,7 @@ import javax.inject.Singleton;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-public class MyResourceProvider extends ResourceProvider
+public class JwJavaFxResourceProvider extends ResourceProvider
 {
     @Override
     protected String root ()

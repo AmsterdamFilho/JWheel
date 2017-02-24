@@ -4,7 +4,7 @@ import br.com.jwheel.core.service.cdi.WeldContext;
 import br.com.jwheel.core.model.view.DecisionDialogModel;
 import br.com.jwheel.javafx.laf.DialogProducer;
 import br.com.jwheel.javafx.utils.CdiEnabledFxmlLoader;
-import br.com.jwheel.template.MyResourceProvider;
+import br.com.jwheel.template.JwTemplateResourceProvider;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,9 +19,9 @@ import javax.persistence.EntityManager;
  */
 public abstract class JavaFxApplication
 {
-    private @Inject Logger             logger;
-    private @Inject DialogProducer     dialogProducer;
-    private @Inject MyResourceProvider resourceProvider;
+    private @Inject Logger                     logger;
+    private @Inject DialogProducer             dialogProducer;
+    private @Inject JwTemplateResourceProvider resourceProvider;
 
     public boolean databaseConnectionOk ()
     {
@@ -40,10 +40,10 @@ public abstract class JavaFxApplication
     public DecisionDialogModel showConnectionTestFailedDialogDecision ()
     {
         DecisionDialogModel decisionDialogModel =
-                new DecisionDialogModel(resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmTitle),
-                        resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmConfigureConnectionOption),
-                        resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmTryAgainOption),
-                        resourceProvider.getI18nProperty(MyResourceProvider.z_cs_ddmExitOption));
+                new DecisionDialogModel(resourceProvider.getI18nProperty(JwTemplateResourceProvider.z_cs_ddmTitle),
+                        resourceProvider.getI18nProperty(JwTemplateResourceProvider.z_cs_ddmConfigureConnectionOption),
+                        resourceProvider.getI18nProperty(JwTemplateResourceProvider.z_cs_ddmTryAgainOption),
+                        resourceProvider.getI18nProperty(JwTemplateResourceProvider.z_cs_ddmExitOption));
         dialogProducer.showDecisionDialog(decisionDialogModel);
         return decisionDialogModel;
     }
@@ -56,13 +56,13 @@ public abstract class JavaFxApplication
             fxmlLoader.setResources(resourceProvider.getI18nBundle());
             Parent csPane = fxmlLoader.load(resourceProvider.csdFxml());
             Stage stage = new Stage();
-            stage.setTitle(resourceProvider.getI18nProperty(MyResourceProvider.z_cs_title));
+            stage.setTitle(resourceProvider.getI18nProperty(JwTemplateResourceProvider.z_cs_title));
             stage.setScene(new Scene(csPane));
             stage.showAndWait();
         }
         catch (Exception e)
         {
-            dialogProducer.showErrorAlert(resourceProvider.getI18nProperty(MyResourceProvider.z_a_internalErrorMessage));
+            dialogProducer.showErrorAlert(resourceProvider.getI18nProperty(JwTemplateResourceProvider.z_a_internalErrorMessage));
             logger.error("Error loading Connection Settings Dialog!", e);
         }
     }

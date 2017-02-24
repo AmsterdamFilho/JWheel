@@ -1,7 +1,7 @@
 package br.com.jwheel.template.control;
 
 import br.com.jwheel.javafx.utils.EnterPressedEventHandler;
-import br.com.jwheel.template.MyResourceProvider;
+import br.com.jwheel.template.JwTemplateResourceProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
@@ -16,8 +16,8 @@ import java.util.ResourceBundle;
  */
 public abstract class RecordPaneController implements Initializable
 {
-    private @FXML   Pane               contentPane;
-    private @Inject MyResourceProvider resourceProvider;
+    private @FXML   Pane                       contentPane;
+    private @Inject JwTemplateResourceProvider resourceProvider;
 
     private final EnterPressedEventHandler enterPressedEventHandler = new EnterPressedEventHandler();
 

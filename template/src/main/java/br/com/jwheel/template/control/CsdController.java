@@ -2,7 +2,7 @@ package br.com.jwheel.template.control;
 
 import br.com.jwheel.javafx.laf.DialogProducer;
 import br.com.jwheel.jpa.ConnectionParameters;
-import br.com.jwheel.template.MyResourceProvider;
+import br.com.jwheel.template.JwTemplateResourceProvider;
 import br.com.jwheel.template.service.CsdService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import javax.inject.Inject;
 
-import static br.com.jwheel.template.MyResourceProvider.*;
+import static br.com.jwheel.template.JwTemplateResourceProvider.*;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -25,10 +25,10 @@ public class CsdController extends RecordPaneController
     private @FXML TextField        txtUser;
     private @FXML PasswordField    txtPassword;
 
-    private @Inject ConnectionParameters connectionParameters;
-    private @Inject CsdService           csdService;
-    private @Inject DialogProducer       dialogProducer;
-    private @Inject MyResourceProvider   resourceProvider;
+    private @Inject ConnectionParameters       connectionParameters;
+    private @Inject CsdService                 csdService;
+    private @Inject DialogProducer             dialogProducer;
+    private @Inject JwTemplateResourceProvider resourceProvider;
 
     public void testConnection ()
     {

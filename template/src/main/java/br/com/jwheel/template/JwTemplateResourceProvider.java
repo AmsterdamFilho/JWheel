@@ -9,7 +9,7 @@ import java.io.InputStream;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-public class MyResourceProvider extends ResourceProvider
+public class JwTemplateResourceProvider extends ResourceProvider
 {
     //<editor-fold desc="Alerts">
 

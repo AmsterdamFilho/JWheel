@@ -1,7 +1,7 @@
 package br.com.jwheel.javafx.laf;
 
 import br.com.jwheel.core.model.view.DecisionDialogModel;
-import br.com.jwheel.javafx.MyResourceProvider;
+import br.com.jwheel.javafx.JwJavaFxResourceProvider;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 
@@ -14,7 +14,7 @@ import javax.inject.Singleton;
 @Singleton
 public class DialogProducer
 {
-    private @Inject MyResourceProvider resourceProvider;
+    private @Inject JwJavaFxResourceProvider resourceProvider;
 
     public void showErrorAlert (String message)
     {
