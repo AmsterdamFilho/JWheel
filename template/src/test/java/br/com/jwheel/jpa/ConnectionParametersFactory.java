@@ -1,7 +1,5 @@
-package br.com.luvva.jwheel.jpa;
+package br.com.jwheel.jpa;
 
-import br.com.jwheel.jpa.ConnectionParameters;
-import br.com.jwheel.jpa.ConnectionParametersDao;
 import br.com.jwheel.xml.service.PreferencesFactoryFromXml;
 
 import javax.enterprise.inject.Produces;
