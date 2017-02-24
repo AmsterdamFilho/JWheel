@@ -1,14 +1,16 @@
 package br.com.jwheel.jpa;
 
-import br.com.jwheel.xml.service.PreferencesFactoryFromXml;
-
 import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.Specializes;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class ConnectionParametersFactory extends PreferencesFactoryFromXml<ConnectionParameters>
+@Specializes
+@Singleton
+public class MyConnectionParametersFactory extends ConnectionParametersFactory
 {
     private @Inject ConnectionParametersDao dao;
 
