@@ -1,13 +1,12 @@
 package br.com.jwheel.core.service.java;
 
-import java.io.InputStream;
 import java.net.URL;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
  * An utility class to get resources. The default structure is:
- *
+ * <p>
  * |[root]
  * |    css
  * |        file1.css
@@ -63,9 +62,9 @@ public abstract class ResourceProvider
         }
     }
 
-    protected InputStream getFxml (String fxmlFileName)
+    protected URL getFxml (String fxmlFileName)
     {
-        return getClass().getResourceAsStream("/" + fxmlDirectoryPath() + fxmlFileName + fxmlExtension());
+        return getClass().getResource("/" + fxmlDirectoryPath() + fxmlFileName + fxmlExtension());
     }
 
     protected String getCss (String cssFileName)

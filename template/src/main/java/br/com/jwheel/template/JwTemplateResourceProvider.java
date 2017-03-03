@@ -3,7 +3,7 @@ package br.com.jwheel.template;
 import br.com.jwheel.core.service.java.ResourceProvider;
 
 import javax.inject.Singleton;
-import java.io.InputStream;
+import java.net.URL;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
@@ -43,7 +43,7 @@ public class JwTemplateResourceProvider extends ResourceProvider
         return "jwheel-template";
     }
 
-    public InputStream csdFxml ()
+    public URL csdFxml ()
     {
         return getFxml("csd");
     }
