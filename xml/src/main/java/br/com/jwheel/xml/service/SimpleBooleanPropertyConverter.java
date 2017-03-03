@@ -5,27 +5,27 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class SimpleStringPropertyConverter implements Converter
+public class SimpleBooleanPropertyConverter implements Converter
 {
     @Override
     public void marshal (Object object, HierarchicalStreamWriter writer, MarshallingContext context)
     {
-        SimpleStringProperty ssp = (SimpleStringProperty) object;
+        SimpleBooleanProperty sbp = (SimpleBooleanProperty) object;
         writer.startNode("value");
-        writer.setValue(ssp.getValue() == null ? "" : ssp.getValue());
+        writer.setValue(sbp.get() ? "true" : "false");
         writer.endNode();
     }
 
     @Override
-    public SimpleStringProperty unmarshal (HierarchicalStreamReader reader, UnmarshallingContext context)
+    public SimpleBooleanProperty unmarshal (HierarchicalStreamReader reader, UnmarshallingContext context)
     {
         reader.moveDown();
-        SimpleStringProperty ssp = new SimpleStringProperty(reader.getValue());
+        SimpleBooleanProperty ssp = new SimpleBooleanProperty("true".equals(reader.getValue()));
         reader.moveUp();
         return ssp;
     }
@@ -33,6 +33,6 @@ public class SimpleStringPropertyConverter implements Converter
     @Override
     public boolean canConvert (Class aClass)
     {
-        return aClass.equals(SimpleStringProperty.class);
+        return aClass.equals(SimpleBooleanProperty.class);
     }
 }

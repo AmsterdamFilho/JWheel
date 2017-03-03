@@ -5,27 +5,27 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class SimpleStringPropertyConverter implements Converter
+public class SimpleIntegerPropertyConverter implements Converter
 {
     @Override
     public void marshal (Object object, HierarchicalStreamWriter writer, MarshallingContext context)
     {
-        SimpleStringProperty ssp = (SimpleStringProperty) object;
+        SimpleIntegerProperty sip = (SimpleIntegerProperty) object;
         writer.startNode("value");
-        writer.setValue(ssp.getValue() == null ? "" : ssp.getValue());
+        writer.setValue(String.valueOf(sip.get()));
         writer.endNode();
     }
 
     @Override
-    public SimpleStringProperty unmarshal (HierarchicalStreamReader reader, UnmarshallingContext context)
+    public SimpleIntegerProperty unmarshal (HierarchicalStreamReader reader, UnmarshallingContext context)
     {
         reader.moveDown();
-        SimpleStringProperty ssp = new SimpleStringProperty(reader.getValue());
+        SimpleIntegerProperty ssp = new SimpleIntegerProperty(Integer.valueOf(reader.getValue()));
         reader.moveUp();
         return ssp;
     }
@@ -33,6 +33,6 @@ public class SimpleStringPropertyConverter implements Converter
     @Override
     public boolean canConvert (Class aClass)
     {
-        return aClass.equals(SimpleStringProperty.class);
+        return aClass.equals(SimpleIntegerProperty.class);
     }
 }
