@@ -13,7 +13,6 @@
         <module>javafx</module>
         <module>jpa</module>
         <module>logging</module>
-        <module>rpn</module>
         <module>template</module>
         <module>test</module>
         <module>xml</module>
