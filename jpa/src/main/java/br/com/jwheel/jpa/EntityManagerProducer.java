@@ -4,10 +4,8 @@ import br.com.jwheel.core.service.cdi.WeldContext;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
-import javax.enterprise.util.AnnotationLiteral;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,7 +24,7 @@ public class EntityManagerProducer
     @PostConstruct
     public void init ()
     {
-        init(WeldContext.getInstance().getBean(ConnectionParameters.class, new AnnotationLiteral<Default>() {}));
+        init(WeldContext.getInstance().getDefault(ConnectionParameters.class));
     }
 
     public void init (ConnectionParameters connectionParameters)
@@ -36,7 +34,7 @@ public class EntityManagerProducer
         propertiesMap.put("javax.persistence.jdbc.url", connectionParameters.getUrl());
         propertiesMap.put("javax.persistence.jdbc.user", connectionParameters.getUser());
         propertiesMap.put("javax.persistence.jdbc.password", connectionParameters.getPassword());
-        PersistenceUnit persistenceUnit = WeldContext.getInstance().getAnyBean(PersistenceUnit.class);
+        PersistenceUnit persistenceUnit = WeldContext.getInstance().getAny(PersistenceUnit.class);
         emf = Persistence.createEntityManagerFactory(persistenceUnit.getName(), propertiesMap);
     }
 

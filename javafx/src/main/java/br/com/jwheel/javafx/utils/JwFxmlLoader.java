@@ -24,21 +24,21 @@ public class JwFxmlLoader extends FXMLLoader
 
     public JwFxmlLoader withCdi ()
     {
-        setControllerFactory(param -> WeldContext.getInstance().getAnyBean(param));
+        setControllerFactory(param -> WeldContext.getInstance().getAny(param));
         return this;
     }
 
     public static <T> T loadWithCdi (URL location) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(location);
-        fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getAnyBean(param));
+        fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getAny(param));
         return fxmlLoader.load();
     }
 
     public static <T> T loadWithCdi (URL location, ResourceBundle resourceBundle) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(location, resourceBundle);
-        fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getAnyBean(param));
+        fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getAny(param));
         return fxmlLoader.load();
     }
 }

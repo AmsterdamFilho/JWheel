@@ -1,12 +1,10 @@
 package br.com.jwheel.xml.service;
 
 import br.com.jwheel.core.service.cdi.WeldContext;
-import br.com.jwheel.core.model.cdi.Custom;
 import br.com.jwheel.core.service.java.JavaLangUtils;
 import br.com.jwheel.xml.dao.GenericXStreamDao;
 import com.thoughtworks.xstream.XStreamException;
 
-import javax.enterprise.util.AnnotationLiteral;
 import java.io.IOException;
 
 /**
@@ -36,8 +34,7 @@ public abstract class PreferencesFactoryFromXml<T>
             return typeFromXml;
         }
 
-        T defaultParameter = WeldContext.getInstance().getBean(
-                JavaLangUtils.getSuperclassTypeArgument(dao), new AnnotationLiteral<Custom>() {});
+        T defaultParameter = WeldContext.getInstance().getDefault(JavaLangUtils.getSuperclassTypeArgument(dao));
         setDefaultPreferences(defaultParameter);
 
         try

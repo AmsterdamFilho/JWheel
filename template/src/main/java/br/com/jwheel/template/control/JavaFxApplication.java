@@ -26,7 +26,7 @@ public abstract class JavaFxApplication
     {
         try
         {
-            WeldContext.getInstance().getAnyBean(EntityManager.class);
+            WeldContext.getInstance().getAny(EntityManager.class);
             return true;
         }
         catch (Exception ex)

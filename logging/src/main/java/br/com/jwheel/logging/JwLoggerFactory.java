@@ -9,10 +9,8 @@ import ch.qos.logback.core.util.StatusPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
-import javax.enterprise.util.AnnotationLiteral;
 import javax.inject.Singleton;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -28,7 +26,7 @@ public class JwLoggerFactory
 
     public void init ()
     {
-        configure(WeldContext.getInstance().getBean(LogPreferences.class, new AnnotationLiteral<Default>() {}));
+        configure(WeldContext.getInstance().getDefault(LogPreferences.class));
     }
 
     @Produces

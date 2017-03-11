@@ -18,7 +18,7 @@ public class LocalDateFormatterFactory
     static
     {
         // some code can be added to achieve automatic i18n
-        PROVIDER_DELEGATE = () -> WeldContext.getInstance().getAnyBean(PtBrLocalDateFormatter.class);
+        PROVIDER_DELEGATE = () -> WeldContext.getInstance().getAny(PtBrLocalDateFormatter.class);
     }
 
     @Produces

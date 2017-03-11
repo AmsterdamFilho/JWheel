@@ -29,7 +29,7 @@ public abstract class FormattedTextField<T> extends FilteredTextField<T>
 
     private String getInvalidatedControlCss ()
     {
-        return WeldContext.getInstance().getAnyBean(JwJavaFxResourceProvider.class).getInvalidatedControlCss();
+        return WeldContext.getInstance().getAny(JwJavaFxResourceProvider.class).getInvalidatedControlCss();
     }
 
     @Override

@@ -24,6 +24,6 @@ public class LoggerTest extends WeldEnabledTest
     @Test
     public void test () throws Exception
     {
-        WeldContext.getInstance().getAnyBean(Logger.class);
+        WeldContext.getInstance().getAny(Logger.class);
     }
 }

@@ -27,17 +27,17 @@ public class WeldContext
         return instance;
     }
 
-    public <T> T getAnyBean (Class<T> type)
+    public <T> T getAny (Class<T> type)
     {
         return container.instance().select(type).get();
     }
 
-    public <T> T getDefaultBean (Class<T> type)
+    public <T> T getDefault (Class<T> type)
     {
-        return getBean(type, new AnnotationLiteral<Default>() {});
+        return getWithQualifiers(type, new AnnotationLiteral<Default>() {});
     }
 
-    public <T> T getBean (Class<T> type, Annotation... qualifiers)
+    public <T> T getWithQualifiers (Class<T> type, Annotation... qualifiers)
     {
         return container.instance().select(type, qualifiers).get();
     }
