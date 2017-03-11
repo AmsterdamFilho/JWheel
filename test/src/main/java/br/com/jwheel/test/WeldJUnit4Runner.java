@@ -18,6 +18,6 @@ public class WeldJUnit4Runner extends BlockJUnit4ClassRunner
     protected Object createTest ()
     {
         final Class<?> test = getTestClass().getJavaClass();
-        return WeldContext.getInstance().getBean(test);
+        return WeldContext.getInstance().getAnyBean(test);
     }
 }

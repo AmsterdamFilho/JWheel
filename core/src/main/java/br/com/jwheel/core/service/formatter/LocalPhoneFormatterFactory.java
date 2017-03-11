@@ -18,7 +18,7 @@ public class LocalPhoneFormatterFactory
     static
     {
         // some code can be added to achieve automatic i18n
-        PROVIDER_DELEGATE = () -> WeldContext.getInstance().getBean(PtBrLocalPhoneFormatter.class);
+        PROVIDER_DELEGATE = () -> WeldContext.getInstance().getAnyBean(PtBrLocalPhoneFormatter.class);
     }
 
     @Produces

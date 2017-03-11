@@ -21,7 +21,7 @@ public class CsdService
     public boolean testConnection (ConnectionParameters connectionParameters)
     {
         entityManagerProducer.init(connectionParameters);
-        boolean response = WeldContext.getInstance().getBean(JavaFxApplication.class).databaseConnectionOk();
+        boolean response = WeldContext.getInstance().getAnyBean(JavaFxApplication.class).databaseConnectionOk();
         entityManagerProducer.init();
         return response;
     }

@@ -132,8 +132,8 @@ public class ApplicationStarter extends Application
         @Override
         protected Void call () throws Exception
         {
-            WeldContext.getInstance().getBean(JwLoggerFactory.class).init();
-            javaFxApplication = WeldContext.getInstance().getBean(JavaFxApplication.class);
+            WeldContext.getInstance().getAnyBean(JwLoggerFactory.class).init();
+            javaFxApplication = WeldContext.getInstance().getAnyBean(JavaFxApplication.class);
             return null;
         }
     }

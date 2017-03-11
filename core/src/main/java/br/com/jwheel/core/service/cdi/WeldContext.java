@@ -3,6 +3,8 @@ package br.com.jwheel.core.service.cdi;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
+import javax.enterprise.inject.Default;
+import javax.enterprise.util.AnnotationLiteral;
 import java.lang.annotation.Annotation;
 
 /**
@@ -25,9 +27,14 @@ public class WeldContext
         return instance;
     }
 
-    public <T> T getBean (Class<T> type)
+    public <T> T getAnyBean (Class<T> type)
     {
         return container.instance().select(type).get();
+    }
+
+    public <T> T getDefaultBean (Class<T> type)
+    {
+        return getBean(type, new AnnotationLiteral<Default>() {});
     }
 
     public <T> T getBean (Class<T> type, Annotation... qualifiers)
