@@ -1,24 +1,25 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.javafx.utils.JavaFxUtils;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.javafx.MyTestResourceProvider;
+
+import java.net.URL;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public class ExtensionDemo1 extends Application
+public class ExtensionDemo1 extends ExtensionDemo
 {
     @Override
-    public void start (Stage primaryStage) throws Exception
+    String title ()
     {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        primaryStage.setScene(new Scene(fxmlLoader.load(getClass().getResourceAsStream("/fxml/extension-demo1.fxml"))));
-        JavaFxUtils.centerOnScreen(primaryStage);
-        primaryStage.setTitle("Extension Demo 1");
-        primaryStage.show();
+        return "Extension demo 1";
+    }
+
+    @Override
+    URL getFxml ()
+    {
+        return WeldContext.getInstance().getAny(MyTestResourceProvider.class).getExtensionDemo1Fxml();
     }
 
     public static void main (String[] args)
