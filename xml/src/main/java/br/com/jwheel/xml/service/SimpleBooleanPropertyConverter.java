@@ -1,5 +1,6 @@
 package br.com.jwheel.xml.service;
 
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -25,7 +26,20 @@ public class SimpleBooleanPropertyConverter implements Converter
     public SimpleBooleanProperty unmarshal (HierarchicalStreamReader reader, UnmarshallingContext context)
     {
         reader.moveDown();
-        SimpleBooleanProperty ssp = new SimpleBooleanProperty("true".equals(reader.getValue()));
+        SimpleBooleanProperty ssp;
+        String valueToLowerCase = reader.getValue().toLowerCase();
+        if ("true".equals(valueToLowerCase))
+        {
+            ssp = new SimpleBooleanProperty(true);
+        }
+        else if ("false".equals(valueToLowerCase))
+        {
+            ssp = new SimpleBooleanProperty(false);
+        }
+        else
+        {
+            throw new ConversionException("Value could not be parsed to boolean: " + valueToLowerCase);
+        }
         reader.moveUp();
         return ssp;
     }

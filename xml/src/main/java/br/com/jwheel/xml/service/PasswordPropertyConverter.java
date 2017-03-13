@@ -2,6 +2,7 @@ package br.com.jwheel.xml.service;
 
 import br.com.jwheel.xml.model.PasswordProperty;
 import br.com.jwheel.core.service.java.SimpleEncoder;
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -26,7 +27,17 @@ public class PasswordPropertyConverter implements Converter
     public Object unmarshal (HierarchicalStreamReader reader, UnmarshallingContext context)
     {
         reader.moveDown();
-        PasswordProperty ssp = new PasswordProperty(SimpleEncoder.decode(reader.getValue()));
+        String value = reader.getValue();
+        String decodedValue;
+        try
+        {
+            decodedValue = SimpleEncoder.decode(value);
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw new ConversionException("Password could not be decoded: " + value);
+        }
+        PasswordProperty ssp = new PasswordProperty(decodedValue);
         reader.moveUp();
         return ssp;
     }
