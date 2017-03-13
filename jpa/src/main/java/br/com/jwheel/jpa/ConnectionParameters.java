@@ -90,4 +90,24 @@ public class ConnectionParameters
     {
         this.user.set(user);
     }
+
+    public String getDatabase ()
+    {
+        String url = getUrl();
+        if (url == null || url.matches(".+/.+"))
+        {
+            return "";
+        }
+        return url.substring(url.lastIndexOf("/") + 1);
+    }
+
+    public String getPort ()
+    {
+        String url = getUrl();
+        if (url == null || url.matches("[^:]+:[0-9]+/[^/]+"))
+        {
+            return "";
+        }
+        return url.substring(url.indexOf(":") + 1, url.lastIndexOf("/"));
+    }
 }
