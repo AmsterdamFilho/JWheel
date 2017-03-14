@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx.utils;
 
-import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.cdi.WeldContext;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
@@ -30,15 +30,11 @@ public class JwFxmlLoader extends FXMLLoader
 
     public static <T> T loadWithCdi (URL location) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(location);
-        fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getAny(param));
-        return fxmlLoader.load();
+        return new JwFxmlLoader(location).withCdi().load();
     }
 
     public static <T> T loadWithCdi (URL location, ResourceBundle resourceBundle) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(location, resourceBundle);
-        fxmlLoader.setControllerFactory(param -> WeldContext.getInstance().getAny(param));
-        return fxmlLoader.load();
+        return new JwFxmlLoader(location, resourceBundle).withCdi().load();
     }
 }

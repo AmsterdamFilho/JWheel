@@ -1,11 +1,11 @@
 .idea
 *.iml
 
-core/target
+cdi/target
+logging/target
 javafx/target
 jpa/target
-logging/target
-rpn/target
 template/target
 test/target
 xml/target
+utils/target

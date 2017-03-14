@@ -1,7 +1,7 @@
 package br.com.jwheel.jpa;
 
-import br.com.jwheel.xml.service.PasswordPropertyConverter;
 import br.com.jwheel.xml.dao.GenericXStreamDao;
+import br.com.jwheel.xml.service.PasswordPropertyConverter;
 import br.com.jwheel.xml.service.SimpleStringPropertyConverter;
 import com.thoughtworks.xstream.XStream;
 

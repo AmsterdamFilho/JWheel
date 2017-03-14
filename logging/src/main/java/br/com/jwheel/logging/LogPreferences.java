@@ -1,6 +1,6 @@
 package br.com.jwheel.logging;
 
-import br.com.jwheel.core.model.cdi.Custom;
+import br.com.jwheel.cdi.Custom;
 import ch.qos.logback.classic.Level;
 
 /**

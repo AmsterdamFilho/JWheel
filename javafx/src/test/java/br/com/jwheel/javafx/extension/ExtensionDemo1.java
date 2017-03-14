@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.cdi.WeldContext;
 import br.com.jwheel.javafx.MyTestResourceProvider;
 
 import java.net.URL;

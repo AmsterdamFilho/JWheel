@@ -9,12 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>core</module>
+        <module>cdi</module>
+        <module>logging</module>
         <module>javafx</module>
         <module>jpa</module>
-        <module>logging</module>
         <module>template</module>
         <module>test</module>
+        <module>utils</module>
         <module>xml</module>
     </modules>
 
@@ -54,20 +55,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <index>true</index>
-                        <manifestEntries>
-                            <Built-By>Luvva (amsterdam@luvva.com.br)</Built-By>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
             </plugin>
 
             <plugin>

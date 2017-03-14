@@ -28,7 +28,7 @@ public class SimpleIntegerPropertyConverter implements Converter
         reader.moveDown();
         String value = reader.getValue();
         SimpleIntegerProperty ssp;
-        if (value.matches("[0-9+]"))
+        if (value.matches("[0-9]+"))
         {
             ssp = new SimpleIntegerProperty(Integer.valueOf(value));
         }

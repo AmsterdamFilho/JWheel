@@ -1,11 +1,11 @@
 package br.com.jwheel.test;
 
-import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.cdi.WeldContext;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
 
 /**
- * @author Amsterdam Filho - amsterdam@luvva.com.br
+ * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 public class WeldJUnit4Runner extends BlockJUnit4ClassRunner
 {

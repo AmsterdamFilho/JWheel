@@ -1,8 +1,8 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.core.service.cdi.WeldContext;
-import br.com.jwheel.core.service.formatter.Formatter;
+import br.com.jwheel.cdi.WeldContext;
 import br.com.jwheel.javafx.JwJavaFxResourceProvider;
+import br.com.jwheel.javafx.formatter.Formatter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextFormatter;

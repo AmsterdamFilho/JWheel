@@ -1,6 +1,6 @@
 package br.com.jwheel.jpa;
 
-import br.com.jwheel.core.service.java.JavaLangUtils;
+import br.com.jwheel.utils.JavaLangUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

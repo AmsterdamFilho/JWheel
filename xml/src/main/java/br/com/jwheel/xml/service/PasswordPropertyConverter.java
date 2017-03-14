@@ -1,7 +1,7 @@
 package br.com.jwheel.xml.service;
 
+import br.com.jwheel.utils.SimpleEncoder;
 import br.com.jwheel.xml.model.PasswordProperty;
-import br.com.jwheel.core.service.java.SimpleEncoder;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;

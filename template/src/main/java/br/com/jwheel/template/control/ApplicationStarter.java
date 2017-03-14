@@ -1,7 +1,7 @@
 package br.com.jwheel.template.control;
 
-import br.com.jwheel.core.model.view.DecisionDialogModel;
-import br.com.jwheel.core.service.cdi.WeldContext;
+import br.com.jwheel.cdi.WeldContext;
+import br.com.jwheel.javafx.model.DecisionDialogModel;
 import br.com.jwheel.logging.JwLoggerFactory;
 import javafx.application.Application;
 import javafx.concurrent.Task;

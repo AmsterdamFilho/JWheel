@@ -10,12 +10,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jwheel-javafx</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
 
         <dependency>
             <groupId>br.com.jwheel</groupId>
-            <artifactId>jwheel-core</artifactId>
+            <artifactId>jwheel-cdi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.jwheel</groupId>
+            <artifactId>jwheel-utils</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

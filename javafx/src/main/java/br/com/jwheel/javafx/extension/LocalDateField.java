@@ -1,8 +1,8 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.core.service.cdi.WeldContext;
-import br.com.jwheel.core.service.formatter.Formatter;
-import br.com.jwheel.core.service.formatter.LocalDateFormatter;
+import br.com.jwheel.cdi.WeldContext;
+import br.com.jwheel.javafx.formatter.Formatter;
+import br.com.jwheel.javafx.formatter.LocalDateFormatter;
 
 import java.time.LocalDate;
 
