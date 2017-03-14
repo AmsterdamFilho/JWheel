@@ -94,7 +94,7 @@ public class ConnectionParameters
     public String getDatabase ()
     {
         String url = getUrl();
-        if (url == null || url.matches(".+/.+"))
+        if (url == null || !url.matches(".*/.+"))
         {
             return "";
         }
@@ -104,10 +104,10 @@ public class ConnectionParameters
     public String getPort ()
     {
         String url = getUrl();
-        if (url == null || url.matches("[^:]+:[0-9]+/[^/]+"))
+        if (url == null || !url.matches(".*:[0-9]+/[^/:]+"))
         {
             return "";
         }
-        return url.substring(url.indexOf(":") + 1, url.lastIndexOf("/"));
+        return url.substring(url.lastIndexOf(":") + 1, url.lastIndexOf("/"));
     }
 }
