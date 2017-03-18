@@ -1,6 +1,5 @@
 package br.com.jwheel.javafx.formatter.ptbr;
 
-import br.com.jwheel.cdi.Custom;
 import br.com.jwheel.javafx.formatter.LocalDateFormatter;
 
 import javax.inject.Singleton;
@@ -12,7 +11,6 @@ import java.time.format.DateTimeParseException;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-@Custom
 public class PtBrLocalDateFormatter extends LocalDateFormatter
 {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

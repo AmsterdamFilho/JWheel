@@ -1,6 +1,5 @@
 package br.com.jwheel.javafx.formatter.ptbr;
 
-import br.com.jwheel.cdi.Custom;
 import br.com.jwheel.javafx.formatter.LocalPhoneFormatter;
 
 import javax.inject.Singleton;
@@ -9,7 +8,6 @@ import javax.inject.Singleton;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-@Custom
 public class PtBrLocalPhoneFormatter extends LocalPhoneFormatter
 {
     private static final String validPhone1 = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}";
