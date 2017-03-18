@@ -1,7 +1,7 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.cdi.WeldContext;
-import br.com.jwheel.javafx.MyTestResourceProvider;
+import br.com.jwheel.weld.WeldContext;
+import br.com.jwheel.javafx.TestResourceProvider;
 
 import java.net.URL;
 
@@ -19,7 +19,7 @@ public class ExtensionDemo1 extends ExtensionDemo
     @Override
     URL getFxml ()
     {
-        return WeldContext.getInstance().getAny(MyTestResourceProvider.class).getExtensionDemo1Fxml();
+        return WeldContext.getInstance().getAny(TestResourceProvider.class).getExtensionDemo1Fxml();
     }
 
     public static void main (String[] args)

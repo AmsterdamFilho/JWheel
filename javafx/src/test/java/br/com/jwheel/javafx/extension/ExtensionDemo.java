@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.javafx.utils.JwFxmlLoader;
+import br.com.jwheel.javafx.JWheelFxmlLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ public abstract class ExtensionDemo extends Application
     @Override
     public void start (Stage primaryStage) throws Exception
     {
-        FXMLLoader fxmlLoader = new JwFxmlLoader(getFxml());
+        FXMLLoader fxmlLoader = new JWheelFxmlLoader(getFxml());
         primaryStage.setScene(new Scene(fxmlLoader.load()));
         primaryStage.centerOnScreen();
         primaryStage.setTitle(title());

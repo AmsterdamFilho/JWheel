@@ -16,7 +16,7 @@
 
         <dependency>
             <groupId>br.com.jwheel</groupId>
-            <artifactId>jwheel-cdi</artifactId>
+            <artifactId>jwheel-weld-se</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

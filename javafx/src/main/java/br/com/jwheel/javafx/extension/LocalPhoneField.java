@@ -1,6 +1,6 @@
 package br.com.jwheel.javafx.extension;
 
-import br.com.jwheel.cdi.WeldContext;
+import br.com.jwheel.weld.WeldContext;
 import br.com.jwheel.javafx.formatter.Formatter;
 import br.com.jwheel.javafx.formatter.LocalPhoneFormatter;
 

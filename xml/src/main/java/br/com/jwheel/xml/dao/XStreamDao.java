@@ -11,5 +11,5 @@ public interface XStreamDao<S>
 {
     S find ();
 
-    void merge (S serializable) throws XStreamException, IOException;
+    void merge (S object) throws XStreamException, IOException;
 }

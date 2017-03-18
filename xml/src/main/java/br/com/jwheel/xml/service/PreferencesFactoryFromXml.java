@@ -1,12 +1,8 @@
 package br.com.jwheel.xml.service;
 
-import br.com.jwheel.cdi.WeldContext;
-import br.com.jwheel.cdi.Custom;
-import br.com.jwheel.utils.JavaLangUtils;
-import br.com.jwheel.xml.dao.GenericXStreamDao;
+import br.com.jwheel.xml.dao.XStreamDao;
 import com.thoughtworks.xstream.XStreamException;
 
-import javax.enterprise.util.AnnotationLiteral;
 import java.io.IOException;
 
 /**
@@ -14,9 +10,9 @@ import java.io.IOException;
  *
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-public abstract class PreferencesFactoryFromXml<T>
+public interface PreferencesFactoryFromXml<T>
 {
-    public T produce (GenericXStreamDao<T> dao)
+    default T produce (XStreamDao<T> dao)
     {
         T typeFromXml = null;
         try
@@ -36,10 +32,7 @@ public abstract class PreferencesFactoryFromXml<T>
             return typeFromXml;
         }
 
-        T defaultParameter = WeldContext.getInstance().getWithQualifiers(JavaLangUtils.getSuperclassTypeArgument(dao)
-                , new AnnotationLiteral<Custom>() {});
-        setDefaultPreferences(defaultParameter);
-
+        T defaultParameter = produceDefault();
         try
         {
             dao.merge(defaultParameter);
@@ -52,21 +45,21 @@ public abstract class PreferencesFactoryFromXml<T>
         return defaultParameter;
     }
 
+    T produceDefault ();
+
     @SuppressWarnings({"EmptyMethod", "UnusedParameters"})
-    protected void handleMergeException (Exception e)
+    default void handleMergeException (Exception e)
     {
     }
 
     @SuppressWarnings({"EmptyMethod", "UnusedParameters"})
-    protected void handleMergeException (XStreamException e)
+    default void handleMergeException (XStreamException e)
     {
     }
 
     @SuppressWarnings("UnusedParameters")
-    protected boolean shouldAbortAfterFindException (Exception ex)
+    default boolean shouldAbortAfterFindException (Exception ex)
     {
         return false;
     }
-
-    protected abstract void setDefaultPreferences (T preferencesBean);
 }

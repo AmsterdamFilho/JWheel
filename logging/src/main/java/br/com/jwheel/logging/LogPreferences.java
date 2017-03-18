@@ -1,19 +1,16 @@
 package br.com.jwheel.logging;
 
-import br.com.jwheel.cdi.Custom;
 import ch.qos.logback.classic.Level;
 
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@Custom
 public class LogPreferences
 {
     private String  loggerLevel;
     private String  loggerConfigurationXml;
-    private boolean useLoggerConfigurationXml = false;
-
-    private String logFilePath;
+    private String  logFilePath;
+    private boolean useLoggerConfigurationXml;
 
     public String getLoggerLevel ()
     {

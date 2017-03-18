@@ -1,6 +1,6 @@
 package br.com.jwheel.logging;
 
-import br.com.jwheel.cdi.WeldContext;
+import br.com.jwheel.xml.model.FromXmlPreferences;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
@@ -9,8 +9,10 @@ import ch.qos.logback.core.util.StatusPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -20,13 +22,16 @@ import java.io.UnsupportedEncodingException;
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
 @Singleton
-public class JwLoggerFactory
+public final class JwLoggerFactory
 {
     private final Logger logger = LoggerFactory.getLogger(JwLoggerFactory.class);
 
-    public void init ()
+    private @Inject @FromXmlPreferences LogPreferences logPreferences;
+
+    @PostConstruct
+    private void init ()
     {
-        configure(WeldContext.getInstance().getDefault(LogPreferences.class));
+        configure(logPreferences);
     }
 
     @Produces
@@ -35,7 +40,7 @@ public class JwLoggerFactory
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 
-    private void configure (LogPreferences logPreferences)
+    public void configure (LogPreferences logPreferences)
     {
         Level loggerLevel = Level.toLevel(logPreferences.getLoggerLevel(), Level.WARN);
         if (logPreferences.isUseLoggerConfigurationXml())
@@ -56,18 +61,18 @@ public class JwLoggerFactory
             return;
         }
         //@formatter:off
-        configureLogback(
-                "<configuration>" +
-                    "<appender name=\"FILE\" class=\"ch.qos.logback.core.FileAppender\">" +
-                        "<file>" + logFilePath + "</file>" +
-                        "<encoder>" +
-                            "<pattern>%date %level [%thread] %logger{15} [%file:%line] %msg%n</pattern>" +
-                        "</encoder>" +
-                    "</appender>" +
-                    "<root level=\"" + level.levelStr + "\">" +
-                        "<appender-ref ref=\"FILE\" />" +
-                    "</root>" +
-                "</configuration>"
+        configureLogback("" +
+                        "<configuration>" +
+                            "<appender name=\"FILE\" class=\"ch.qos.logback.core.FileAppender\">" +
+                                "<file>" + logFilePath + "</file>" +
+                                    "<encoder>" +
+                                        "<pattern>%date %level [%thread] %logger{15} [%file:%line] %msg%n</pattern>" +
+                                    "</encoder>" +
+                            "</appender>" +
+                                "<root level=\"" + level.levelStr + "\">" +
+                                    "<appender-ref ref=\"FILE\" />" +
+                                "</root>" +
+                        "</configuration>"
         );
         //@formatter:on
     }

@@ -1,11 +1,10 @@
 .idea
 *.iml
 
-cdi/target
 logging/target
 javafx/target
 jpa/target
-template/target
 test/target
-xml/target
 utils/target
+weld-se/target
+xml/target

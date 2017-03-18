@@ -3,7 +3,6 @@ package br.com.jwheel.xml.model;
 import br.com.jwheel.utils.SystemUtils;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Singleton;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,8 +10,7 @@ import java.nio.file.Paths;
 /**
  * @author Lima Filho, A. L. - amsterdam@luvva.com.br
  */
-@Singleton
-public class PathPreferences
+public abstract class PathPreferences
 {
     private Path appDataDirectory;
     private Path preferencesDirectory;
@@ -81,13 +79,10 @@ public class PathPreferences
         return "prefs";
     }
 
-    public String getRootFolderName ()
-    {
-        return "jwheel";
-    }
-
     public String getEnvKey ()
     {
         return "JWHEEL";
     }
+
+    public abstract String getRootFolderName ();
 }

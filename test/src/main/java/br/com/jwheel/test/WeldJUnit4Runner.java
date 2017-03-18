@@ -1,6 +1,6 @@
 package br.com.jwheel.test;
 
-import br.com.jwheel.cdi.WeldContext;
+import br.com.jwheel.weld.WeldContext;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
 
@@ -17,7 +17,6 @@ public class WeldJUnit4Runner extends BlockJUnit4ClassRunner
     @Override
     protected Object createTest ()
     {
-        final Class<?> test = getTestClass().getJavaClass();
-        return WeldContext.getInstance().getAny(test);
+        return WeldContext.getInstance().getAny(getTestClass().getJavaClass());
     }
 }
