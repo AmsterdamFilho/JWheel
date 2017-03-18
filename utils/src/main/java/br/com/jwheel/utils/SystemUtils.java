@@ -22,4 +22,9 @@ public class SystemUtils
     {
         return InetAddress.getLocalHost().getHostName();
     }
+
+    public static boolean is64bits ()
+    {
+        return System.getProperty("os.arch").contains("64");
+    }
 }
