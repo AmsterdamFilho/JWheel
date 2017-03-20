@@ -36,7 +36,7 @@ public class ApplicationStarter extends Application
             event.getSource().getException().printStackTrace();
             primaryStage.close();
         });
-        new Thread(starterTask).start();
+        new Thread(starterTask, "JWheel JavaFX application starter thread").start();
     }
 
     /**
