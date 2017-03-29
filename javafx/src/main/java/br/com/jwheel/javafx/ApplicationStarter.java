@@ -89,6 +89,15 @@ public class ApplicationStarter extends Application
         }
     }
 
+    @Override
+    public void stop () throws Exception
+    {
+        if (application != null)
+        {
+            application.stop();
+        }
+    }
+
     public static void main (String[] args)
     {
         launch(args);

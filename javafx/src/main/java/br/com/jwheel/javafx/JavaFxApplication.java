@@ -8,4 +8,9 @@ import javafx.stage.Stage;
 public interface JavaFxApplication
 {
     void init (Stage primaryStage);
+
+    default void stop ()
+    {
+
+    }
 }
