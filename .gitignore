@@ -1,10 +1,10 @@
+# IntelliJ files
 .idea
 *.iml
 
-logging/target
-javafx/target
-jpa/target
-test/target
-utils/target
-weld-se/target
-xml/target
+# Temporary and local files
+*~*
+.DS_Store
+
+# Compiled files
+*/target
